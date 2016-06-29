@@ -5,7 +5,6 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
   encoding: utf8
   pool: 5
   timeout: 5000
@@ -14,6 +13,7 @@ default: &default
 
 development:
   <<: *default
+  adapter: mysql2
   database: bye_buying_development
 
 # Warning: The database defined as "test" will be erased and
@@ -21,8 +21,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  adapter: mysql2
   database: bye_buying_test
 
 production:
   <<: *default
-  database: bye_buying_production
+  adapter:
+  database: db/bye_buying_production.sqlite3
