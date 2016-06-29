@@ -53,4 +53,15 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root 'welcome#index'
+
+  namespace :admin do
+
+    get '/' => 'welcome#index'
+    post 'sign_in' => 'welcome#log_in', as:'sign_in'
+    get 'dashboard' => 'welcome#dashboard'
+
+  end
+
 end

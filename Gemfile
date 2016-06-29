@@ -45,3 +45,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'mysql2'
+
+gem 'devise'
+
+gem 'simple_form'
