@@ -45,6 +45,10 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'exception_notification'
+end
+
 gem 'mysql2'
 
 gem 'devise'

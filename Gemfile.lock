@@ -57,6 +57,9 @@ GEM
       responders
       warden (~> 1.2.3)
     erubis (2.7.0)
+    exception_notification (4.1.4)
+      actionmailer (~> 4.0)
+      activesupport (~> 4.0)
     execjs (2.7.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -162,6 +165,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
+  exception_notification
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
