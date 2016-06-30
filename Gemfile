@@ -47,6 +47,7 @@ end
 group :production do
   gem 'exception_notification'
   # gem 'sqlite3'
+  gem 'pg'
 end
 
 gem 'mysql2'
