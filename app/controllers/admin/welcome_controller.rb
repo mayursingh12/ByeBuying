@@ -4,8 +4,6 @@ class Admin::WelcomeController < Admin::BaseController
 
   before_filter :authenticate_no_admin, only: [:index]
 
-  layout 'admin'
-
   def index
 
   end

@@ -1,5 +1,7 @@
 class Admin::BaseController < ApplicationController
 
+  layout 'admin'
+
   def authenticate_admin
     if current_user.present? and current_user.admin?
       #proceed

@@ -63,6 +63,8 @@ Rails.application.routes.draw do
     post 'sign_in' => 'welcome#log_in', as:'sign_in'
     get 'dashboard' => 'welcome#dashboard'
 
+    resources :categories
+
   end
 
 end
