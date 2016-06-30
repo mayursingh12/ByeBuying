@@ -26,5 +26,10 @@ test:
 
 production:
   <<: *default
-  adapter:
-  database: db/bye_buying_production.sqlite3
+
+  adapter: postgresql
+  username: gkpasrkjeplctp
+  password: XaahyY5nwWzkJX2c-ycxy-MheC
+  database: dbbqf5od66gi23
+  port: 5432
+  host: ec2-54-243-217-22.compute-1.amazonaws.com
