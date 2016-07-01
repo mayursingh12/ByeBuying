@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
   def admin?
     self.type == 'Admin'
   end
+
+  def customer?
+    self.type == 'Customer'
+  end
+
 end
