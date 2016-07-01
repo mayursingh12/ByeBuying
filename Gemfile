@@ -57,3 +57,5 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'puma'
+
+gem 'paperclip', '~> 4.3'
