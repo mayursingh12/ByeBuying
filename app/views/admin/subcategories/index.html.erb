@@ -7,19 +7,18 @@
     </ul>
   </div>
 </div>
-
 <div class="row">
   <div class="col-sm-12">
     <table class="table table-striped">
-      <tr>
-        <td>Name</td>
-        <td>Edit</td>
+      <thead>
+      <tr class="info">
+        <th>Name</th>
+        <th>Action</th>
       </tr>
+      </thead>
       <% @subcategories.each do |subcategory| %>
           <tr>
-            <td>
-              <%= subcategory.name %>
-            </td>
+            <td><%= subcategory.name %></td>
             <td>
               <%= link_to edit_admin_subcategory_path(subcategory) do %>
                   <i class="fa fa-edit"></i>
