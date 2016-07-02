@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     resources :subcategories
 
+    resources :advertisements
+
   end
 
   namespace :customer do

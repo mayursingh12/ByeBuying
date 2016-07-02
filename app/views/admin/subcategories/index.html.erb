@@ -13,12 +13,14 @@
       <thead>
       <tr class="info">
         <th>Name</th>
+        <th>Category</th>
         <th>Action</th>
       </tr>
       </thead>
       <% @subcategories.each do |subcategory| %>
           <tr>
             <td><%= subcategory.name %></td>
+            <td><%= subcategory.category.name if subcategory.category.present? %></td>
             <td>
               <%= link_to edit_admin_subcategory_path(subcategory) do %>
                   <i class="fa fa-edit"></i>

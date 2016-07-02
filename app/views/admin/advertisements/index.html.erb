@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li>
+        <%= link_to 'Add Advertisement', new_admin_advertisement_path, class: 'btn btn-primary' %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Subcategory</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @advertisements.each do |advertisement| %>
+          <tr>
+            <td><%= advertisement.title %></td>
+            <td><%= advertisement.description %></td>
+            <td><%= advertisement.subcategory.category.name %></td>
+            <td><%= advertisement.subcategory.name %></td>
+            <td>
+              <%= link_to edit_admin_advertisement_path(advertisement) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
+          </tr>
+      <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
