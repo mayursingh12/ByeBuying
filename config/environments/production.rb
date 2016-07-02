@@ -83,5 +83,5 @@ Rails.application.configure do
   #                                             :sender_address => %{'notifier' <mayursingh1220@gmail.com>},
   #                                             :exception_recipients => %w{mayursingh1220@gmail.com}
   #                                         }
-  HOST_URL_FOR_MAILER = 'http://www.mysolutions4u.com'
+  # HOST_URL_FOR_MAILER = 'http://www.mysolutions4u.com'
 end
