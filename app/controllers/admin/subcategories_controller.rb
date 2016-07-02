@@ -1,21 +1,21 @@
-class Admin::SubCategoriesCategories < Admin::BaseController
+class Admin::SubcategoriesController < Admin::BaseController
 
   before_filter :authenticate_admin
 
   before_action :set_subcategory, only: [:edit, :update]
 
   def index
-    @subcategories = SubCategory.all
+    @subcategories = Subcategory.all
   end
 
   def new
-    @subcategory = SubCategory.new
+    @subcategory = Subcategory.new
   end
 
   def create
-    @subcategory = SubCategory.new(subcategory_params)
+    @subcategory = Subcategory.new(subcategory_params)
     if @subcategory.save
-      flash[:success] = "SubCategory Successfully Created"
+      flash[:success] = 'Subcategory Successfully Created.'
       redirect_to action: :index
     else
       render action: :new
@@ -27,20 +27,23 @@ class Admin::SubCategoriesCategories < Admin::BaseController
   end
 
   def update
-    if @subcategory.update_attributes(subcategory_parums)
-      flash[:success] = "Successfully Updated"
+    if @subcategory.update_attributes(subcategory_params)
+      flash[:success] = 'Successfully Update.'
       redirect_to action: :index
     else
       render action: :edit
     end
   end
 
+  private
+
   def set_subcategory
-    @subcategory = Category.find params[:id]
+    @subcategory = Subcategory.find params[:id]
   end
 
-  def category_parums
-    parums.require(:subcategory).permit(:name)
+  def subcategory_params
+    params.require(:subcategory).permit(:name, :category_id)
   end
+
 
 end
