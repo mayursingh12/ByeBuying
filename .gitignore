@@ -12,8 +12,8 @@
 !/log/.keep
 /tmp
 .DS_Store
-.idea/
 test/
 .env
+.idea/
 doc/
 public/assets/
