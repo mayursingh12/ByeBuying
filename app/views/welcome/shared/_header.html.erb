@@ -1,17 +1,53 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<div class="top-nav hidden-xs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-right">
+        <p>
+          <a href="">About us</a> | <a href="">Our Services</a> | <a href="">Media</a> | <a href="">Testimonials</a> |
+          <a href="">Contact Us</a>
+        </p>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-left">
-        <li><%= link_to 'Home', root_path %></li>
-      </ul>
+  </div>
+</div>
+
+<nav class="navbar navbar-default main-nav">
+  <div class="container">
+    <div class="row">
+    <div class="col-sm-2 col-xs-12">ByeBuying</div>
+    <div class="col-sm-10 col-xs-12 res-nav-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="row">
+            <div class="col-md-7 col-sm-12">
+              <%= form_for :search, :html => {:class => "search_form"} do |f| %>
+                  <%= f.text_field :search, class: 'search_textfield', placeholder: 'Search' %>
+                  <a href="" class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></a>
+                  <div class="clearfix"></div>
+              <% end %>
+            </div>
+            <div class="col-md-5 col-sm-12 no-padding">
+              <ul class="navbar-nav navbar-left">
+                <li><a href="">Login</a> | <a href="" class="no-padding-right">Register</a></li>
+                <li><a href="">My Ads</a></li>
+                <li><a href="">Post an Add</a></li>
+                <li class="hidden-lg hidden-md hidden-sm"><a href="">About us</a></li>
+                <li class="hidden-lg hidden-md hidden-sm"><a href="">Our Services</a></li>
+                <li class="hidden-lg hidden-md hidden-sm"><a href="">Media</a></li>
+                <li class="hidden-lg hidden-md hidden-sm"><a href="">Testimonials</a></li>
+                <li class="hidden-lg hidden-md hidden-sm"><a href="">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
     </div>
   </div>
 </nav>
