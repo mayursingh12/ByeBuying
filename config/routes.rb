@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       resources :advertisement_images
     end
 
+    resources :customers
+
   end
 
   namespace :customer do
