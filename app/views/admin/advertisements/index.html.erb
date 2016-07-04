@@ -17,6 +17,7 @@
         <th>Category</th>
         <th>Subcategory</th>
         <th>Action</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -26,6 +27,11 @@
             <td><%= advertisement.description %></td>
             <td><%= advertisement.subcategory.category.name %></td>
             <td><%= advertisement.subcategory.name %></td>
+            <td>
+              <%= link_to admin_advertisement_path(advertisement) do %>
+                  <i class="fa fa-eye"></i>
+              <%- end %>
+            </td>
             <td>
               <%= link_to edit_admin_advertisement_path(advertisement) do %>
                   <i class="fa fa-edit"></i>

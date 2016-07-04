@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-6">
+    <dl>
+      <% @advertisement.attributes.each_pair do |attr, value| %>
+          <dt><%= attr.to_s %></dt>
+          <dd><%= value %></dd>
+      <%- end %>
+    </dl>
+  </div>
+  <div class="col-sm-6">
+    <div class="row">
+      <% @advertisement.advertisement_images.each do |advertisement_image| %>
+          <div class="col-sm-12">
+            <%= image_tag advertisement_image.image.url(AdvertisementImage::DEFAULT_SIZE) %>
+            <% if advertisement_image.id.present? %>
+                <%= link_to admin_advertisement_advertisement_image_path(@advertisement, advertisement_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
+            <%- end %>
+          </div>
+      <%- end %>
+    </div>
+    <% unless @advertisement.advertisement_images.count > 2 %>
+        <fieldset>
+          <legend><small>Add new images</small></legend>
+          <%= render partial: 'admin/advertisement_images/form', locals: { advertisement: @advertisement, advertisement_image: @advertisement.advertisement_images.new } %>
+        </fieldset>
+    <% end %>
+  </div>
+</div>

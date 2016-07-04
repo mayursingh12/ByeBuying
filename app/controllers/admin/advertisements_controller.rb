@@ -2,7 +2,7 @@ class Admin::AdvertisementsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_advertisement, only: [:edit, :update]
+  before_action :set_advertisement, only: [:edit, :update, :show]
 
   def index
     @advertisements = Advertisement.all
@@ -33,6 +33,10 @@ class Admin::AdvertisementsController < Admin::BaseController
    else
      render action: :edit
    end
+  end
+
+  def show
+    
   end
 
   private

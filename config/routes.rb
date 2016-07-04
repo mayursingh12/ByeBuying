@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
     resources :subcategories
 
-    resources :advertisements
+    resources :advertisements do
+      resources :advertisement_images
+    end
 
   end
 

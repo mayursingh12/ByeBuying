@@ -59,3 +59,7 @@ gem 'simple_form'
 gem 'puma'
 
 gem 'paperclip', '~> 4.3'
+
+# gem 'aws-sdk'
+
+# gem 'rmagick'
