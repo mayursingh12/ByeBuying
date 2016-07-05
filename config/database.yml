@@ -30,7 +30,7 @@ production:
   adapter: postgresql
     username: <%= ENV['BYEBUYING_DATABASE_USERNAME'] %>
     password: <%= ENV['BYEBUYING_DATABASE_PASSWORD'] %>
-    database: dbbqf5od66gi23
+    database: d4p3loufna3srq
     port: 5432
     host: ec2-54-163-249-150.compute-1.amazonaws.com
 
