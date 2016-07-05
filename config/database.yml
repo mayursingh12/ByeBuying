@@ -27,6 +27,13 @@ test:
 production:
   <<: *default
 
+  adapter: postgresql
+    username: <%= ENV['BYEBUYING_DATABASE_USERNAME'] %>
+    password: <%= ENV['BYEBUYING_DATABASE_PASSWORD'] %>
+    database: dbbqf5od66gi23
+    port: 5432
+    host: ec2-54-163-249-150.compute-1.amazonaws.com
+
 #  adapter: mysql2
 #  username: byebuying_users
 #  password: byebuying123
@@ -38,10 +45,3 @@ production:
 #  database: dbbqf5od66gi23
 #  port: 5432
 #  host: ec2-54-243-217-22.compute-1.amazonaws.com
-
-adapter: postgresql
-  username: <%= ENV['BYEBUYING_DATABASE_USERNAME'] %>
-  password: <%= ENV['BYEBUYING_DATABASE_PASSWORD'] %>
-  database: dbbqf5od66gi23
-  port: 5432
-  host: ec2-54-163-249-150.compute-1.amazonaws.com
