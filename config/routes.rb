@@ -30,7 +30,11 @@ Rails.application.routes.draw do
     get 'registration' => 'welcome#registration'
     post 'sign_up' => 'welcome#sign_up', as:'sign_up'
     get 'dashboard' => 'welcome#dashboard'
+
+    resources :advertisements
+
   end
+
 
 
 end
