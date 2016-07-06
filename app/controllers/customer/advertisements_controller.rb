@@ -26,18 +26,20 @@ class Customer::AdvertisementsController < Customer::BaseController
 
   end
 
-  def show
-
-  end
-
   def update
-    if @advertisement.update_attribute(advertisement_params)
+    if @advertisement.update_attributes(advertisement_params)
       flash[:success] = 'Successfully Updated'
       redirect_to action: :index
     else
       render action: :edit
     end
   end
+
+  def show
+
+  end
+
+  private
 
   def set_advertisement
     @advertisement = Advertisement.find params[:id]

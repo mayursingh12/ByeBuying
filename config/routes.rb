@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     resources :subcategories
 
+    get 'subcategories/get_subcategories_for_category/:id' => 'subcategories#get_subcategories_for_category', as:'get_subcategories_for_category'
+
     resources :advertisements do
       resources :advertisement_images
     end
