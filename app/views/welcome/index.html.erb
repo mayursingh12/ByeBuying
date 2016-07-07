@@ -9,6 +9,5 @@
 
 <% @advertisements.each do |advertisement| %>
     <%= advertisement.title %>,
-    <%#= advertisement.subcategory.name %>
     <%= advertisement.subcategory.category.name %> <br>
 <% end %>
