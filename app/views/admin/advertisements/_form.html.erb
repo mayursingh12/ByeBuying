@@ -4,7 +4,7 @@
     <%= f.input :contact %>
     <%= f.input :category_id, collection: category_for_collection, prompt: 'Select Category'  %>
     <%#= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select Subcategory'  %>
-    <%= f.input :subcategory_id  %>
+    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select Subcategory' %>
     <%= f.input :start_at %>
     <%= f.input :end_at %>
     <%= f.input :per_hour_cost %>

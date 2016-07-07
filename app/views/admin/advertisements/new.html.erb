@@ -4,16 +4,22 @@
   </div>
   <div class="col-sm-8"></div>
 </div>
-<p class=""></p>
+<div class="ff"></div>
 
 <script>
     $(document).ready(function(){
-//      $('#advertisement_category_id option:selected').click();
         $( "#advertisement_category_id").change(function() {
-            var category_val =  this.value;
+            var category_val = this.value;
             $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json", function(data, status){
-                alert("Data: " + data + "\nStatus: " + status);
+//                $('p').text("Data: " + data[0].name + "\nStatus: " + status);
+//                data.push(data[0].name);
+                var appendString = '';
+                for(var i=0; i < data.length;i++){
+                    appendString +='<option>' + data[i].name + '</option>';
+                }
+                $('#advertisement_subcategory_id').html(appendString);
             });
+
         });
     });
 </script>
