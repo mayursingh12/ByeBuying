@@ -4,4 +4,14 @@ class Advertisement < ActiveRecord::Base
 
   has_many :advertisement_images
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :start_at, presence: true
+  validates :end_at, presence: true
+  validates :per_hour_cost, presence: true
+  validates :contact, presence: true
+  validates :email, presence: true
+  validates :category_id, presence: true
+  validates :subcategory_id, presence: true
+
 end

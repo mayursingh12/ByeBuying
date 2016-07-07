@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702172005) do
+ActiveRecord::Schema.define(version: 20160707075700) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20160702172005) do
     t.string   "email",          limit: 255
     t.integer  "category_id",    limit: 4
     t.integer  "subcategory_id", limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "ready_for_post",               default: false
   end
 
   create_table "categories", force: :cascade do |t|
