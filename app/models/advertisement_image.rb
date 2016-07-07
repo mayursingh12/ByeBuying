@@ -6,4 +6,7 @@ class AdvertisementImage < ActiveRecord::Base
 
   has_attached_file :image, styles: { size_250x250: '250x250' }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  validates :image, presence: true
+
 end
