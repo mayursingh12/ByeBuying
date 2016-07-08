@@ -7,7 +7,14 @@
 
 <script>
     $(document).ready(function(){
-        $( "#advertisement_category_id").change(function() {
+
+        if($('#advertisement_category_id').val() == ""){
+            $('#advertisement_subcategory_id').prop('disabled', 'disabled');
+        }else{
+            $('#advertisement_subcategory_id').prop('disable', true);
+        }
+
+        $("#advertisement_category_id").change(function() {
             var category_val = this.value;
             $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json", function(data, status){
                 var appendString = '<option value="">Select Subcategory</option>';
@@ -16,7 +23,10 @@
                 }
                 $('#advertisement_subcategory_id').html(appendString);
             });
-
+            len = $("#advertisement_category_id option:selected").length
+            if (len > 0 ) {
+                $('#advertisement_subcategory_id').prop('disabled', false);
+            }
         });
     });
 </script>
