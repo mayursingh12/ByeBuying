@@ -35,6 +35,10 @@ class Admin::SubcategoriesController < Admin::BaseController
     end
   end
 
+  def get_subcategories_for_category
+    @subcategories = Subcategory.where(category_id: params[:id])
+  end
+
   private
 
   def set_subcategory

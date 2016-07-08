@@ -14,7 +14,7 @@ class Admin::AdvertisementImagesController < Admin::BaseController
     @advertisement_image = @advertisement.advertisement_images.new(advertisement_image_params)
     if @advertisement_image.save
       flash[:success] = 'Image added successfully'
-      redirect_to admin_advertisements_path(@advertisement)
+      redirect_to admin_advertisement_path(@advertisement)
     else
       render template: 'admin/advertisements/show'
     end

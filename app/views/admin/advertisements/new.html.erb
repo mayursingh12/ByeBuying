@@ -4,3 +4,19 @@
   </div>
   <div class="col-sm-8"></div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $( "#advertisement_category_id").change(function() {
+            var category_val = this.value;
+            $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json", function(data, status){
+                var appendString = '<option value="">Select Subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#advertisement_subcategory_id').html(appendString);
+            });
+
+        });
+    });
+</script>
