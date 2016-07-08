@@ -25,9 +25,7 @@
           <tr>
             <td><%= advertisement.title %></td>
             <td><%= advertisement.description %></td>
-            <td>
-              <%= advertisement.subcategory.category.name %>
-            </td>
+            <td><%= advertisement.subcategory.category.name %></td>
             <td><%= advertisement.subcategory.name %></td>
             <td>
               <%= link_to admin_advertisement_path(advertisement) do %>

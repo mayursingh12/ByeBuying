@@ -4,11 +4,9 @@
   </div>
   <div class="col-sm-8"></div>
 </div>
-<div class="ff"></div>
 
 <script>
     $(document).ready(function(){
-//        $('#advertisement_subcategory_id').html("");
         $( "#advertisement_category_id").change(function() {
             var category_val = this.value;
             $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json", function(data, status){
