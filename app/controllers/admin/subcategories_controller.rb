@@ -1,6 +1,6 @@
 class Admin::SubcategoriesController < Admin::BaseController
 
-  before_filter :authenticate_admin
+  before_filter :authenticate_admin, except: [:get_subcategories_for_category]
 
   before_action :set_subcategory, only: [:edit, :update]
 
