@@ -9,7 +9,7 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def dashboard
-
+    @advertisements = Advertisement.all
   end
 
   def registration

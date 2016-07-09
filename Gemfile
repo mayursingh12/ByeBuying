@@ -64,6 +64,10 @@ gem 'will_paginate'
 
 gem 'paranoia', '~> 2.0'
 
+gem 'fullcalendar-rails'
+
+gem 'momentjs-rails'
+
 # gem 'aws-sdk'
 
 # gem 'rmagick'
