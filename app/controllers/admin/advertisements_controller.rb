@@ -2,7 +2,7 @@ class Admin::AdvertisementsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_advertisement, only: [:edit, :update, :show]
+  before_action :set_advertisement, only: [:edit, :update, :show, :admin_approve, :destroy]
 
   def index
     @advertisements = Advertisement.all.paginate(:page => params[:page], :per_page => 20)
@@ -37,6 +37,19 @@ class Admin::AdvertisementsController < Admin::BaseController
 
   def show
     
+  end
+
+  def destroy
+    @advertisement.destroy
+    redirect_to action: :index
+  end
+
+  def admin_approve
+    if @advertisement.update_attribute(:admin_verified, params[:admin_verified])
+      redirect_to action: :index
+    else
+      redirect_to action: :index
+    end
   end
 
   private
