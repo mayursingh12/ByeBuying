@@ -1,0 +1,6 @@
+<%= simple_form_for [:admin, @customer] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>

@@ -1,5 +1,7 @@
 class AdvertisementImage < ActiveRecord::Base
 
+  acts_as_paranoid
+
   belongs_to :advertisement
 
   DEFAULT_SIZE = :size_250x250

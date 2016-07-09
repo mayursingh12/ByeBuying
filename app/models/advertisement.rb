@@ -1,8 +1,10 @@
 class Advertisement < ActiveRecord::Base
 
+  acts_as_paranoid
+
   belongs_to :subcategory, class_name: 'Subcategory', foreign_key: :subcategory_id
 
-  has_many :advertisement_images
+  has_many :advertisement_images, dependent: :destroy
 
   validates :title, presence: true
   validates :description, presence: true
