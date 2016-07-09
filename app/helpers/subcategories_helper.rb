@@ -4,4 +4,8 @@ module SubcategoriesHelper
     Subcategory.all.collect{ |a| [a.name, a.id] }
   end
 
+  def available(subcategory)
+    1
+  end
+
 end
