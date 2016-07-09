@@ -5,7 +5,7 @@ class Admin::SubcategoriesController < Admin::BaseController
   before_action :set_subcategory, only: [:edit, :update]
 
   def index
-    @subcategories = Subcategory.all
+    @subcategories = Subcategory.paginate(:page => params[:page], :per_page => 20).all.order(:name)
   end
 
   def new

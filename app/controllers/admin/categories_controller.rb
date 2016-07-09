@@ -5,7 +5,7 @@ class Admin::CategoriesController < Admin::BaseController
   before_action :set_category, only: [:edit, :update]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.order(:name)
   end
 
   def new

@@ -60,6 +60,8 @@ gem 'puma'
 
 gem 'paperclip', '~> 4.3'
 
+gem 'will_paginate'
+
 # gem 'aws-sdk'
 
 # gem 'rmagick'

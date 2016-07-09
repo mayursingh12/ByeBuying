@@ -5,7 +5,7 @@ class Admin::AdvertisementsController < Admin::BaseController
   before_action :set_advertisement, only: [:edit, :update, :show]
 
   def index
-    @advertisements = Advertisement.all
+    @advertisements = Advertisement.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def new
