@@ -5,4 +5,6 @@ class Subcategory < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :category_id, presence: true
 
+
+
 end
