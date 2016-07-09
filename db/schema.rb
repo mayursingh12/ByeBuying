@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707075700) do
+ActiveRecord::Schema.define(version: 20160709155544) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20160707075700) do
     t.datetime "image_updated_at"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "advertisement_images", ["deleted_at"], name: "index_advertisement_images_on_deleted_at", using: :btree
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "title",          limit: 255
@@ -36,7 +39,11 @@ ActiveRecord::Schema.define(version: 20160707075700) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
     t.boolean  "ready_for_post",               default: false
+    t.boolean  "admin_verified",               default: false
+    t.datetime "deleted_at"
   end
+
+  add_index "advertisements", ["deleted_at"], name: "index_advertisements_on_deleted_at", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -70,8 +77,10 @@ ActiveRecord::Schema.define(version: 20160707075700) do
     t.string   "image_content_type",     limit: 255
     t.integer  "image_file_size",        limit: 4
     t.datetime "image_updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

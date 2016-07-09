@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     get 'subcategories/get_subcategories_for_category/:id' => 'subcategories#get_subcategories_for_category', as:'get_subcategories_for_category'
 
     resources :advertisements do
+      member do
+        put :admin_approve
+      end
       resources :advertisement_images
     end
 
