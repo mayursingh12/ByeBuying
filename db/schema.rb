@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709155544) do
+ActiveRecord::Schema.define(version: 20160709214755) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 20160709155544) do
     t.datetime "start_at"
     t.datetime "end_at"
     t.float    "per_hour_cost",  limit: 24
-    t.string   "contact",        limit: 255
-    t.string   "email",          limit: 255
     t.integer  "category_id",    limit: 4
     t.integer  "subcategory_id", limit: 4
     t.datetime "created_at",                                   null: false
@@ -41,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160709155544) do
     t.boolean  "ready_for_post",               default: false
     t.boolean  "admin_verified",               default: false
     t.datetime "deleted_at"
+    t.integer  "user_id",        limit: 4
   end
 
   add_index "advertisements", ["deleted_at"], name: "index_advertisements_on_deleted_at", using: :btree
@@ -78,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160709155544) do
     t.integer  "image_file_size",        limit: 4
     t.datetime "image_updated_at"
     t.datetime "deleted_at"
+    t.string   "contact",                limit: 255
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree

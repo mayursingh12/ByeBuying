@@ -17,12 +17,12 @@
       <% @advertisements.each do |advertisement| %>
           <tr>
             <td><%= advertisement.title %></td>
-            <td><%= advertisement.email %></td>
-            <td><%= advertisement.contact %></td>
+            <td><%= advertisement.user.email if advertisement.user.present? %></td>
+            <td><%= advertisement.user.contact if advertisement.user.present? %></td>
             <td><%= advertisement.subcategory.category.name if advertisement.subcategory.category.present? %></td>
             <td><%= advertisement.subcategory.name if advertisement.subcategory.present? %></td>
-            <td><%= advertisement.start_at %></td>
-            <td><%= advertisement.end_at %></td>
+            <td><%= advertisement.start_at.strftime(time_format) %></td>
+            <td><%= advertisement.end_at.strftime(time_format) %></td>
             <td><%= advertisement.per_hour_cost %></td>
             <td><%= advertisement.description %></td>
             <td>

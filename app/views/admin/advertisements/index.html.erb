@@ -19,9 +19,6 @@
         <th>Category</th>
         <th>Subcategory</th>
         <th>Action</th>
-        <th></th>
-        <th></th>
-        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -38,18 +35,12 @@
                   <span class="text-danger">Not verified</span>
                   <%= link_to( 'Verify' , admin_approve_admin_advertisement_path(advertisement, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
               <%- end %>
-            </td>
-            <td>
               <%= link_to admin_advertisement_path(advertisement) do %>
                   <i class="fa fa-eye"></i>
               <%- end %>
-            </td>
-            <td>
               <%= link_to edit_admin_advertisement_path(advertisement) do %>
                   <i class="fa fa-edit"></i>
               <%- end %>
-            </td>
-            <td>
               <%= link_to admin_advertisement_path(advertisement), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
                   <i class="fa fa-trash fa-3"></i>
               <%- end %>

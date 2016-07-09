@@ -65,10 +65,8 @@ class Admin::AdvertisementsController < Admin::BaseController
                                           :end_at,
                                           :per_hour_cost,
                                           :contact,
-                                          :email,
-                                          :contact,
                                           :category_id,
-                                          :subcategory_id)
+                                          :subcategory_id).merge(user_id: current_user.id)
   end
 
 end
