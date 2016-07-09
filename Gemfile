@@ -62,6 +62,8 @@ gem 'paperclip', '~> 4.3'
 
 gem 'will_paginate'
 
+gem 'paranoia', '~> 2.0'
+
 # gem 'aws-sdk'
 
 # gem 'rmagick'
