@@ -1,7 +1,36 @@
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <h2>Welcome#<%= current_user.name %></h2>
-  </div>
-  <div class="col-sm-4"></div>
-</div>
+<div id="calendar"></div>
+
+<style>
+    #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''
+            },
+            defaultDate: "<%= DateTime.now %>",
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: [
+                <% @advertisements.each do |advertisement| %>
+                {
+                    title: "<%= advertisement.title %>",
+                    start: "<%= advertisement.start_at %>",
+                    end: "<%= advertisement.end_at %>",
+                    description: "<%= advertisement.description %>",
+                    url: "<%= edit_customer_advertisement_path(advertisement) %>",
+                },
+                <% end %>
+            ]
+        });
+
+    });
+</script>
