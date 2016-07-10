@@ -5,7 +5,7 @@ class Customer::AdvertisementsController < Customer::BaseController
   before_action :set_advertisement, only: [:edit, :update, :show]
 
   def index
-    @advertisements = Advertisement.all
+    @advertisements = current_user.advertisements
   end
 
   def new
@@ -51,11 +51,8 @@ class Customer::AdvertisementsController < Customer::BaseController
                                            :start_at,
                                            :end_at,
                                            :per_hour_cost,
-                                           :contact,
-                                           :email,
-                                           :contact,
                                            :category_id,
-                                           :subcategory_id)
+                                           :subcategory_id).merge(user_id: current_user.id)
   end
 
 end
