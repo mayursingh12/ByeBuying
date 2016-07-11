@@ -85,7 +85,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :user_name => 'AKIAIBX3UZ4VUNU53K7A',
       :password => 'Aq3WrgNACueVOIxoYlBjIikqSgcmlGs3SEetL3RT5u26',
-      :domain => 'jetsetgo.in',
+      :domain => 'https://infinite-taiga-60098.herokuapp.com',
       :address => 'email-smtp.us-east-1.amazonaws.com',
       :port => 587,
       :authentication => :plain,
