@@ -76,12 +76,27 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  #
-  # Rails.application.config.middleware.use ExceptionNotification::Rack,
-  #                                         :email => {
-  #                                             :email_prefix => 'ByeBuying new ERROR OCCURRED',
-  #                                             :sender_address => %{'notifier' <mayursingh1220@gmail.com>},
-  #                                             :exception_recipients => %w{mayursingh1220@gmail.com}
-  #                                         }
+
+
+  # Custom Settings =======================
+  # =======================================
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :user_name => 'AKIAIBX3UZ4VUNU53K7A',
+      :password => 'Aq3WrgNACueVOIxoYlBjIikqSgcmlGs3SEetL3RT5u26',
+      :domain => 'jetsetgo.in',
+      :address => 'email-smtp.us-east-1.amazonaws.com',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                          :email => {
+                                              :email_prefix => 'ByeBuying new ERROR OCCURRED',
+                                              :sender_address => %{'notifier' <mayursingh1220@gmail.com>},
+                                              :exception_recipients => %w{mayursingh1220@gmail.com}
+                                          }
   # HOST_URL_FOR_MAILER = 'http://www.mysolutions4u.com'
 end
