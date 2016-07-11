@@ -13,13 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require ./vendors/angular_bootstrap
-
-//= require ./vendors/theme/icheck
-//= require ./vendors/theme/ionrangeslider
-//= require ./vendors/theme/jqzoom
-//= require ./vendors/theme/card-payment
-//= require ./vendors/theme/owl-carousel
-//= require ./vendors/theme/magnific
-//= require ./vendors/theme/custom
