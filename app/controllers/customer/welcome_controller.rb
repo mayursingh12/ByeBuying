@@ -9,7 +9,7 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def dashboard
-    @advertisements = current_user.advertisements.where(admin_verified: true)
+    @advertisements = current_user.advertisements
   end
 
   def registration
