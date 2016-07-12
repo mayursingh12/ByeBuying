@@ -1,14 +1,15 @@
 <!--<h2>WELCOME PAGE</h2>-->
 
 <!--<form action="/">-->
-  <!--<input type="text" name="title" value="<%#= params[:title] %>" placeholder="Search by title">-->
-  <!--<input type="text" name="category" value="<%#= params[:category] %>" placeholder="Search by category">-->
-  <!--<input type="submit" value="Filter">-->
+<!--<input type="text" name="title" value="<%#= params[:title] %>" placeholder="Search by title">-->
+<!--<input type="text" name="category" value="<%#= params[:category] %>" placeholder="Search by category">-->
+<!--<input type="submit" value="Filter">-->
 <!--</form>-->
 
 <%# @advertisements.each do |advertisement| %>
-    <%#= advertisement.title %>
-    <%#= advertisement.subcategory.category.name %>
+<%#= advertisement.title %>
+<%#= advertisement.per_hour_cost %>
+<%#= advertisement.subcategory.category.name %>
 <%# end %>
 
 <!--slider start-->
@@ -22,7 +23,7 @@
             <h4 class="slider-item-caption-title">Playstation 4</h4>
             <p class="slider-item-caption-desc">This is for The Players</p><a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>
           </div>
-        <%= image_tag 'theme_img/test_slider/13-i.png', class: 'slider-item-img-right', style:'top: 60%; width: 56%;' %>
+          <%= image_tag 'theme_img/test_slider/13-i.png', class: 'slider-item-img-right', style:'top: 60%; width: 56%;' %>
         </div>
       </div>
     </div>
@@ -63,859 +64,122 @@
     <!--categories Start-->
     <h3 class="widget-title">Trending Now</h3>
     <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Ridgid Fuego 9 Amp Compact Orbital Reciprocating Saw R3002 RECON</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$99</span>
+
+      <% @advertisements.each do |advertisement| %>
+          <div class="owl-item">
+            <div class="product  owl-item-slide">
+              <ul class="product-labels"></ul>
+              <div class="product-img-wrap">
+                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+              </div>
+              <a class="product-link" href="#"></a>
+              <div class="product-caption">
+                <ul class="product-caption-rating">
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                </ul>
+                <h5 class="product-caption-title">
+                  <%= advertisement.title %>
+                </h5>
+                <div class="product-caption-price">
+                  <span class="product-caption-price-new">
+                    ₹<%= advertisement.per_hour_cost %>
+                  </span>
+
+                </div>
+              </div>
             </div>
-            <ul class="product-caption-feature-list">
-              <li>1 left</li>
-              <li>Free Shipping</li>
-            </ul>
           </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Cuisinart CSB-76BC SmartStick 200-Watt Immersion Hand Blender, Brushed Chrome</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$145</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">New Authentic Gucci Patent Leather Open Toe Platform Pump,Gren, 309984 3125</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$95</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Dooney & Bourke Pebble Grain Hobo</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$70</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Vera Bradley Mandy Tote Bag</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$75</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Google Nexus 6 XT1103 4G LTE - 32GB - Blue Factory Unlocked GSM</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$81</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">GoPro HERO4 Black 4K Action Camera Hero 4 Surf Camcorder . CHDHX-401. NEW</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$112</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Black Leather "Our Father" Wrap Bracelet Stainless Steel Magnetic Clasp - 7.5"</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$60</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>hot</li>
-          </ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">New 26" Folding 6 Speed Mountain Bike Bicycle Shimano School Sport Black</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$67</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">iRobot BRAAVA 320 Floor Sweeping/Mopping Robot Cleaner - White</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$140</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <% end %>
+
     </div>
     <!--categories finish-->
 
     <div class="gap"></div>
     <h3 class="widget-title">Featured Products</h3>
     <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">iRobot BRAAVA 320 Floor Sweeping/Mopping Robot Cleaner - White</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$103</span>
+      <% @advertisements.each do |advertisement| %>
+          <div class="owl-item">
+            <div class="product  owl-item-slide">
+              <ul class="product-labels"></ul>
+              <div class="product-img-wrap">
+                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+              </div>
+              <a class="product-link" href="#"></a>
+              <div class="product-caption">
+                <ul class="product-caption-rating">
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                </ul>
+                <h5 class="product-caption-title">
+                  <%= advertisement.title %>
+                </h5>
+                <div class="product-caption-price">
+                  <span class="product-caption-price-new">
+                    ₹<%= advertisement.per_hour_cost %>
+                  </span>
+
+                </div>
+              </div>
             </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
           </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Bulova Women's Dress 98V02 Silver Stainless-Steel Quartz Watch</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$110</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>1 left</li>
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Hanes Women's Relaxed Fit Jersey ComfortSoft&reg; Crewneck T-Shirt style 5680</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$92</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>1 left</li>
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Military Shoulder Tactical Backpack Rucksacks Sport Travel Hiking Trekking Bag</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$63</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>stuff pick</li>
-          </ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Motorola XT1096 Moto X 2nd Generation 16GB Verizon Wireless gsm unlocked</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$129</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Dooney & Bourke Pebble Grain Hobo</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$107</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>5 left</li>
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels">
-            <li>-10%</li>
-          </ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Dooney & Bourke Pebble Grain Lexington</h5>
-            <div class="product-caption-price"><span class="product-caption-price-old">$108</span><span class="product-caption-price-new">$98</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Fossil Women's Original Boyfriend ES3380 Rose-Gold Stainless-Steel Quartz Watch</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$90</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">HP EliteBook 8460p 2.7GHz i7 8GB 160GB DVD Win 7 Pro 64 Laptop Computer CAM B</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$133</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>1 left</li>
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product  owl-item-slide">
-          <ul class="product-labels"></ul>
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">WENGER WOMEN'S STAINLESS STEEL DATE NEW WATCH 0721.102</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$94</span>
-            </div>
-            <ul class="product-caption-feature-list">
-              <li>Free Shipping</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
 
     <div class="gap"></div>
 
     <h3 class="widget-title">Inspired by Your Browsing History</h3>
     <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":7,"loop":true,"nav":true}'>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">WENGER WOMEN'S STAINLESS STEEL DATE NEW WATCH 0721.102</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$106</span>
+      <% @advertisements.each do |advertisement| %>
+          <div class="owl-item">
+            <div class="product  owl-item-slide">
+              <ul class="product-labels"></ul>
+              <div class="product-img-wrap">
+                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+              </div>
+              <a class="product-link" href="#"></a>
+              <div class="product-caption">
+                <ul class="product-caption-rating">
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                </ul>
+                <h5 class="product-caption-title">
+                  <%= advertisement.title %>
+                </h5>
+                <div class="product-caption-price">
+                  <span class="product-caption-price-new">
+                    ₹<%= advertisement.per_hour_cost %>
+                  </span>
+
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Black 1000-Watt 6-Quart Electric Pressure Cooker Brushed Stainless and Matte 603</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$109</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Apple iPhone 5c - 16GB - GSM Factory Unlocked White Blue Green Pink Yellow</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$108</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">SALAV GS34-BJ Performance Garment Steamer with 360 Swivel Multi-hook Hanger, 4 S</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$133</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Bulova Fairlawn Women's Quartz Watch 96R160</h5>
-            <div class="product-caption-price"><span class="product-caption-price-old">$67</span><span class="product-caption-price-new">$61</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Dooney & Bourke Pebble Grain Hobo</h5>
-            <div class="product-caption-price"><span class="product-caption-price-old">$62</span><span class="product-caption-price-new">$50</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Barnett 78649 Recruit Youth 100# Crossbow Package With Red Dot Sight Pink</h5>
-            <div class="product-caption-price"><span class="product-caption-price-old">$61</span><span class="product-caption-price-new">$25</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">PUMA Cell Riaze Mesh Women's Running Shoes</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$87</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Nikon COOLPIX L840 Digital Camera, Red - Refurbished by Nikon U.S.A. #26486 B</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$78</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="owl-item">
-        <div class="product product-sm owl-item-slide">
-          <div class="product-img-wrap">
-            <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-          </div>
-          <a class="product-link" href="#"></a>
-          <div class="product-caption">
-            <ul class="product-caption-rating">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-              <li><i class="fa fa-star"></i>
-              </li>
-            </ul>
-            <h5 class="product-caption-title">Dooney & Bourke Pebble Grain Hobo</h5>
-            <div class="product-caption-price"><span class="product-caption-price-new">$118</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
     <div class="gap"></div>
   </div>

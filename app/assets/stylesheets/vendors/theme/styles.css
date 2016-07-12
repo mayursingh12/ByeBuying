@@ -2014,7 +2014,6 @@ header.main {
     border-color: #9b754a;
 }
 .btn-black {
-    background: linten(#000, 15%);
     border-color: #000;
     color: #fff;
 }
@@ -2267,7 +2266,6 @@ header.main {
         display: -ms-flexbox;
         display: -webkit-box;
         display: -moz-box;
-        display: -ms-box;
         display: -webkit-flex;
     }
 }
@@ -2353,7 +2351,6 @@ header.main {
     height: 100%;
     display: block;
     z-index: 4;
-    text-indent: 99999;
 }
 .product-img-alt {
     -webkit-transform: translate3d(101%, 0, 0);
@@ -3080,7 +3077,7 @@ header.main {
 }
 .product-sm-left .product-caption-feature-list {
     margin-top: 5px;
-    display: relative;
+    position: relative;
     right: auto;
     bottom: auto;
 }
@@ -3133,7 +3130,7 @@ header.main {
     color: #595959;
     font-weight: 500;
     margin-right: 5px;
-    font-size: #5b5b5b;
+    font-size: 14px;
 }
 .product-tabs .nav > li.active > a {
     -webkit-box-shadow: 0 -3px 5px rgba(0,0,0,0.08);
@@ -4094,7 +4091,6 @@ header.main {
 .i-check,
 .i-radio {
     display: inline-block;
-    *display: inlne;
     vertical-align: middle;
     margin: 0;
     padding: 0;
@@ -4786,19 +4782,19 @@ header.main {
     transition: 0.3s;
 }
 .cc-form .form-group.form-group-cc-number input.visa + .cc-card-icon {
-    background-image: url("../img/payment/visa-curved-32px.png");
+    background-image: url("theme_img/payment/visa-curved-32px.png");
 }
 .cc-form .form-group.form-group-cc-number input.mastercard + .cc-card-icon {
-    background-image: url("../img/payment/mastercard-curved-32px.png");
+    background-image: url("theme_img/payment/mastercard-curved-32px.png");
 }
 .cc-form .form-group.form-group-cc-number input.amex  + .cc-card-icon {
-    background-image: url("../img/payment/american-express-curved-32px.png");
+    background-image: url("theme_img/payment/american-express-curved-32px.png");
 }
 .cc-form .form-group.form-group-cc-number input.discover + .cc-card-icon {
-    background-image: url("../img/payment/discover-curved-32px.png");
+    background-image: url("theme_img/payment/discover-curved-32px.png");
 }
 .cc-form .form-group.form-group-cc-number input.maestro + .cc-card-icon {
-    background-image: url("../img/payment/maestro-curved-32px.png");
+    background-image: url("theme_img/payment/maestro-curved-32px.png");
 }
 /****** End of Card Payment ******/
 /****** Comments ******/
@@ -5176,7 +5172,7 @@ img.mfp-img {
     text-align: left;
     line-height: 18px;
     color: #f3f3f3;
-    word-break: break-word;
+    word-break: break-all;
     padding-right: 36px;
 }
 .mfp-figure small {
@@ -5614,9 +5610,9 @@ img.mfp-img {
 .mfp-dialog-full::-webkit-scrollbar-thumb:active {
     background-color: #4d4d4d;
 }
-.mfp-dialog-full::-webkit-scrollbar-tack {
-    background-color: #4d4d4d;
-}
+/*.mfp-dialog-full::-webkit-scrollbar-tack {*/
+    /*background-color: #4d4d4d;*/
+/*}*/
 .mfp-subscribe-dialog {
     max-width: 800px;
     padding: 0;
@@ -5666,7 +5662,7 @@ img.mfp-img {
     -ms-animation-name: fadeOut;
     animation-name: fadeOut;
 }
-undefinedundefined.owl-height {
+.undefinedundefined.owl-height {
     -webkit-transition: height 500ms ease-in-out;
     -moz-transition: height 500ms ease-in-out;
     -ms-transition: height 500ms ease-in-out;
@@ -5761,13 +5757,13 @@ undefinedundefined.owl-height {
     -webkit-transform-style: preserve-3d;
 }
 .owl-carousel.owl-text-select-on .owl-item {
-    -webkit-user-select: auto;
-    -moz-user-select: auto;
-    -ms-user-select: auto;
-    -webkit-user-select: auto;
-    -moz-user-select: auto;
-    -ms-user-select: auto;
-    user-select: auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .owl-carousel .owl-grab {
     cursor: grab;
@@ -5815,7 +5811,7 @@ undefinedundefined.owl-height {
     top: 50%;
     margin-left: -40px;
     margin-top: -40px;
-    background: url("owl.video.play.png") no-repeat;
+    /*background: url("../theme_img/owl.video.play.png") no-repeat;*/
     cursor: pointer;
     z-index: 1;
     -webkit-backface-visibility: hidden;
@@ -5830,15 +5826,11 @@ undefinedundefined.owl-height {
     transition: scale 100ms ease;
 }
 .owl-carousel .owl-video-play-icon:hover {
-    -webkit-transition: scale(1.3, 1.3);
-    -moz-transition: scale(1.3, 1.3);
-    -ms-transition: scale(1.3, 1.3);
-    -o-transition: scale(1.3, 1.3);
-    -webkit-transition: scale(1.3, 1.3);
-    -moz-transition: scale(1.3, 1.3);
-    -o-transition: scale(1.3, 1.3);
-    -ms-transition: scale(1.3, 1.3);
-    transition: scale(1.3, 1.3);
+    -webkit-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
 }
 .owl-carousel .owl-video-playing .owl-video-tn,
 .owl-carousel .owl-video-playing .owl-video-play-icon {
