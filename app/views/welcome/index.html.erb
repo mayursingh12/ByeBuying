@@ -61,127 +61,131 @@
 
 <div class="top-column-product">
   <div class="container">
-    <!--categories Start-->
-    <h3 class="widget-title">Trending Now</h3>
-    <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
 
-      <% @advertisements.each do |advertisement| %>
-          <div class="owl-item">
-            <div class="product  owl-item-slide">
-              <ul class="product-labels"></ul>
-              <div class="product-img-wrap">
-                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-              </div>
-              <a class="product-link" href="#"></a>
-              <div class="product-caption">
-                <ul class="product-caption-rating">
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                </ul>
-                <h5 class="product-caption-title">
-                  <%= advertisement.title %>
-                </h5>
-                <div class="product-caption-price">
+    <% if @advertisements.any? %>
+        <!--categories Start-->
+        <h3 class="widget-title">Trending Now</h3>
+        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
+          <% @advertisements.each do |advertisement| %>
+              <div class="owl-item">
+                <div class="product  owl-item-slide">
+                  <ul class="product-labels"></ul>
+                  <div class="product-img-wrap">
+                    <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                  </div>
+                  <a class="product-link" href="#"></a>
+                  <div class="product-caption">
+                    <ul class="product-caption-rating">
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li><i class="fa fa-star"></i>
+                      </li>
+                    </ul>
+                    <h5 class="product-caption-title">
+                      <%= advertisement.title %>
+                    </h5>
+                    <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     ₹<%= advertisement.per_hour_cost %>
                   </span>
 
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-      <% end %>
+          <% end %>
+        </div>
+        <!--categories finish-->
+    <% end %>
 
-    </div>
-    <!--categories finish-->
-
-    <div class="gap"></div>
-    <h3 class="widget-title">Featured Products</h3>
-    <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-      <% @advertisements.each do |advertisement| %>
-          <div class="owl-item">
-            <div class="product  owl-item-slide">
-              <ul class="product-labels"></ul>
-              <div class="product-img-wrap">
-                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-              </div>
-              <a class="product-link" href="#"></a>
-              <div class="product-caption">
-                <ul class="product-caption-rating">
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                </ul>
-                <h5 class="product-caption-title">
-                  <%= advertisement.title %>
-                </h5>
-                <div class="product-caption-price">
+    <% if @advertisements.any? %>
+        <div class="gap"></div>
+        <h3 class="widget-title">Featured Products</h3>
+        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
+          <% @advertisements.each do |advertisement| %>
+              <div class="owl-item">
+                <div class="product  owl-item-slide">
+                  <ul class="product-labels"></ul>
+                  <div class="product-img-wrap">
+                    <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                  </div>
+                  <a class="product-link" href="#"></a>
+                  <div class="product-caption">
+                    <ul class="product-caption-rating">
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li><i class="fa fa-star"></i>
+                      </li>
+                    </ul>
+                    <h5 class="product-caption-title">
+                      <%= advertisement.title %>
+                    </h5>
+                    <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     ₹<%= advertisement.per_hour_cost %>
                   </span>
 
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-      <% end %>
-    </div>
+          <% end %>
+        </div>
+        <div class="gap"></div>
+    <% end %>
 
-    <div class="gap"></div>
-
-    <h3 class="widget-title">Inspired by Your Browsing History</h3>
-    <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":7,"loop":true,"nav":true}'>
-      <% @advertisements.each do |advertisement| %>
-          <div class="owl-item">
-            <div class="product  owl-item-slide">
-              <ul class="product-labels"></ul>
-              <div class="product-img-wrap">
-                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-              </div>
-              <a class="product-link" href="#"></a>
-              <div class="product-caption">
-                <ul class="product-caption-rating">
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                </ul>
-                <h5 class="product-caption-title">
-                  <%= advertisement.title %>
-                </h5>
-                <div class="product-caption-price">
+    <% if @advertisements.any? %>
+        <h3 class="widget-title">Inspired by Your Browsing History</h3>
+        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":7,"loop":true,"nav":true}'>
+          <% @advertisements.each do |advertisement| %>
+              <div class="owl-item">
+                <div class="product  owl-item-slide">
+                  <ul class="product-labels"></ul>
+                  <div class="product-img-wrap">
+                    <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                  </div>
+                  <a class="product-link" href="#"></a>
+                  <div class="product-caption">
+                    <ul class="product-caption-rating">
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li class="rated"><i class="fa fa-star"></i>
+                      </li>
+                      <li><i class="fa fa-star"></i>
+                      </li>
+                    </ul>
+                    <h5 class="product-caption-title">
+                      <%= advertisement.title %>
+                    </h5>
+                    <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     ₹<%= advertisement.per_hour_cost %>
                   </span>
 
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-      <% end %>
-    </div>
-    <div class="gap"></div>
+          <% end %>
+        </div>
+        <div class="gap"></div>
+    <% end %>
   </div>
 </div>
 
