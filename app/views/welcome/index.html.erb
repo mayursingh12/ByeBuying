@@ -1,14 +1,15 @@
 <!--<h2>WELCOME PAGE</h2>-->
 
 <!--<form action="/">-->
-  <!--<input type="text" name="title" value="<%#= params[:title] %>" placeholder="Search by title">-->
-  <!--<input type="text" name="category" value="<%#= params[:category] %>" placeholder="Search by category">-->
-  <!--<input type="submit" value="Filter">-->
+<!--<input type="text" name="title" value="<%#= params[:title] %>" placeholder="Search by title">-->
+<!--<input type="text" name="category" value="<%#= params[:category] %>" placeholder="Search by category">-->
+<!--<input type="submit" value="Filter">-->
 <!--</form>-->
 
 <%# @advertisements.each do |advertisement| %>
-    <%#= advertisement.title %>
-    <%#= advertisement.subcategory.category.name %>
+<%#= advertisement.title %>
+<%#= advertisement.per_hour_cost %>
+<%#= advertisement.subcategory.category.name %>
 <%# end %>
 
 <!--slider start-->
@@ -22,7 +23,7 @@
             <h4 class="slider-item-caption-title">Playstation 4</h4>
             <p class="slider-item-caption-desc">This is for The Players</p><a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>
           </div>
-        <%= image_tag 'theme_img/test_slider/13-i.png', class: 'slider-item-img-right', style:'top: 60%; width: 56%;' %>
+          <%= image_tag 'theme_img/test_slider/13-i.png', class: 'slider-item-img-right', style:'top: 60%; width: 56%;' %>
         </div>
       </div>
     </div>
@@ -55,5 +56,132 @@
   </div>
 </div>
 <div class="gap"></div>
+<!--slider finish-->
 
-<!--slider start-->
+
+<div class="top-column-product">
+  <div class="container">
+    <!--categories Start-->
+    <h3 class="widget-title">Trending Now</h3>
+    <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
+
+      <% @advertisements.each do |advertisement| %>
+          <div class="owl-item">
+            <div class="product  owl-item-slide">
+              <ul class="product-labels"></ul>
+              <div class="product-img-wrap">
+                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+              </div>
+              <a class="product-link" href="#"></a>
+              <div class="product-caption">
+                <ul class="product-caption-rating">
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                </ul>
+                <h5 class="product-caption-title">
+                  <%= advertisement.title %>
+                </h5>
+                <div class="product-caption-price">
+                  <span class="product-caption-price-new">
+                    ₹<%= advertisement.per_hour_cost %>
+                  </span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+
+    </div>
+    <!--categories finish-->
+
+    <div class="gap"></div>
+    <h3 class="widget-title">Featured Products</h3>
+    <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
+      <% @advertisements.each do |advertisement| %>
+          <div class="owl-item">
+            <div class="product  owl-item-slide">
+              <ul class="product-labels"></ul>
+              <div class="product-img-wrap">
+                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+              </div>
+              <a class="product-link" href="#"></a>
+              <div class="product-caption">
+                <ul class="product-caption-rating">
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                </ul>
+                <h5 class="product-caption-title">
+                  <%= advertisement.title %>
+                </h5>
+                <div class="product-caption-price">
+                  <span class="product-caption-price-new">
+                    ₹<%= advertisement.per_hour_cost %>
+                  </span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="gap"></div>
+
+    <h3 class="widget-title">Inspired by Your Browsing History</h3>
+    <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":7,"loop":true,"nav":true}'>
+      <% @advertisements.each do |advertisement| %>
+          <div class="owl-item">
+            <div class="product  owl-item-slide">
+              <ul class="product-labels"></ul>
+              <div class="product-img-wrap">
+                <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+              </div>
+              <a class="product-link" href="#"></a>
+              <div class="product-caption">
+                <ul class="product-caption-rating">
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li class="rated"><i class="fa fa-star"></i>
+                  </li>
+                  <li><i class="fa fa-star"></i>
+                  </li>
+                </ul>
+                <h5 class="product-caption-title">
+                  <%= advertisement.title %>
+                </h5>
+                <div class="product-caption-price">
+                  <span class="product-caption-price-new">
+                    ₹<%= advertisement.per_hour_cost %>
+                  </span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="gap"></div>
+  </div>
+</div>
+
