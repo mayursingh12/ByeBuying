@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     elsif params[:category].present?
       @advertisements = AdvertisementFilterAlgo.new.filter_by_category(params[:category])
     else
-      @advertisements = Advertisement.all.where(ready_for_post: true)
+      @advertisements = Advertisement.all.where(admin_verified: true)
     end
   end
 end
