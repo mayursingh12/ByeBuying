@@ -1,6 +1,8 @@
 /*
- *= require_tree .
- *= require_self
+ *= require jquery
+ *= require jquery_ujs
+ *= require turbolinks
+ *= require ./vendors/angular
  *= require ./vendors/bootstrap
  *= require ./vendors/loading-bar
  *= require ./vendors/notify
