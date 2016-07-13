@@ -26,6 +26,9 @@
             <td><%= advertisement.per_hour_cost %></td>
             <td><%= advertisement.description %></td>
             <td>
+              <%= link_to customer_advertisement_path(advertisement) do %>
+                  <i class="fa fa-eye"></i>
+              <%- end %>
               <%= link_to edit_customer_advertisement_path(advertisement) do %>
                   <i class="fa fa-edit"></i>
               <%- end %>
