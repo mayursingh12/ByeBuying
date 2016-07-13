@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require ./vendors/angular
 //= require ./vendors/angular_bootstrap
