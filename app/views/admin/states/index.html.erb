@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-12">
+    <ul>
+      <li>
+        <%= link_to 'Add State', new_admin_state_path, class: 'btn btn-primary' %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table table-striped">
+      <tr class="info">
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+
+      <% @states.each do |state| %>
+          <tr>
+            <td>
+              <%= state.name %>
+            </td>
+            <td>
+              <%= link_to edit_admin_state_path(state) do %>
+                <i class="fa fa-edit"></i>
+              <%- end %>
+            </td>
+          </tr>
+      <%- end %>
+    </table>
+  </div>
+</div>
