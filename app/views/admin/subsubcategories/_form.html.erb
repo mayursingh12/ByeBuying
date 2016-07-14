@@ -1,0 +1,6 @@
+<%= simple_form_for [:admin, @subsubcategory] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: "Select Subcategory" %>
+    <%= f.submit 'Save', class: 'btn btn-success' %>
+<% end %>

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-inline">
+      <li>
+        <%= link_to 'Add SubSubCategory', new_admin_subsubcategory_path, class: 'btn btn-success' %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <table class="table table-striped">
+      <tr class="info">
+        <th>Name</th>
+        <th>Subcategory Id</th>
+        <th>Action</th>
+      </tr>
+
+      <%= @subsubcategories.each do |subsubcategory| %>
+        <tr>
+          <td><%= subsubcategory.name %></td>
+          <td><%= subsubcategory.subcategory_id %></td>
+          <td>
+            <%= link_to edit_admin_subsubcategory_path(subsubcategory) do %>
+            <i class="fa fa-edit"></i>
+            <%- end %>
+          </td>
+        </tr>
+      <%- end %>
+
+    </table>
+
+  </div>
+</div>
