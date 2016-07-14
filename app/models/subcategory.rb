@@ -5,4 +5,13 @@ class Subcategory < ActiveRecord::Base
   validates :category_id, presence: true
   validates :name, presence: true, uniqueness: {:scope => [:name, :category_id], :message => "already exists", case_sensitive: false }
 
+
+  validate def wed_plan
+             if self.name.present? and self.category.name == 'Wedding Collection' and self.male.blank? and self.female.blank?
+               self.errors.add(:female, 'choose male or female')
+             end
+  end
+
+
+
 end
