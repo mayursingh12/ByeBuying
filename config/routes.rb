@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   end
 
   namespace :customer do
+
     get '/' => 'welcome#index'
     post 'sign_in' => 'welcome#log_in', as:'sign_in'
     get 'registration' => 'welcome#registration'
@@ -41,5 +42,7 @@ Rails.application.routes.draw do
     resources :advertisements
 
   end
+
+  get 'about_us' => 'welcome#about_us'
 
 end
