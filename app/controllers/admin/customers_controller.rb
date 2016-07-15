@@ -5,7 +5,7 @@ class Admin::CustomersController < Admin::BaseController
   before_action :set_customer, only: [:edit, :update]
 
   def index
-    @customers = Customer.all.with_deleted
+    @customers = Customer.all
   end
 
   def edit
@@ -24,7 +24,7 @@ class Admin::CustomersController < Admin::BaseController
   private
 
   def set_customer
-    @customer = Customer.with_deleted.find params[:id]
+    @customer = Customer.find params[:id]
   end
 
   def customer_params
