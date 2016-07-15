@@ -45,6 +45,8 @@ Rails.application.routes.draw do
 
     resources :advertisements
 
+    resources :products
+
   end
 
   get 'about_us' => 'welcome#about_us'

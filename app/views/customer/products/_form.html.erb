@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, @product] do |f| %>
+<%= simple_form_for [:customer, @product] do |f| %>
     <%= f.input :category_id, collection: category_for_collection, prompt: 'Select category' %>
     <%= f.input :gender, collection: ['Male', 'Female'], prompt: 'Select gender'%>
     <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory' %>
