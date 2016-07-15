@@ -1,6 +1,4 @@
-class Admin::ProductsController < Admin::BaseController
-
-  before_filter :authenticate_admin
+class Customer::ProductsController < Customer::BaseController
 
   before_action :set_product, only: [:edit, :update]
 
