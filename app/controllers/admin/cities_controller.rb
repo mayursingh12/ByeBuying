@@ -5,7 +5,7 @@ class Admin::CitiesController < Admin::BaseController
   before_action :set_city, only: [:edit, :update]
 
   def index
-    @cities = City.all.order(:name, :state_id)
+    @cities = City.all.order(:name)
   end
 
   def new
