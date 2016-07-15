@@ -63,11 +63,35 @@ ActiveRecord::Schema.define(version: 20160714142756) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string   "name",                    limit: 255
+    t.integer  "category_id",             limit: 4
+    t.string   "gender",                  limit: 255
+    t.integer  "subcategory_id",          limit: 4
+    t.text     "description",             limit: 65535
+    t.text     "technical_specification", limit: 65535
+    t.integer  "state_id",                limit: 4
+    t.integer  "city_id",                 limit: 4
+    t.text     "location",                limit: 65535
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer  "quantity",                limit: 4
+    t.string   "rent",                    limit: 255
+    t.float    "refundable_security",     limit: 24
+    t.float    "cost_of_replacement",     limit: 24
+    t.text     "youtube_link",            limit: 65535
+    t.text     "other",                   limit: 65535
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
   create_table "subcategories", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.integer  "category_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.boolean  "male",                    default: false
+    t.boolean  "female",                  default: false
   end
 
   create_table "users", force: :cascade do |t|

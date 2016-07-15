@@ -1,1 +1,21 @@
 <%= render partial: 'form' %>
+
+<script>
+    $(document).ready(function(){
+
+        if ($("#subcategory_category_id").find('option:selected').text() == 'Wedding Collection'){
+            $(".subcategory_male, .subcategory_female").show();
+        }
+        else{
+            $(".subcategory_male, .subcategory_female").hide();
+        }
+
+
+        $("#subcategory_category_id").change(function() {
+            var category_val = $(this).find('option:selected').text();
+            if (category_val == 'Wedding Collection'){
+                $(".subcategory_male, .subcategory_female").show();
+            }
+        });
+    });
+</script>
