@@ -6,7 +6,8 @@
         <%= f.input :category_id, collection: category_for_collection, prompt: 'Select Category' %>
         <%= f.input :male, label: 'For male', as: :boolean  %>
         <%= f.input :female, label: 'For female', as: :boolean  %>
-        <%= f.submit 'Save', class: 'btn btn-success' %>
+        <%= f.input :subcategory_type, collection: ['Service', 'Membership', 'Space', 'none'], prompt: 'Select type'%>
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
       </div>
     </div>
 <% end %>

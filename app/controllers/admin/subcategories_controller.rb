@@ -49,7 +49,8 @@ class Admin::SubcategoriesController < Admin::BaseController
     params.require(:subcategory).permit(:name,
                                         :category_id,
                                         :male,
-                                        :female)
+                                        :female,
+                                        :subcategory_type)
   end
 
 end
