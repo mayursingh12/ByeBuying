@@ -49,5 +49,6 @@ Rails.application.routes.draw do
 
   get 'about_us' => 'welcome#about_us'
   get 'categories' => 'welcome#categories'
+  get 'product_detail' => 'welcome#product_detail'
 
 end
