@@ -36,7 +36,16 @@ class Admin::SubcategoriesController < Admin::BaseController
   end
 
   def get_subcategories_for_category
-    @subcategories = Subcategory.where(category_id: params[:id])
+    if params[:gender].present?
+      if params[:gender] == 'Male'
+        @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type], male: true)
+      else
+        @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type], female: true)
+      end
+    else
+      @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type])
+    end
+
   end
 
   private

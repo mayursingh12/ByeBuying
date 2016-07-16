@@ -5,8 +5,8 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :technical_specification %>
-    <%= f.input :state_id %>
-    <%= f.input :city_id %>
+    <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state' %>
+    <%= f.input :city_id, collection: [], prompt: 'Select city' %>
     <%= f.input :location %>
     <%= f.input :start_at %>
     <%= f.input :end_at %>
