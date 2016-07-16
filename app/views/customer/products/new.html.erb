@@ -4,3 +4,58 @@
   </div>
   <div class="col-sm-8"></div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+
+    $(document).ready(function(){
+        $('.product_gender').hide();
+        $('#product_subcategory_id').prop('disabled', 'disabled');
+
+
+        $("#product_category_id").change(function() {
+           var category_name =  $("#product_category_id").find(":selected").text();
+            if (category_name == 'Wedding Collection'){
+                $('.product_gender').show();
+                $('#product_subcategory_id').prop('disabled', 'disabled');
+            }
+            else{
+                $('.product_gender').hide();
+                var category_val = this.value;
+                $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json?subcategory_type=Product", function(data, status){
+                    var appendString = '<option value="">Select Subcategory</option>';
+                    for(var i=0; i < data.length;i++){
+                        appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                    }
+                    $('#product_subcategory_id').html(appendString);
+                });
+                len = $("#product_category_id option:selected").length
+                if (len > 0 ) {
+                    $('#product_subcategory_id').prop('disabled', false);
+                }
+            }
+        });
+
+        $("#product_gender").change(function() {
+            var gender = $("#product_gender").find(":selected").text();
+            var category_id = $("#product_category_id").val();
+
+            $.get("/admin/subcategories/get_subcategories_for_category/"+ category_id +".json?subcategory_type=Product&gender="+gender+"", function(data, status){
+                var appendString = '<option value="">Select Subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#product_subcategory_id').html(appendString);
+            });
+
+            len = $("#product_category_id option:selected").length
+            if (len > 0 ) {
+                $('#product_subcategory_id').prop('disabled', false);
+            }
+
+        });
+
+
+
+    });
+
+</script>
