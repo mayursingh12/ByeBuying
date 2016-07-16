@@ -56,7 +56,7 @@ class Customer::ServicesController < Customer::BaseController
                                     :location,
                                     :price_type,
                                     :youtube_link,
-                                    :other)
+                                    :other).merge(user_id: current_user.id)
   end
 
 end

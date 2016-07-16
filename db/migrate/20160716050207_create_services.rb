@@ -18,6 +18,7 @@ class CreateServices < ActiveRecord::Migration
       t.text :other
       t.float :area_in_meters
       t.text :amenities_available
+      t.integer :user_id
 
       t.timestamps null: false
     end

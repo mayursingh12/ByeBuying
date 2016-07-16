@@ -57,7 +57,7 @@ class Admin::ProductsController < Admin::BaseController
                                     :refundable_security,
                                     :cost_of_replacement,
                                     :youtube_link,
-                                    :other)
+                                    :other).merge(user_id: current_user.id)
   end
 
 end

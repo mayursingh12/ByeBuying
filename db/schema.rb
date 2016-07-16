@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160716050207) do
     t.text     "other",               limit: 65535
     t.float    "area_in_meters",      limit: 24
     t.text     "amenities_available", limit: 65535
+    t.integer  "user_id",             limit: 4
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
