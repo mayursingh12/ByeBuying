@@ -24,4 +24,16 @@ module CategoriesHelper
     Category.where(id: category_ids).collect{ |a| [a.name, a.id] }
   end
 
+  def membership_and_space
+    membership_category_ids = Subcategory.where(subcategory_type: 'Membership').map {|x| x.category_id }.uniq
+    space_category_ids =  Subcategory.where( subcategory_type: 'Space').map {|x| x.category_id }.uniq
+
+    category_ids = []
+
+    category_ids << membership_category_ids if membership_category_ids.present?
+    category_ids << space_category_ids if space_category_ids.present?
+
+    Category.where(id: category_ids).collect{ |a| [a.name, a.id] }
+  end
+
 end

@@ -1,6 +1,6 @@
 <%= simple_form_for [:customer, @service] do |f| %>
-    <%= f.input :category_id, collection: membership_category_collection, prompt: 'Select category' %>
-    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory' %>
+    <%= f.input :category_id, collection: membership_and_space, prompt: 'Select category' %>
+    <%= f.input :subcategory_id, collection: [], prompt: 'Select subcategory' %>
     <%= f.input :nature_of_service %>
     <%= f.input :club_name %>
     <%= f.input :membership_plan %>
