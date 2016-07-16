@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get 'registration' => 'welcome#registration'
     post 'sign_up' => 'welcome#sign_up', as:'sign_up'
     get 'dashboard' => 'welcome#dashboard'
+    get 'profile' => 'welcome#profile'
 
     resources :advertisements
 
@@ -50,5 +51,7 @@ Rails.application.routes.draw do
   get 'about_us' => 'welcome#about_us'
   get 'categories' => 'welcome#categories', as:'categories'
   get 'product_detail' => 'welcome#product_detail'
+  get 'blog' => 'welcome#blog'
+  get 'contact_us' => 'welcome#contact_us'
 
 end
