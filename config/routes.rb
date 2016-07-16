@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
     resources :products
 
+    resources :services
+
   end
 
   get 'about_us' => 'welcome#about_us'
