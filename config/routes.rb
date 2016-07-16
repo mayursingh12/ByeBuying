@@ -53,4 +53,6 @@ Rails.application.routes.draw do
 
   get 'about_us' => 'welcome#about_us'
 
+  get 'cities/collection_by_state/:id' => 'cities#collection_by_state', as:'collection_by_state'
+
 end

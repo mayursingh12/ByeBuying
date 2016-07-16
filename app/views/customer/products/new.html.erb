@@ -11,6 +11,16 @@
         $('.product_gender').hide();
         $('#product_subcategory_id').prop('disabled', 'disabled');
 
+        $("#product_state_id").change(function() {
+            var state_id = this.value;
+            $.get("/cities/collection_by_state/"+state_id+".json", function(data, status){
+                var appendString = '<option value="">Select city</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#product_city_id').html(appendString);
+            });
+        });
 
         $("#product_category_id").change(function() {
            var category_name =  $("#product_category_id").find(":selected").text();
@@ -53,8 +63,6 @@
             }
 
         });
-
-
 
     });
 
