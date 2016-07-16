@@ -26,6 +26,24 @@
 
 
         $("#service_category_id").change(function() {
+
+            var category_name =  $(this).find(":selected").text();
+            if (category_name == 'Membership'){
+                $('.membership_blog').show();
+            }
+            else{
+                $('.membership_blog').hide();
+            }
+            if (category_name == 'Commercial Space'){
+                $('.commercial_space_blog').show();
+            }
+            else{
+                $('.commercial_space_blog').hide();
+            }
+
+
+
+
             var category_name =  $("#service_category_id").find(":selected").text();
             var category_val = this.value;
             $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json?subcategory_type="+category_name+"", function(data, status){
