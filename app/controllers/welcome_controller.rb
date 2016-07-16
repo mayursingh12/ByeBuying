@@ -13,4 +13,9 @@ class WelcomeController < ApplicationController
       @advertisements = Advertisement.all.where(admin_verified: true)
     end
   end
+
+  def categories
+    @advertisements = Advertisement.all
+  end
+
 end
