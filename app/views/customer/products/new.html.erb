@@ -31,7 +31,7 @@
             else{
                 $('.product_gender').hide();
                 var category_val = this.value;
-                $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json?subcategory_type=Product", function(data, status){
+                $.get("/get_subcategories/"+ category_val +".json?subcategory_type=Product", function(data, status){
                     var appendString = '<option value="">Select Subcategory</option>';
                     for(var i=0; i < data.length;i++){
                         appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
@@ -49,7 +49,7 @@
             var gender = $("#product_gender").find(":selected").text();
             var category_id = $("#product_category_id").val();
 
-            $.get("/admin/subcategories/get_subcategories_for_category/"+ category_id +".json?subcategory_type=Product&gender="+gender+"", function(data, status){
+            $.get("/get_subcategories/"+ category_id +".json?subcategory_type=Product&gender="+gender+"", function(data, status){
                 var appendString = '<option value="">Select Subcategory</option>';
                 for(var i=0; i < data.length;i++){
                     appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";

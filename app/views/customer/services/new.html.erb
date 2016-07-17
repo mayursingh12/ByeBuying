@@ -42,21 +42,36 @@
             }
 
 
-
-
+            debugger
             var category_name =  $("#service_category_id").find(":selected").text();
             var category_val = this.value;
-            $.get("/admin/subcategories/get_subcategories_for_category/"+ category_val +".json?subcategory_type="+category_name+"", function(data, status){
-                var appendString = '<option value="">Select Subcategory</option>';
-                for(var i=0; i < data.length;i++){
-                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+            if (category_name == 'Membership' || category_name == 'Commercial Space' ){
+                $.get("/get_subcategories/"+ category_val +".json?subcategory_type="+category_name+"", function(data, status){
+                    var appendString = '<option value="">Select Subcategory</option>';
+                    for(var i=0; i < data.length;i++){
+                        appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                    }
+                    $('#service_subcategory_id').html(appendString);
+                });
+                len = $("#service_category_id option:selected").length;
+                if (len > 0 ) {
+                    $('#service_subcategory_id').prop('disabled', false);
                 }
-                $('#service_subcategory_id').html(appendString);
-            });
-            len = $("#service_category_id option:selected").length;
-            if (len > 0 ) {
-                $('#service_subcategory_id').prop('disabled', false);
             }
+            else{
+                $.get("/get_subcategories/"+ category_val +".json?subcategory_type=service", function(data, status){
+                    var appendString = '<option value="">Select Subcategory</option>';
+                    for(var i=0; i < data.length;i++){
+                        appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                    }
+                    $('#service_subcategory_id').html(appendString);
+                });
+                len = $("#service_category_id option:selected").length;
+                if (len > 0 ) {
+                    $('#service_subcategory_id').prop('disabled', false);
+                }
+            }
+
         });
 
         $("#service_state_id").change(function() {

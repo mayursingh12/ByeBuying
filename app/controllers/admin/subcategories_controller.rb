@@ -1,6 +1,6 @@
 class Admin::SubcategoriesController < Admin::BaseController
 
-  before_filter :authenticate_admin, except: [:get_subcategories_for_category]
+  before_filter :authenticate_admin
 
   before_action :set_subcategory, only: [:edit, :update]
 
@@ -36,16 +36,7 @@ class Admin::SubcategoriesController < Admin::BaseController
   end
 
   def get_subcategories_for_category
-    if params[:gender].present?
-      if params[:gender] == 'Male'
-        @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type], male: true)
-      else
-        @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type], female: true)
-      end
-    else
-      @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type])
-    end
-
+      @subcategories = Subcategory.where(category_id: params[:id])
   end
 
   private
