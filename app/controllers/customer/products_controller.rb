@@ -1,6 +1,6 @@
 class Customer::ProductsController < Customer::BaseController
 
-  before_action :set_product, only: [:edit, :update]
+  before_action :set_product, only: [:edit, :update, :show]
 
   def index
     @products = Product.all
@@ -31,6 +31,10 @@ class Customer::ProductsController < Customer::BaseController
     else
       render action: :edit
     end
+  end
+
+  def show
+
   end
 
   private
