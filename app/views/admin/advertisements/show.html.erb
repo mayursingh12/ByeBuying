@@ -1,10 +1,20 @@
 <div class="row">
   <div class="col-sm-6">
+    <% if @advertisement.admin_verified? %>
+        <span class="text-success">Verified by admin</span>
+        <%= link_to( 'Un-verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+    <%- else %>
+        <span class="text-danger">Not verified</span>
+        <%= link_to( 'Verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
+    <%- end %>
     <dl>
-      <% @advertisement.attributes.each_pair do |attr, value| %>
-          <dt><%= attr.to_s %></dt>
-          <dd><%= value %></dd>
-      <%- end %>
+      <dt>Title</dt><dd><%= @advertisement.title %></dd>
+      <dt>Description</dt><dd><%= @advertisement.description %></dd>
+      <dt>Start at</dt><dd><%= @advertisement.start_at.strftime(time_format) %></dd>
+      <dt>End at</dt><dd><%= @advertisement.end_at.strftime(time_format) %></dd>
+      <dt>Per hour cost</dt><dd><%= @advertisement.per_hour_cost %></dd>
+      <dt>Category</dt><dd><%= @advertisement.subcategory.category.name %></dd>
+      <dt>Subcategory</dt><dd><%= @advertisement.subcategory.name %></dd>
     </dl>
   </div>
   <div class="col-sm-6">
