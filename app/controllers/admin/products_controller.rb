@@ -54,6 +54,7 @@ class Admin::ProductsController < Admin::BaseController
                                     :start_at,
                                     :end_at,
                                     :rent,
+                                    :price_in_rupees,
                                     :refundable_security,
                                     :cost_of_replacement,
                                     :youtube_link,

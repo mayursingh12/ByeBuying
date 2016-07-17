@@ -43,7 +43,9 @@ Rails.application.routes.draw do
     post 'sign_up' => 'welcome#sign_up', as:'sign_up'
     get 'dashboard' => 'welcome#dashboard'
 
-    resources :advertisements
+    resources :advertisements do
+      resources :advertisement_images
+    end
 
     resources :products
 

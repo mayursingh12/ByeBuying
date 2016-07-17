@@ -21,9 +21,7 @@
             else{
                 $('.for_other').hide();
             }
-
         });
-
 
         $("#service_category_id").change(function() {
 
@@ -41,8 +39,6 @@
                 $('.commercial_space_blog').hide();
             }
 
-
-            debugger
             var category_name =  $("#service_category_id").find(":selected").text();
             var category_val = this.value;
             if (category_name == 'Membership' || category_name == 'Commercial Space' ){

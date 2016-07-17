@@ -1,6 +1,6 @@
 class Customer::ProductsController < Customer::BaseController
 
-  before_action :set_product, only: [:edit, :update]
+  before_action :set_product, only: [:edit, :update, :show]
 
   def index
     @products = Product.all
@@ -33,6 +33,10 @@ class Customer::ProductsController < Customer::BaseController
     end
   end
 
+  def show
+
+  end
+
   private
 
   def set_product
@@ -52,6 +56,7 @@ class Customer::ProductsController < Customer::BaseController
                                     :start_at,
                                     :end_at,
                                     :rent,
+                                    :price_in_rupees,
                                     :refundable_security,
                                     :cost_of_replacement,
                                     :youtube_link,

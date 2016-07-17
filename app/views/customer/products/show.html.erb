@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="col-sm-12"><strong>Name: </strong><%= @product.name %></div>
+    <div class="col-sm-12"><strong>Category: </strong><%= @product.subcategory.category.name %></div>
+    <div class="col-sm-12"><strong>Subcategory: </strong><%= @product.subcategory.name %></div>
+    <div class="col-sm-12"><strong>Gender: </strong><%= @product.gender %></div>
+    <div class="col-sm-12"><strong>Description: </strong><%= @product.description %></div>
+    <div class="col-sm-12"><strong>Technical Specification: </strong><%= @product.technical_specification %></div>
+    <div class="col-sm-12"><strong>State: </strong><%= @product.state.name %></div>
+    <div class="col-sm-12"><strong>City: </strong><%= @product.city.name %></div>
+    <div class="col-sm-12"><strong>Location: </strong><%= @product.location %></div>
+    <div class="col-sm-12"><strong>Start at: </strong><%= @product.start_at.strftime(time_format) %></div>
+    <div class="col-sm-12"><strong>End at: </strong><%= @product.end_at.strftime(time_format) %></div>
+    <div class="col-sm-12"><strong>Quantity: </strong><%= @product.quantity %></div>
+    <div class="col-sm-12"><strong>Rent: </strong><%= @product.rent %></div>
+    <div class="col-sm-12"><strong>Refundable security: </strong><%= @product.refundable_security %></div>
+    <div class="col-sm-12"><strong>Cost of replacement: </strong><%= @product.cost_of_replacement %></div>
+    <div class="col-sm-12"><strong>Youtube link: </strong><%= @product.youtube_link %></div>
+    <div class="col-sm-12"><strong>Others: </strong><%= @product.other %></div>
+  </div>
+  <div class="col-sm-6"></div>
+
+</div>

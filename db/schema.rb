@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716050207) do
+ActiveRecord::Schema.define(version: 20160717055946) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -75,9 +75,10 @@ ActiveRecord::Schema.define(version: 20160716050207) do
     t.float    "cost_of_replacement",     limit: 24
     t.text     "youtube_link",            limit: 65535
     t.text     "other",                   limit: 65535
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.integer  "user_id",                 limit: 4
+    t.float    "price_in_rupees",         limit: 24,    default: 0.0
   end
 
   create_table "services", force: :cascade do |t|
@@ -99,8 +100,9 @@ ActiveRecord::Schema.define(version: 20160716050207) do
     t.float    "area_in_meters",      limit: 24
     t.text     "amenities_available", limit: 65535
     t.integer  "user_id",             limit: 4
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.float    "price_in_rupees",     limit: 24,    default: 0.0
   end
 
   create_table "states", force: :cascade do |t|
