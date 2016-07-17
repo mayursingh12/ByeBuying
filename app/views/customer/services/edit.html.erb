@@ -4,3 +4,133 @@
   </div>
   <div class="col-sm-8"></div>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+
+    $(document).ready(function(){
+//        $('#service_subcategory_id').prop('disabled', 'disabled');
+        $('.membership_blog').hide();
+        $('.commercial_space_blog').hide();
+        $('.for_other').hide();
+
+
+        var selected_category_id = $("#service_category_id").val();
+        var selected_subcategory_id = $("#service_subcategory_id").val();
+        var selected_category_name =  $("#service_category_id").find(":selected").text();
+        var selected_subcategory_name =  $("#service_subcategory_id").find(":selected").text();
+        var selected_state_id = $("#service_state_id").val();
+        var selected_city_id = $("#service_city_id").val();
+
+        if (selected_category_name == 'Membership' || selected_category_name == 'Commercial Space' ){
+            $.get("/get_subcategories/"+ selected_category_id +".json?subcategory_type="+selected_category_name+"", function(data, status){
+                var appendString = '<option value="">Select Subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#service_subcategory_id').html(appendString);
+                $("#service_subcategory_id").val(selected_subcategory_id);
+            });
+        }
+        else{
+            $.get("/get_subcategories/"+ selected_category_id +".json?subcategory_type=service", function(data, status){
+                var appendString = '<option value="">Select Subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#service_subcategory_id').html(appendString);
+                $("#service_subcategory_id").val(selected_subcategory_id);
+            });
+        }
+
+        if(selected_category_name == 'Membership'){
+            $('.membership_blog').show();
+        }
+        if(selected_category_name == 'Commercial Space'){
+            $('.commercial_space_blog').show();
+        }
+        if(selected_subcategory_name == 'Others'){
+            $('.for_other').show();
+        }
+
+        $.get("/cities/collection_by_state/"+selected_state_id+".json", function(data, status){
+            var appendString = '<option value="">Select city</option>';
+            for(var i=0; i < data.length;i++){
+                appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+            }
+            $('#service_city_id').html(appendString);
+            $("#service_city_id").val(selected_city_id);
+        });
+
+
+
+        $("#service_subcategory_id").change(function() {
+            var subcategory_name =  $(this).find(":selected").text();
+            if (subcategory_name == 'Others'){
+                $('.for_other').show();
+            }
+            else{
+                $('.for_other').hide();
+            }
+        });
+
+        $("#service_category_id").change(function() {
+
+            var category_name =  $(this).find(":selected").text();
+            if (category_name == 'Membership'){
+                $('.membership_blog').show();
+            }
+            else{
+                $('.membership_blog').hide();
+            }
+            if (category_name == 'Commercial Space'){
+                $('.commercial_space_blog').show();
+            }
+            else{
+                $('.commercial_space_blog').hide();
+            }
+
+            var category_name =  $("#service_category_id").find(":selected").text();
+            var category_val = this.value;
+            if (category_name == 'Membership' || category_name == 'Commercial Space' ){
+                $.get("/get_subcategories/"+ category_val +".json?subcategory_type="+category_name+"", function(data, status){
+                    var appendString = '<option value="">Select Subcategory</option>';
+                    for(var i=0; i < data.length;i++){
+                        appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                    }
+                    $('#service_subcategory_id').html(appendString);
+                });
+                len = $("#service_category_id option:selected").length;
+                if (len > 0 ) {
+                    $('#service_subcategory_id').prop('disabled', false);
+                }
+            }
+            else{
+                $.get("/get_subcategories/"+ category_val +".json?subcategory_type=service", function(data, status){
+                    var appendString = '<option value="">Select Subcategory</option>';
+                    for(var i=0; i < data.length;i++){
+                        appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                    }
+                    $('#service_subcategory_id').html(appendString);
+                });
+                len = $("#service_category_id option:selected").length;
+                if (len > 0 ) {
+                    $('#service_subcategory_id').prop('disabled', false);
+                }
+            }
+
+        });
+
+        $("#service_state_id").change(function() {
+            var state_id = this.value;
+            $.get("/cities/collection_by_state/"+state_id+".json", function(data, status){
+                var appendString = '<option value="">Select city</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#service_city_id').html(appendString);
+            });
+        });
+    });
+
+</script>
