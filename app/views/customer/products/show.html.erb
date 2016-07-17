@@ -18,6 +18,25 @@
     <div class="col-sm-12"><strong>Youtube link: </strong><%= @product.youtube_link %></div>
     <div class="col-sm-12"><strong>Others: </strong><%= @product.other %></div>
   </div>
-  <div class="col-sm-6"></div>
+  <div class="col-sm-6">
+    <div class="row">
+      <% @product.product_images.each do |product_image| %>
+          <div class="col-sm-12">
+            <%= image_tag product_image.image.url(ProductImage::DEFAULT_SIZE) %>
+            <% if product_image.id.present? %>
+                <%= link_to customer_product_product_image_path(@product, product_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
+            <%- end %>
+          </div>
+      <%- end %>
+    </div>
+    <% unless @product.product_images.count > 2 %>
+        <fieldset>
+          <legend><small>Add new images</small></legend>
+          <%= render partial: 'customer/product_images/form', locals: { product: @product, product_image: @product.product_images.new } %>
+        </fieldset>
+    <% end %>
+  </div>
 
 </div>
