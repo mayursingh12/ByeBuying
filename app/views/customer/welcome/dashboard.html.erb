@@ -27,16 +27,8 @@
                     start: "<%= advertisement.start_at %>",
                     end: "<%= advertisement.end_at %>",
                     description: "<%= advertisement.description %>",
+//                    color: "red",
                     url: "<%= customer_advertisement_path(advertisement) %>"
-                },
-                <% end %>
-                <% @products.each do |product| %>
-                {
-                    title: "<%= product.name %>",
-                    start: "<%= product.start_at %>",
-                    end: "<%= product.end_at %>",
-                    description: "<%= product.description %>",
-                    url: "<%= customer_product_path(product) %>"
                 },
                 <% end %>
             ]
