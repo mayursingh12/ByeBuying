@@ -1,6 +1,6 @@
 <%= simple_form_for [:customer, @service] do |f| %>
     <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category' %>
-    <%= f.input :subcategory_id, collection: [], prompt: 'Select subcategory' %>
+    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory' %>
     <div class="for_other">
       <%= f.input :nature_of_service %>
     </div>
@@ -16,7 +16,7 @@
     </div>
     <%= f.input :service_description %>
     <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state' %>
-    <%= f.input :city_id, collection: [], prompt: 'Select city' %>
+    <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city' %>
     <%= f.input :location %>
     <%= f.input :price_type, collection: ['Per hour','Per day', 'Per week', 'Per month'], prompt: 'Choose price' %>
     <%= f.input :price_in_rupees %>
