@@ -19,6 +19,7 @@
 body {
     font-family: 'Roboto', Tahoma, Arial, helvetica, sans-serif;
     font-size: 15px;
+    background-color: #ededed;
 }
 h1,
 h2,
@@ -509,7 +510,7 @@ hr {
     font-size: 14px;
 }
 .dropdown-menu-category-list > li {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 .dropdown-menu-category-list > li > a {
     color: #595959;
