@@ -56,6 +56,7 @@ class Customer::ProductsController < Customer::BaseController
                                     :start_at,
                                     :end_at,
                                     :rent,
+                                    :quantity,
                                     :price_in_rupees,
                                     :refundable_security,
                                     :cost_of_replacement,
