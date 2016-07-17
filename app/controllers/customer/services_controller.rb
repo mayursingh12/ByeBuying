@@ -1,6 +1,6 @@
 class Customer::ServicesController < Customer::BaseController
 
-  before_action :set_service, only: [:edit, :update]
+  before_action :set_service, only: [:edit, :update, :show]
 
   def index
     @services = Service.all
@@ -31,6 +31,10 @@ class Customer::ServicesController < Customer::BaseController
     else
       render action: :edit
     end
+  end
+
+  def show
+
   end
 
   private

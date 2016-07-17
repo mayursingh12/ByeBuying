@@ -13,7 +13,8 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
-        <th>Name</th>
+        <th>Category</th>
+        <th>Subcategory</th>
         <th>Start at</th>
         <th>End at</th>
         <th>Action</th>
@@ -22,10 +23,14 @@
       <tbody>
       <% @services.each do |service| %>
           <tr>
-            <td><%= service.name %></td>
+            <td><%= service.subcategory.category.name %></td>
+            <td><%= service.subcategory.name %></td>
             <td><%= service.start_at.strftime(time_format) %></td>
             <td><%= service.start_at.strftime(time_format) %></td>
             <td>
+              <%= link_to customer_service_path(service) do %>
+                  <i class="fa fa-eye"></i>
+              <% end %>
               <%= link_to edit_customer_service_path(service) do %>
                   <i class="fa fa-edit"></i>
               <% end %>

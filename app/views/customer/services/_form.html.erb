@@ -13,8 +13,8 @@
     <div class="commercial_space_blog">
       <%= f.input :area_in_meters %>
       <%= f.input :amenities_available %>
-      <%= f.input :service_description %>
     </div>
+    <%= f.input :service_description %>
     <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state' %>
     <%= f.input :city_id, collection: [], prompt: 'Select city' %>
     <%= f.input :location %>

@@ -4,6 +4,8 @@ class Subcategory < ActiveRecord::Base
 
   has_many :products
 
+  has_many :services
+
   validates :category_id, presence: true
   validates :name, presence: true, uniqueness: {:scope => [:name, :category_id], :message => "already exists", case_sensitive: false }
 

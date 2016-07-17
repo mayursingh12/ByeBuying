@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="col-sm-12"><strong>Category: </strong><%= @service.subcategory.category.name %></div>
+    <div class="col-sm-12"><strong>Subcategory: </strong><%= @service.subcategory.name %></div>
+
+    <% if  @service.subcategory.name == 'Others'%>
+        <div class="col-sm-12"><strong>Nature of service: </strong><%= @service.nature_of_service %></div>
+    <% end %>
+
+
+    <% if  @service.subcategory.category.name == 'Membership'%>
+        <div class="col-sm-12"><strong>Club name: </strong><%= @service.club_name %></div>
+        <div class="col-sm-12"><strong>Membership plan: </strong><%= @service.membership_plan %></div>
+        <div class="col-sm-12"><strong>Start at: </strong><%= @service.start_at.strftime(time_format) %></div>
+        <div class="col-sm-12"><strong>End at: </strong><%= @service.end_at.strftime(time_format) %></div>
+    <% end %>
+
+    <% if @service.subcategory.category.name == 'Commercial Space' %>
+        <div class="col-sm-12"><strong>Area in meters: </strong><%= @service.area_in_meters %></div>
+        <div class="col-sm-12"><strong>Amenities available: </strong><%= @service.amenities_available %></div>
+    <% end %>
+
+
+    <div class="col-sm-12"><strong>Service description: </strong><%= @service.service_description %></div>
+    <div class="col-sm-12"><strong>State: </strong><%= @service.state.name %></div>
+    <div class="col-sm-12"><strong>City: </strong><%= @service.city.name %></div>
+    <div class="col-sm-12"><strong>Location: </strong><%= @service.location %></div>
+    <div class="col-sm-12"><strong>Price type: </strong><%= @service.price_type %></div>
+    <div class="col-sm-12"><strong>Price in rupees: </strong><%= @service.price_in_rupees %></div>
+    <div class="col-sm-12"><strong>Youtube link: </strong><%= @service.youtube_link %></div>
+    <div class="col-sm-12"><strong>Others: </strong><%= @service.other %></div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row">
+      <% @service.service_images.each do |service_image| %>
+          <div class="col-sm-12">
+            <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE) %>
+            <% if service_image.id.present? %>
+                <%= link_to customer_service_service_image_path(@service, service_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
+            <%- end %>
+          </div>
+      <%- end %>
+    </div>
+    <% unless @service.service_images.count > 2 %>
+        <fieldset>
+          <legend><small>Add new images</small></legend>
+          <%= render partial: 'customer/service_images/form', locals: { service: @service, service_image: @service.service_images.new } %>
+        </fieldset>
+    <% end %>
+  </div>
+
+</div>
