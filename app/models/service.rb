@@ -8,4 +8,6 @@ class Service < ActiveRecord::Base
 
   has_many :service_images, dependent: :destroy
 
+  belongs_to :user, class_name: 'User', foreign_key: :user_id
+
 end

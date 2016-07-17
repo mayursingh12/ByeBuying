@@ -24,7 +24,7 @@
           <tr>
             <td><%= product.name %></td>
             <td><%= product.start_at.strftime(time_format) %></td>
-            <td><%= product.start_at.strftime(time_format) %></td>
+            <td><%= product.end_at.strftime(time_format) %></td>
             <td>
 
               <%= link_to customer_product_path(product) do %>
