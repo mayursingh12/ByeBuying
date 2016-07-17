@@ -51,7 +51,9 @@ Rails.application.routes.draw do
       resources :product_images
     end
 
-    resources :services
+    resources :services do
+      resources :service_images
+    end
 
   end
 
