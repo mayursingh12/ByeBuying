@@ -56,6 +56,8 @@ Rails.application.routes.draw do
       resources :service_images
     end
 
+    resources :profile
+
   end
 
   get 'about_us' => 'welcome#about_us'
@@ -67,5 +69,15 @@ Rails.application.routes.draw do
   get 'cities/collection_by_state/:id' => 'cities#collection_by_state', as:'collection_by_state'
 
   get 'get_subcategories/:id' => 'subcategories#get_subcategory'
+
+
+  get "/employ/rahuls" "index"
+  post "/employ/rahuls/1/edit" "edit"
+  "/employ/rahuls/1/update" "update"
+  "employ/rahuls/new" "new"
+  "employ/rahuls/create" "create"
+  "employ/rahuls/show" "show"
+  "employ/rahuls/1" "delete"
+
 
 end
