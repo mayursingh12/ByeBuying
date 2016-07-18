@@ -18,4 +18,8 @@ class WelcomeController < ApplicationController
     @advertisements = Advertisement.all
   end
 
+  def test
+    redirect_to root_path
+  end
+
 end

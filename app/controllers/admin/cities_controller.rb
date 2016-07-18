@@ -5,7 +5,7 @@ class Admin::CitiesController < Admin::BaseController
   before_action :set_city, only: [:edit, :update]
 
   def index
-    @cities = City.all.order(:name)
+    @cities = City.all.order(:name).paginate(:page => params[:page], :per_page => 20)
   end
 
   def new
