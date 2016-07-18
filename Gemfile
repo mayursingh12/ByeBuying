@@ -71,3 +71,5 @@ gem 'momentjs-rails'
 # gem 'aws-sdk'
 
 # gem 'rmagick'
+
+gem 'city-state'
