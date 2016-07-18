@@ -2,7 +2,7 @@ class Admin::CustomersController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_customer, only: [:edit, :update]
+  before_action :set_customer, only: [:edit, :update, :destroy]
 
   def index
     @customers = Customer.all
@@ -18,6 +18,14 @@ class Admin::CustomersController < Admin::BaseController
       redirect_to action: :index
     else
       render action: :edit
+    end
+  end
+
+  def destroy
+    if @customer.destroy
+      redirect_to action: :index
+    else
+      redirect_to action: :index
     end
   end
 
