@@ -17,6 +17,9 @@
               <%= link_to edit_admin_customer_path(customer) do %>
                   <i class="fa fa-edit"></i>
               <% end %>
+              <%= link_to admin_customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                  <i class="fa fa-trash fa-3"></i>
+              <% end %>
             </td>
           </tr>
       <%- end %>
