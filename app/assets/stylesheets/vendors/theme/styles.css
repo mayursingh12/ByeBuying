@@ -1260,6 +1260,7 @@ hr {
     -moz-background-size: cover;
     background-size: cover;
     background-position: center center;
+    background-image:url(/theme_img/1400x220.png);
     background-repeat: no-repeat;
 }
 .page-header-banner .page-title {

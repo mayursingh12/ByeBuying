@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
     resources :profile
 
+
   end
 
   get 'about_us' => 'welcome#about_us'
