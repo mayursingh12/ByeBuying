@@ -90,8 +90,6 @@ ActiveRecord::Schema.define(version: 20160718073644) do
     t.datetime "updated_at",                                          null: false
     t.integer  "user_id",                 limit: 4
     t.float    "price_in_rupees",         limit: 24,    default: 0.0
-    t.string   "state_name",              limit: 255
-    t.string   "city_name",               limit: 255
   end
 
   create_table "service_images", force: :cascade do |t|
