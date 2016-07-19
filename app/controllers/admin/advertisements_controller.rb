@@ -39,6 +39,10 @@ class Admin::AdvertisementsController < Admin::BaseController
     
   end
 
+  def pending_advertisements
+    @advertisements = Advertisement.where(admin_verified: false).paginate(:page => params[:page], :per_page => 20)
+  end
+
   def destroy
     @advertisement.destroy
     redirect_to action: :index
