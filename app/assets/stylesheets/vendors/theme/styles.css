@@ -395,7 +395,7 @@ hr {
 .dropdown-menu-category > li > a {
     height: 40px;
     line-height: 40px !important;
-    padding: 0 15px 0 50px !important;
+    padding: 0 15px 0 15px !important;
     font-size: 14px;
     position: relative;
     width: 230px;
@@ -615,8 +615,6 @@ hr {
     box-shadow: none;
 }
 .navbar-main-search .form-control:focus {
-    border: none;
-    outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -1260,6 +1258,7 @@ hr {
     -moz-background-size: cover;
     background-size: cover;
     background-position: center center;
+    background-image:url(/theme_img/1400x220.png);
     background-repeat: no-repeat;
 }
 .page-header-banner .page-title {
