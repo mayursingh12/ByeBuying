@@ -1,12 +1,17 @@
 <div class="row">
   <div class="col-sm-6">
+    <%= link_to 'Edit', edit_admin_advertisement_path(@advertisement), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', admin_advertisement_path(@advertisement), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+    <br>
+    <br>
     <% if @advertisement.admin_verified? %>
         <span class="text-success">Verified by admin</span>
-        <%= link_to( 'Un-verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+        <%= link_to( 'Un-verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: false), method: :put, class: 'btn btn-danger') %>
     <%- else %>
         <span class="text-danger">Not verified</span>
-        <%= link_to( 'Verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
+        <%= link_to( 'Verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: true), method: :put, class: 'btn btn-success') %>
     <%- end %>
+
     <dl>
       <dt>Title</dt><dd><%= @advertisement.title %></dd>
       <dt>Description</dt><dd><%= @advertisement.description %></dd>
