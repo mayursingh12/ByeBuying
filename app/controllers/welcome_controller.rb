@@ -16,6 +16,7 @@ class WelcomeController < ApplicationController
 
   def categories
     @advertisements = Advertisement.all
+    @categories = Category.all
   end
 
   def test
