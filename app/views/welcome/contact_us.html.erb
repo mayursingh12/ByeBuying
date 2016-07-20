@@ -35,64 +35,48 @@
       </form>
     </div>
     <div class="col-md-7">
-      <div class="row">
-        <div class="col-md-4">
-          <h3 class="widget-title">Usa</h3>
-          <ul class="contact-list">
-            <li>
-              <h5>Email</h5><a href="#">usa@thebox.com</a>
-            </li>
-            <li>
-              <h5>Phone Number</h5>
-              <p>+1-202-555-0191</p>
-            </li>
-            <li>
-              <h5>Skype</h5>
-              <p>TheBoxUs</p>
-            </li>
-            <li>
-              <h5>Address</h5><address>795 Folsom Ave, Suite 600<br />San Francisco, CA 94107</address>
-            </li>
-          </ul>
+      <div class="google-map">
+        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+        <div style='overflow:hidden;height:400px;width:100%;'>
+          <div id='gmap_canvas' style='height:400px;width:100%;'>
+
+          </div>
+          <div>
+            <small>
+              <a href="http://embedgooglemaps.com">embed google maps</a>
+            </small>
+          </div>
+          <div>
+            <small>
+              <a href="https://termsandcondiitionssample.com">terms and conditions sample</a>
+            </small>
+          </div>
+          <style>
+              #gmap_canvas img{
+                  max-width:none!important;
+                  background:none!important
+              }
+          </style>
         </div>
-        <div class="col-md-4">
-          <h3 class="widget-title">France</h3>
-          <ul class="contact-list">
-            <li>
-              <h5>Email</h5><a href="#">fr@thebox.com</a>
-            </li>
-            <li>
-              <h5>Phone Number</h5>
-              <p>+01-77-44-48-34</p>
-            </li>
-            <li>
-              <h5>Skype</h5>
-              <p>TheBoxFr</p>
-            </li>
-            <li>
-              <h5>Address</h5><address>46, Square de la Couronne<br />91120 PALAISEAU</address>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h3 class="widget-title">Italy</h3>
-          <ul class="contact-list">
-            <li>
-              <h5>Email</h5><a href="#">it@thebox.com</a>
-            </li>
-            <li>
-              <h5>Phone Number</h5>
-              <p>+09451-52-19-40</p>
-            </li>
-            <li>
-              <h5>Skype</h5>
-              <p>TheBoxIt</p>
-            </li>
-            <li>
-              <h5>Address</h5><address>Via Francesco Saverio Nitti, 28<br />Roma, 00156</address>
-            </li>
-          </ul>
-        </div>
+        <script type='text/javascript'>
+            function init_map(){
+                var myOptions = {
+                    zoom:10,center:new google.maps.LatLng(28.4138045,77.32239149999998),mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                marker = new google.maps.Marker({
+                    map: map,position: new google.maps.LatLng(28.4138045,77.32239149999998)
+                });
+                infowindow = new google.maps.InfoWindow({
+                    content:'<strong>ByeBuying</strong><br>Shop no. 31, New Sabzi Mandi, Sector 16, Faridabad<br>'
+                });
+                google.maps.event.addListener(marker, 'click', function(){
+                    infowindow.open(map,marker);
+                });
+                infowindow.open(map,marker);
+            }
+            google.maps.event.addDomListener(window, 'load', init_map);
+        </script>
       </div>
     </div>
   </div>
