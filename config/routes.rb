@@ -67,6 +67,7 @@ Rails.application.routes.draw do
 
   get 'about_us' => 'welcome#about_us'
   get 'categories' => 'welcome#categories', as:'categories'
+  get 'subcategories' => 'welcome#subcategories', as:'subcategories'
   get 'product_detail' => 'welcome#product_detail'
   get 'blog' => 'welcome#blog'
   get 'contact_us' => 'welcome#contact_us'
