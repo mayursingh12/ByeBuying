@@ -10,6 +10,43 @@
     $(document).ready(function(){
         $('.product_gender').hide();
         $('#product_subcategory_id').prop('disabled', 'disabled');
+        var selected_category_id = $("#product_category_id").find(":selected").val();
+        var selected_category_name = $("#product_category_id").find(":selected").text();
+        var selected_subcategory_id = $("#product_subcategory_id").find(":selected").val();
+        var selected_subcategory_name = $("#product_subcategory_id").find(":selected").text();
+        var selected_gender_name = $("#product_gender").find(":selected").text();
+
+        if(selected_category_name == 'Wedding Collection'){
+            $('.product_gender').show();
+            $('#product_subcategory_id').prop('disabled', false);
+            $.get("/get_subcategories/"+ selected_category_id +".json?subcategory_type=Product&gender="+selected_gender_name+"", function(data, status){
+                var appendString = '<option value="">Select Subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#product_subcategory_id').html(appendString);
+                $('#product_subcategory_id').val(selected_subcategory_id);
+            });
+            len = $("#product_category_id option:selected").length
+            if (len > 0 ) {
+                $('#product_subcategory_id').prop('disabled', false);
+            }
+        }
+        else{
+            $.get("/get_subcategories/"+ selected_category_id +".json?subcategory_type=Product", function(data, status){
+                var appendString = '<option value="">Select Subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#product_subcategory_id').html(appendString);
+                $('#product_subcategory_id').val(selected_subcategory_id);
+            });
+            len = $("#product_category_id option:selected").length
+            if (len > 0 ) {
+                $('#product_subcategory_id').prop('disabled', false);
+            }
+        }
+
 
         $("#product_state_id").change(function() {
             var state_id = this.value;
