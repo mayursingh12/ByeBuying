@@ -11,13 +11,13 @@
 </head>
 <body>
 <%= render partial: 'customer/shared/header' %>
-<div class="container-fluid">
+<div class="container">
   <% if user_signed_in? and current_user.customer? %>
       <div class="row">
-        <div class="col-sm-2">
-          <%= render partial: 'customer/shared/sidebar' %>
-        </div>
-        <div class="col-sm-10">
+        <!--<div class="col-sm-2">-->
+          <!--<%#= render partial: 'customer/shared/sidebar' %>-->
+        <!--</div>-->
+        <div class="col-xs-12">
           <%= render partial: 'customer/shared/alerts' %>
           <%= yield %>
         </div>
@@ -27,5 +27,6 @@
       <%= yield %>
   <%- end %>
 </div>
+<%= render partial: 'customer/shared/footer' %>
 </body>
 </html>

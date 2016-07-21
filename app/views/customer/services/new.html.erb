@@ -8,7 +8,29 @@
 <script type="text/javascript" charset="utf-8">
 
     $(document).ready(function(){
-        $('#service_subcategory_id').prop('disabled', 'disabled');
+        if($('#service_subcategory_id').val() == ""){
+            $('#service_subcategory_id').prop('disabled', true);
+        }
+        else {
+            $('#service_subcategory_id').prop('disabled', false);
+        }
+
+        var category_name =  $("#service_category_id").find(":selected").text();
+        var category_val =  $("#service_category_id").find(":selected").val();
+        if (category_name == 'Membership' || category_name == 'Commercial Space' ){
+            $.get("/get_subcategories/"+ category_val +".json?subcategory_type="+category_name+"", function(data, status){
+                var appendString = '<option value="">Select subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('#service_subcategory_id').html(appendString);
+            });
+            len = $("#service_category_id option:selected").length;
+            if (len > 0 ) {
+                $('#service_subcategory_id').prop('disabled', false);
+            }
+        }
+
         $('.membership_blog').hide();
         $('.commercial_space_blog').hide();
         $('.for_other').hide();

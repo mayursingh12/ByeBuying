@@ -1,0 +1,25 @@
+.customer-main-con{
+  width: 100%;
+  margin: 20px 0;
+  min-height: 400px;
+  .add-btn{
+    margin: 10px 0;
+  }
+  .table{
+    tr.info{
+      th{
+        background-color: #4d4d4d;
+        border: none;
+        color: #ffffff;
+        font-weight: normal;
+        font-size: 14px;
+      }
+    }
+    tr.data{
+      background-color: #ffffff;
+      td{
+        font-size: 13px;
+      }
+    }
+  }
+}
