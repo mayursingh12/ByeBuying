@@ -6,6 +6,8 @@ class Subcategory < ActiveRecord::Base
 
   has_many :services, dependent: :destroy
 
+  belongs_to :category
+
   validates :category_id, presence: true
   validates :name, presence: true, uniqueness: {:scope => [:name, :category_id], :message => "already exists", case_sensitive: false }
 

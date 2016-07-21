@@ -2,6 +2,8 @@ class WelcomeController < ApplicationController
 
   layout 'default'
 
+  before_action :set_categories
+
   def index
     if params[:title].present? and params[:category].present?
       @advertisements = AdvertisementFilterAlgo.new.filter_by_all(params[:title], params[:category])
@@ -12,6 +14,7 @@ class WelcomeController < ApplicationController
     else
       @advertisements = Advertisement.all.where(admin_verified: true)
     end
+
   end
 
   def categories
@@ -21,6 +24,12 @@ class WelcomeController < ApplicationController
 
   def test
     redirect_to root_path
+  end
+
+  private
+
+  def set_categories
+    @categories = Category.all
   end
 
 end
