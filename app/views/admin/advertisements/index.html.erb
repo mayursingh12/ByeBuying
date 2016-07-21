@@ -8,6 +8,12 @@
   </div>
 </div>
 
+<form action="/admin/advertisements">
+  <input type="radio" name="admin_verified" value="<%= params[:admin_verified] = false %>"> Pending
+  <input type="radio" name="admin_verified" value="<%= params[:admin_verified] = true %>"> Approved
+  <input type="submit">
+</form>
+
 <div class="row">
   <div class="col-sm-12">
     <table class="table table-striped">
