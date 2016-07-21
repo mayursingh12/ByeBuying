@@ -19,7 +19,7 @@
         var category_val =  $("#service_category_id").find(":selected").val();
         if (category_name == 'Membership' || category_name == 'Commercial Space' ){
             $.get("/get_subcategories/"+ category_val +".json?subcategory_type="+category_name+"", function(data, status){
-                var appendString = '<option value="">Select Subcategory</option>';
+                var appendString = '<option value="">Select subcategory</option>';
                 for(var i=0; i < data.length;i++){
                     appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
                 }
