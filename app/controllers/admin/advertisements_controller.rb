@@ -5,7 +5,13 @@ class Admin::AdvertisementsController < Admin::BaseController
   before_action :set_advertisement, only: [:edit, :update, :show, :admin_approve, :destroy]
 
   def index
-    @advertisements = Advertisement.all.paginate(:page => params[:page], :per_page => 20)
+    if params[:admin_verified] == 'true'
+      @advertisements = Advertisement.all.where(admin_verified: true).paginate(:page => params[:page], :per_page => 20)
+    elsif params[:admin_verified] == 'false'
+      @advertisements = Advertisement.all.where(admin_verified: false).paginate(:page => params[:page], :per_page => 20)
+    else
+      @advertisements = Advertisement.all.paginate(:page => params[:page], :per_page => 20)
+    end
   end
 
   def new
