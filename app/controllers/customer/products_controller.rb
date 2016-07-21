@@ -3,7 +3,7 @@ class Customer::ProductsController < Customer::BaseController
   before_action :set_product, only: [:edit, :update, :show]
 
   def index
-    @products = Product.all
+    @products = current_user.products
   end
 
   def new
@@ -40,7 +40,7 @@ class Customer::ProductsController < Customer::BaseController
   private
 
   def set_product
-    @product = Product.find params[:id]
+    @product = current_user.products.find params[:id]
   end
 
   def product_params

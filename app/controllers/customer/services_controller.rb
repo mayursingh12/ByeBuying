@@ -3,7 +3,7 @@ class Customer::ServicesController < Customer::BaseController
   before_action :set_service, only: [:edit, :update, :show]
 
   def index
-    @services = Service.all
+    @services = current_user.services
   end
 
   def new
@@ -40,7 +40,7 @@ class Customer::ServicesController < Customer::BaseController
   private
 
   def set_service
-    @service = Service.find params[:id]
+    @service = current_user.services.find params[:id]
   end
 
   def service_params

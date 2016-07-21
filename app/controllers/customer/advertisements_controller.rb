@@ -42,7 +42,7 @@ class Customer::AdvertisementsController < Customer::BaseController
   private
 
   def set_advertisement
-    @advertisement = Advertisement.find params[:id]
+    @advertisement = current_user.advertisements.find params[:id]
   end
 
   def advertisement_params
