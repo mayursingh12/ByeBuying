@@ -29,6 +29,7 @@ class Product < ActiveRecord::Base
   end
 
   validate def gender_for_wed
+    return false unless self.category_id.present?
     category_id = self.category_id
     if Category.find(category_id).name == 'Wedding Collection' && self.gender.blank?
       self.errors.add(:gender, 'choose gender')
