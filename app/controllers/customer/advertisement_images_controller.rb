@@ -4,6 +4,8 @@ class Customer::AdvertisementImagesController < Customer::BaseController
 
   before_action :set_advertisement_image, only: [:destroy]
 
+  before_action :set_header_categories
+
   def new
 
   end
