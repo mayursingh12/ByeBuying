@@ -8,6 +8,8 @@ class Service < ActiveRecord::Base
 
   has_many :service_images, dependent: :destroy
 
+  has_many :enquiries
+
   belongs_to :user, class_name: 'User', foreign_key: :user_id
 
   validates :category_id, presence: true
