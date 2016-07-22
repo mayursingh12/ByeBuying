@@ -13,7 +13,7 @@ class Customer::BaseController < ApplicationController
   def authenticate_no_user_admin
     if current_user.present? and current_user.customer?
       #proceed
-      redirect_to customer_dashboard_path
+      redirect_to root_path
     end
   end
 

@@ -76,6 +76,9 @@ Rails.application.routes.draw do
   get 'get_subcategories/:id' => 'subcategories#get_subcategory'
   # Rahul
 
+  resources :subcategories
+  resources :products
+
   get 'test' => 'welcome#test'
 
 end
