@@ -99,11 +99,11 @@ ActiveRecord::Schema.define(version: 20160722110905) do
     t.float    "cost_of_replacement",     limit: 24
     t.text     "youtube_link",            limit: 65535
     t.text     "other",                   limit: 65535
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.integer  "user_id",                 limit: 4
     t.float    "price_in_rupees",         limit: 24,    default: 0.0
-    t.boolean  "negotiable"
+    t.boolean  "negotiable",                            default: false
   end
 
   create_table "service_images", force: :cascade do |t|
