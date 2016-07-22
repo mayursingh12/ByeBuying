@@ -65,13 +65,16 @@ Rails.application.routes.draw do
 
   end
 
+  # Rahul
   get 'about_us' => 'welcome#about_us'
   get 'categories' => 'welcome#categories', as:'categories'
+  get 'subcategories' => 'welcome#subcategories', as:'subcategories'
   get 'product_detail' => 'welcome#product_detail'
   get 'blog' => 'welcome#blog'
   get 'contact_us' => 'welcome#contact_us'
   get 'cities/collection_by_state/:id' => 'cities#collection_by_state', as:'collection_by_state'
   get 'get_subcategories/:id' => 'subcategories#get_subcategory'
+  # Rahul
 
   get 'test' => 'welcome#test'
 
