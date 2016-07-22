@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :services
 
+  has_many :enquiries
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
 
   has_many :product_images, dependent: :destroy
 
+  has_many :enquiries
+
   belongs_to :user, class_name: 'User', foreign_key: :user_id
 
   validates :category_id, presence: true
