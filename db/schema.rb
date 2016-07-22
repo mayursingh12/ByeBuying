@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722075613) do
+ActiveRecord::Schema.define(version: 20160722110905) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 20160722075613) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "enquiries", force: :cascade do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.float    "expected_price", limit: 24
+    t.integer  "user_id",        limit: 4
+    t.string   "status",         limit: 255
+    t.integer  "product_id",     limit: 4
+    t.integer  "service_id",     limit: 4
+    t.boolean  "is_product"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "product_images", force: :cascade do |t|
     t.integer  "product_id",         limit: 4
     t.string   "image_file_name",    limit: 255
@@ -90,6 +103,7 @@ ActiveRecord::Schema.define(version: 20160722075613) do
     t.datetime "updated_at",                                          null: false
     t.integer  "user_id",                 limit: 4
     t.float    "price_in_rupees",         limit: 24,    default: 0.0
+    t.boolean  "negotiable"
   end
 
   create_table "service_images", force: :cascade do |t|
@@ -122,9 +136,10 @@ ActiveRecord::Schema.define(version: 20160722075613) do
     t.float    "area_in_meters",      limit: 24
     t.text     "amenities_available", limit: 65535
     t.integer  "user_id",             limit: 4
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.float    "price_in_rupees",     limit: 24,    default: 0.0
+    t.boolean  "negotiable",                        default: false
   end
 
   create_table "states", force: :cascade do |t|

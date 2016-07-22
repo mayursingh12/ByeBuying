@@ -49,7 +49,7 @@
             <!--<p class="product-page-price-list"><%#= @product.price_in_rupees %></p>-->
             <p class="product-page-price">₹<%= @product.price_in_rupees %></p>
             <% if current_user.present? %>
-                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="">Enquire</a>
+                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
             <% else %>
                 <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
             <% end %>
