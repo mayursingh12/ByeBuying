@@ -1,9 +1,10 @@
 <%= simple_form_for [:product, @enquiry] do |f| %>
 
-    <%= f.input :start_at, as: :date, label: 'Start Time of Service' %>
-    <%= f.input :end_at, as: :date, label: 'End Time of Service' %>
-
-    <% if @product.negotiable? %>
-        <%= f.input :expected_price %>
-    <% end %>
+    <%= f.input :start_at, label: 'Start Time of Product', default: @product.start_at  %>
+    <%= f.input :end_at, label: 'End Time of Product', default: @product.end_at %>
+    <%#= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
+                end_year: Date.today.year - 12, discard_day: true,
+                order: [:month, :year] %>
+    <%= f.input :expected_price %>
+    <%= f.submit 'Save', class: 'btn btn-default' %>
 <% end %>
