@@ -1,0 +1,62 @@
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title"><%= @product.name.capitalize %></h1>
+    <ol class="breadcrumb page-breadcrumb">
+      <li><a href="#"><%= @product.subcategory.category.name %></a></li>
+      <li><a href="#"><%= @product.subcategory.name %></a></li>
+      <!--<li><a href="#">Cell Phones</a>-->
+      <!--</li>-->
+      <!--<li><a href="#">Sony</a>-->
+      <!--</li>-->
+      <!--<li class="active">XPERIA Z Ultra 16GB</li>-->
+    </ol>
+  </header>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="product-page-product-wrap jqzoom-stage">
+        <div class="clearfix">
+          <a href="theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
+            <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="row" data-gutter="10">
+        <div class="col-md-8">
+          <div class="box">
+            <ul class="product-page-product-rating">
+              <li class="rated"><i class="fa fa-star"></i></li>
+              <li class="rated"><i class="fa fa-star"></i></li>
+              <li class="rated"><i class="fa fa-star"></i></li>
+              <li class="rated"><i class="fa fa-star"></i></li>
+              <li class="rated"><i class="fa fa-star"></i></li>
+            </ul>
+            <!--<p class="product-page-product-rating-sign"><a href="#">238 customer reviews</a></p>-->
+            <p class="product-page-desc"><%= @product.description %></p>
+            <table
+            class="table table-striped product-page-features-table">
+              <tbody>
+              <tr>
+                <td><%= @product.technical_specification %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box-highlight">
+            <!--<p class="product-page-price-list"><%#= @product.price_in_rupees %></p>-->
+            <p class="product-page-price">₹<%= @product.price_in_rupees %></p>
+            <% if current_user.present? %>
+                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="">Enquire</a>
+            <% else %>
+                <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="gap"></div>

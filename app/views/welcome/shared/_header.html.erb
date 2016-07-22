@@ -25,21 +25,20 @@
     <h3 class="widget-title">Member Login</h3>
     <p>Welcome back, friend. Login to get started</p>
     <hr />
-    <form>
-      <div class="form-group">
-        <label>Email or Username</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="checkbox">
-        <label>
-          <input class="i-check" type="checkbox" />Remeber Me</label>
-      </div>
-      <input class="btn btn-primary" type="submit" value="Sign In" />
-    </form>
+    <%= form_tag customer_sign_in_path do %>
+        <div class="form-group">
+          <%= label_tag :email %>
+          <%= email_field_tag :email, params[:email], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :password %>
+          <%= password_field_tag :password, '',class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag 'Sign In', class: 'btn btn-primary' %>
+          <%= link_to 'Register', customer_registration_path, class: 'btn btn-success' %>
+        </div>
+    <%- end %>
     <div class="gap gap-small"></div>
     <ul class="list-inline">
       <li><a href="#nav-account-dialog" class="popup-text">Register Here</a>
@@ -117,7 +116,7 @@
                             <div class="col-md-12">
                               <ul class="dropdown-menu-category-list">
                                 <% category.subcategories.each do |subcategory|%>
-                                    <li><a href="#"><%= subcategory.name %></a>
+                                    <li><a href="<%= subcategory_path(subcategory) %>"><%= subcategory.name %></a>
                                     </li>
                                 <% end %>
                               </ul>

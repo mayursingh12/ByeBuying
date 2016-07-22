@@ -19,7 +19,7 @@ class Customer::WelcomeController < Customer::BaseController
 
   def log_in
     if sign_in_customer
-      redirect_to action: :dashboard
+      redirect_to action: :index
     else
       flash[:error] = 'Email/Password combination wrong, contact super admin.'
       render action: :index

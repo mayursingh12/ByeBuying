@@ -22,6 +22,10 @@ class WelcomeController < ApplicationController
     @categories = Category.all
   end
 
+  def subcategories
+
+  end
+
   def test
     redirect_to root_path
   end
