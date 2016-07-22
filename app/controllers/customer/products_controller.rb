@@ -58,6 +58,7 @@ class Customer::ProductsController < Customer::BaseController
                                     :rent,
                                     :quantity,
                                     :price_in_rupees,
+                                    :negotiable,
                                     :refundable_security,
                                     :cost_of_replacement,
                                     :youtube_link,

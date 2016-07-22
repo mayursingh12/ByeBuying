@@ -20,6 +20,7 @@
     <%= f.input :location %>
     <%= f.input :price_type, collection: ['Per hour','Per day', 'Per week', 'Per month'], prompt: 'Choose price' %>
     <%= f.input :price_in_rupees %>
+    <%= f.input :negotiable %>
     <%= f.input :youtube_link %>
     <%= f.input :other %>
     <%= f.submit 'Save', class: 'btn btn-primary' %>
