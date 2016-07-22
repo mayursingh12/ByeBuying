@@ -39,7 +39,7 @@
     <div class="gap gap-small"></div>
     <ul class="list-inline">
       <li>
-        <%= link_to 'Register Here', customer_registration_path, class: 'popup-text' %>
+        <a href="#nav-account-dialog" class="popup-text">Register Here</a>
       </li>
     </ul>
   </div>
@@ -112,22 +112,22 @@
                             <div class="col-md-12">
                               <ul class="dropdown-menu-category-list">
                                 <% category.subcategories.each do |subcategory|%>
-                                    <li><a href="#"><%= subcategory.name %></a>
+                                    <li><a href="<%= subcategory_path(subcategory) %>"><%= subcategory.name %></a>
                                     </li>
                                 <% end %>
                               </ul>
                             </div>
                             <!--<div class="col-md-6">-->
-                              <!--<ul class="dropdown-menu-category-list">-->
-                                <!--<li><a href="#">Washing Machines</a>-->
-                                <!--</li>-->
-                                <!--<li><a href="#">Vaccumm Cleaner</a>-->
-                                <!--</li>-->
-                                <!--<li><a href="#">Air Purifiers</a>-->
-                                <!--</li>-->
-                                <!--<li><a href="#">Others</a>-->
-                                <!--</li>-->
-                              <!--</ul>-->
+                            <!--<ul class="dropdown-menu-category-list">-->
+                            <!--<li><a href="#">Washing Machines</a>-->
+                            <!--</li>-->
+                            <!--<li><a href="#">Vaccumm Cleaner</a>-->
+                            <!--</li>-->
+                            <!--<li><a href="#">Air Purifiers</a>-->
+                            <!--</li>-->
+                            <!--<li><a href="#">Others</a>-->
+                            <!--</li>-->
+                            <!--</ul>-->
                             <!--</div>-->
                           </div>
                         </div>
