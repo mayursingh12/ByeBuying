@@ -19,7 +19,9 @@
 body {
     font-family: 'Roboto', Tahoma, Arial, helvetica, sans-serif;
     font-size: 15px;
-    background-color: #ededed;
+    /*background-color: #ededed;*/
+    background-image: url('../../../assets/texture-icon.jpg');
+    background-repeat: repeat;
 }
 h1,
 h2,

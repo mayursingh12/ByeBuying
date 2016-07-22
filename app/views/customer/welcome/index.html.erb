@@ -1,23 +1,28 @@
 <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
-    <fieldset>
-      <legend>Sign In</legend>
+    <div class="mfp-dialog clearfix" id="nav-login-dialog">
+      <h3 class="widget-title">Login</h3>
+      <p>Welcome, Login to get started</p>
+      <hr />
       <%= form_tag customer_sign_in_path do %>
-          <div class="form-group">
-            <%= label_tag :email %>
-            <%= email_field_tag :email, params[:email], class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= label_tag :password %>
-            <%= password_field_tag :password, '',class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= submit_tag 'Sign In', class: 'btn btn-primary' %>
-            <%= link_to 'Register', customer_registration_path, class: 'btn btn-success' %>
-          </div>
+        <div class="form-group">
+          <%= label_tag :email %>
+          <%= email_field_tag :email, params[:email], class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :password %>
+          <%= password_field_tag :password, '',class: 'form-control' %>
+        </div>
+          <%= submit_tag 'Sign In', class: 'btn btn-primary' %>
       <%- end %>
-    </fieldset>
+      <div class="gap gap-small"></div>
+      <ul class="list-inline">
+        <li>
+          <%= link_to 'Register Here', customer_registration_path, class: 'popup-text' %>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="col-sm-4"></div>
 </div>
