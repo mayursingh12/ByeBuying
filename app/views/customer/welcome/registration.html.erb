@@ -1,17 +1,32 @@
 <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
-    <fieldset>
-      <legend>Register</legend>
+    <div class="mfp-dialog clearfix" id="nav-login-dialog">
+      <h3 class="widget-title">Register</h3>
+      <p>Welcome, Register to get Enter</p>
+      <hr />
       <%= simple_form_for :customer, :url => customer_sign_up_path do |f| %>
-          <%= f.input :name %>
-          <%= f.input :email %>
-          <%= f.input :password %>
-          <%= f.input :password_confirmation %>
-          <%= f.submit 'Sign Up', class: 'btn btn-primary' %>
-          <%= link_to 'Sign in', customer_path, class: 'btn btn-success' %>
+          <div class="form-group">
+            <%= f.input :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.input :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.input :password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.input :password_confirmation, class: 'form-control' %>
+          </div>
+          <%= submit_tag 'Sign Up', class: 'btn btn-primary' %>
       <%- end %>
-    </fieldset>
+      <div class="gap gap-small"></div>
+      <ul class="list-inline">
+        <li>
+          <%= link_to 'Sign in', customer_path, class: 'popup-text' %>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="col-sm-4"></div>
 </div>
