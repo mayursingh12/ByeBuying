@@ -92,6 +92,16 @@
         margin:15px 0;
         -webkit-appearance:none;
       }
+      .checkbox{
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        box-shadow: none;
+        -webkit-appearance:none;
+        display: inline-block;
+      }
+      .optional{
+        top: -2px;
+      }
       .meterial_result{
         font-size: 20px;
         margin-top: 22px;
@@ -143,5 +153,13 @@
         padding: 10px;
       }
     }
+  }
+}
+
+.customer-main-show{
+  width: 100%;
+  padding: 20px 0;
+  .white-bg{
+    background-color: #ffffff;
   }
 }

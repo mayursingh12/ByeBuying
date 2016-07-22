@@ -1,27 +1,129 @@
-<%= simple_form_for [:customer, @service] do |f| %>
-    <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category' %>
-    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory' %>
-    <div class="for_other">
-      <%= f.input :nature_of_service %>
+<%#= simple_form_for [:customer, @service] do |f| %>
+    <%#= f.input :category_id, collection: service_category_collertion, prompt: 'Select category' %>
+    <%#= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory' %>
+    <!--<div class="for_other">-->
+      <%#= f.input :nature_of_service %>
+    <!--</div>-->
+    <!--<div class="membership_blog">-->
+      <%#= f.input :club_name %>
+      <%#= f.input :membership_plan %>
+      <%#= f.input :start_at %>
+      <%#= f.input :end_at %>
+    <!--</div>-->
+    <!--<div class="commercial_space_blog">-->
+      <%#= f.input :area_in_meters %>
+      <%#= f.input :amenities_available %>
+    <!--</div>-->
+    <%#= f.input :service_description %>
+    <%#= f.input :state_id, collection: state_for_collection, prompt: 'Select state' %>
+    <%#= f.input :city_id, collection: city_for_collection, prompt: 'Select city' %>
+    <%#= f.input :location %>
+    <%#= f.input :price_type, collection: ['Per hour','Per day', 'Per week', 'Per month'], prompt: 'Choose price' %>
+    <%#= f.input :price_in_rupees %>
+    <%#= f.input :negotiable %>
+    <%#= f.input :youtube_link %>
+    <%#= f.input :other %>
+    <%#= f.submit 'Save', class: 'btn btn-primary' %>
+<%# end %>
+
+<div class="content-main-section">
+  <div class="container">
+    <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10 col-xs-12">
+      <h2 class="text-center">Add New Services</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="contact-main-form">
+            <%= simple_form_for [:customer, @service] do |f| %>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category', label: 'Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12 for_other">
+                  <div class="field-con">
+                    <%= f.input :nature_of_service, label: 'Nature of Services' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12 membership_blog">
+                  <div class="field-con">
+                    <%= f.input :club_name, label: 'Club Name' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                  <div class="field-con">
+                    <%= f.input :membership_plan, label: 'Membership Plan' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                  <div class="field-con">
+                    <%= f.input :start_at, label: 'Start at' ,label_html: {class: 'label'}, input_html: {class: 'select-field'} %>
+                  </div>
+                  <div class="field-con">
+                    <%= f.input :end_at, label: 'End at' ,label_html: {class: 'label'}, input_html: {class: 'select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12 commercial_space_blog">
+                  <div class="field-con">
+                    <%= f.input :area_in_meters, label: 'Area in Meters' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                  <div class="field-con">
+                    <%= f.input :amenities_available, label: 'Amenities Available' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :service_description, label: 'Service Description' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state', label: 'State' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city', label: 'State' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :location, label: 'Location' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :price_type, collection: ['Per hour','Per day', 'Per week', 'Per month'], prompt: 'Choose price', label: 'Price Type' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :price_in_rupees, label: 'Price in Rupees', label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :negotiable, label: 'Negotiable', label_html: {class: 'label'}, input_html: {class: ''} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :youtube_link, label: 'Youtube Link', label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :other, label: 'Other', label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="submit-main">
+                  <%= f.submit 'Save', class: 'pushbutton-wide s-button btn btn-primary' %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="membership_blog">
-      <%= f.input :club_name %>
-      <%= f.input :membership_plan %>
-      <%= f.input :start_at %>
-      <%= f.input :end_at %>
-    </div>
-    <div class="commercial_space_blog">
-      <%= f.input :area_in_meters %>
-      <%= f.input :amenities_available %>
-    </div>
-    <%= f.input :service_description %>
-    <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state' %>
-    <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city' %>
-    <%= f.input :location %>
-    <%= f.input :price_type, collection: ['Per hour','Per day', 'Per week', 'Per month'], prompt: 'Choose price' %>
-    <%= f.input :price_in_rupees %>
-    <%= f.input :negotiable %>
-    <%= f.input :youtube_link %>
-    <%= f.input :other %>
-    <%= f.submit 'Save', class: 'btn btn-primary' %>
-<% end %>
+  </div>
+</div>
