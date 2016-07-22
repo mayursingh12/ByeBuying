@@ -77,7 +77,9 @@ Rails.application.routes.draw do
   # Rahul
 
   resources :subcategories
-  resources :products
+  resources :products do
+    resources :enquiries
+  end
 
   get 'test' => 'welcome#test'
 

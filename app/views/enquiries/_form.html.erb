@@ -1,0 +1,9 @@
+<%= simple_form_for [:product, @enquiry] do |f| %>
+
+    <%= f.input :start_at, as: :date, label: 'Start Time of Service' %>
+    <%= f.input :end_at, as: :date, label: 'End Time of Service' %>
+
+    <% if @product.negotiable? %>
+        <%= f.input :expected_price %>
+    <% end %>
+<% end %>
