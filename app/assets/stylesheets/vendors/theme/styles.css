@@ -474,8 +474,8 @@ hr {
     filter: alpha(opacity=30);
 }
 .dropdown-menu-category-section {
-    width: 600px;
-    height: 491px;
+    width: 500px;
+    height: 550px;
     position: absolute;
     top: 0;
     left: 230px;
@@ -511,6 +511,7 @@ hr {
 }
 .dropdown-menu-category-list > li {
     margin-bottom: 25px;
+    border-bottom: 1px solid #eeeeee;
 }
 .dropdown-menu-category-list > li > a {
     color: #595959;
