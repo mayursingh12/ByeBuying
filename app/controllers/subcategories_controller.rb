@@ -1,5 +1,15 @@
 class SubcategoriesController < ApplicationController
 
+  layout 'default'
+
+  before_action :set_header_categories
+
+  before_action :set_subcategory, only: [:show]
+
+  def show
+    @products = @subcategory.products
+    @services = @subcategory.services
+  end
 
   def get_subcategory
     if params[:gender].present?
@@ -15,6 +25,16 @@ class SubcategoriesController < ApplicationController
         @subcategories = Subcategory.where(category_id: params[:id])
       end
     end
+  end
+
+  private
+
+  def set_header_categories
+    @categories = Category.all
+  end
+
+  def set_subcategory
+    @subcategory = Subcategory.find params[:id]
   end
 
 end

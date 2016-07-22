@@ -1,0 +1,104 @@
+<header class="page-header page-header-banner">
+  <div class="container">
+    <div class="page-header-banner-inner">
+      <h1 class="page-title"><%= @subcategory.name %></h1>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <aside class="category-filters">
+        <div class="category-filters-section">
+          <h3 class="widget-title-sm">Category</h3>
+        </div>
+        <div class="category-filters-section">
+          <h3 class="widget-title-sm">Price</h3>
+          <input type="text" id="price-slider" />
+        </div>
+      </aside>
+    </div>
+    <div class="col-md-9">
+      <% if @products.any? %>
+          <h3 class="widget-title">Products</h3>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":3,"loop":true,"nav":true}'>
+            <% @products.each do |product|%>
+                <div class="owl-item">
+                  <div class="product  owl-item-slide">
+                    <ul class="product-labels"></ul>
+                    <div class="product-img-wrap">
+                      <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                    </div>
+                    <a class="product-link" href="<%= product_path(product)%>"></a>
+                    <div class="product-caption">
+                      <ul class="product-caption-rating">
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li><i class="fa fa-star"></i>
+                        </li>
+                      </ul>
+                      <h5 class="product-caption-title">
+                        <%= product.name %>
+                      </h5>
+                      <div class="product-caption-price">
+                        <span class="product-caption-price-new">
+                          ₹<%= product.price_in_rupees %>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="gap"></div>
+      <% end %>
+
+      <% if @services.any? %>
+          <h3 class="widget-title">Services</h3>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":3,"loop":true,"nav":true}'>
+            <% @services.each do |service|%>
+                <div class="owl-item">
+                  <div class="product  owl-item-slide">
+                    <ul class="product-labels"></ul>
+                    <div class="product-img-wrap">
+                      <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                    </div>
+                    <a class="product-link" href="#"></a>
+                    <div class="product-caption">
+                      <ul class="product-caption-rating">
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li class="rated"><i class="fa fa-star"></i>
+                        </li>
+                        <li><i class="fa fa-star"></i>
+                        </li>
+                      </ul>
+                      <h5 class="product-caption-title">
+                        <%= service.name %>
+                      </h5>
+                      <div class="product-caption-price">
+                        <span class="product-caption-price-new">
+                          ₹<%= service.price_in_rupees %>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="gap"></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="gap"></div>
