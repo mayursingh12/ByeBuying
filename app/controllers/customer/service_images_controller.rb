@@ -4,6 +4,8 @@ class Customer::ServiceImagesController < Customer::BaseController
 
   before_action :set_service_image, only: [:destroy]
 
+  before_action :set_header_categories
+
   def new
 
   end

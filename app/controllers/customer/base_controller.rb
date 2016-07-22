@@ -17,4 +17,8 @@ class Customer::BaseController < ApplicationController
     end
   end
 
+  def set_header_categories
+    @categories = Category.all
+  end
+
 end

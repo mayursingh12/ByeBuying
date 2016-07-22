@@ -4,6 +4,8 @@ class Customer::WelcomeController < Customer::BaseController
 
   before_filter :authenticate_no_user_admin, only: [:index]
 
+  before_action :set_header_categories
+
   def index
 
   end

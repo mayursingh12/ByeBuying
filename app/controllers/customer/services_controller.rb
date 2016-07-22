@@ -2,6 +2,8 @@ class Customer::ServicesController < Customer::BaseController
 
   before_action :set_service, only: [:edit, :update, :show]
 
+  before_action :set_header_categories
+
   def index
     @services = current_user.services
   end
