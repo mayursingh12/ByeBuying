@@ -2,36 +2,31 @@ class Admin::ProductsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_product, only: [:edit, :update]
+  before_action :set_product, only: [:show, :update_rating, :admin_approve]
 
   def index
     @products = Product.all
   end
 
-  def new
-    @product = Product.new
+  def show
+
   end
 
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      flash[:success] = 'Product successfully created'
+  def update_rating
+   if @product.update_attributes(rating: params[:rating])
+     flash[:success] = 'Rating successfully updated.'
+     redirect_to action: :show
+
+   else
+     render action: :show
+   end
+  end
+
+  def admin_approve
+    if @product.update_attribute(:admin_verified, params[:admin_verified])
       redirect_to action: :index
     else
-      render action: :new
-    end
-  end
-
-  def edit
-
-  end
-
-  def update
-    if @product.update_attributes(product_params)
-      flash[:success] = 'successfully updated'
       redirect_to action: :index
-    else
-      render action: :edit
     end
   end
 
@@ -39,26 +34,6 @@ class Admin::ProductsController < Admin::BaseController
 
   def set_product
     @product = Product.find params[:id]
-  end
-
-  def product_params
-    params.require(:product).permit(:name,
-                                    :gender,
-                                    :category_id,
-                                    :subcategory_id,
-                                    :description,
-                                    :technical_specification,
-                                    :state_id,
-                                    :city_id,
-                                    :location,
-                                    :start_at,
-                                    :end_at,
-                                    :rent,
-                                    :price_in_rupees,
-                                    :refundable_security,
-                                    :cost_of_replacement,
-                                    :youtube_link,
-                                    :other).merge(user_id: current_user.id)
   end
 
 end

@@ -1,0 +1,41 @@
+<div class="customer-main-con">
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Description</th>
+          <th>Category</th>
+          <th>Subcategory</th>
+          <th>Start at</th>
+          <th>End at</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @services.each do |service| %>
+            <tr class="data">
+              <td><%= service.service_description %></td>
+              <td><%= service.subcategory.category.name %></td>
+              <td><%= service.subcategory.name %></td>
+              <td><%= service.start_at.strftime(time_format) %></td>
+              <td><%= service.end_at.strftime(time_format) %></td>
+              <td>
+                <%= link_to admin_service_path(service) do %>
+                    <i class="fa fa-eye"></i>
+                <% end %>
+                <%# if service.admin_verified? %>
+                    <!--<span class="text-success">Verified by admin</span>-->
+                    <%#= link_to( 'Un-verify' , admin_approve_admin_service_path(service, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+                <%#- else %>
+                    <!--<span class="text-danger">Not verified</span>-->
+                    <%#= link_to( 'Verify' , admin_approve_admin_service_path(service, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
+                <%#- end %>
+              </td>
+            </tr>
+        <%- end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

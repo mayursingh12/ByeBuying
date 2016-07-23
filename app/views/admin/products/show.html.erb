@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
   <header class="page-header">
     <h1 class="page-title"><%= @product.name.capitalize %></h1>
     <ol class="breadcrumb page-breadcrumb">
@@ -20,18 +20,24 @@
       <div class="row" data-gutter="10">
         <div class="col-md-8">
           <div class="box">
-            <ul class="product-page-product-rating">
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
-            </ul>
+            <!--<ul class="product-page-product-rating">-->
+              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
+              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
+              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
+              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
+              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
+            <!--</ul>-->
             <!--<p class="product-page-product-rating-sign"><a href="#">238 customer reviews</a></p>-->
             <p class="product-page-desc"><%= @product.description %></p>
             <table
             class="table table-striped product-page-features-table">
               <tbody>
+              <tr>
+                <td>Rent: <%= @product.rent %></td>
+              </tr>
+              <tr>
+                <td>Price: <%= @product.price_in_rupees %></td>
+              </tr>
               <tr>
                 <td>State: <%= @product.state.name %></td>
               </tr>
@@ -51,9 +57,6 @@
                 <td>Quantity: <%= @product.quantity %></td>
               </tr>
               <tr>
-                <td>Rent: <%= @product.rent %></td>
-              </tr>
-              <tr>
                 <td>Refundable security: <%= @product.refundable_security %></td>
               </tr>
               <tr>
@@ -70,15 +73,10 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="box-highlight">
-            <!--<p class="product-page-price-list"><%#= @product.price_in_rupees %></p>-->
-            <p class="product-page-price">₹<%= @product.price_in_rupees %></p>
-            <% if current_user.present? %>
-                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
-            <% else %>
-                <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
-            <% end %>
-          </div>
+          <%= form_tag update_rating_admin_product_path(@product), method: :put do %>
+              <%= select_tag :rating, options_for_select([1,2,3,4,5],  @product.rating), class: 'form-control'%>
+              <%= submit_tag 'Save', class: 'btn btn-primary' %>
+          <% end %>
         </div>
       </div>
     </div>
