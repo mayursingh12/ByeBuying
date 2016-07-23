@@ -1,0 +1,10 @@
+<%= simple_form_for [:service, @enquiry] do |f| %>
+    <%= f.input :start_at, label: 'Start Time of Service', default: @service.start_at  %>
+    <%= f.input :end_at, label: 'End Time of Service', default: @service.end_at %>
+
+    Price: <%= @service.price_type %> <br>
+    Price in rupees: <%= @service.price_in_rupees %>
+
+    <%= f.input :expected_price %>
+    <%= f.submit 'Save', class: 'btn btn-default' %>
+<% end %>
