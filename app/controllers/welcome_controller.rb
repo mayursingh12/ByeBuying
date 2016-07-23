@@ -5,15 +5,18 @@ class WelcomeController < ApplicationController
   before_action :set_categories
 
   def index
-    if params[:title].present? and params[:category].present?
-      @advertisements = AdvertisementFilterAlgo.new.filter_by_all(params[:title], params[:category])
-    elsif params[:title].present?
-      @advertisements = AdvertisementFilterAlgo.new.filter_by_title(params[:title])
-    elsif params[:category].present?
-      @advertisements = AdvertisementFilterAlgo.new.filter_by_category(params[:category])
-    else
-      @advertisements = Advertisement.all.where(admin_verified: true)
-    end
+    # if params[:title].present? and params[:category].present?
+    #   @advertisements = AdvertisementFilterAlgo.new.filter_by_all(params[:title], params[:category])
+    # elsif params[:title].present?
+    #   @advertisements = AdvertisementFilterAlgo.new.filter_by_title(params[:title])
+    # elsif params[:category].present?
+    #   @advertisements = AdvertisementFilterAlgo.new.filter_by_category(params[:category])
+    # else
+    #   @advertisements = Advertisement.all.where(admin_verified: true)
+    # end
+    @advertisements = Advertisement.all.where(admin_verified: true).last(15)
+    @products = Product.all.last(15)
+    @services = Service.all.last(15)
 
   end
 

@@ -129,7 +129,7 @@
               <%- end %>
             </div>
           </div>
-          <% unless @product.product_images.count > 2 %>
+          <% unless @product.product_images.count > 4 %>
               <fieldset>
                 <legend class="add-new-text"><small>Add new images</small></legend>
                 <%= render partial: 'customer/product_images/form', locals: { product: @product, product_image: @product.product_images.new } %>
