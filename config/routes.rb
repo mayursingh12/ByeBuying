@@ -38,7 +38,19 @@ Rails.application.routes.draw do
 
     resources :customers
 
-    resources :products
+    resources :products do
+      member do
+        put 'update_rating'
+        put 'admin_approve'
+      end
+    end
+
+    resources :services do
+      member do
+        put 'update_rating'
+        put 'admin_approve'
+      end
+    end
 
   end
 
@@ -89,5 +101,12 @@ Rails.application.routes.draw do
   end
 
   get 'test' => 'welcome#test'
+
+
+  # ==========Temp URL==============
+  # ====== Must be delete ==========
+
+  get '/landing_page' => 'welcome#index'
+  get '/about' => 'welcome#about_us'
 
 end

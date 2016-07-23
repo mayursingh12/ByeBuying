@@ -1,0 +1,85 @@
+<div class="">
+  <header class="page-header">
+    <h1 class="page-title"><%= @service.service_description %></h1>
+    <ol class="breadcrumb page-breadcrumb">
+      <li><a href="#"><%= @service.subcategory.category.name %></a></li>
+      <li><a href="#"><%= @service.subcategory.name %></a></li>
+    </ol>
+  </header>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="product-page-product-wrap jqzoom-stage">
+        <div class="clearfix">
+          <a href="../../../assets/theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
+            <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="row" data-gutter="10">
+        <div class="col-md-8">
+          <div class="box">
+            <!--<p class="product-page-product-rating-sign"><a href="#">238 customer reviews</a></p>-->
+            <p class="product-page-desc"><%= @service.service_description %></p>
+            <table
+            class="table table-striped product-page-features-table">
+              <tbody>
+              <tr>
+                <td>Price: <%= @service.price_type %></td>
+              </tr>
+              <tr>
+                <td>Price in rupees: <%= @service.price_in_rupees %></td>
+              </tr>
+              <tr>
+                <td>Nature of service: <%= @service.nature_of_service %></td>
+              </tr>
+              <tr>
+                <td>Club name: <%= @service.club_name %></td>
+              </tr>
+              <tr>
+                <td>Membership plan: <%= @service.membership_plan %></td>
+              </tr>
+              <tr>
+                <td>Start from: <%= @service.start_at.strftime(time_format) %></td>
+              </tr>
+              <tr>
+                <td>End from: <%= @service.end_at.strftime(time_format) %></td>
+              </tr>
+              <tr>
+                <td>State: <%= @service.state.name %></td>
+              </tr>
+              <tr>
+                <td>City: <%= @service.city.name %></td>
+              </tr>
+              <tr>
+                <td>Location: <%= @service.location %></td>
+              </tr>
+
+              <tr>
+                <td>Youtube: <%= @service.youtube_link %></td>
+              </tr>
+              <tr>
+                <td>Other: <%= @service.other %></td>
+              </tr>
+              <tr>
+                <td>Area in meters: <%= @service.area_in_meters %></td>
+              </tr>
+              <tr>
+                <td>Amenities available: <%= @service.amenities_available %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <%= form_tag update_rating_admin_service_path(@service), method: :put do %>
+              <%= select_tag :rating, options_for_select([1,2,3,4,5],  @service.rating), class: 'form-control'%>
+              <%= submit_tag 'Save', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="gap"></div>
