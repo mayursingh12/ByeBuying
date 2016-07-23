@@ -161,5 +161,40 @@
   padding: 20px 0;
   .white-bg{
     background-color: #ffffff;
+    border-radius: 5px;
+    .product-detail{
+      width: 100%;
+      padding: 15px 5px 5px 5px;
+      border-bottom: 1px solid #eeeeee;
+      h4{
+        font-size: 15px;
+        color: #486d97;
+        margin: 0;
+      }
+      p{
+        font-size: 14px;
+        color: #8e8e8e;
+        margin: 0;
+      }
+    }
+    .add-image-con{
+      padding: 26px 0;
+      .img-con{
+        position: relative;
+        display: inline-block;
+        .upload-img{
+          padding: 5px;
+        }
+        .cross-icon{
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+      .add-new-text{
+        font-size: 20px;
+        padding-top: 20px;
+      }
+    }
   }
 }

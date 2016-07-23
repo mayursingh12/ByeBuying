@@ -1,35 +1,76 @@
-<div class="row">
-  <div class="col-sm-6">
-    <div class="col-sm-12">
-      <strong>Title:</strong> <%= @advertisement.title%>
-    </div>
-    <div class="col-sm-12"><strong>Description:</strong> <%= @advertisement.description%></div>
-    <div class="col-sm-12"><strong>Category:</strong> <%= @advertisement.subcategory.category.name %></div>
-    <div class="col-sm-12"><strong>Subcategory:</strong> <%= @advertisement.subcategory.name %></div>
-    <div class="col-sm-12"><strong>Per hour cost:</strong> <%= @advertisement.per_hour_cost %></div>
-    <div class="col-sm-12"><strong>Start at:</strong> <%= @advertisement.start_at.strftime(time_format)%></div>
-    <div class="col-sm-12"><strong>End at:</strong> <%= @advertisement.end_at.strftime(time_format)%></div>
-  </div>
-  <div class="col-sm-6">
-    <div class="row">
-      <% @advertisement.advertisement_images.each do |advertisement_image| %>
-          <div class="col-sm-12">
-            <%= image_tag advertisement_image.image.url(AdvertisementImage::DEFAULT_SIZE) %>
-            <% if advertisement_image.id.present? %>
-                <%= link_to customer_advertisement_advertisement_image_path(@advertisement, advertisement_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                    <i class="fa fa-trash fa-3"></i>
-                <%- end %>
-            <%- end %>
+<div class="customer-main-show">
+  <div class="row">
+    <div class="white-bg">
+      <div class="col-sm-6">
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Title:</h4>
+            <p><%= @advertisement.title%></p>
           </div>
-      <%- end %>
+        </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Description:</h4>
+            <p><%= @advertisement.description%></p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Category:</h4>
+            <p><%= @advertisement.subcategory.category.name %></p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Subcategory:</h4>
+            <p><%= @advertisement.subcategory.name %></p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Per hour cost:</h4>
+            <p><%= @advertisement.per_hour_cost %></p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Start at:</h4>
+            <p><%= @advertisement.start_at.strftime(time_format)%></p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>End at:</h4>
+            <p><%= @advertisement.end_at.strftime(time_format)%></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="add-image-con">
+          <div class="row">
+            <div class="col-sm-12">
+              <% @advertisement.advertisement_images.each do |advertisement_image| %>
+                <span class="img-con">
+                  <%= image_tag advertisement_image.image.url(AdvertisementImage::DEFAULT_SIZE), class: 'upload-img' %>
+                    <% if advertisement_image.id.present? %>
+                      <%= link_to customer_advertisement_advertisement_image_path(@advertisement, advertisement_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                          <i class="fa fa-times cross-icon"></i>
+                      <%- end %>
+                  <%- end %>
+                </span>
+              <%- end %>
+            </div>
+          </div>
+          <% unless @advertisement.advertisement_images.count > 2 %>
+              <fieldset>
+                <legend class="add-new-text"><small>Add new images</small></legend>
+                <%= render partial: 'customer/advertisement_images/form', locals: { advertisement: @advertisement, advertisement_image: @advertisement.advertisement_images.new } %>
+              </fieldset>
+          <% end %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
     </div>
-    <% unless @advertisement.advertisement_images.count > 2 %>
-        <fieldset>
-          <legend><small>Add new images</small></legend>
-          <%= render partial: 'customer/advertisement_images/form', locals: { advertisement: @advertisement, advertisement_image: @advertisement.advertisement_images.new } %>
-        </fieldset>
-    <% end %>
   </div>
-
 </div>
 
