@@ -10,7 +10,7 @@
     <div class="col-md-3">
       <aside class="category-filters">
         <div class="category-filters-section">
-          <h3 class="widget-title-sm">Category</h3>
+          <h3 class="widget-title-sm">Filter</h3>
         </div>
         <div class="category-filters-section">
           <h3 class="widget-title-sm">Price</h3>
@@ -27,21 +27,24 @@
                   <div class="product  owl-item-slide">
                     <ul class="product-labels"></ul>
                     <div class="product-img-wrap">
-                      <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                      <%#= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                      <% if product.product_images.any? %>
+                          <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      <% else %>
+                          <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                      <% end %>
                     </div>
                     <a class="product-link" href="<%= product_path(product)%>"></a>
                     <div class="product-caption">
                       <ul class="product-caption-rating">
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
+                        <% for i in 1..5 %>
+                            <% if i <= product.rating %>
+                                <li class="rated"><i class="fa fa-star"></i></li>
+                            <% else %>
+                                <li class=""><i class="fa fa-star"></i></li>
+                            <% end %>
+                        <% end %>
+                        <!--<li class="rated"><i class="fa fa-star"></i></li>-->
                       </ul>
                       <h5 class="product-caption-title">
                         <%= product.name %>
@@ -67,21 +70,23 @@
                   <div class="product  owl-item-slide">
                     <ul class="product-labels"></ul>
                     <div class="product-img-wrap">
-                      <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                      <%#= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                      <% if service.service_images.any? %>
+                          <%= image_tag service.service_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      <% else %>
+                          <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                      <% end %>
                     </div>
                     <a class="product-link" href="<%= service_path(service)%>"></a>
                     <div class="product-caption">
                       <ul class="product-caption-rating">
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li class="rated"><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
+                        <% for i in 1..5 %>
+                            <% if i <= service.rating %>
+                                <li class="rated"><i class="fa fa-star"></i></li>
+                            <% else %>
+                                <li class=""><i class="fa fa-star"></i></li>
+                            <% end %>
+                        <% end %>
                       </ul>
                       <h5 class="product-caption-title">
                         <%= service.service_description %>

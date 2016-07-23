@@ -132,7 +132,7 @@
               <%- end %>
             </div>
           </div>
-          <% unless @service.service_images.count > 2 %>
+          <% unless @service.service_images.count > 4 %>
               <fieldset>
                 <legend class="add-new-text"><small>Add new images</small></legend>
                 <%= render partial: 'customer/service_images/form', locals: { service: @service, service_image: @service.service_images.new } %>
