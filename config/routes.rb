@@ -85,7 +85,6 @@ Rails.application.routes.draw do
   end
 
   resources :services do
-    # resources :service_enquiries
     resources :enquiries
   end
 
