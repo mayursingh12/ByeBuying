@@ -1,9 +1,9 @@
 <div class="container">
   <header class="page-header">
-    <h1 class="page-title"><%= @product.name.capitalize %></h1>
+    <h1 class="page-title"><%#= @service.name.capitalize %></h1>
     <ol class="breadcrumb page-breadcrumb">
-      <li><a href="#"><%= @product.subcategory.category.name %></a></li>
-      <li><a href="#"><%= @product.subcategory.name %></a></li>
+      <li><a href="#"><%= @service.subcategory.category.name %></a></li>
+      <li><a href="#"><%= @service.subcategory.name %></a></li>
       <!--<li><a href="#">Cell Phones</a>-->
       <!--</li>-->
       <!--<li><a href="#">Sony</a>-->
@@ -33,42 +33,51 @@
               <li class="rated"><i class="fa fa-star"></i></li>
             </ul>
             <!--<p class="product-page-product-rating-sign"><a href="#">238 customer reviews</a></p>-->
-            <p class="product-page-desc"><%= @product.description %></p>
+            <p class="product-page-desc"><%= @service.service_description %></p>
             <table
             class="table table-striped product-page-features-table">
               <tbody>
               <tr>
-                <td>State: <%= @product.state.name %></td>
+                <td>Nature of service: <%= @service.nature_of_service %></td>
               </tr>
               <tr>
-                <td>City: <%= @product.city.name %></td>
+                <td>Club name: <%= @service.club_name %></td>
               </tr>
               <tr>
-                <td>Location: <%= @product.location %></td>
+                <td>Membership plan: <%= @service.membership_plan %></td>
               </tr>
               <tr>
-                <td>Start from: <%= @product.start_at.strftime(time_format) %></td>
+                <td>Start from: <%= @service.start_at.strftime(time_format) %></td>
               </tr>
               <tr>
-                <td>End from: <%= @product.end_at.strftime(time_format) %></td>
+                <td>End from: <%= @service.end_at.strftime(time_format) %></td>
               </tr>
               <tr>
-                <td>Quantity: <%= @product.quantity %></td>
+                <td>State: <%= @service.state.name %></td>
               </tr>
               <tr>
-                <td>Rent: <%= @product.rent %></td>
+                <td>City: <%= @service.city.name %></td>
               </tr>
               <tr>
-                <td>Refundable security: <%= @product.refundable_security %></td>
+                <td>Location: <%= @service.location %></td>
               </tr>
               <tr>
-                <td>Cost of replacement: <%= @product.cost_of_replacement %></td>
+                <td>Price: <%= @service.price_type %></td>
               </tr>
               <tr>
-                <td>Youtube: <%= @product.youtube_link %></td>
+                <td>Youtube: <%= @service.youtube_link %></td>
               </tr>
               <tr>
-                <td><%= @product.technical_specification %></td>
+                <td>Other: <%= @service.other %></td>
+              </tr>
+              <tr>
+                <td>Area in meters: <%= @service.area_in_meters %></td>
+              </tr>
+              <tr>
+                <td>Amenities available: <%= @service.amenities_available %></td>
+              </tr>
+              <tr>
+                <td>Price in rupees: <%= @service.price_in_rupees %></td>
               </tr>
               </tbody>
             </table>
@@ -76,10 +85,10 @@
         </div>
         <div class="col-md-4">
           <div class="box-highlight">
-            <!--<p class="product-page-price-list"><%#= @product.price_in_rupees %></p>-->
-            <p class="product-page-price">₹<%= @product.price_in_rupees %></p>
+            <!--<p class="product-page-price-list"><%#= @service.price_in_rupees %></p>-->
+            <p class="product-page-price">₹<%= @service.price_in_rupees %></p>
             <% if current_user.present? %>
-                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
+                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_service_enquiry_path(@service) %>">Enquire</a>
             <% else %>
                 <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
             <% end %>

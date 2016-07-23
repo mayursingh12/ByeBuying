@@ -84,6 +84,10 @@ Rails.application.routes.draw do
     resources :enquiries
   end
 
+  resources :services do
+    resources :enquiries
+  end
+
   get 'test' => 'welcome#test'
 
 end
