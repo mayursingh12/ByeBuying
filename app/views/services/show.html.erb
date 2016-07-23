@@ -26,11 +26,13 @@
         <div class="col-md-8">
           <div class="box">
             <ul class="product-page-product-rating">
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
-              <li class="rated"><i class="fa fa-star"></i></li>
+              <% for i in 1..5 %>
+                  <% if i <= @service.rating %>
+                      <li class="rated"><i class="fa fa-star"></i></li>
+                  <% else %>
+                      <li class=""><i class="fa fa-star"></i></li>
+                  <% end %>
+              <% end %>
             </ul>
             <!--<p class="product-page-product-rating-sign"><a href="#">238 customer reviews</a></p>-->
             <p class="product-page-desc"><%= @service.service_description %></p>
