@@ -90,7 +90,8 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :rent, label: 'Rent' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                    <%#= f.input :rent, label: 'Rent' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent',label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">

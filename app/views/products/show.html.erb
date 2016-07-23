@@ -10,9 +10,15 @@
     <div class="col-md-5">
       <div class="product-page-product-wrap jqzoom-stage">
         <div class="clearfix">
-          <a href="../../../assets/theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
-            <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
-          </a>
+          <% if @product.product_images.any? %>
+              <a href="<%= @product.product_images.first.image(:size_500x500) %>" id="jqzoom" data-rel="gal-1">
+                <%= image_tag @product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+              </a>
+          <% else %>
+              <a href="../../../assets/theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
+                <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+              </a>
+          <% end %>
         </div>
       </div>
     </div>
