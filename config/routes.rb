@@ -72,6 +72,9 @@ Rails.application.routes.draw do
   get 'product_detail' => 'welcome#product_detail'
   get 'blog' => 'welcome#blog'
   get 'contact_us' => 'welcome#contact_us'
+  get 'help' => 'welcome#help'
+  get 'terms_condition' => 'welcome#terms_condition'
+  get 'privacy_policy' => 'welcome#privacy_policy'
   get 'cities/collection_by_state/:id' => 'cities#collection_by_state', as:'collection_by_state'
   get 'get_subcategories/:id' => 'subcategories#get_subcategory'
   # Rahul
