@@ -1,21 +1,24 @@
 class SubscribersController < ApplicationController
 
-
-  def new
-    @subscriber = Subscriber.new
-  end
+  before_action :set_header_categories
 
   def create
-    1
+    @subscriber = Subscriber.new(name: params[:name],
+                                 email: params[:email],
+                                 message: params[:message])
+    if @subscriber.save
+      flash[:success] = 'Successfully saved, we will contact you soon.'
+      redirect_to contact_us_path
+    else
+      flash[:error] = @subscriber.errors.full_messages.first
+      render template: 'welcome/contact_us', layout: 'default'
+    end
   end
 
   private
 
-  def subscriber_params
-    params.required(:subscriber).permit(:name,
-                                        :email,
-                                        :mobile,
-                                        :message)
+  def set_header_categories
+    @categories = Category.all
   end
 
 end

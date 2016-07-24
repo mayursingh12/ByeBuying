@@ -13,29 +13,29 @@
       <h3 class="widget-title">Leave a Message</h3>
       <p class="text-muted">Class conubia id magna cursus conubia proin venenatis suscipit aliquet massa dui odio velit ultrices augue luctus lorem placerat tortor</p>
       <!--<form action="/subscribers", method="post">-->
-        <%= form_for subscriber_path, method: :post do |f|%>
+        <%= form_tag '/subscribers', method: :post do %>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Name</label>
-              <%= f.input :name, class: 'form-control' %>
+              <%= text_field_tag :name, '',class: 'form-control' %>
               <!--<input class="form-control" type="text" />-->
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>E-mail</label>
-              <%= f.input :email, class: 'form-control' %>
+              <%= text_field_tag :email, '',class: 'form-control' %>
               <!--<input class="form-control" type="text" />-->
             </div>
           </div>
         </div>
         <div class="form-group">
           <label>Message</label>
-          <%= f.input :message, class: 'form-control' %>
+          <%= text_area_tag :message, '',class: 'form-control' %>
           <!--<textarea class="form-control"></textarea>-->
         </div>
-          <%= f.submit 'Save', class: 'btn btn-primary' %>
+          <%= submit_tag 'Save', class: 'btn btn-primary' %>
         <!--<input class="btn btn-primary" type="submit" value="Send a Message" />-->
         <% end %>
       <!--</form>-->
