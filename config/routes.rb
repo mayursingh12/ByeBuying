@@ -92,7 +92,10 @@ Rails.application.routes.draw do
   get 'get_subcategories/:id' => 'subcategories#get_subcategory'
   # Rahul
 
+  resources :subscribers
+
   resources :subcategories
+
   resources :products do
     resources :enquiries
   end
@@ -107,7 +110,7 @@ Rails.application.routes.draw do
   # ==========Temp URL==============
   # ====== Must be delete ==========
 
-  # get 'barter/landing_page' => 'welcome#index'
-  # get 'barter/about' => 'welcome#about_us'
+  get 'barter/landing_page' => 'welcome#index'
+  get 'barter/about' => 'welcome#about_us'
 
 end
