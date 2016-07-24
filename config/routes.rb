@@ -106,7 +106,7 @@ Rails.application.routes.draw do
   # ==========Temp URL==============
   # ====== Must be delete ==========
 
-  get '/landing_page' => 'welcome#index'
-  get '/about' => 'welcome#about_us'
+  get 'barter/landing_page' => 'welcome#index'
+  get 'barter/about' => 'welcome#about_us'
 
 end
