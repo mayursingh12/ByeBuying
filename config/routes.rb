@@ -85,6 +85,7 @@ Rails.application.routes.draw do
   get 'blog' => 'welcome#blog'
   get 'contact_us' => 'welcome#contact_us'
   get 'help' => 'welcome#help'
+  get 'faq' => 'welcome#faq'
   get 'terms_condition' => 'welcome#terms_condition'
   get 'privacy_policy' => 'welcome#privacy_policy'
   get 'cities/collection_by_state/:id' => 'cities#collection_by_state', as:'collection_by_state'
