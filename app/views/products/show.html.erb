@@ -34,16 +34,13 @@
                       <li class=""><i class="fa fa-star"></i></li>
                   <% end %>
               <% end %>
-              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
-              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
-              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
-              <!--<li class="rated"><i class="fa fa-star"></i></li>-->
             </ul>
-            <!--<p class="product-page-product-rating-sign"><a href="#">238 customer reviews</a></p>-->
             <p class="product-page-desc"><%= @product.description %></p>
-            <table
-            class="table table-striped product-page-features-table">
+            <table class="table table-striped product-page-features-table">
               <tbody>
+              <tr>
+                <td><%= @product.technical_specification %></td>
+              </tr>
               <tr>
                 <td>State: <%= @product.state.name %></td>
               </tr>
@@ -75,8 +72,9 @@
                 <td>Youtube: <%= @product.youtube_link %></td>
               </tr>
               <tr>
-                <td><%= @product.technical_specification %></td>
+                <td>Other: <%= @product.other %></td>
               </tr>
+
               </tbody>
             </table>
           </div>

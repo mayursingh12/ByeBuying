@@ -26,6 +26,7 @@
       <div class="row" data-gutter="10">
         <div class="col-md-8">
           <div class="box">
+            <p class="product-page-desc"><%= @service.service_description %></p>
             <ul class="product-page-product-rating">
               <% for i in 1..5 %>
                   <% if i <= @service.rating %>
@@ -35,26 +36,36 @@
                   <% end %>
               <% end %>
             </ul>
-            <!--<p class="product-page-product-rating-sign"><a href="#">238 customer reviews</a></p>-->
-            <p class="product-page-desc"><%= @service.service_description %></p>
             <table
             class="table table-striped product-page-features-table">
               <tbody>
-              <tr>
-                <td>Nature of service: <%= @service.nature_of_service %></td>
-              </tr>
-              <tr>
-                <td>Club name: <%= @service.club_name %></td>
-              </tr>
-              <tr>
-                <td>Membership plan: <%= @service.membership_plan %></td>
-              </tr>
-              <tr>
-                <td>Start from: <%= @service.start_at.strftime(time_format) %></td>
-              </tr>
-              <tr>
-                <td>End from: <%= @service.end_at.strftime(time_format) %></td>
-              </tr>
+              <% if  @service.subcategory.name == 'Others'%>
+                  <tr>
+                    <td>Nature of service: <%= @service.nature_of_service %></td>
+                  </tr>
+              <% end %>
+              <% if  @service.subcategory.category.name == 'Membership'%>
+                  <tr>
+                    <td>Club name: <%= @service.club_name %></td>
+                  </tr>
+                  <tr>
+                    <td>Membership plan: <%= @service.membership_plan %></td>
+                  </tr>
+                  <tr>
+                    <td>Start from: <%= @service.start_at.strftime(time_format) %></td>
+                  </tr>
+                  <tr>
+                    <td>End from: <%= @service.end_at.strftime(time_format) %></td>
+                  </tr>
+              <% end %>
+              <% if @service.subcategory.category.name == 'Commercial Space' %>
+                  <tr>
+                    <td>Area in meters: <%= @service.area_in_meters %></td>
+                  </tr>
+                  <tr>
+                    <td>Amenities available: <%= @service.amenities_available %></td>
+                  </tr>
+              <% end %>
               <tr>
                 <td>State: <%= @service.state.name %></td>
               </tr>
@@ -73,19 +84,12 @@
               <tr>
                 <td>Other: <%= @service.other %></td>
               </tr>
-              <tr>
-                <td>Area in meters: <%= @service.area_in_meters %></td>
-              </tr>
-              <tr>
-                <td>Amenities available: <%= @service.amenities_available %></td>
-              </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="col-md-4">
           <div class="box-highlight">
-            <!--<p class="product-page-price-list"><%#= @service.price_in_rupees %></p>-->
             <p class="product-page-price">₹<%= @service.price_in_rupees %></p>
             <% if current_user.present? %>
                 <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_service_enquiry_path(@service) %>">Enquire</a>
