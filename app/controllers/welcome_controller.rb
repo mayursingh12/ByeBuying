@@ -29,6 +29,10 @@ class WelcomeController < ApplicationController
 
   end
 
+  def contact_us
+
+  end
+
   def test
     redirect_to root_path
   end

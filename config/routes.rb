@@ -92,7 +92,10 @@ Rails.application.routes.draw do
   get 'get_subcategories/:id' => 'subcategories#get_subcategory'
   # Rahul
 
+  resources :subscribers
+
   resources :subcategories
+
   resources :products do
     resources :enquiries
   end

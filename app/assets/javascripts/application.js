@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require ./vendors/angular
 //= require ./vendors/angular_bootstrap
+//= require ./vendors/bootstrap

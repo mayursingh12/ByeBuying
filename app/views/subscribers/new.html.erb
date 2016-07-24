@@ -12,33 +12,27 @@
     <div class="col-md-5">
       <h3 class="widget-title">Leave a Message</h3>
       <p class="text-muted">Class conubia id magna cursus conubia proin venenatis suscipit aliquet massa dui odio velit ultrices augue luctus lorem placerat tortor</p>
-      <!--<form action="/subscribers", method="post">-->
-        <%= form_tag '/subscribers', method: :post do %>
+      <form action="<%= subscriber_path(@subscriber)%>">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Name</label>
-              <%= text_field_tag :name, '',class: 'form-control' %>
-              <!--<input class="form-control" type="text" />-->
+              <input class="form-control" type="text" />
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>E-mail</label>
-              <%= text_field_tag :email, '',class: 'form-control' %>
-              <!--<input class="form-control" type="text" />-->
+              <input class="form-control" type="text" />
             </div>
           </div>
         </div>
         <div class="form-group">
           <label>Message</label>
-          <%= text_area_tag :message, '',class: 'form-control' %>
-          <!--<textarea class="form-control"></textarea>-->
+          <textarea class="form-control"></textarea>
         </div>
-          <%= submit_tag 'Save', class: 'btn btn-primary' %>
-        <!--<input class="btn btn-primary" type="submit" value="Send a Message" />-->
-        <% end %>
-      <!--</form>-->
+        <input class="btn btn-primary" type="submit" value="Send a Message" />
+      </form>
     </div>
     <div class="col-md-7">
       <div class="google-map">
