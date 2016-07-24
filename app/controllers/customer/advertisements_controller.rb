@@ -2,7 +2,7 @@ class Customer::AdvertisementsController < Customer::BaseController
 
   before_filter :authenticate_user_admin
 
-  before_action :set_advertisement, only: [:edit, :update, :show]
+  before_action :set_advertisement, only: [:edit, :update, :show, :destroy]
 
   before_action :set_header_categories
 
@@ -39,6 +39,11 @@ class Customer::AdvertisementsController < Customer::BaseController
 
   def show
 
+  end
+
+  def destroy
+    @advertisement.destroy
+    redirect_to action: :index
   end
 
   private

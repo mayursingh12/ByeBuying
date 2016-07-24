@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_product, only: [:show, :update_rating, :admin_approve]
+  before_action :set_product, only: [:show, :update_rating, :admin_approve, :destroy]
 
   def index
     @products = Product.all
@@ -20,6 +20,11 @@ class Admin::ProductsController < Admin::BaseController
    else
      render action: :show
    end
+  end
+
+  def destroy
+    @product.destroy
+    redirect_to action: :index
   end
 
   def admin_approve

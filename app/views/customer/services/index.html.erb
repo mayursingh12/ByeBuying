@@ -33,6 +33,9 @@
                 <%= link_to edit_customer_service_path(service) do %>
                     <i class="fa fa-edit"></i>
                 <% end %>
+                <%= link_to customer_service_path(service), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
               </td>
             </tr>
         <%- end %>

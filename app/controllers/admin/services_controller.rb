@@ -2,7 +2,7 @@ class Admin::ServicesController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_service, only: [:show, :update_rating, :admin_approve]
+  before_action :set_service, only: [:show, :update_rating, :admin_approve, :destroy]
 
   def index
     @services = Service.all
@@ -28,6 +28,11 @@ class Admin::ServicesController < Admin::BaseController
     else
       redirect_to action: :index
     end
+  end
+
+  def destroy
+    @service.destroy
+    redirect_to action: :index
   end
 
   private

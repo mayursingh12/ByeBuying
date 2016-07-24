@@ -32,6 +32,9 @@
                 <%= link_to edit_customer_product_path(product) do %>
                     <i class="fa fa-edit"></i>
                 <% end %>
+                <%= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
               </td>
             </tr>
         <%- end %>

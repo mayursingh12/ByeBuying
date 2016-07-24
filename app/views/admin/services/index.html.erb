@@ -24,6 +24,9 @@
                 <%= link_to admin_service_path(service) do %>
                     <i class="fa fa-eye"></i>
                 <% end %>
+                <%= link_to admin_service_path(service), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
                 <%# if service.admin_verified? %>
                     <!--<span class="text-success">Verified by admin</span>-->
                     <%#= link_to( 'Un-verify' , admin_approve_admin_service_path(service, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>

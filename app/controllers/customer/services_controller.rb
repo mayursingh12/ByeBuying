@@ -1,6 +1,6 @@
 class Customer::ServicesController < Customer::BaseController
 
-  before_action :set_service, only: [:edit, :update, :show]
+  before_action :set_service, only: [:edit, :update, :show, :destroy]
 
   before_action :set_header_categories
 
@@ -37,6 +37,11 @@ class Customer::ServicesController < Customer::BaseController
 
   def show
 
+  end
+
+  def destroy
+    @service.destroy
+    redirect_to action: :index
   end
 
   private
