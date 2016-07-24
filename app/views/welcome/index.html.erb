@@ -155,7 +155,12 @@
                 <div class="product  owl-item-slide">
                   <ul class="product-labels"></ul>
                   <div class="product-img-wrap">
-                    <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                    <% if advertisement.advertisement_images.any? %>
+                        <%= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>
+                    <% else %>
+                        <%= image_tag "theme_img/500x500.png", class: 'product-img' %>
+                    <% end %>
+                    <%#= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
                   </div>
                   <a class="product-link" href="#"></a>
                   <div class="product-caption">
