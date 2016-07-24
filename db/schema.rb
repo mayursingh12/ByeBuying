@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724105159) do
+ActiveRecord::Schema.define(version: 20160724141348) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -106,6 +106,12 @@ ActiveRecord::Schema.define(version: 20160724105159) do
     t.boolean  "negotiable",                            default: false
     t.integer  "rating",                  limit: 4,     default: 1
     t.boolean  "admin_verified",                        default: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "service_images", force: :cascade do |t|
