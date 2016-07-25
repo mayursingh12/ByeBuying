@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
     resources :cities
 
+    resources :enquiries
+
     get 'subcategories/get_subcategories_for_category/:id' => 'subcategories#get_subcategories_for_category', as:'get_subcategories_for_category'
 
     resources :advertisements do
@@ -74,6 +76,8 @@ Rails.application.routes.draw do
     resources :services do
       resources :service_images
     end
+
+    resources :enquiries
 
   end
 

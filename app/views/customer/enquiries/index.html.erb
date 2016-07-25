@@ -1,0 +1,57 @@
+<div class="gap"></div>
+<div id="calendar_enquiry" style="background-color: #ffffff; padding: 10px"></div>
+<div class="gap"></div>
+
+<style>
+    #calendar {
+        max-width: 900px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+
+        $('#calendar_enquiry').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''
+            },
+            defaultDate: "<%= DateTime.now %>",
+//            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+//            eventColor: 'red',
+            events: [
+                <% if @enquiries[:product_enquiries].any? %>
+                    <% @enquiries[:product_enquiries].each do |product_enquiry| %>
+                    {
+                        title: "<%= product_enquiry.product.name %>",
+                        start: "<%= product_enquiry.start_at %>",
+                        end: "<%= product_enquiry.end_at %>",
+                        description: "<%= product_enquiry.expected_price %>",
+                        color: "#0fa688",
+                        url: "<%= root_path %>"
+                    },
+                    <% end %>
+                <% end %>
+                <% if @enquiries[:service_enquiries].any? %>
+                    <% @enquiries[:service_enquiries].each do |service_enquiry| %>
+                    {
+                        title: "<%= service_enquiry.service.service_description %>",
+                        start: "<%= service_enquiry.start_at %>",
+                        end: "<%= service_enquiry.end_at %>",
+                        description: "<%= service_enquiry.expected_price %>",
+                        color: "#ff8e18",
+                        url: "<%= root_path %>"
+                    },
+                    <% end %>
+                <% end %>
+            ]
+        });
+
+    });
+</script>
