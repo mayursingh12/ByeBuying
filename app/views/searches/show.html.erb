@@ -1,0 +1,20 @@
+Products:
+<% @results[:products].each do |product| %>
+
+    <%= product.name %>-<%=product.subcategory.category.name%>-<%=product.subcategory.name%> <br>
+
+<% end %>
+
+Service:
+<% @results[:services].each do |service| %>
+
+    <%= service.service_description %>-<%=service.subcategory.category.name%>-<%=service.subcategory.name%> <br>
+
+<% end %>
+
+Advertisement:
+<% @results[:advertisements].each do |advertisement| %>
+
+    <%= advertisement.title %>-<%=advertisement.subcategory.category.name%>-<%=advertisement.subcategory.name%> <br>
+
+<% end %>
