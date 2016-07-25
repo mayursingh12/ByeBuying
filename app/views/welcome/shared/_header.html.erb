@@ -132,20 +132,22 @@
           </li>
         </ul>
 
-        <!--<form class="navbar-form navbar-left navbar-main-search" role="search">-->
-          <%= simple_form_for [Search.new], class: "navbar-form navbar-left navbar-main-search", role: 'search' do |f| %>
-
-
+        <form class="navbar-form navbar-left navbar-main-search" role="search">
           <div class="form-group">
-            <!--<input class="form-control" type="text" placeholder="Search..." />-->
-            <%= f.input :name, label: '', class: 'form-control', placeholder: 'Search...'  %>
-            <%= f.submit '', class: 'fa fa-search navbar-main-search-submit' %>
-            <!--<a class="fa fa-search navbar-main-search-submit" href="#"></a>-->
+            <input class="form-control" type="text" placeholder="Search..." />
+            <a class="fa fa-search navbar-main-search-submit" href="#"></a>
           </div>
+        </form>
 
+        <!--<%#= simple_form_for [Search.new], class: "navbar-form navbar-left navbar-main-search", role: 'search' do |f| %>-->
+            <!--<div class="form-group">-->
+              <!--<%#= f.input :name, label: '', class: 'form-control', placeholder: 'Search...'  %>-->
+              <!--<%#= f.input :controller_name, :as => :hidden, input_html: { value: "#{params[:controller]}" }  %>-->
+              <!--<%#= f.input :action_name, :as => :hidden, input_html: {value: "#{params[:action]}"} %>-->
+              <!--<%#= f.submit '', class: 'fa fa-search navbar-main-search-submit' %>-->
+            <!--</div>-->
+        <!--<%# end %>-->
 
-        <% end %>
-        <!--</form>-->
 
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>

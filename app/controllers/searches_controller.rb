@@ -6,7 +6,13 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.create(search_params)
-    redirect_to action: :show, id: @search.id
+    if @search.name.present?
+      redirect_to action: :show, id: @search.id
+    else
+      flash[:error] = "Search Can't be blank"
+      # redirect_to controller: "#{@search.controller_name}", action: "#{@search.action_name}"
+      redirect_to root_path
+    end
   end
 
   def show
@@ -16,7 +22,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.required(:search).permit(:name)
+    params.required(:search).permit(:name, :controller_name, :action_name)
   end
 
   def set_header_categories
