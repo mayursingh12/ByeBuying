@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
 
   before_action :set_header_categories
 
-  before_action :set_product
+  before_action :set_product, only: [:show]
+
+  def index
+    @products = Product.all.paginate(:page => params[:page], :per_page => 20)
+  end
 
   def show
 

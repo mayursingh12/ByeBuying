@@ -1,0 +1,53 @@
+<header class="page-header page-header-banner">
+  <div class="container">
+    <div class="page-header-banner-inner">
+      <h1 class="page-title">Services</h1>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row" data-gutter="15">
+        <% @services.each do |service| %>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="product ">
+                <ul class="product-labels"></ul>
+                <div class="product-img-wrap">
+                  <% if service.service_images.any? %>
+                      <% service.service_images.each_with_index do |service_image, index|%>
+                          <% if index == 0 %>
+                              <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
+                          <% else %>
+                              <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive product-img-alt' %>
+                          <% end%>
+                      <% end %>
+                  <% else %>
+                      <%= image_tag 'theme_img/500x500.png', class: 'img-responsive product-img-primary' %>
+                      <%= image_tag 'theme_img/500x500.png', class: 'img-responsive product-img-alt' %>
+                  <% end %>
+                </div>
+                <a class="product-link" href="#"></a>
+                <div class="product-caption">
+                  <ul class="product-caption-rating">
+                    <% for i in 1..5 %>
+                        <% if i <= service.rating %>
+                            <li class="rated"><i class="fa fa-star"></i></li>
+                        <% else %>
+                            <li class=""><i class="fa fa-star"></i></li>
+                        <% end %>
+                    <% end %>
+                  </ul>
+                  <h5 class="product-caption-title"><%= service.service_description %></h5>
+                  <div class="product-caption-price"><span class="product-caption-price-new"><i class="fa fa-inr"></i><%= service.price_in_rupees %></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
+      <%= will_paginate @services %>
+    </div>
+  </div>
+</div>
+<div class="gap"></div>
