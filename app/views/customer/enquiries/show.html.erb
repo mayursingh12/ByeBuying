@@ -1,0 +1,135 @@
+<% if @enquiry.is_product? %>
+    <div class="customer-main-show">
+      <div class="row">
+        <div class="white-bg">
+          <div class="col-sm-6">
+            <div class="col-sm-12">
+              <a href="<%= product_path(@enquiry.product)%>">
+                <div class="product-detail">
+                  <h4>Product Name:</h4>
+                  <p><%= @enquiry.product.name %></p>
+                </div>
+              </a>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Enquiry by:</h4>
+                <p><%= @enquiry.user.email %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>From:</h4>
+                <p><%= @enquiry.start_at.strftime(time_format) %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>To:</h4>
+                <p><%= @enquiry.end_at.strftime(time_format) %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Product plan:</h4>
+                <p><%= @enquiry.product.rent %><br></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Price in rupees:</h4>
+                <p><%= @enquiry.product.price_in_rupees %><br></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Expected price:</h4>
+                <p><%= @enquiry.expected_price %><br></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="add-image-con">
+              <div class="row">
+                <div class="col-sm-12">
+                  <% if @enquiry.product.product_images.any? %>
+                <span class="img-con">
+                  <%= image_tag @enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img' %>
+                </span>
+                  <%- end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+<% else %>
+    <div class="customer-main-show">
+      <div class="row">
+        <div class="white-bg">
+          <div class="col-sm-6">
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Service description:</h4>
+                <p><%= @enquiry.service.service_description %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Enquiry by:</h4>
+                <p><%= @enquiry.user.email %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>From:</h4>
+                <p><%= @enquiry.start_at.strftime(time_format) %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>To:</h4>
+                <p><%= @enquiry.end_at.strftime(time_format) %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Service plan:</h4>
+                <p><%= @enquiry.service.price_type %><br></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Price in rupees:</h4>
+                <p><%= @enquiry.service.price_in_rupees %><br></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Expected price:</h4>
+                <p><%= @enquiry.expected_price %><br></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="add-image-con">
+              <div class="row">
+                <div class="col-sm-12">
+                  <% if @enquiry.service.service_images.any? %>
+                <span class="img-con">
+                  <%= image_tag @enquiry.service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img' %>
+                </span>
+                  <%- end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+

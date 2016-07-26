@@ -3,7 +3,7 @@
 <div class="gap"></div>
 
 <style>
-    #calendar {
+    #calendar_enquiry {
         max-width: 900px;
         margin: 20px auto;
         background: #fff;
@@ -34,7 +34,7 @@
                         end: "<%= product_enquiry.end_at %>",
                         description: "<%= product_enquiry.expected_price %>",
                         color: "#0fa688",
-                        url: "<%= root_path %>"
+                        url: "<%= customer_enquiry_path(product_enquiry) %>"
                     },
                     <% end %>
                 <% end %>
@@ -46,7 +46,7 @@
                         end: "<%= service_enquiry.end_at %>",
                         description: "<%= service_enquiry.expected_price %>",
                         color: "#ff8e18",
-                        url: "<%= root_path %>"
+                        url: "<%= customer_enquiry_path(service_enquiry) %>"
                     },
                     <% end %>
                 <% end %>
