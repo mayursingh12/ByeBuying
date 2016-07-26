@@ -21,7 +21,8 @@
         <div class="slider-item-inner">
           <div class="slider-item-caption-left">
             <h4 class="slider-item-caption-title">Playstation 4</h4>
-            <p class="slider-item-caption-desc">This is for The Players</p><a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>
+            <p class="slider-item-caption-desc">This is for The Players</p>
+            <!--<a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>-->
           </div>
           <%= image_tag 'theme_img/test_slider/13-i.png', class: 'slider-item-img-right', style:'top: 60%; width: 56%;' %>
         </div>
@@ -35,7 +36,8 @@
           <%= image_tag 'theme_img/test_slider/13-i.png', class: 'slider-item-img-left'%>
           <div class="slider-item-caption-right slider-item-caption-white">
             <h4 class="slider-item-caption-title">Smart Watches</h4>
-            <p class="slider-item-caption-desc">Get One Just from $99</p><a class="btn btn-lg btn-ghost btn-white" href="#">Shop Now</a>
+            <p class="slider-item-caption-desc">Get One Just from $99</p>
+            <!--<a class="btn btn-lg btn-ghost btn-white" href="#">Shop Now</a>-->
           </div>
         </div>
       </div>
@@ -47,7 +49,8 @@
         <div class="slider-item-inner">
           <div class="slider-item-caption-left">
             <h4 class="slider-item-caption-title">Run! Run! Run!</h4>
-            <p class="slider-item-caption-desc">Your Running Shoes, Right Away.</p><a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>
+            <p class="slider-item-caption-desc">Your Running Shoes, Right Away.</p>
+            <!--<a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>-->
           </div>
           <%= image_tag 'theme_img/test_slider/13-i.png', class: 'slider-item-img-right' %>
         </div>
@@ -106,7 +109,7 @@
 
     <% if @services.any? %>
         <h3 class="widget-title">Services</h3>
-        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":7,"loop":true,"nav":true}'>
+        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
           <% @services.each do |service| %>
               <div class="owl-item">
                 <div class="product  owl-item-slide">

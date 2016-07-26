@@ -41,6 +41,7 @@
         left: 0;
         margin-bottom: 10px;
         color: #000000;
+        padding-left: 0;
         abbr{
           border: none;
           color: #cc0000;
@@ -108,6 +109,9 @@
       }
       .meterial_total{
         color: rgba(25, 147, 54, 1);
+      }
+      .select-text{
+        margin: 15px 0;
       }
     }
     .grey-color{
