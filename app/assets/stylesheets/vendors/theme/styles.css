@@ -617,6 +617,12 @@ hr {
 }
 .navbar-main-search .form-group {
     display: block;
+    position: relative;
+}
+.navbar-main-search .form-group .search-icon{
+    position: absolute;
+    top: 8px;
+    right: 9px;
 }
 .navbar-main-search .form-control {
     width: 100%;
@@ -648,6 +654,7 @@ hr {
     text-align: center;
     -webkit-border-radius: 4px;
     border-radius: 4px;
+    border: 0;
 }
 .navbar-main-search-submit:hover {
     text-decoration: none;

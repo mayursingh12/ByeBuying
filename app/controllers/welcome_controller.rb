@@ -33,6 +33,22 @@ class WelcomeController < ApplicationController
 
   end
 
+  def about_us
+
+  end
+
+  def listing_policy
+
+  end
+
+  def terms_condition
+
+  end
+
+  def privacy_policy
+
+  end
+
   def test
     redirect_to root_path
   end
