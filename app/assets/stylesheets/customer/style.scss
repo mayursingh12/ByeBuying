@@ -202,3 +202,30 @@
     }
   }
 }
+
+.searches_main_con{
+  margin:30px 0;
+  h3{
+      border-bottom: 1px solid #eeeeee;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  .search_items{
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding:10px 0;
+    margin-bottom: 10px;
+    h5.product-name{
+      font-size: 18px;
+      margin: 0;
+      color: #365271;
+    }
+    p.location{
+      font-size:13px;
+      color: #8e8e8e;
+    }
+    p.category-name{
+      font-size:13px;
+    }
+  }  
+}
