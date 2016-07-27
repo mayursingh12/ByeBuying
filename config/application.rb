@@ -23,4 +23,6 @@ module Byebuying
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
+
+  # http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone=Your phone no&text=TestSMS&priority=ndnd& stype=normal
 end

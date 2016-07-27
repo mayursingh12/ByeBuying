@@ -1,4 +1,13 @@
 <%= form_tag customer_step_three_path, method: :post  do %>
     OTP: <%= text_field_tag :otp %>
+    <%= hidden_field_tag 'phone', @phone %>
     <%= submit_tag %>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+
+    $(document).ready ( function(){
+        $.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone="+ <%= @phone %> +"&text= Your OTP is "+ <%=@otp%> +"&priority=ndnd& stype=normal", function(data, status){});
+    });
+
+</script>

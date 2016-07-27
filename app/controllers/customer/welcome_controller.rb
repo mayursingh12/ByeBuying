@@ -1,5 +1,7 @@
 class Customer::WelcomeController < Customer::BaseController
 
+  require 'net/http'
+
   before_filter :authenticate_user_admin, only: [:dashboard]
 
   before_filter :authenticate_no_user_admin, only: [:index]
@@ -24,17 +26,34 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def otp
-    otp = rand(0..9999)
+    @otp = rand(1000..9999).to_s
+    @phone = params[:phone]
     user_ = User.where(contact: params[:phone])
     unless user_.present?
-      NewUser.create(phone: params[:phone], otp: otp)
+      NewUser.create(phone: params[:phone], otp: @otp)
     else
-      render action: :mobile_number
+     if user_.update_attribute(otp: @otp)
+       # do nothing
+     else
+       flash[:error] = 'Something went wrong, try again later.'
+       redirect_to root_path
+      end
     end
   end
 
   def after_otp
-
+    new_user = NewUser.where(phone: params[:phone]).last
+    if new_user.present?
+      if new_user.otp == params[:otp]
+        # do nothing
+      else
+        flash[:error] = 'OTP not matched'
+        redirect_to root_path
+      end
+    else
+      flash[:error] = 'Something went wrong, try again later.'
+      redirect_to root_path
+    end
   end
 
   def log_in
