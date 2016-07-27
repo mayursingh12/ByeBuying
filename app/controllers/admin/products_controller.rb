@@ -12,6 +12,20 @@ class Admin::ProductsController < Admin::BaseController
 
   end
 
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      flash[:success] = 'Product successfully created'
+      redirect_to action: :index
+    else
+      render action: :new
+    end
+  end
+
   def update_rating
    if @product.update_attributes(rating: params[:rating])
      flash[:success] = 'Rating successfully updated.'
@@ -39,6 +53,28 @@ class Admin::ProductsController < Admin::BaseController
 
   def set_product
     @product = Product.find params[:id]
+  end
+
+  def product_params
+    params.require(:product).permit(:name,
+                                    :gender,
+                                    :category_id,
+                                    :subcategory_id,
+                                    :description,
+                                    :technical_specification,
+                                    :state_id,
+                                    :city_id,
+                                    :location,
+                                    :start_at,
+                                    :end_at,
+                                    :rent,
+                                    :quantity,
+                                    :price_in_rupees,
+                                    :negotiable,
+                                    :refundable_security,
+                                    :cost_of_replacement,
+                                    :youtube_link,
+                                    :other).merge(user_id: current_user.id)
   end
 
 end
