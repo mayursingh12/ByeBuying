@@ -19,6 +19,24 @@ class Customer::WelcomeController < Customer::BaseController
 
   end
 
+  def mobile_number
+    @new_user = NewUser.new
+  end
+
+  def otp
+    otp = rand(0..9999)
+    user_ = User.where(contact: params[:phone])
+    unless user_.present?
+      NewUser.create(phone: params[:phone], otp: otp)
+    else
+      render action: :mobile_number
+    end
+  end
+
+  def after_otp
+
+  end
+
   def log_in
     if sign_in_customer
       redirect_to action: :index

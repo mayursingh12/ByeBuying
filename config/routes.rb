@@ -60,6 +60,9 @@ Rails.application.routes.draw do
 
     get '/' => 'welcome#index'
     post 'sign_in' => 'welcome#log_in', as:'sign_in'
+    get 'step_one' => 'welcome#mobile_number'
+    post 'step_two' => 'welcome#otp'
+    post 'step_three' => 'welcome#after_otp'
     get 'registration' => 'welcome#registration'
     post 'sign_up' => 'welcome#sign_up', as:'sign_up'
     get 'dashboard' => 'welcome#dashboard'
@@ -89,9 +92,11 @@ Rails.application.routes.draw do
   get 'listing_policy' => 'welcome#listing_policy'
   get 'terms_condition' => 'welcome#terms_condition'
   get 'privacy_policy' => 'welcome#privacy_policy'
+  # Rahul
+
   get 'cities/collection_by_state/:id' => 'cities#collection_by_state', as:'collection_by_state'
   get 'get_subcategories/:id' => 'subcategories#get_subcategory'
-  # Rahul
+
 
   resources :subscribers
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724141348) do
+ActiveRecord::Schema.define(version: 20160727035416) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 20160724141348) do
     t.boolean  "is_product"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "new_users", force: :cascade do |t|
+    t.string   "phone",      limit: 255
+    t.string   "otp",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "product_images", force: :cascade do |t|
