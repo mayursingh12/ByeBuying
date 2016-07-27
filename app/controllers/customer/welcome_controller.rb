@@ -61,4 +61,5 @@ class Customer::WelcomeController < Customer::BaseController
                                      :password_confirmation)
   end
 
+
 end
