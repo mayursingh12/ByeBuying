@@ -1,34 +1,38 @@
-<% unless @service.present? %>
-    <%= simple_form_for [:product, @enquiry] do |f| %>
-        <%= f.input :start_at, label: 'Start Time of Product', default: @product.start_at  %>
-        <%= f.input :end_at, label: 'End Time of Product', default: @product.end_at %>
+<%# unless @service.present? %>
+    <%#= simple_form_for [:product, @enquiry] do |f| %>
+        <%#= f.input :start_at, label: 'Start Time of Product', default: @product.start_at  %>
+        <%#= f.input :end_at, label: 'End Time of Product', default: @product.end_at %>
 
-        Rent: <%= @product.rent %> <br>
-        Price in rupees: <%= @product.price_in_rupees %>
+        <!-- Rent: --> <%#= @product.rent %>
+        <!-- Price in rupees: --> <%#= @product.price_in_rupees %>
 
-        <%= f.input :expected_price %>
-        <%= f.submit 'Save', class: 'btn btn-default' %>
-    <% end %>
+        <%#= f.input :expected_price %>
+        <%#= f.submit 'Save', class: 'btn btn-default' %>
+    <%# end %>
 
-<% else %>
+<%# else %>
 
-    <%= simple_form_for [:service, @enquiry] do |f| %>
-        <%= f.input :start_at, label: 'Start Time of Product', default: @service.start_at  %>
-        <%= f.input :end_at, label: 'End Time of Product', default: @service.end_at %>
+    <%#= simple_form_for [:service, @enquiry] do |f| %>
+        <%#= f.input :start_at, label: 'Start Time of Product', default: @service.start_at  %>
+        <%#= f.input :end_at, label: 'End Time of Product', default: @service.end_at %>
 
-        Rent: <%#= @service.rent %> <br>
-        Price in rupees: <%= @service.price_in_rupees %>
+        <!-- Rent: --> <%#= @service.rent %>
+        <!-- Price in rupees: --> <%#= @service.price_in_rupees %>
 
-        <%= f.input :expected_price %>
-        <%= f.submit 'Save', class: 'btn btn-default' %>
-    <% end %>
-<% end %>
+        <%#= f.input :expected_price %>
+        <%#= f.submit 'Save', class: 'btn btn-default' %>
+    <%# end %>
+<%# end %>
 
 
 <div class="content-main-section">
   <div class="container">
     <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10 col-xs-12">
-      <h2 class="text-center">Add New Advertisement</h2>
+      <h2 class="text-center">
+      Enquiry for 
+        <%= @product.name unless @service.present? %>
+        <%= @service.service_description unless @product.present? %>
+      </h2>
       <div class="row">
         <div class="col-md-12">
           <div class="contact-main-form">
