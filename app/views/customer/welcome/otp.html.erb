@@ -7,7 +7,7 @@
 			<hr />
 			<%= form_tag customer_step_three_path, method: :post  do %>
 				<div class="form-group">
-					<%= text_field_tag :otp, "", class: 'form-control' %>
+					<%= text_field_tag :otp, "", class: 'form-control', minlength: 4, maxlength: 4 %>
 				</div>
 				<%= hidden_field_tag 'phone', @phone %>
 				<%= submit_tag 'Proceed', class: 'btn btn-primary' %>

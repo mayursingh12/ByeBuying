@@ -24,39 +24,43 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def otp
-    @otp = rand(1000..9999).to_s
-    @phone = params[:phone]
-    user_ = User.where(contact: params[:phone]).first
-    if user_.present?
-      # already registered
-      flash[:error] = 'Already registered'
-      redirect_to action: :mobile_number
-    else
-     new_user =  NewUser.where(phone: params[:phone]).first
-      if new_user.present?
-        if new_user.update_attributes(otp: @otp)
+    if params[:phone].present?
+      @otp = rand(1000..9999).to_s
+      @phone = params[:phone]
+      user_ = User.where(contact: @phone).first
+      if user_.present?
+        # already registered
+        flash[:error] = 'Already registered'
+        redirect_to action: :mobile_number
+      else
+        new_user =  NewUser.where(phone: @phone).first
+        if new_user.present?
+          if new_user.update_attributes(otp: @otp)
             # do nothing
           else
             flash[:error] = 'Something went wrong, try again later.'
             redirect_to action: :mobile_number
+          end
+        else
+          NewUser.create(phone: @phone, otp: @otp)
         end
-      else
-        NewUser.create(phone: params[:phone], otp: @otp)
       end
-
+    else
+      flash[:error] = "Mobile number can't blank"
+      render action: :mobile_number
     end
-
   end
 
   def after_otp
-    new_user = NewUser.where(phone: params[:phone]).last
+    @phone = params[:phone]
+    new_user = NewUser.where(phone: @phone).last
     if new_user.present?
       if new_user.otp == params[:otp]
         # do nothing
-        redirect_to action: :registration, contact: params[:phone]
+        redirect_to action: :registration, contact: @phone
       else
         flash[:error] = 'OTP not matched'
-        render action: :otp
+        render action: :otp, phone: @phone
       end
     else
       flash[:error] = 'Something went wrong, try again later.'
