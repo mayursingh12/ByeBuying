@@ -8,15 +8,27 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <aside class="category-filters">
-        <div class="category-filters-section">
-          <h3 class="widget-title-sm">Filter</h3>
-        </div>
-        <div class="category-filters-section">
-          <h3 class="widget-title-sm">Price</h3>
-          <input type="text" id="price-slider" />
-        </div>
-      </aside>
+      <div class="custome-filter-block">
+        <aside class="category-filters">
+          <div class="category-filters-section">
+            <h3 class="widget-title-sm">Filter</h3>
+          </div>
+          <div class="category-filters-section">
+            <h3 class="widget-title-sm">Price</h3>
+            <input type="text" id="price-slider" />
+            <br>
+            <br>
+
+            <form action="<%= subcategory_path(@subcategory)%>">
+              <input type="text" name="min_price" value="0">
+              <input type="text" name="max_price" value="0">
+              <input type="submit">
+            </form>
+            <span class="btn btn-primary filter-evnt"> filter </span>
+          </div>
+        </aside>
+      </div>
+
     </div>
     <div class="col-md-9">
       <% if @products.any? %>
@@ -107,3 +119,11 @@
   </div>
 </div>
 <div class="gap"></div>
+
+<script type="text/javascript" charset="utf-8">
+
+  $(document).ready(function(){
+      $('.custome-filter-block.from')
+  });
+
+</script>
