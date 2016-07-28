@@ -14,14 +14,14 @@ class WelcomeController < ApplicationController
     # else
     #   @advertisements = Advertisement.all.where(admin_verified: true)
     # end
-    @advertisements = Advertisement.all.where(admin_verified: true).last(15)
-    @products = Product.all.last(15)
-    @services = Service.all.last(15)
+    @products = Product.where(admin_verified: true).last(15)
+    @advertisements = Advertisement.where(admin_verified: true).last(15)
+    @services = Service.where(admin_verified: true).last(15)
 
   end
 
   def categories
-    @advertisements = Advertisement.all
+    @advertisements = Advertisement.where(admin_verified: true).last(15)
     @categories = Category.all
   end
 

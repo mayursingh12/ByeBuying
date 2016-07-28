@@ -7,8 +7,8 @@ class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show]
 
   def show
-    @products = @subcategory.products
-    @services = @subcategory.services
+    @products = @subcategory.products.where(admin_verified: true).last(50)
+    @services = @subcategory.services.where(admin_verified: true).last(50)
   end
 
   def get_subcategory

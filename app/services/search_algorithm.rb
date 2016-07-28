@@ -21,8 +21,8 @@ class SearchAlgorithm
 
   def find_and_load_models(product_ids, service_ids, advertisement_ids)
     @results << {
-        products: Product.where(id: product_ids),
-        services: Service.where(id: service_ids),
+        products: Product.where(id: product_ids, admin_verified: true),
+        services: Service.where(id: service_ids, admin_verified: true),
         advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids)
     }
   end
@@ -44,7 +44,7 @@ class SearchAlgorithm
   def get_product_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Product.where('name LIKE ?', "%#{search}%").map(&:id)
+      ids << Product.where(admin_verified: true).where('name LIKE ?', "%#{search}%").map(&:id)
     end
     single_arr(ids).uniq
   end
@@ -52,7 +52,7 @@ class SearchAlgorithm
   def get_service_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Service.where('service_description LIKE ?', "%#{search}%").map(&:id)
+      ids << Service.where(admin_verified: true).where('service_description LIKE ?', "%#{search}%").map(&:id)
     end
     single_arr(ids).uniq
   end
@@ -60,7 +60,7 @@ class SearchAlgorithm
   def get_advertisement_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Advertisement.where('title LIKE ?', "%#{search}%").map(&:id)
+      ids << Advertisement.where(admin_verified: true).where('title LIKE ?', "%#{search}%").map(&:id)
     end
     single_arr(ids).uniq
   end
@@ -76,15 +76,15 @@ class SearchAlgorithm
   end
 
   def get_product_id_by_category(category_ids)
-    product_ids = Product.where(category_id: category_ids).map(&:id)
+    product_ids = Product.where(category_id: category_ids, admin_verified: true).map(&:id)
   end
 
   def get_service_id_by_category(category_ids)
-    service_ids = Service.where(category_id: category_ids).map(&:id)
+    service_ids = Service.where(category_id: category_ids, admin_verified: true).map(&:id)
   end
 
   def get_advertisement_id_by_category(category_ids)
-    advertisement_ids = Advertisement.where(category_id: category_ids).map(&:id)
+    advertisement_ids = Advertisement.where(admin_verified: true).where(category_id: category_ids).map(&:id)
   end
 
 end
