@@ -229,3 +229,12 @@
     }
   }  
 }
+.otp-min-height{
+  min-height: 450px;
+}
+
+@media(max-width: 767px){
+  .otp-min-height{
+    min-height: inherit;
+  }  
+}
