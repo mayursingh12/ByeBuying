@@ -1,7 +1,5 @@
 class Customer::WelcomeController < Customer::BaseController
 
-  require 'net/http'
-
   before_filter :authenticate_user_admin, only: [:dashboard]
 
   before_filter :authenticate_no_user_admin, only: [:index]
