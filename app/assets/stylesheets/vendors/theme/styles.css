@@ -1273,12 +1273,12 @@ hr {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    background-position: center center;
-    background-image:url(http://d3tfanr7troppj.cloudfront.net/static_files/images/000/000/424/original/1400x220.png?1469109933);
+    background-position: right;
+    background-image:url('../../../assets/banner-img1.png');
     background-repeat: no-repeat;
 }
 .page-header-banner .page-title {
-    color: #fff;
+    color: #365271;
 }
 .page-header-banner .page-breadcrumb > li.active {
     color: #fff;
