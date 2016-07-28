@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row otp-min-height">
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4">
 		<div class="mfp-dialog clearfix" id="nav-login-dialog">
 			<h3 class="widget-title">OTP</h3>
-			<p>Enter OTP to move further</p>
+			<p>Enter OTP for Registration</p>
 			<hr />
 			<%= form_tag customer_step_three_path, method: :post  do %>
 				<div class="form-group">
@@ -11,7 +11,13 @@
 				</div>
 				<%= hidden_field_tag 'phone', @phone %>
 				<%= submit_tag 'Proceed', class: 'btn btn-primary' %>
-				<div class=" btn btn-info sending-otp">Send OTP</div>
+				<div class="gap gap-small"></div>
+			      <ul class="list-inline">
+			        <li>
+			        	<p style="font-size: 12px; color: #888;">Click on Send OTP to receive 4 digit verification code on your register mobile number.</p> 
+			        	<a href="javascript:void(0)" class="popup-text sending-otp">Send OTP</a>
+			      </ul>
+				<!-- <div class=" btn btn-info "></div> -->
 			<% end %>			
 		</div>		
 	</div>
