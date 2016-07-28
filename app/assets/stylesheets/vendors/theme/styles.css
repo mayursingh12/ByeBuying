@@ -20,7 +20,7 @@ body {
     font-family: 'Roboto', Tahoma, Arial, helvetica, sans-serif;
     font-size: 15px;
     /*background-color: #ededed;*/
-    background-image: url('../../../assets/texture-icon.jpg');
+    background-image: url('../../../assets/texture-icon.png');
     background-repeat: repeat;
 }
 h1,
