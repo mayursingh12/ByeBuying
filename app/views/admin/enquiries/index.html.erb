@@ -3,11 +3,7 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
-        <th>ID</th>
         <th>Enquiry for</th>
-        <th>Start date</th>
-        <th>End date</th>
-        <th>Expected price</th>
         <th>Email</th>
         <th>Phone</th>
         <th>Enquiry time</th>
@@ -17,11 +13,7 @@
       <tbody>
       <% @enquiries.each do |enquiry| %>
           <tr>
-            <td><%= enquiry.id%></td>
             <td><%= enquiry.is_product ? 'Product' : 'Service' %></td>
-            <td><%= enquiry.start_at.strftime(time_format)%></td>
-            <td><%= enquiry.end_at.strftime(time_format) %></td>
-            <td><%= enquiry.expected_price %></td>
             <td><%= enquiry.user.email %></td>
             <td><%= enquiry.user.contact %></td>
             <td><%= enquiry.created_at.strftime(time_format) %></td>
