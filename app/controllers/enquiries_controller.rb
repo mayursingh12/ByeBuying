@@ -30,9 +30,9 @@ class EnquiriesController < WelcomeController
 
   def set_variable
     if params[:product_id].present?
-      @product = Product.find params[:product_id]
+      @product = Product.where(admin_verified: true).find params[:product_id]
     else
-      @service = Service.find params[:service_id]
+      @service = Service.where(admin_verified: true).find params[:service_id]
     end
   end
 
