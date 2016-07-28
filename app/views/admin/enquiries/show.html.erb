@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <% if @enquiry.is_product? %>
+
+        Product: <%= @enquiry.product.name %><br>
+        Category: <%= @enquiry.product.subcategory.category.name %><br>
+        Subcategory: <%= @enquiry.product.subcategory.name %><br>
+        Description: <%= @enquiry.product.description %><br>
+        Technical specification: <%= @enquiry.product.technical_specification %><br>
+        State: <%= @enquiry.product.state.name %><br>
+        City: <%= @enquiry.product.city.name %><br>
+        Location: <%= @enquiry.product.location %><br>
+        Product start date: <%= @enquiry.product.start_at.strftime(time_format) %><br>
+        Product end date: <%= @enquiry.product.end_at.strftime(time_format) %><br>
+        Rent: <%= @enquiry.product.rent %><br>
+        Price in rupees: <%= @enquiry.product.price_in_rupees %><br>
+        Refundable security: <%= @enquiry.product.refundable_security %><br>
+        Cost of replacement: <%= @enquiry.product.cost_of_replacement %><br>
+        Negotiable: <%= @enquiry.product.negotiable ? 'Yes' : 'No'%> <br>
+        Youtube link: <%= @enquiry.product.youtube_link %><br>
+        Other: <%= @enquiry.product.other %><br>
+
+        Enquiry For: <%= 'Product'%><br>
+        Start Date: <%= @enquiry.start_at.strftime(time_format)%><br>
+        End Date: <%= @enquiry.end_at.strftime(time_format)%><br>
+
+        Expected Price: <%= @enquiry.expected_price%><br>
+        User Email: <%= @enquiry.user.email%><br>
+        User Contact: <%= @enquiry.user.contact%><br>
+
+
+    <% else %>
+
+        Description: <%= @enquiry.service.service_description %><br>
+        Category: <%= @enquiry.service.subcategory.category.name %><br>
+        Subcategory: <%= @enquiry.service.subcategory.name %><br>
+        Area in meters: <%= @enquiry.service.area_in_meters %><br>
+        Amenities available: <%= @enquiry.service.amenities_available %><br>
+        Nature of service: <%= @enquiry.service.nature_of_service %><br>
+        Club name: <%= @enquiry.service.club_name %><br>
+        Membership plan: <%= @enquiry.service.membership_plan %><br>
+        Service start date: <%= @enquiry.service.start_at.strftime(time_format) %><br>
+        Service end date: <%= @enquiry.service.end_at.strftime(time_format) %><br>
+        Negotiable: <%= @enquiry.service.negotiable ? 'Yes' : 'No'%> <br>
+        State: <%= @enquiry.service.state.name %><br>
+        City: <%= @enquiry.service.city.name %><br>
+        Location: <%= @enquiry.service.location %><br>
+        Price type: <%= @enquiry.service.price_type %><br>
+        Price in rupees: <%= @enquiry.service.price_in_rupees %><br>
+        Youtube link: <%= @enquiry.service.youtube_link %><br>
+        Other: <%= @enquiry.service.other %><br>
+
+        Enquiry For: <%= 'Service'%><br>
+        Start Date: <%= @enquiry.start_at.strftime(time_format)%><br>
+        End Date: <%= @enquiry.end_at.strftime(time_format)%><br>
+
+        Expected Price: <%= @enquiry.expected_price%><br>
+        Expected Price: <%= @enquiry.user.email%><br>
+        Expected Price: <%= @enquiry.user.contact%><br>
+    <% end %>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
