@@ -1,4 +1,16 @@
-<%= form_tag customer_step_two_path, method: :post  do %>
-    Phone: <%= text_field_tag :phone %>
-    <%= submit_tag 'Proceed'%>
-<% end %>
+<div class="row">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4">
+		<div class="mfp-dialog clearfix" id="nav-login-dialog">
+			<h3 class="widget-title">Phone Number</h3>
+			<p>Enter Your Phone no to get OTP</p>
+			<hr />
+			<%= form_tag customer_step_two_path, method: :post  do %>
+				<div class="form-group">
+	            	<%= text_field_tag :phone, "", class: 'form-control' %>
+	          	</div>
+	          	<%= submit_tag 'Proceed', class: 'btn btn-primary' %>
+          	<% end %>
+		</div>
+	</div>
+</div>
