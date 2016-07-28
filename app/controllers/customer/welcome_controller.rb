@@ -28,17 +28,26 @@ class Customer::WelcomeController < Customer::BaseController
   def otp
     @otp = rand(1000..9999).to_s
     @phone = params[:phone]
-    user_ = User.where(contact: params[:phone])
-    unless user_.present?
-      NewUser.create(phone: params[:phone], otp: @otp)
+    user_ = User.where(contact: params[:phone]).first
+    if user_.present?
+      # already registered
+      flash[:error] = 'Already registered'
+      redirect_to action: :mobile_number
     else
-     if user_.update_attribute(otp: @otp)
-       # do nothing
-     else
-       flash[:error] = 'Something went wrong, try again later.'
-       redirect_to root_path
+     new_user =  NewUser.where(phone: params[:phone]).first
+      if new_user.present?
+        if new_user.update_attributes(otp: @otp)
+            # do nothing
+          else
+            flash[:error] = 'Something went wrong, try again later.'
+            redirect_to action: :mobile_number
+        end
+      else
+        NewUser.create(phone: params[:phone], otp: @otp)
       end
+
     end
+
   end
 
   def after_otp
@@ -46,9 +55,10 @@ class Customer::WelcomeController < Customer::BaseController
     if new_user.present?
       if new_user.otp == params[:otp]
         # do nothing
+        redirect_to action: :registration, contact: params[:phone]
       else
         flash[:error] = 'OTP not matched'
-        redirect_to root_path
+        render action: :otp
       end
     else
       flash[:error] = 'Something went wrong, try again later.'
@@ -95,6 +105,7 @@ class Customer::WelcomeController < Customer::BaseController
     params.require(:customer).permit(:name,
                                      :email,
                                      :password,
+                                     :contact,
                                      :password_confirmation)
   end
 

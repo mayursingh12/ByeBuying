@@ -6,6 +6,8 @@
       <p>Welcome, Register to get Enter</p>
       <hr />
       <%= simple_form_for :customer, :url => customer_sign_up_path do |f| %>
+          <%= f.input :contact, as: :hidden, input_html: { value: params[:contact]} %>
+
           <div class="form-group">
             <%= f.input :name, class: 'form-control' %>
           </div>
