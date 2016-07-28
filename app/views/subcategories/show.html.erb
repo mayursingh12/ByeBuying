@@ -15,16 +15,16 @@
           </div>
           <div class="category-filters-section">
             <h3 class="widget-title-sm">Price</h3>
-            <input type="text" id="price-slider" />
-            <br>
-            <br>
+            <!--<input type="text" id="price-slider" />-->
+            <!--<br>-->
+            <!--<br>-->
 
             <form action="<%= subcategory_path(@subcategory)%>">
-              <input type="text" name="min_price" value="0">
-              <input type="text" name="max_price" value="0">
-              <input type="submit">
+              <input type="text" name="min_price" class="set-min-price">
+              <input type="text" name="max_price" class="set-max-price">
+              <input type="submit" class="btn btn-primary">
             </form>
-            <span class="btn btn-primary filter-evnt"> filter </span>
+            <!--<span class="btn btn-primary filter-evnt"> filter </span>-->
           </div>
         </aside>
       </div>
@@ -123,7 +123,8 @@
 <script type="text/javascript" charset="utf-8">
 
   $(document).ready(function(){
-      $('.custome-filter-block.from')
+      $('.custome-filter-block .set-min-price').val("<%= params[:min_price].present? ?  params[:min_price] : @min_price %>")
+      $('.custome-filter-block .set-max-price').val("<%= params[:max_price].present? ?  params[:max_price] : @max_price %>")
   });
 
 </script>
