@@ -67,6 +67,10 @@ Rails.application.routes.draw do
     post 'sign_up' => 'welcome#sign_up', as:'sign_up'
     get 'dashboard' => 'welcome#dashboard'
     get 'profile' => 'welcome#profile'
+    put 'update_profile_image' => 'welcome#update_profile_image'
+    put 'change_password_' => 'welcome#change_password_'
+    put 'change_mobile' => 'welcome#change_mobile'
+
 
     resources :advertisements do
       resources :advertisement_images
