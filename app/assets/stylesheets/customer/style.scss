@@ -250,6 +250,31 @@
   }
 }
 
+.profile-page-con{
+  width: 100%;
+  .profile-white-con{
+    max-width: inherit;
+    .product-detail{
+      width: 100%;
+      padding: 15px 5px 5px 5px;
+      border-bottom: 1px solid #eeeeee;
+      h4{
+        font-size: 15px;
+        color: #486d97;
+        margin: 0;
+      }
+      p{
+        font-size: 14px;
+        color: #8e8e8e;
+        margin: 0;
+      }
+    }
+    .upload-img{
+      display: inline-block;
+      border: 1px solid #eeeeee;
+    }
+  }
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
