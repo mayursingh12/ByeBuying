@@ -155,14 +155,6 @@
                 <p><%= @enquiry.service.negotiable ? 'Yes' : 'No' %></p>
               </div>
               <div class="product-detail">
-                <h4>Youtube link:</h4>
-                <p><%= @enquiry.service.youtube_link %></p>
-              </div>
-              <div class="product-detail">
-                <h4>Other:</h4>
-                <p><%= @enquiry.service.other %></p>
-              </div>
-              <div class="product-detail">
                 <h4>State:</h4>
                 <p><%= @enquiry.service.state.name %></p>
               </div>
@@ -189,6 +181,14 @@
               <div class="product-detail">
                 <h4>Price in rupees:</h4>
                 <p><%= @enquiry.service.price_in_rupees %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Youtube link:</h4>
+                <p><%= @enquiry.service.youtube_link %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Other:</h4>
+                <p><%= @enquiry.service.other %></p>
               </div>
             </div>
             <div class="col-sm-6">
