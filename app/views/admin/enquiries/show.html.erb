@@ -1,72 +1,224 @@
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <% if @enquiry.is_product? %>
+<div class="admin-main-show">
+  <div class="row">
+    <div class="col-xs-12">
+        <% if @enquiry.is_product? %>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="product-detail">
+                <h4>Product:</h4>
+                <p><%= @enquiry.product.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Category:</h4>
+                <p><%= @enquiry.product.subcategory.category.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Subcategory:</h4>
+                <p><%= @enquiry.product.subcategory.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Description:</h4>
+                <p><%= @enquiry.product.description %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Technical specification:</h4>
+                <p><%= @enquiry.product.technical_specification %></p>
+              </div>
+              <div class="product-detail">
+                <h4>State:</h4>
+                <p><%= @enquiry.product.state.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>City:</h4>
+                <p><%= @enquiry.product.city.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Location:</h4>
+                <p><%= @enquiry.product.location %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Product start date:</h4>
+                <p><%= @enquiry.product.start_at.strftime(time_format) %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Product end date:</h4>
+                <p><%= @enquiry.product.end_at.strftime(time_format) %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Rent:</h4>
+                <p><%= @enquiry.product.rent %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Price in rupees:</h4>
+                <p><%= @enquiry.product.price_in_rupees %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Refundable security:</h4>
+                <p><%= @enquiry.product.refundable_security %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Cost of replacement:</h4>
+                <p><%= @enquiry.product.cost_of_replacement %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Negotiable:</h4>
+                <p><%= @enquiry.product.negotiable ? 'Yes' : 'No' %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Youtube link:</h4>
+                <p><%= @enquiry.product.youtube_link %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Other:</h4>
+                <p><%= @enquiry.product.other %></p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="product-detail">
+                <h4>Enquiry For:</h4>
+                <p>Product</p>
+              </div>
+              <div class="product-detail">
+                <h4>Require Start Date:</h4>
+                <p><%= @enquiry.start_at.strftime(time_format)%></p>
+              </div>
+              <div class="product-detail">
+                <h4>Require End Date:</h4>
+                <p><%= @enquiry.end_at.strftime(time_format)%></p>
+              </div>
+              <div class="product-detail">
+                <h4>Expected Price:</h4>
+                <p><%= @enquiry.expected_price%></p>
+              </div>
+              <div class="product-detail">
+                <h4>Enquire By:</h4>
+                <p><%= @enquiry.user.email%></p>
+              </div>
+              <div class="product-detail">
+                <h4>User Contact:</h4>
+                <p><%= @enquiry.user.contact %></p>
+              </div>
+            </div>
+          </div>
+      <% else %>
 
-        Product: <%= @enquiry.product.name %><br>
-        Category: <%= @enquiry.product.subcategory.category.name %><br>
-        Subcategory: <%= @enquiry.product.subcategory.name %><br>
-        Description: <%= @enquiry.product.description %><br>
-        Technical specification: <%= @enquiry.product.technical_specification %><br>
-        State: <%= @enquiry.product.state.name %><br>
-        City: <%= @enquiry.product.city.name %><br>
-        Location: <%= @enquiry.product.location %><br>
-        Product start date: <%= @enquiry.product.start_at.strftime(time_format) %><br>
-        Product end date: <%= @enquiry.product.end_at.strftime(time_format) %><br>
-        Rent: <%= @enquiry.product.rent %><br>
-        Price in rupees: <%= @enquiry.product.price_in_rupees %><br>
-        Refundable security: <%= @enquiry.product.refundable_security %><br>
-        Cost of replacement: <%= @enquiry.product.cost_of_replacement %><br>
-        Negotiable: <%= @enquiry.product.negotiable ? 'Yes' : 'No'%> <br>
-        Youtube link: <%= @enquiry.product.youtube_link %><br>
-        Other: <%= @enquiry.product.other %><br>
-
-        Enquiry For: <%= 'Product'%><br>
-        Start Date: <%= @enquiry.start_at.strftime(time_format)%><br>
-        End Date: <%= @enquiry.end_at.strftime(time_format)%><br>
-
-        Expected Price: <%= @enquiry.expected_price%><br>
-        User Email: <%= @enquiry.user.email%><br>
-        User Contact: <%= @enquiry.user.contact%><br>
-
-
-    <% else %>
-
-        Description: <%= @enquiry.service.service_description %><br>
-        Category: <%= @enquiry.service.subcategory.category.name %><br>
-        Subcategory: <%= @enquiry.service.subcategory.name %><br>
-        <% if @enquiry.service.subcategory.category.name == 'Commercial Space' %>
-            Area in meters: <%= @enquiry.service.area_in_meters %><br>
-            Amenities available: <%= @enquiry.service.amenities_available %><br>
-        <% end %>
-
-        <% if  @enquiry.service.subcategory.name == 'Others'%>
-            Nature of service: <%= @enquiry.service.nature_of_service %><br>
-        <% end %>
-        <% if  @enquiry.service.subcategory.category.name == 'Membership'%>
-            Club name: <%= @enquiry.service.club_name %><br>
-            Membership plan: <%= @enquiry.service.membership_plan %><br>
-            Service start date: <%= @enquiry.service.start_at.strftime(time_format) %><br>
-            Service end date: <%= @enquiry.service.end_at.strftime(time_format) %><br>
-        <% end %>
-
-        Negotiable: <%= @enquiry.service.negotiable ? 'Yes' : 'No'%> <br>
-        State: <%= @enquiry.service.state.name %><br>
-        City: <%= @enquiry.service.city.name %><br>
-        Location: <%= @enquiry.service.location %><br>
-        Price type: <%= @enquiry.service.price_type %><br>
-        Price in rupees: <%= @enquiry.service.price_in_rupees %><br>
-        Youtube link: <%= @enquiry.service.youtube_link %><br>
-        Other: <%= @enquiry.service.other %><br>
-
-        Enquiry For: <%= 'Service'%><br>
-        Start Date: <%= @enquiry.start_at.strftime(time_format)%><br>
-        End Date: <%= @enquiry.end_at.strftime(time_format)%><br>
-
-        Expected Price: <%= @enquiry.expected_price%><br>
-        User Email: <%= @enquiry.user.email%><br>
-        User Contact: <%= @enquiry.user.contact%><br>
-    <% end %>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="product-detail">
+                <h4>Description:</h4>
+                <p><%= @enquiry.service.service_description %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Category:</h4>
+                <p><%= @enquiry.service.subcategory.category.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Subcategory:</h4>
+                <p><%= @enquiry.service.subcategory.name %></p>
+              </div>
+              <% if @enquiry.service.subcategory.category.name == 'Commercial Space' %>
+                  <div class="product-detail">
+                    <h4>Area in meters:</h4>
+                    <p><%= @enquiry.service.area_in_meters %></p>
+                  </div>
+                  <div class="product-detail">
+                    <h4>Amenities available:</h4>
+                    <p><%= @enquiry.service.amenities_available %></p>
+                  </div>
+              <% end %>
+              <% if  @enquiry.service.subcategory.name == 'Others'%>
+                  <div class="product-detail">
+                    <h4> Nature of service:</h4>
+                    <p><%= @enquiry.service.nature_of_service %></p>
+                  </div>
+              <% end %>
+              <% if  @enquiry.service.subcategory.category.name == 'Membership'%>
+                  <div class="product-detail">
+                    <h4>Club name:</h4>
+                    <p><%= @enquiry.service.club_name %></p>
+                  </div>
+                  <div class="product-detail">
+                    <h4>Membership plan:</h4>
+                    <p><%= @enquiry.service.membership_plan %></p>
+                  </div>
+                  <div class="product-detail">
+                    <h4>Service start date:</h4>
+                    <p><%= @enquiry.service.start_at.strftime(time_format) %></p>
+                  </div>
+                  <div class="product-detail">
+                    <h4>Service end date:</h4>
+                    <p><%= @enquiry.service.end_at.strftime(time_format) %></p>
+                  </div>
+              <% end %>
+              <div class="product-detail">
+                <h4>Negotiable:</h4>
+                <p><%= @enquiry.service.negotiable ? 'Yes' : 'No' %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Youtube link:</h4>
+                <p><%= @enquiry.service.youtube_link %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Other:</h4>
+                <p><%= @enquiry.service.other %></p>
+              </div>
+              <div class="product-detail">
+                <h4>State:</h4>
+                <p><%= @enquiry.service.state.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>City:</h4>
+                <p><%= @enquiry.service.city.name %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Location:</h4>
+                <p><%= @enquiry.service.location %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Product start date:</h4>
+                <p><%= @enquiry.service.start_at.strftime(time_format) %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Product end date:</h4>
+                <p><%= @enquiry.service.end_at.strftime(time_format) %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Price type:</h4>
+                <p><%= @enquiry.service.price_type %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Price in rupees:</h4>
+                <p><%= @enquiry.service.price_in_rupees %></p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="product-detail">
+                <h4>Enquiry For:</h4>
+                <p>Service</p>
+              </div>
+              <div class="product-detail">
+                <h4>Require Start Date:</h4>
+                <p><%= @enquiry.start_at.strftime(time_format)%></p>
+              </div>
+              <div class="product-detail">
+                <h4>Require End Date:</h4>
+                <p><%= @enquiry.end_at.strftime(time_format)%></p>
+              </div>
+              <div class="product-detail">
+                <h4>Expected Price:</h4>
+                <p><%= @enquiry.expected_price%></p>
+              </div>
+              <div class="product-detail">
+                <h4>Enquire By:</h4>
+                <p><%= @enquiry.user.email%></p>
+              </div>
+              <div class="product-detail">
+                <h4>User Contact:</h4>
+                <p><%= @enquiry.user.contact %></p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
   </div>
-  <div class="col-sm-4"></div>
 </div>

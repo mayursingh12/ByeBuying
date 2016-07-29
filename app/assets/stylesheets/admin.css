@@ -3,4 +3,5 @@
  *= require ./vendors/loading-bar
  *= require ./vendors/notify
  *= require ./vendors/select2
+ *= require ./admin/style
  */
