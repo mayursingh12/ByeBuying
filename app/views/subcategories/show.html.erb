@@ -18,12 +18,21 @@
             <!--<input type="text" id="price-slider" />-->
             <!--<br>-->
             <!--<br>-->
-
-            <form action="<%= subcategory_path(@subcategory)%>">
-              <input type="text" name="min_price" class="set-min-price">
-              <input type="text" name="max_price" class="set-max-price">
-              <input type="submit" class="btn btn-primary">
-            </form>
+            <div class="filter_main_form">
+                <form action="<%= subcategory_path(@subcategory)%>">
+                  <div class="form-group">
+                    <label>Minimum</label>
+                    <i class="fa fa-inr rupee-icon"></i>
+                    <input type="text" name="min_price" class="form-control set-min-price">
+                  </div>
+                  <div class="form-group">
+                    <label>Maximum</label>
+                    <i class="fa fa-inr rupee-icon"></i>
+                    <input type="text" name="max_price" class="form-control set-max-price">
+                  </div>
+                  <input type="submit" class="btn btn-primary">
+                </form>
+            </div>
             <!--<span class="btn btn-primary filter-evnt"> filter </span>-->
           </div>
         </aside>

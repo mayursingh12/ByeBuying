@@ -233,6 +233,23 @@
   min-height: 450px;
 }
 
+.filter_main_form{
+  .form-group{
+    position: relative;
+    .rupee-icon{
+      position: absolute;
+      left: 10px;
+      top: 35px;
+    }
+    .form-control{
+      padding-left: 20px;
+    }
+    label{
+      font-size: 12px;
+    }
+  }
+}
+
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
