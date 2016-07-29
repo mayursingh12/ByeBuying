@@ -1,8 +1,10 @@
 class Customer::WelcomeController < Customer::BaseController
 
-  before_filter :authenticate_user_admin, only: [:dashboard]
+  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile]
 
   before_filter :authenticate_no_user_admin, only: [:index]
+
+  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile]
 
   before_action :set_header_categories
 
@@ -89,6 +91,39 @@ class Customer::WelcomeController < Customer::BaseController
       end
   end
 
+  def profile
+
+  end
+
+  def update_profile_image
+    if @customer.update_attributes(image: params[:image])
+      redirect_to customer_profile_path
+    else
+      flash[:error] = "#{@customer.errors.full_messages.first}"
+      render action: :profile
+    end
+  end
+
+  def change_password_
+    if @customer.update_attributes(password: params[:password])
+      flash[:success] = 'Successfully updated'
+      redirect_to customer_profile_path
+    else
+      flash[:error] = "#{@customer.errors.full_messages.first}"
+      render action: :profile
+    end
+  end
+
+  def change_mobile
+    if @customer.update_attributes(contact: params[:contact])
+      flash[:success] = 'Successfully updated'
+      redirect_to customer_profile_path
+    else
+      flash[:error] = "#{@customer.errors.full_messages.first}"
+      render action: :profile
+    end
+  end
+
   private
 
   def sign_in_customer
@@ -109,6 +144,14 @@ class Customer::WelcomeController < Customer::BaseController
                                      :password,
                                      :contact,
                                      :password_confirmation)
+  end
+
+  def set_customer
+    @customer = current_user
+  end
+
+  def customer_image_params
+    params.require(:customer).permit(:image)
   end
 
 
