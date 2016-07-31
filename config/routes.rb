@@ -84,7 +84,11 @@ Rails.application.routes.draw do
       resources :service_images
     end
 
-    resources :enquiries
+    resources :enquiries do
+      member do
+        put 'deal'
+      end
+    end
 
   end
 

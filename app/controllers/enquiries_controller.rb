@@ -10,20 +10,22 @@ class EnquiriesController < WelcomeController
     if @product.present?
       @enquiry = Enquiry.new(enquiry_params)
       if @enquiry.save
+        flash[:success] = 'Enquired successfully'
         redirect_to product_path(@product)
       else
+        flash[:success] = 'Something went wrong'
         render action: :new
       end
     else
       @enquiry = Enquiry.new(service_enquiry_params)
       if @enquiry.save
+        flash[:success] = 'Enquired successfully'
         redirect_to service_path(@service)
       else
+        flash[:success] = 'Something went wrong'
         render action: :new
       end
     end
-
-
   end
 
   private
