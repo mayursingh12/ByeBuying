@@ -42,10 +42,29 @@
               </div>
             </div>
             <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Expected price:</h4>
-                <p><%= @enquiry.expected_price %><br></p>
-              </div>
+              <% if @enquiry.status == 'Enquiry' and @enquiry.product.user_id == current_user.id %>
+                  <%= simple_form_for [:customer, @enquiry] do |f| %>
+                      <%= f.input :expected_price %>
+                      <%= f.input :description %>
+                      <%= f.submit 'Send quote', class: 'btn btn-primary'%>
+                  <% end %>
+              <% else %>
+                  <div class="product-detail">
+                    <h4>
+                      <%= @enquiry.status == 'Quoted' ? 'Quoted price' : ' Expected price'%>
+                    </h4>
+                    <p><%= @enquiry.expected_price %><br></p>
+                  </div>
+                  <div class="product-detail">
+                    <h4>Description:</h4>
+                    <p><%= @enquiry.description %><br></p>
+                  </div>
+
+                  <% if @enquiry.status == 'Quoted' and @enquiry.product.user_id == current_user.id %>
+                      <%= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>
+                      <%= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>
+                  <%- end %>
+              <% end %>
             </div>
           </div>
           <div class="col-sm-6">
@@ -106,12 +125,36 @@
                 <p><%= @enquiry.service.price_in_rupees %><br></p>
               </div>
             </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Expected price:</h4>
-                <p><%= @enquiry.expected_price %><br></p>
-              </div>
-            </div>
+            <!--<div class="col-sm-12">-->
+              <!--<div class="product-detail">-->
+                <!--<h4>Expected price:</h4>-->
+                <!--<p><%#= @enquiry.expected_price %><br></p>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <% if @enquiry.status == 'Enquiry' and @enquiry.service.user_id == current_user.id %>
+                <%= simple_form_for [:customer, @enquiry] do |f| %>
+                    <%= f.input :expected_price %>
+                    <%= f.input :description %>
+                    <%= f.submit 'Send quote', class: 'btn btn-primary'%>
+                <% end %>
+            <% else %>
+                <div class="product-detail">
+                  <h4>
+                    <%= @enquiry.status == 'Quoted' ? 'Quoted price' : ' Expected price'%>
+                  </h4>
+                  <p><%= @enquiry.expected_price %><br></p>
+                </div>
+                <div class="product-detail">
+                  <h4>Description:</h4>
+                  <p><%= @enquiry.description %><br></p>
+                </div>
+                <% if @enquiry.status == 'Quoted' and @enquiry.service.user_id == current_user.id %>
+                    <%= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>
+                    <%= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>
+                <%- end %>
+            <% end %>
+
           </div>
           <div class="col-sm-6">
             <div class="add-image-con">

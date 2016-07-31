@@ -10,6 +10,15 @@ class Enquiry < ActiveRecord::Base
   validates :status, presence: true
   # validates :is_product, presence: true
 
+  STATUS_ENQUIRY = 'Enquiry'
+
+  STATUS_QUOTED = 'Quoted'
+
+  STATUS_CONFIRMED = 'Confirmed'
+
+  STATUSES = [STATUS_ENQUIRY, STATUS_QUOTED, STATUS_CONFIRMED]
+
+
   validate def require_product
     if self.is_product? and self.product_id.blank?
       self.errors.add(:product_id, "product can't blank")
@@ -29,7 +38,7 @@ class Enquiry < ActiveRecord::Base
   end
 
   validate def service_start_date
-    if !self.is_product? and (self.start_at < self.service.start_at or self.start_at >= self.end_at)
+    if !self.is_product? and (self.start_at < self.service.start_at or self.start_at >= self.end_at) and self.service.subcategory.category.name == 'Membership'
       self.errors.add(:start_at, "must be between start & end time ")
     end
   end
@@ -41,7 +50,7 @@ class Enquiry < ActiveRecord::Base
   end
 
   validate def service_end_date
-    if !self.is_product? and (self.end_at > self.service.end_at or self.end_at < self.start_at )
+    if !self.is_product? and (self.end_at > self.service.end_at or self.end_at < self.start_at ) and self.service.subcategory.category.name == 'Membership'
       self.errors.add(:end_at, "must be between start & end time ")
     end
   end

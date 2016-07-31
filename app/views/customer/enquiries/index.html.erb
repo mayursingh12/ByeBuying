@@ -17,10 +17,11 @@
 
         $('#calendar_enquiry').fullCalendar({
             header: {
-                left: 'prev,next today',
+                left: '',
                 center: 'title',
-                right: ''
+                right: 'prev, next, today'
             },
+            displayEventTime: false,
             defaultDate: "<%= DateTime.now %>",
 //            editable: true,
             eventLimit: true, // allow "more" link when too many events
@@ -49,6 +50,18 @@
                         url: "<%= customer_enquiry_path(service_enquiry) %>"
                     },
                     <% end %>
+                <% end %>
+                <% if @enquiries[:customer_enquiries].any? %>
+                <% @enquiries[:customer_enquiries].each do |customer_enquiry| %>
+                {
+                    title: "<%= customer_enquiry.is_product ? customer_enquiry.product.name : customer_enquiry.service.service_description  %>",
+                    start: "<%= customer_enquiry.start_at %>",
+                    end: "<%= customer_enquiry.end_at %>",
+                    description: "<%= customer_enquiry.expected_price %>",
+                    color: "<%=  customer_enquiry.is_product ? '#0fa688' : '#ff8e18' %>",
+                    url: "<%= customer_enquiry_path(customer_enquiry) %>"
+                },
+                <% end %>
                 <% end %>
             ]
         });
