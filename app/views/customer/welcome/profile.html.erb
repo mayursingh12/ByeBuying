@@ -1,38 +1,35 @@
 <div class="profile-page-con">
     <div class="mfp-dialog profile-white-con clearfix" id="nav-login-dialog">
         <div class="col-sm-6">
-            <div class="img-section">
-                <% if @customer.image.present? %>
-                    <%= image_tag @customer.image(:size_500x500), class: 'img-responsive' %>
-                <% end %>
-                <%= form_tag customer_update_profile_image_path, method: :put, multipart: true do %>
-                    <%= file_field_tag :image, class: 'upload-img' %>
-                    <%= submit_tag("upload", class: "btn btn-primary") %>
-                <% end %>
-            </div>
+          <div class="product-detail">
+            <h4>Name:</h4>
+            <p><%= @customer.name%></p>
+          </div>
+          <div class="product-detail">
+            <h4>Email:</h4>
+            <p><%= @customer.email%></p>
+          </div>
+          <div class="product-detail">
+            <h4>Mobile Number:</h4>
+            <p class="mobile-number">
+              <%= @customer.contact%> <i class="fa fa-edit edit-icon" style="cursor: pointer;"></i>
+            </p>
+            <%= form_tag customer_change_mobile_path, class: 'mobile-form', method: :put do %>
+                <%= text_field_tag :contact, "", required: true %>
+                <%= submit_tag("update", class: "btn btn-primary update-phn-btn") %>
+            <% end %>
+          </div>
         </div>
         <div class="col-sm-6">
-            <div class="product-detail">
-                <h4>Name:</h4>
-                <p><%= @customer.name%></p>
-            </div>
-            <div class="product-detail">
-                <h4>Email:</h4>
-                <p><%= @customer.email%></p>
-            </div>
-            <div class="product-detail">
-                <h4>Mobile Number:</h4>
-                <% if @customer.contact.present? %>
-                    <p class="mobile-number">
-                    <%= @customer.contact%> <i class="fa fa-edit edit-icon" style="cursor: pointer;"></i>
-                    </p>
-                <% else %>
-                    <%= form_tag customer_change_mobile_path, class: 'mobile-form', method: :put do %>
-                        <%= text_field_tag :contact %>
-                        <%= submit_tag("update", class: "btn btn-primary") %>
-                    <% end %>
-                <% end %>
-            </div>
+          <div class="img-section">
+            <% if @customer.image.present? %>
+                <%= image_tag @customer.image(:size_500x500), class: 'img-responsive' %>
+            <% end %>
+            <%= form_tag customer_update_profile_image_path, method: :put, multipart: true do %>
+                <%= file_field_tag :image, class: 'upload-img' %>
+                <%= submit_tag("upload", class: "btn btn-primary") %>
+            <% end %>
+          </div>
         </div>
         <div class="col-xs-12">
             <div class="text-center">
@@ -50,24 +47,24 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.change-form').css('display', 'none');
+        $('.mobile-form').css('display', 'none');
 
         $('.change-btn').click(function(){
             $('.change-form').css('display', 'block');
             $('.change-btn').css('display', 'none');
         });
         $('.change-submit').click(function(){
-            if($('.pass-textfield').val("")){
-                alert('Password Textfield Should not be Blank');   
-            }
-            else{
             $('.change-form').css('display', 'none');
-            $('.change-btn').css('display', 'block'); 
-            }
-            return false;
+            $('.change-btn').css('display', 'block');
         });
-        $('.edit-icon').change(function(){
+        $('.edit-icon').click(function(){
             $('.mobile-form').css('display', 'block');
+            $('.mobile-number').css('display', 'none');
         });
+//        $('.update-phn-btn').click(function(){
+//            $('.mobile-form').css('display', 'block');
+//            $('.mobile-number').css('display', 'none');
+//        });
     });
 </script>
 
