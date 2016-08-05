@@ -7,7 +7,12 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
 
   def index
-    @products = Product.where(admin_verified: true).all.paginate(:page => params[:page], :per_page => 20)
+    if request.format == 'application/json'
+      @products = Product.where(admin_verified: true).all
+    else
+      @products = Product.where(admin_verified: true).all.paginate(:page => params[:page], :per_page => 20)
+    end
+
   end
 
   def show

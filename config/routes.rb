@@ -120,6 +120,10 @@ Rails.application.routes.draw do
 
   resources :searches
 
+  resources :cities
+
+  resources :states
+
   get 'test' => 'welcome#test'
 
 
