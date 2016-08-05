@@ -1,28 +1,99 @@
-<%= @customer.name %>
+<div class="profile-page-con">
+    <div class="mfp-dialog profile-white-con clearfix" id="nav-login-dialog">
+        <div class="col-sm-6">
+          <div class="product-detail">
+            <h4>Name:</h4>
+            <p><%= @customer.name%></p>
+          </div>
+          <div class="product-detail">
+            <h4>Email:</h4>
+            <p><%= @customer.email%></p>
+          </div>
+          <div class="product-detail">
+            <h4>Mobile Number:</h4>
+            <p class="mobile-number">
+              <%= @customer.contact%> <i class="fa fa-edit edit-icon" style="cursor: pointer;"></i>
+            </p>
+            <%= form_tag customer_change_mobile_path, class: 'mobile-form', method: :put do %>
+                <%= text_field_tag :contact, "", required: true %>
+                <%= submit_tag("update", class: "btn btn-primary update-phn-btn") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="img-section">
+            <% if @customer.image.present? %>
+                <%= image_tag @customer.image(:size_500x500), class: 'img-responsive' %>
+            <% end %>
+            <%= form_tag customer_update_profile_image_path, class: 'upload-form', method: :put, multipart: true do %>
+                <%= file_field_tag :image, class: 'upload-img' %>
+                <%= submit_tag("upload", class: "btn btn-primary upload-btn") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="text-center">
+                <a href="javascript:void(0)" class="change-btn">Change Password</a>
+                <%= form_tag customer_change_password__path, class: 'change-form', method: :put do %>
+                    <%= password_field_tag :password, "", class: 'pass-textfield' %>
+                    <%= submit_tag("update", class: "btn btn-primary change-submit") %>
+                <% end %>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
 
-<%= @customer.email %>
-<%= @customer.contact %>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.change-form').css('display', 'none');
+        $('.mobile-form').css('display', 'none');
 
-<% if @customer.image.present? %>
-    <%= image_tag @customer.image(:size_500x500) %>
-<% end %>
+        $('.change-btn').click(function(){
+            $('.change-form').css('display', 'block');
+            $('.change-btn').css('display', 'none');
+        });
+        $('.change-submit').click(function(){
+            $('.change-form').css('display', 'none');
+            $('.change-btn').css('display', 'block');
+        });
+        $('.edit-icon').click(function(){
+            $('.mobile-form').css('display', 'block');
+            $('.mobile-number').css('display', 'none');
+        });
+//        $('.update-phn-btn').click(function(){
+//            $('.mobile-form').css('display', 'block');
+//            $('.mobile-number').css('display', 'none');
+//        });
+    });
+</script>
 
 
-<%= form_tag customer_update_profile_image_path, method: :put, multipart: true do %>
-    <%= label_tag :image %>
-    <%= file_field_tag :image %>
-    <%= submit_tag("upload", class: "btn btn-primary") %>
-<% end %>
+<%#= @customer.name %>
+
+<%#= @customer.email %>
+<%#= @customer.contact %>
+
+<%# if @customer.image.present? %>
+    <%#= image_tag @customer.image(:size_500x500) %>
+<%# end %>
 
 
-<%= form_tag customer_change_password__path, method: :put do %>
-    <%= label_tag :change_password %>
-    <%= password_field_tag :password %>
-    <%= submit_tag("update", class: "btn btn-primary") %>
-<% end %>
+<%#= form_tag customer_update_profile_image_path, method: :put, multipart: true do %>
+    <%#= label_tag :image %>
+    <%#= file_field_tag :image %>
+    <%#= submit_tag("upload", class: "btn btn-primary") %>
+<%# end %>
 
-<%= form_tag customer_change_mobile_path, method: :put do %>
-    <%= label_tag :mobile %>
-    <%= password_field_tag :contact %>
-    <%= submit_tag("update", class: "btn btn-primary") %>
-<% end %>
+
+<%#= form_tag customer_change_password__path, method: :put do %>
+    <%#= label_tag :change_password %>
+    <%#= password_field_tag :password %>
+    <%#= submit_tag("update", class: "btn btn-primary") %>
+<%# end %>
+
+<%#= form_tag customer_change_mobile_path, method: :put do %>
+    <%#= label_tag :mobile %>
+    <%#= password_field_tag :contact %>
+    <%#= submit_tag("update", class: "btn btn-primary") %>
+<%# end %>

@@ -250,6 +250,64 @@
   }
 }
 
+.profile-page-con{
+  width: 100%;
+  .profile-white-con{
+    max-width: inherit;
+    .product-detail{
+      width: 100%;
+      padding: 15px 5px 5px 5px;
+      border-bottom: 1px solid #eeeeee;
+      h4{
+        font-size: 15px;
+        color: #486d97;
+        margin: 0;
+      }
+      p{
+        font-size: 14px;
+        color: #8e8e8e;
+        margin: 0;
+      }
+    }
+    .upload-img{
+      display: inline-block;
+      border: 1px solid #eeeeee;
+    }
+    .change-btn{
+      width: 100%;
+      max-width: 400px;
+      background-color: #486d97;
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px;
+      color: #ffffff;
+    }
+    .change-form{
+      margin-top: 20px;
+      .pass-textfield{
+        width: 100%;
+        max-width: 400px;
+        height: 35px;
+      }
+      .change-submit{
+        height: 35px;
+        border-radius: 0px;
+        padding: 8px 40px;
+      }
+    }
+    .img-section{
+      .upload-form{
+        margin-top: 10px;
+        text-align: center;
+        .upload-btn{
+          height: 26px;
+          border-radius: 0px;
+          padding: 0px 40px;
+        }
+      }
+    }
+  }
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
