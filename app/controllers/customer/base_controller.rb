@@ -21,4 +21,20 @@ class Customer::BaseController < ApplicationController
     @categories = Category.all
   end
 
+  def authenticate_user_api
+    unless current_user.present?
+      render status: :unprocessable_entity, json: {errors: ['Not signed in']}
+    end
+  end
+
+  private
+
+  def api_user
+    @api_user ||= Customer.where(api_token: params[:api_token]).last
+  end
+
+  def current_user
+    params[:api_token].present? ? api_user : super
+  end
+
 end
