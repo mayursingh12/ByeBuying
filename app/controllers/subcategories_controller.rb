@@ -7,6 +7,10 @@ class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show]
   before_action :set_min_max_price, only: [:show]
 
+  def index
+    @subcategories = Subcategory.all
+  end
+
   def show
     # where('price > ? AND price < ?', min, max)
     if params[:min_price].present? && params[:max_price].present?

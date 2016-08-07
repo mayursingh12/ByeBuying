@@ -25,9 +25,9 @@ class WelcomeController < ApplicationController
     @categories = Category.all
   end
 
-  def subcategories
-
-  end
+  # def subcategories
+  #
+  # end
 
   def contact_us
 

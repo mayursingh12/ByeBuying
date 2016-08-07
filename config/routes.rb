@@ -94,7 +94,7 @@ Rails.application.routes.draw do
 
   # Rahul
   get 'about_us' => 'welcome#about_us'
-  get 'subcategories' => 'welcome#subcategories', as:'subcategories'
+  # get 'subcategories' => 'welcome#subcategories', as:'subcategories'
   get 'product_detail' => 'welcome#product_detail'
   get 'contact_us' => 'welcome#contact_us'
   get 'listing_policy' => 'welcome#listing_policy'
@@ -107,6 +107,8 @@ Rails.application.routes.draw do
 
 
   resources :subscribers
+
+  resources :categories
 
   resources :subcategories
 
