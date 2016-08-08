@@ -39,6 +39,7 @@ class Customer::WelcomeController < Customer::BaseController
           if new_user.present?
             if new_user.update_attributes(otp: @otp)
               # do nothing
+              render status: :ok, json: {new_user: new_user }
             else
               render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
             end
