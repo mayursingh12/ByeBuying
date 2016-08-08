@@ -14,12 +14,22 @@ class Customer::ProductsController < Customer::BaseController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
-      flash[:success] = 'Product successfully created'
-      redirect_to action: :index
+    if request.format == 'application/json'
+      if @product.save
+        render status: :ok
+      else
+        render status: :unprocessable_entity, json: { errors: @product.errors.full_messages }
+      end
     else
-      render action: :new
+      if @product.save
+        flash[:success] = 'Product successfully created'
+        redirect_to action: :index
+      else
+        render action: :new
+      end
     end
+
+
   end
 
   def edit

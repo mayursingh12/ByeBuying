@@ -15,12 +15,20 @@ class Customer::EnquiriesController < Customer::BaseController
   end
 
   def update
-    if @enquiry.update_attributes(enquiry_params)
-      flash[:success] = 'Quote successfully sent'
-      redirect_to customer_enquiries_path
+    if request.format == 'application/json'
+      if @enquiry.update_attributes(enquiry_params)
+        render status: :ok
+      else
+        render status: :unprocessable_entity, json: { errors: @enquiry.errors.full_messages }
+      end
     else
-      flash[:error] = 'Something went wrong'
-      render action: :show
+      if @enquiry.update_attributes(enquiry_params)
+        flash[:success] = 'Quote successfully sent'
+        redirect_to customer_enquiries_path
+      else
+        flash[:error] = 'Something went wrong'
+        render action: :show
+      end
     end
   end
 

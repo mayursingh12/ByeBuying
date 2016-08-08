@@ -14,11 +14,19 @@ class Customer::ServicesController < Customer::BaseController
 
   def create
     @service = Service.new(service_params)
-    if @service.save
-      flash[:success] = 'Service successfully created'
-      redirect_to action: :index
+    if request.format == 'application/json'
+      if @service.save
+        render status: :ok
+      else
+        render status: :unprocessable_entity, json: { errors: @service.errors.full_messages }
+      end
     else
-      render action: :new
+      if @service.save
+        flash[:success] = 'Service successfully created'
+        redirect_to action: :index
+      else
+        render action: :new
+      end
     end
   end
 

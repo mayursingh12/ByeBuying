@@ -7,23 +7,41 @@ class EnquiriesController < WelcomeController
   end
 
   def create
-    if @product.present?
-      @enquiry = Enquiry.new(enquiry_params)
-      if @enquiry.save
-        flash[:success] = 'Enquired successfully'
-        redirect_to product_path(@product)
+    if request.format == 'application/json'
+      if @product.present?
+        @enquiry = Enquiry.new(enquiry_params)
+        if @enquiry.save
+          render status: :ok
+        else
+          render status: :unprocessable_entity, json: {errors: @enquiry.errors.full_messages}
+        end
       else
-        flash[:success] = 'Something went wrong'
-        render action: :new
+        @enquiry = Enquiry.new(service_enquiry_params)
+        if @enquiry.save
+          render status: :ok
+        else
+          render status: :unprocessable_entity, json: {errors: @enquiry.errors.full_messages}
+        end
       end
     else
-      @enquiry = Enquiry.new(service_enquiry_params)
-      if @enquiry.save
-        flash[:success] = 'Enquired successfully'
-        redirect_to service_path(@service)
+      if @product.present?
+        @enquiry = Enquiry.new(enquiry_params)
+        if @enquiry.save
+          flash[:success] = 'Enquired successfully'
+          redirect_to product_path(@product)
+        else
+          flash[:success] = 'Something went wrong'
+          render action: :new
+        end
       else
-        flash[:success] = 'Something went wrong'
-        render action: :new
+        @enquiry = Enquiry.new(service_enquiry_params)
+        if @enquiry.save
+          flash[:success] = 'Enquired successfully'
+          redirect_to service_path(@service)
+        else
+          flash[:success] = 'Something went wrong'
+          render action: :new
+        end
       end
     end
   end
