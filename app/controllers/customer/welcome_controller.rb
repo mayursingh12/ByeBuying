@@ -117,11 +117,10 @@ class Customer::WelcomeController < Customer::BaseController
 
   def log_in
     if request.format == 'application/json'
-      if sign_in_customer
+      if sign_in_customer_
         render status: :ok, json: { customer: current_user.as_json }
       else
-        flash[:error] = 'Email/Password combination wrong, contact super admin.'
-        render action: :index
+        render status: :unprocessable_entity, json: { errors: 'Email/Password combination wrong, contact super admin.' }
       end
     else
       if sign_in_customer
@@ -164,9 +163,9 @@ class Customer::WelcomeController < Customer::BaseController
   def update_profile_image
     if request.format == 'application/json'
       if @customer.update_attributes(image: params[:image])
-        render status: :ok
+        render status: :ok, json: { image: @customer.image.url(:original) }
       else
-        render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages }
+        render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
       end
     else
       if @customer.update_attributes(image: params[:image])
@@ -225,6 +224,18 @@ class Customer::WelcomeController < Customer::BaseController
     return false unless customer.present?
     if customer.valid_password?(password)
       flash[:success] = "Signed in as #{customer.email}."
+      sign_in(customer)
+    end
+  end
+
+  def sign_in_customer_
+    contact = params[:contact]
+    password = params[:password]
+    return false unless contact.present? or password.present?
+    customer = Customer.where(contact: contact).first
+    return false unless customer.present?
+    if customer.valid_password?(password)
+      flash[:success] = "Signed in as #{customer.contact}."
       sign_in(customer)
     end
   end
