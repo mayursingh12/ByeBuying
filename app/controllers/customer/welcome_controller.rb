@@ -1,10 +1,10 @@
 class Customer::WelcomeController < Customer::BaseController
 
-  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile]
+  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_]
 
   before_filter :authenticate_no_user_admin, only: [:index]
 
-  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile]
+  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_]
 
   before_action :set_header_categories
 
@@ -26,68 +26,133 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def otp
-    if params[:phone].present?
-      @otp = rand(1000..9999).to_s
-      @phone = params[:phone]
-      user_ = User.where(contact: @phone).first
-      if user_.present?
-        # already registered
-        flash[:error] = 'Already registered'
-        redirect_to action: :mobile_number
-      else
-        new_user =  NewUser.where(phone: @phone).first
-        if new_user.present?
-          if new_user.update_attributes(otp: @otp)
-            # do nothing
-          else
-            flash[:error] = 'Something went wrong, try again later.'
-            redirect_to action: :mobile_number
-          end
+    if request.format == 'application/json'
+      if params[:phone].present?
+        @otp = rand(1000..9999).to_s
+        @phone = params[:phone]
+        user_ = User.where(contact: @phone).first
+        if user_.present?
+          # already registered
+          render status: :unprocessable_entity, json: { errors: 'Already registered'}
         else
-          NewUser.create(phone: @phone, otp: @otp)
+          new_user =  NewUser.where(phone: @phone).first
+          if new_user.present?
+            if new_user.update_attributes(otp: @otp)
+              # do nothing
+            else
+              render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
+            end
+          else
+            new_user_ = NewUser.create(phone: @phone, otp: @otp)
+            render status: :ok, json: {new_user: new_user_ }
+          end
         end
+      else
+        render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages }
       end
     else
-      flash[:error] = "Mobile number can't blank"
-      render action: :mobile_number
+      if params[:phone].present?
+        @otp = rand(1000..9999).to_s
+        @phone = params[:phone]
+        user_ = User.where(contact: @phone).first
+        if user_.present?
+          # already registered
+          flash[:error] = 'Already registered'
+          redirect_to action: :mobile_number
+        else
+          new_user =  NewUser.where(phone: @phone).first
+          if new_user.present?
+            if new_user.update_attributes(otp: @otp)
+              # do nothing
+            else
+              flash[:error] = 'Something went wrong, try again later.'
+              redirect_to action: :mobile_number
+            end
+          else
+            NewUser.create(phone: @phone, otp: @otp)
+          end
+        end
+      else
+        flash[:error] = "Mobile number can't blank"
+        render action: :mobile_number
+      end
     end
+
   end
 
   def after_otp
-    @phone = params[:phone]
-    new_user = NewUser.where(phone: @phone).last
-    if new_user.present?
-      if new_user.otp == params[:otp]
-        # do nothing
-        redirect_to action: :registration, contact: @phone
+
+    if request.format = 'appplication/json'
+      @phone = params[:phone]
+      new_user = NewUser.where(phone: @phone).last
+      if new_user.present?
+        if new_user.otp == params[:otp]
+          # do nothing
+          render status: :ok
+        else
+          render status: :unprocessable_entity, json: { errors: 'OTP not matched'}
+        end
       else
-        flash[:error] = 'OTP not matched'
-        render action: :otp, phone: @phone
+        render status: :unprocessable_entity, json: { errors: @customer.errors.full_messages}
       end
     else
-      flash[:error] = 'Something went wrong, try again later.'
-      redirect_to root_path
+      @phone = params[:phone]
+      new_user = NewUser.where(phone: @phone).last
+      if new_user.present?
+        if new_user.otp == params[:otp]
+          # do nothing
+          redirect_to action: :registration, contact: @phone
+        else
+          flash[:error] = 'OTP not matched'
+          render action: :otp, phone: @phone
+        end
+      else
+        flash[:error] = 'Something went wrong, try again later.'
+        redirect_to root_path
+      end
+
     end
   end
 
   def log_in
-    if sign_in_customer
-      redirect_to action: :index
+    if request.format == 'application/json'
+      if sign_in_customer
+        render status: :ok, json: { customer: current_user.as_json }
+      else
+        flash[:error] = 'Email/Password combination wrong, contact super admin.'
+        render action: :index
+      end
     else
-      flash[:error] = 'Email/Password combination wrong, contact super admin.'
-      render action: :index
+      if sign_in_customer
+        redirect_to action: :index
+      else
+        flash[:error] = 'Email/Password combination wrong, contact super admin.'
+        render action: :index
+      end
     end
+
   end
 
   def sign_up
       @customer = Customer.new(customer_params)
-      if @customer.save
-        flash[:success] = 'successfully registered.'
-        sign_in(@customer)
-        redirect_to action: :dashboard
+
+      if request.format == 'application/json'
+        if @customer.save
+          @customer.update_attribute(:api_token, SecureRandom.urlsafe_base64(32))
+          sign_in(@customer)
+          render status: :ok , json: { api_token: @customer.api_token }
+        else
+          render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages }
+        end
       else
-        flash[:error] = @customer.errors.full_messages.first
-        render action: :registration
+        if @customer.save
+          flash[:success] = 'successfully registered.'
+          sign_in(@customer)
+          redirect_to action: :dashboard
+        else
+          flash[:error] = @customer.errors.full_messages.first
+          render action: :registration
+        end
       end
   end
 
@@ -96,21 +161,37 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def update_profile_image
-    if @customer.update_attributes(image: params[:image])
-      redirect_to customer_profile_path
+    if request.format == 'application/json'
+      if @customer.update_attributes(image: params[:image])
+        render status: :ok
+      else
+        render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages }
+      end
     else
-      flash[:error] = "#{@customer.errors.full_messages.first}"
-      render action: :profile
+      if @customer.update_attributes(image: params[:image])
+        redirect_to customer_profile_path
+      else
+        flash[:error] = "#{@customer.errors.full_messages.first}"
+        render action: :profile
+      end
     end
   end
 
   def change_password_
-    if @customer.update_attributes(password: params[:password])
-      flash[:success] = 'Successfully updated'
-      redirect_to customer_profile_path
+    if request.format == 'application/json'
+      if @customer.update_attributes(password: params[:password])
+        render status: :ok
+      else
+        render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages }
+      end
     else
-      flash[:error] = "#{@customer.errors.full_messages.first}"
-      render action: :profile
+      if @customer.update_attributes(password: params[:password])
+        flash[:success] = 'Successfully updated'
+        redirect_to customer_profile_path
+      else
+        flash[:error] = "#{@customer.errors.full_messages.first}"
+        render action: :profile
+      end
     end
   end
 
@@ -122,6 +203,11 @@ class Customer::WelcomeController < Customer::BaseController
       flash[:error] = "#{@customer.errors.full_messages.first}"
       render action: :profile
     end
+  end
+
+  def sign_out_
+    sign_out(@customer)
+    render status: :ok, nothing: true
   end
 
   private
