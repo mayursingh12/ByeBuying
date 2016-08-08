@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   namespace :customer do
 
     get '/' => 'welcome#index'
+    get 'user_detail' => 'welcome#user_detail'
     post 'sign_in' => 'welcome#log_in', as:'sign_in'
     get 'step_one' => 'welcome#mobile_number'
     get 'step_two' => 'welcome#otp'

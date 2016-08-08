@@ -1,10 +1,10 @@
 class Customer::WelcomeController < Customer::BaseController
 
-  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_]
+  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail]
 
   before_filter :authenticate_no_user_admin, only: [:index]
 
-  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_]
+  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail]
 
   before_action :set_header_categories
 
@@ -209,6 +209,10 @@ class Customer::WelcomeController < Customer::BaseController
   def sign_out_
     sign_out(@customer)
     render status: :ok, nothing: true
+  end
+
+  def user_detail
+
   end
 
   private
