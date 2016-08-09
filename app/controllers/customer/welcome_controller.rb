@@ -212,7 +212,7 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def user_detail
-    1
+
   end
 
   private
