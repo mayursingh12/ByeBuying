@@ -120,7 +120,7 @@ class Customer::WelcomeController < Customer::BaseController
       if sign_in_customer_
         render status: :ok, json: { customer: current_user.as_json }
       else
-        render status: :unprocessable_entity, json: { errors: 'Email/Password combination wrong, contact super admin.' }
+        render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages  }
       end
     else
       if sign_in_customer
@@ -146,6 +146,7 @@ class Customer::WelcomeController < Customer::BaseController
         end
       else
         if @customer.save
+          @customer.update_attribute(:api_token, SecureRandom.urlsafe_base64(32))
           flash[:success] = 'successfully registered.'
           sign_in(@customer)
           redirect_to action: :dashboard
