@@ -1,6 +1,6 @@
 class Customer::WelcomeController < Customer::BaseController
 
-  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail]
+  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_]
 
   before_filter :authenticate_no_user_admin, only: [:index]
 
@@ -212,7 +212,7 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def user_detail
-
+    1
   end
 
   private
