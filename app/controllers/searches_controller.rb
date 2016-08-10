@@ -9,7 +9,6 @@ class SearchesController < ApplicationController
 
     if request.format == 'application/json'
       if @search.name.present?
-        redirect_to action: :show, id: @search.id
         render status: :ok, json: { id:  @search.id }
       else
         render status: :unprocessable_entity, json: { errors: "Can't blank" }
