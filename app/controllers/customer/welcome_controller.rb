@@ -15,6 +15,7 @@ class Customer::WelcomeController < Customer::BaseController
   def dashboard
     @advertisements = current_user.advertisements
     @products = current_user.products
+    @services = current_user.services
   end
 
   def registration
