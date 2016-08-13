@@ -27,7 +27,10 @@
         <div class="col-md-4 col-sm-4 col-xs-12 pull-sm-right">
           <div class="box-highlight">
             <!--<p class="product-page-price-list"><%#= @product.price_in_rupees %></p>-->
-            <p class="product-page-price">₹<%= @product.price_in_rupees %></p>
+            <p class="product-page-price">₹<%= @product.per_hour_price %>/Hour</p>
+            <p class="product-page-price">₹<%= @product.per_day_price %>/Day</p>
+            <p class="product-page-price">₹<%= @product.per_week_price %>/Week</p>
+            <p class="product-page-price">₹<%= @product.per_month_price %>/Month</p>
             <% if current_user.present? %>
                 <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
             <% else %>
@@ -69,18 +72,6 @@
               </tr>
               <tr>
                 <td>Quantity: <%= @product.quantity %></td>
-              </tr>
-              <tr>
-                <td>Per Hour Price: <%= @product.per_hour_price %></td>
-              </tr>
-              <tr>
-                <td>Per Day Price: <%= @product.per_day_price %></td>
-              </tr>
-              <tr>
-                <td>Per Week Price: <%= @product.per_week_price %></td>
-              </tr>
-              <tr>
-                <td>Per Month Price: <%= @product.per_month_price %></td>
               </tr>
               <!--<tr>-->
                 <!--<td>Rent: <%#= @product.rent %></td>-->
