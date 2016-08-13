@@ -1,70 +1,153 @@
-<div class="gap"></div>
-<div id="calendar_enquiry" style="background-color: #ffffff; padding: 10px"></div>
-<div class="gap"></div>
+<!--<div class="gap"></div>-->
+<!--<div id="calendar_enquiry" style="background-color: #ffffff; padding: 10px"></div>-->
+<!--<div class="gap"></div>-->
 
 <style>
-    #calendar_enquiry {
-        max-width: 900px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 5px;
-    }
+    /*#calendar_enquiry {*/
+        /*max-width: 900px;*/
+        /*margin: 20px auto;*/
+        /*background: #fff;*/
+        /*padding: 20px;*/
+        /*border-radius: 5px;*/
+    /*}*/
 </style>
 
 <script>
-    $(document).ready(function() {
+//    $(document).ready(function() {
 
-        $('#calendar_enquiry').fullCalendar({
-            header: {
-                left: '',
-                center: 'title',
-                right: 'prev, next, today'
-            },
-            displayEventTime: false,
-            defaultDate: "<%= DateTime.now %>",
+//        $('#calendar_enquiry').fullCalendar({
+//            header: {
+//                left: '',
+//                center: 'title',
+//                right: 'prev, next, today'
+//            },
+//            displayEventTime: false,
+//            defaultDate: "<%#= DateTime.now %>",
 //            editable: true,
-            eventLimit: true, // allow "more" link when too many events
+//            eventLimit: true, // allow "more" link when too many events
 //            eventColor: 'red',
-            events: [
-                <% if @enquiries[:product_enquiries].any? %>
-                    <% @enquiries[:product_enquiries].each do |product_enquiry| %>
-                    {
-                        title: "<%= product_enquiry.product.name %>",
-                        start: "<%= product_enquiry.start_at %>",
-                        end: "<%= product_enquiry.end_at %>",
-                        description: "<%= product_enquiry.expected_price %>",
-                        color: "#0fa688",
-                        url: "<%= customer_enquiry_path(product_enquiry) %>"
-                    },
-                    <% end %>
-                <% end %>
-                <% if @enquiries[:service_enquiries].any? %>
-                    <% @enquiries[:service_enquiries].each do |service_enquiry| %>
-                    {
-                        title: "<%= service_enquiry.service.service_description %>",
-                        start: "<%= service_enquiry.start_at %>",
-                        end: "<%= service_enquiry.end_at %>",
-                        description: "<%= service_enquiry.expected_price %>",
-                        color: "#ff8e18",
-                        url: "<%= customer_enquiry_path(service_enquiry) %>"
-                    },
-                    <% end %>
-                <% end %>
-                <% if @enquiries[:customer_enquiries].any? %>
-                <% @enquiries[:customer_enquiries].each do |customer_enquiry| %>
-                {
-                    title: "<%= customer_enquiry.is_product ? customer_enquiry.product.name : customer_enquiry.service.service_description  %>",
-                    start: "<%= customer_enquiry.start_at %>",
-                    end: "<%= customer_enquiry.end_at %>",
-                    description: "<%= customer_enquiry.expected_price %>",
-                    color: "<%=  customer_enquiry.is_product ? '#0fa688' : '#ff8e18' %>",
-                    url: "<%= customer_enquiry_path(customer_enquiry) %>"
-                },
-                <% end %>
-                <% end %>
-            ]
-        });
+//            events: [
+                <%# if @enquiries[:product_enquiries].any? %>
+                    <%# @enquiries[:product_enquiries].each do |product_enquiry| %>
+//                    {
+//                        title: "<%#= product_enquiry.product.name %>",
+//                        start: "<%#= product_enquiry.start_at %>",
+//                        end: "<%#= product_enquiry.end_at %>",
+//                        description: "<%#= product_enquiry.expected_price %>",
+//                        color: "#0fa688",
+//                        url: "<%#= customer_enquiry_path(product_enquiry) %>"
+//                    },
+                    <%# end %>
+                <%# end %>
+                <%# if @enquiries[:service_enquiries].any? %>
+                    <%# @enquiries[:service_enquiries].each do |service_enquiry| %>
+//                    {
+//                        title: "<%#= service_enquiry.service.service_description %>",
+//                        start: "<%#= service_enquiry.start_at %>",
+//                        end: "<%#= service_enquiry.end_at %>",
+//                        description: "<%#= service_enquiry.expected_price %>",
+//                        color: "#ff8e18",
+//                        url: "<%#= customer_enquiry_path(service_enquiry) %>"
+//                    },
+                    <%# end %>
+                <%# end %>
+                <%# if @enquiries[:customer_enquiries].any? %>
+                <%# @enquiries[:customer_enquiries].each do |customer_enquiry| %>
+//                {
+//                    title: "<%#= customer_enquiry.is_product ? customer_enquiry.product.name : customer_enquiry.service.service_description  %>",
+//                    start: "<%#= customer_enquiry.start_at %>",
+//                    end: "<%#= customer_enquiry.end_at %>",
+//                    description: "<%#= customer_enquiry.expected_price %>",
+//                    color: "<%#=  customer_enquiry.is_product ? '#0fa688' : '#ff8e18' %>",
+//                    url: "<%#= customer_enquiry_path(customer_enquiry) %>"
+//                },
+                <%# end %>
+                <%# end %>
+//            ]
+//        });
 
-    });
+//    });
 </script>
+
+<!--===================================-->
+<div class="customer-main-con">
+  <div class="row">
+    <!--<div class="col-sm-4">-->
+      <!--<h3>Products Enquired</h3>-->
+      <!--<table class="table table-striped">-->
+        <!--<thead>-->
+        <!--<tr class="info">-->
+          <!--<th>Name</th>-->
+          <!--<th>Status</th>-->
+          <!--<th>Action</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<%# @enquiries[:product_enquiries].each do |product_enquiry| %>-->
+            <!--<tr class="data">-->
+              <!--<td><%#= product_enquiry.product.name %></td>-->
+              <!--<td><%#= product_enquiry.status %></td>-->
+              <!--<td>-->
+                <!--<%#= link_to customer_enquiry_path(product_enquiry) do %>-->
+                    <!--<i class="fa fa-eye"></i>-->
+                <!--<%# end %>-->
+              <!--</td>-->
+            <!--</tr>-->
+        <!--<%#- end %>-->
+        <!--</tbody>-->
+      <!--</table>-->
+    <!--</div>-->
+    <!--<div class="col-sm-4">-->
+      <!--<h3>Services Enquired</h3>-->
+      <!--<table class="table table-striped">-->
+        <!--<thead>-->
+        <!--<tr class="info">-->
+          <!--<th>Description</th>-->
+          <!--<th>Status</th>-->
+          <!--<th>Action</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<%# @enquiries[:service_enquiries].each do |service_enquiry| %>-->
+            <!--<tr class="data">-->
+              <!--<td><%#= service_enquiry.service.service_description %></td>-->
+              <!--<td><%#= service_enquiry.status %></td>-->
+              <!--<td>-->
+                <!--<%#= link_to customer_enquiry_path(service_enquiry) do %>-->
+                    <!--<i class="fa fa-eye"></i>-->
+                <!--<%# end %>-->
+              <!--</td>-->
+            <!--</tr>-->
+        <!--<%#- end %>-->
+        <!--</tbody>-->
+      <!--</table>-->
+    <!--</div>-->
+    <div class="col-sm-12">
+      <h3>My Enquiries</h3>
+      <table class="table table-striped">
+        <thead>
+        <tr class="info">
+          <th>Enquiry</th>
+          <th>Status</th>
+          <th>Start at</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @enquiries[:customer_enquiries].each do |customer_enquiry| %>
+            <tr class="data">
+              <td><%= customer_enquiry.is_product ? 'Product' : 'Service'   %></td>
+              <td><%= customer_enquiry.status %></td>
+              <td><%= customer_enquiry.start_at.strftime(time_format) %></td>
+              <td>
+              <%= link_to customer_enquiry_path(customer_enquiry) do %>
+              <i class="fa fa-eye"></i>
+              <% end %>
+              </td>
+            </tr>
+        <%- end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
