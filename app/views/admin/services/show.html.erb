@@ -25,12 +25,20 @@
             <table
             class="table table-striped product-page-features-table">
               <tbody>
+
               <tr>
-                <td>Price: <%= @service.price_type %></td>
+                <td>Per hour price: <%= @service.per_hour_price %></td>
               </tr>
               <tr>
-                <td>Price in rupees: <%= @service.price_in_rupees %></td>
+                <td>Per day price: <%= @service.per_day_price %></td>
               </tr>
+              <tr>
+                <td>Per week price: <%= @service.per_week_price %></td>
+              </tr>
+              <tr>
+                <td>Per month price: <%= @service.per_month_price %></td>
+              </tr>
+
               <tr>
                 <td>Nature of service: <%= @service.nature_of_service %></td>
               </tr>

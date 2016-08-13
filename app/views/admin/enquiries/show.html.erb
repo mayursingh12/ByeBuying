@@ -44,14 +44,32 @@
                 <h4>Product end date:</h4>
                 <p><%= @enquiry.product.end_at.strftime(time_format) %></p>
               </div>
+              <!--<div class="product-detail">-->
+                <!--<h4>Rent:</h4>-->
+                <!--<p><%#= @enquiry.product.rent %></p>-->
+              <!--</div>-->
+              <!--<div class="product-detail">-->
+                <!--<h4>Price in rupees:</h4>-->
+                <!--<p><%#= @enquiry.product.price_in_rupees %></p>-->
+              <!--</div>-->
+
               <div class="product-detail">
-                <h4>Rent:</h4>
-                <p><%= @enquiry.product.rent %></p>
+                <h4>Per Hour Price:</h4>
+                <p><%= @enquiry.product.per_hour_price %></p>
               </div>
               <div class="product-detail">
-                <h4>Price in rupees:</h4>
-                <p><%= @enquiry.product.price_in_rupees %></p>
+                <h4>Per Day Price:</h4>
+                <p><%= @enquiry.product.per_day_price %></p>
               </div>
+              <div class="product-detail">
+                <h4>Per Week Price:</h4>
+                <p><%= @enquiry.product.per_week_price %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Per Month Price:</h4>
+                <p><%= @enquiry.product.per_month_price %></p>
+              </div>
+
               <div class="product-detail">
                 <h4>Refundable security:</h4>
                 <p><%= @enquiry.product.refundable_security %></p>
@@ -174,14 +192,31 @@
                 <h4>Product end date:</h4>
                 <p><%= @enquiry.service.end_at.strftime(time_format) %></p>
               </div>
+              <!--<div class="product-detail">-->
+                <!--<h4>Price type:</h4>-->
+                <!--<p><%#= @enquiry.service.price_type %></p>-->
+              <!--</div>-->
+              <!--<div class="product-detail">-->
+                <!--<h4>Price in rupees:</h4>-->
+                <!--<p><%#= @enquiry.service.price_in_rupees %></p>-->
+              <!--</div>-->
               <div class="product-detail">
-                <h4>Price type:</h4>
-                <p><%= @enquiry.service.price_type %></p>
+                <h4>Per hour price:</h4>
+                <p><%= @enquiry.service.per_hour_price %></p>
               </div>
               <div class="product-detail">
-                <h4>Price in rupees:</h4>
-                <p><%= @enquiry.service.price_in_rupees %></p>
+                <h4>Per day price:</h4>
+                <p><%= @enquiry.service.per_day_price %></p>
               </div>
+              <div class="product-detail">
+                <h4>Per week price:</h4>
+                <p><%= @enquiry.service.per_week_price %></p>
+              </div>
+              <div class="product-detail">
+                <h4>Per month price:</h4>
+                <p><%= @enquiry.service.per_month_price %></p>
+              </div>
+
               <div class="product-detail">
                 <h4>Youtube link:</h4>
                 <p><%= @enquiry.service.youtube_link %></p>

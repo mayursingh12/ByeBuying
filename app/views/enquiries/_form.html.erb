@@ -50,16 +50,40 @@
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <label for="rent" class="label">Rent</label>
-                        <p class="select-text"><%= @product.rent %></p>
+                        <label for="rent" class="label">Per Hour Price</label>
+                        <p class="select-text"><%= @product.per_hour_price %></p>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <label for="Price" class="label">Price in Rupees</label>
-                        <p class="select-text"><%= @product.price_in_rupees %></p>
+                        <label for="Price" class="label">Per Day Price</label>
+                        <p class="select-text"><%= @product.per_day_price %></p>
                       </div>
                     </div>
+                    <div class="col-xs-12">
+                      <div class="field-con">
+                        <label for="rent" class="label">Per Week Price</label>
+                        <p class="select-text"><%= @product.per_week_price %></p>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="field-con">
+                        <label for="Price" class="label">Per Month Price</label>
+                        <p class="select-text"><%= @product.per_month_price %></p>
+                      </div>
+                    </div>
+                    <!--<div class="col-xs-12">-->
+                      <!--<div class="field-con">-->
+                        <!--<label for="rent" class="label">Rent</label>-->
+                        <!--<p class="select-text"><%#= @product.rent %></p>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-12">-->
+                      <!--<div class="field-con">-->
+                        <!--<label for="Price" class="label">Price in Rupees</label>-->
+                        <!--<p class="select-text"><%#= @product.price_in_rupees %></p>-->
+                      <!--</div>-->
+                    <!--</div>-->
                     <div class="col-xs-12">
                       <div class="field-con">
                         <%= f.input :expected_price, label: 'Expected price', label_html: {class: 'label'}, input_html: {class: 'text-field'}  %>
@@ -85,16 +109,40 @@
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <label for="rent" class="label">Price Type</label>
-                        <p class="select-text"><%= @service.price_type %></p>
+                        <label for="rent" class="label">Per Hour Price</label>
+                        <p class="select-text"><%= @service.per_hour_price %></p>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <label for="Price" class="label">Price in Rupees</label>
-                        <p class="select-text"><%= @service.price_in_rupees %></p>
+                        <label for="Price" class="label">Per Day Price</label>
+                        <p class="select-text"><%= @service.per_day_price %></p>
                       </div>
                     </div>
+                    <div class="col-xs-12">
+                      <div class="field-con">
+                        <label for="rent" class="label">Per Week Price</label>
+                        <p class="select-text"><%= @service.per_week_price %></p>
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="field-con">
+                        <label for="Price" class="label">Per Month Price</label>
+                        <p class="select-text"><%= @service.per_month_price %></p>
+                      </div>
+                    </div>
+                    <!--<div class="col-xs-12">-->
+                      <!--<div class="field-con">-->
+                        <!--<label for="rent" class="label">Price Type</label>-->
+                        <!--<p class="select-text"><%#= @service.price_type %></p>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-12">-->
+                      <!--<div class="field-con">-->
+                        <!--<label for="Price" class="label">Price in Rupees</label>-->
+                        <!--<p class="select-text"><%#= @service.price_in_rupees %></p>-->
+                      <!--</div>-->
+                    <!--</div>-->
                     <div class="col-xs-12">
                       <div class="field-con">
                         <%= f.input :expected_price, label: 'Expected price', label_html: {class: 'label'}, input_html: {class: 'text-field'}  %>

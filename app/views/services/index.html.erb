@@ -39,7 +39,11 @@
                     <% end %>
                   </ul>
                   <h5 class="product-caption-title"><%= service.service_description %></h5>
-                  <div class="product-caption-price"><span class="product-caption-price-new"><i class="fa fa-inr"></i><%= service.price_in_rupees %></span>
+                  <div class="product-caption-price">
+                    <span class="product-caption-price-new">
+                      <i class="fa fa-inr"></i>
+                      <%= service.per_hour_price %>
+                    </span>
                   </div>
                 </div>
               </div>

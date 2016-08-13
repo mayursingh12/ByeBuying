@@ -76,18 +76,44 @@
             <p><%= @product.quantity %></p>
           </div>
         </div>
-        <div class="col-xs-12">
+        <!--<div class="col-xs-12">-->
+          <!--<div class="product-detail">-->
+            <!--<h4>Rent:</h4>-->
+            <!--<p><%#= @product.rent %></p>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-12">-->
+          <!--<div class="product-detail">-->
+            <!--<h4>Price in rupees:</h4>-->
+            <!--<p><%#= @product.price_in_rupees %></p>-->
+          <!--</div>-->
+        <!--</div>-->
+        <div class="col-sm-12">
           <div class="product-detail">
-            <h4>Rent:</h4>
-            <p><%= @product.rent %></p>
+            <h4>Per Hour Price:</h4>
+            <p><%= @product.per_hour_price %></p>
           </div>
         </div>
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <div class="product-detail">
-            <h4>Price in rupees:</h4>
-            <p><%= @product.price_in_rupees %></p>
+            <h4>Per Day Price:</h4>
+            <p><%= @product.per_day_price %></p>
           </div>
         </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Per Week Price:</h4>
+            <p><%= @product.per_week_price %></p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="product-detail">
+            <h4>Per Month Price:</h4>
+            <p><%= @product.per_month_price %></p>
+          </div>
+        </div>
+
+
         <div class="col-xs-12">
           <div class="product-detail">
             <h4>Refundable security:</h4>

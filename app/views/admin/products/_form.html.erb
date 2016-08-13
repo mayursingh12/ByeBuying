@@ -11,7 +11,13 @@
     <%= f.input :start_at %>
     <%= f.input :end_at %>
     <%= f.input :quantity %>
-    <%= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent' %>
+
+    <%= f.input :per_hour_price %>
+    <%= f.input :per_day_price %>
+    <%= f.input :per_week_price %>
+    <%= f.input :per_month_price %>
+
+    <%#= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent' %>
     <%= f.input :refundable_security %>
     <%= f.input :cost_of_replacement %>
     <%= f.input :youtube_link %>

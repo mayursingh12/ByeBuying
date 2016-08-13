@@ -17,8 +17,13 @@ class Service < ActiveRecord::Base
   validates :service_description, presence: true
   validates :state_id, presence: true
   validates :city_id, presence: true
-  validates :price_type, presence: true
-  validates :price_in_rupees, presence: true
+  # validates :price_type, presence: true
+  # validates :price_in_rupees, presence: true
+
+  validates :per_hour_price, presence: true
+  validates :per_day_price, presence: true
+  validates :per_week_price, presence: true
+  validates :per_month_price, presence: true
 
   validate def gender_for_wed
     return false unless self.category_id.present?

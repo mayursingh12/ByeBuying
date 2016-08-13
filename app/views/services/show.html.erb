@@ -75,9 +75,22 @@
               <tr>
                 <td>Location: <%= @service.location %></td>
               </tr>
-              <tr>
-                <td>Price: <%= @service.price_type %></td>
-              </tr>
+              <!--<tr>-->
+                <!--<td>Price: <%#= @service.price_type %></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Price: <%#= @service.per_hour_price %></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Price: <%#= @service.per_day_price %></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Price: <%#= @service.per_week_price %></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Price: <%#= @service.per_month_price %></td>-->
+              <!--</tr>-->
+
               <tr>
                 <td>Youtube: <%= @service.youtube_link %></td>
               </tr>
@@ -90,7 +103,11 @@
         </div>
         <div class="col-md-4">
           <div class="box-highlight">
-            <p class="product-page-price">₹<%= @service.price_in_rupees %></p>
+            <!--<p class="product-page-price">₹<%#= @service.price_in_rupees %></p>-->
+            <p class="product-page-price">₹<%= @service.per_hour_price %>/hr</p>
+            <p class="product-page-price">₹<%= @service.per_day_price %>/day</p>
+            <p class="product-page-price">₹<%= @service.per_week_price %>/week</p>
+            <p class="product-page-price">₹<%= @service.per_month_price %>/month</p>
             <% if current_user.present? %>
                 <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_service_enquiry_path(@service) %>">Enquire</a>
             <% else %>
