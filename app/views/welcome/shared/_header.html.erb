@@ -92,8 +92,8 @@
         <ul class="nav navbar-nav">
           <li class="dropdown"><a href="javascript:void(0)"><i class="fa fa-reorder"></i>&nbsp; Shop by Category<i class="drop-caret" data-toggle="dropdown"></i></a>
             <ul class="dropdown-menu dropdown-menu-category">
-              <li><a href="/products">Products</a></li>
-              <li><a href="/services">Services</a></li>
+              <!--<li><a href="/products">Products</a></li>-->
+              <!--<li><a href="/services">Services</a></li>-->
               <% @categories.each do |category| %>
                   <li><a href="javascript:void(0)"><%= category.name %></a>
                     <div class="dropdown-menu-category-section">
@@ -143,7 +143,7 @@
 
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-              <li class="dropdown"><a href="Javascript:void(0)"><%= current_user.email %></a>
+              <li class="dropdown"><a href="/customer/profile"><%#= current_user.email %> My Account</a>
                 <ul class="dropdown-menu dropdown-menu-shipping-cart">
                   <li><%= link_to 'Dashboard', customer_dashboard_path %></li>
                   <li><%= link_to 'Advertisements', customer_advertisements_path %></li>

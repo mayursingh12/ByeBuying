@@ -29,7 +29,7 @@
             <%= simple_form_for [:customer, @product] do |f| %>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :category_id, collection: product_category_collection, prompt: 'Select category', label: 'Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :category_id, collection: product_category_collection, prompt: 'Select category', label: 'Product Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
@@ -39,17 +39,17 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Product Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :name, label: 'Name' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :name, label: 'Product Name' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :description, label: 'Description' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :description, label: 'Product Description' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
@@ -115,7 +115,7 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :youtube_link, label: 'Youtube Link' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :youtube_link, label: 'Product Youtube Link' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
