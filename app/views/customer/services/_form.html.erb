@@ -36,12 +36,12 @@
             <%= simple_form_for [:customer, @service] do |f| %>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category', label: 'Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category', label: 'Service Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Service Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12 for_other">
@@ -51,10 +51,10 @@
                 </div>
                 <div class="col-xs-12 membership_blog">
                   <div class="field-con">
-                    <%= f.input :club_name, label: 'Club Name' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :club_name, label: 'Service Club Name' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                   <div class="field-con">
-                    <%= f.input :membership_plan, label: 'Membership Plan' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :membership_plan, label: 'Service Membership Plan' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                   <div class="field-con">
                     <%= f.input :start_at, label: 'Start at' ,label_html: {class: 'label'}, input_html: {class: 'select-field'} %>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :youtube_link, label: 'Youtube Link', label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :youtube_link, label: 'Service Youtube Link', label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
