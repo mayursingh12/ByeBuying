@@ -21,8 +21,12 @@ class Product < ActiveRecord::Base
   validates :start_at, presence: true
   validates :end_at, presence: true
   validates :quantity, presence: true
-  validates :rent, presence: true
-  validates :price_in_rupees, presence: true
+  # validates :rent, presence: true
+  # validates :price_in_rupees, presence: true
+  validates :per_hour_price, presence: true
+  validates :per_day_price, presence: true
+  validates :per_week_price, presence: true
+  validates :per_month_price, presence: true
 
   validate def end_date_after_start_date
     if self.start_at >= self.end_at

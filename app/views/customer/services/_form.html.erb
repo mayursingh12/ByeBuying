@@ -91,16 +91,37 @@
                     <%= f.input :location, label: 'Location' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
+                <!--<div class="col-xs-12">-->
+                  <!--<div class="field-con">-->
+                    <!--<%#= f.input :price_type, collection: ['Per hour','Per day', 'Per week', 'Per month'], prompt: 'Choose price', label: 'Price Type' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12">-->
+                  <!--<div class="field-con">-->
+                    <!--<%#= f.input :price_in_rupees, label: 'Price in Rupees', label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
+                  <!--</div>-->
+                <!--</div>-->
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :price_type, collection: ['Per hour','Per day', 'Per week', 'Per month'], prompt: 'Choose price', label: 'Price Type' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :per_hour_price, label: 'Per Hour Price' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :price_in_rupees, label: 'Price in Rupees', label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :per_day_price, label: 'Per Day Price' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :per_week_price, label: 'Per Week Price' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :per_month_price, label: 'Per Month Price' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                </div>
+
                 <div class="col-xs-12">
                   <div class="field-con">
                     <%= f.input :negotiable %>

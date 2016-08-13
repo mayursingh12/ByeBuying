@@ -22,13 +22,19 @@ json.products{
     json.city_id product.city_id
     json.location product.location
     json.quantity product.quantity
-    json.rent product.rent
+    # json.rent product.rent
+
+    json.per_hour_price product.per_hour_price
+    json.per_day_price product.per_day_price
+    json.per_week_price product.per_week_price
+    json.per_month_price product.per_month_price
+
     json.refundable_security product.refundable_security
     json.cost_of_replacement product.cost_of_replacement
     json.youtube_link product.youtube_link
     json.other product.other
     json.user_id product.user_id
-    json.price_in_rupees product.price_in_rupees
+    # json.price_in_rupees product.price_in_rupees
     json.negotiable product.negotiable?
     json.rating product.rating
     json.admin_verified product.admin_verified?
@@ -49,13 +55,17 @@ json.services{
     json.state_id service.state_id
     json.city_id service.city_id
     json.location service.location
-    json.price_type service.price_type
+    json.per_hour_price service.per_hour_price
+    json.per_day_price service.per_day_price
+    json.per_week_price service.per_week_price
+    json.per_month_price service.per_month_price
+    # json.price_type service.price_type
     json.youtube_link service.youtube_link
     json.other service.other
     json.area_in_meters service.area_in_meters
     json.amenities_available service.amenities_available
     json.user_id service.user_id
-    json.price_in_rupees service.price_in_rupees
+    # json.price_in_rupees service.price_in_rupees
     json.negotiable service.negotiable?
     json.rating service.rating
     json.admin_verified service.admin_verified?

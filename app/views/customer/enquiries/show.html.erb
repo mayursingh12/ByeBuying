@@ -35,18 +35,44 @@
                 <p><%= @enquiry.end_at.strftime(time_format) %></p>
               </div>
             </div>
+            <!--<div class="col-sm-12">-->
+              <!--<div class="product-detail">-->
+                <!--<h4>Product plan:</h4>-->
+                <!--<p><%#= @enquiry.product.rent %><br></p>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12">-->
+              <!--<div class="product-detail">-->
+                <!--<h4>Price in rupees:</h4>-->
+                <!--<p><%#= @enquiry.product.price_in_rupees %><br></p>-->
+              <!--</div>-->
+            <!--</div>-->
+
             <div class="col-sm-12">
               <div class="product-detail">
-                <h4>Product plan:</h4>
-                <p><%= @enquiry.product.rent %><br></p>
+                <h4>Per Hour Price:</h4>
+                <p><%= @enquiry.product.per_hour_price %></p>
               </div>
             </div>
             <div class="col-sm-12">
               <div class="product-detail">
-                <h4>Price in rupees:</h4>
-                <p><%= @enquiry.product.price_in_rupees %><br></p>
+                <h4>Per Day Price:</h4>
+                <p><%= @enquiry.product.per_day_price %></p>
               </div>
             </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Per Week Price:</h4>
+                <p><%= @enquiry.product.per_week_price %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Per Month Price:</h4>
+                <p><%= @enquiry.product.per_month_price %></p>
+              </div>
+            </div>
+
             <div class="col-sm-12">
               <% if @enquiry.status == 'Enquiry' and @enquiry.product.user_id == current_user.id %>
                   <%= simple_form_for [:customer, @enquiry] do |f| %>
@@ -125,18 +151,45 @@
                 <p><%= @enquiry.end_at.strftime(time_format) %></p>
               </div>
             </div>
+
             <div class="col-sm-12">
               <div class="product-detail">
-                <h4>Service plan:</h4>
-                <p><%= @enquiry.service.price_type %><br></p>
+                <h4>Per Hour Price:</h4>
+                <p><%= @enquiry.service.per_hour_price %></p>
               </div>
             </div>
             <div class="col-sm-12">
               <div class="product-detail">
-                <h4>Price in rupees:</h4>
-                <p><%= @enquiry.service.price_in_rupees %><br></p>
+                <h4>Per Day Price:</h4>
+                <p><%= @enquiry.service.per_day_price %></p>
               </div>
             </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Per Week Price:</h4>
+                <p><%= @enquiry.service.per_week_price %></p>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="product-detail">
+                <h4>Per month price:</h4>
+                <p><%= @enquiry.service.per_month_price %></p>
+              </div>
+            </div>
+
+
+            <!--<div class="col-sm-12">-->
+              <!--<div class="product-detail">-->
+                <!--<h4>Service plan:</h4>-->
+                <!--<p><%#= @enquiry.service.price_type %><br></p>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12">-->
+              <!--<div class="product-detail">-->
+                <!--<h4>Price in rupees:</h4>-->
+                <!--<p><%#= @enquiry.service.price_in_rupees %><br></p>-->
+              <!--</div>-->
+            <!--</div>-->
             <!--<div class="col-sm-12">-->
               <!--<div class="product-detail">-->
                 <!--<h4>Expected price:</h4>-->
