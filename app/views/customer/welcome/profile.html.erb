@@ -23,7 +23,7 @@
         <div class="col-sm-6">
           <div class="img-section">
             <% if @customer.image.present? %>
-                <%= image_tag @customer.image(:size_500x500), class: 'img-responsive' %>
+                <%= image_tag @customer.image(:size_250x250), class: 'img-responsive' %>
             <% end %>
             <%= form_tag customer_update_profile_image_path, class: 'upload-form', method: :put, multipart: true do %>
                 <%= file_field_tag :image, class: 'upload-img' %>

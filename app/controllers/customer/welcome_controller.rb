@@ -84,7 +84,7 @@ class Customer::WelcomeController < Customer::BaseController
 
   def after_otp
 
-    if request.format = 'appplication/json'
+    if request.format == 'application/json'
       @phone = params[:phone]
       new_user = NewUser.where(phone: @phone).last
       if new_user.present?
@@ -106,7 +106,7 @@ class Customer::WelcomeController < Customer::BaseController
           redirect_to action: :registration, contact: @phone
         else
           flash[:error] = 'OTP not matched'
-          render action: :otp, phone: @phone
+          render action: :registration, phone: @phone
         end
       else
         flash[:error] = 'Something went wrong, try again later.'
