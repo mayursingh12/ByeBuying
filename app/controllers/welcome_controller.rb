@@ -49,6 +49,10 @@ class WelcomeController < ApplicationController
 
   end
 
+  def faq
+
+  end
+
   def test
     redirect_to root_path
   end

@@ -27,15 +27,43 @@
         <div class="col-md-4 col-sm-4 col-xs-12 pull-sm-right">
           <div class="box-highlight">
             <!--<p class="product-page-price-list"><%#= @product.price_in_rupees %></p>-->
-            <p class="product-page-price">₹<%= @product.per_hour_price %>/Hour</p>
-            <p class="product-page-price">₹<%= @product.per_day_price %>/Day</p>
-            <p class="product-page-price">₹<%= @product.per_week_price %>/Week</p>
-            <p class="product-page-price">₹<%= @product.per_month_price %>/Month</p>
+            <p class="product-page-price time-price">₹<%= @product.per_hour_price %>/hr</p>
+            <p class="product-page-price time-price">₹<%= @product.per_day_price %>/day</p>
+            <p class="product-page-price time-price">₹<%= @product.per_week_price %>/week</p>
+            <p class="product-page-price time-price">₹<%= @product.per_month_price %>/month</p>
             <% if current_user.present? %>
                 <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
             <% else %>
                 <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
             <% end %>
+            <div class="product-page-side-section">
+              <h5 class="product-page-side-title">Share This Item</h5>
+              <ul class="product-page-share-item">
+                <li>
+                  <a class="fa fa-facebook" href="#"></a>
+                </li>
+                <li>
+                  <a class="fa fa-twitter" href="#"></a>
+                </li>
+                <li>
+                  <a class="fa fa-pinterest" href="#"></a>
+                </li>
+                <li>
+                  <a class="fa fa-instagram" href="#"></a>
+                </li>
+                <li>
+                  <a class="fa fa-google-plus" href="#"></a>
+                </li>
+              </ul>
+            </div>
+            <div class="product-page-side-section">
+              <h5 class="product-page-side-title">Shipping & Returns</h5>
+              <p class="product-page-side-text">In the store of your choice in 3-5 working days</p>
+              <p class="product-page-side-text">STANDARD 4.95 USD FREE (ORDERS OVER 50 USD) In 2-4 working days*</p>
+              <p class="product-page-side-text">EXPRESS 9.95 USD In 24-48 hours (working days)*</p>
+              <p class="product-page-side-text">* Except remote areas</p>
+              <p class="product-page-side-text">You have one month from the shipping confirmation email.</p>
+            </div>
           </div>
         </div>
         <div class="col-md-8 col-sm-8 col-xs-12 pull-sm-left">
