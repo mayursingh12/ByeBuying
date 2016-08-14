@@ -56,14 +56,9 @@
         <div class="form-group">
           <%= f.input :password_confirmation, class: 'form-control' %>
         </div>
-        <%= submit_tag 'Sign Up', class: 'btn btn-primary' %>
+        <%= submit_tag 'Submit', class: 'btn btn-primary' %>
     <%- end %>
     <div class="gap gap-small"></div>
-    <ul class="list-inline">
-      <li>
-        <a href="#nav-login-dialog" class="popup-text">Login</a>
-      </li>
-    </ul>
   </div>
   <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-pwd-dialog">
     <h3 class="widget-title">Password Recovery</h3>
@@ -84,6 +79,23 @@
     <input type="number" class="form-control" min="10" max="10"  />
     <a href="#nav-otp-dialog" class="popup-text mobile-submit">Proceed</a>
     <div class="gap gap-small"></div>
+
+  </div>
+
+  <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-otp-dialog">
+  <h3 class="widget-title">OTP</h3>
+  <p>Enter OTP for Registration</p>
+  <hr />
+  <div class="form-group">
+    <input type="number" class="form-control" min="4" max="4"  />
+  </div>
+    <a href="#nav-account-dialog" class="popup-text otp-submit">Proceed</a>
+    <div class="gap gap-small"></div>
+    <ul class="list-inline">
+      <li>
+        <p style="font-size: 12px; color: #888;">Click on Send OTP to receive 4 digit verification code on your register mobile number.</p>
+        <a href="javascript:void(0)" class="sending-otp">Resend OTP</a>
+    </ul>
 
   </div>
 
