@@ -32,6 +32,28 @@
   -o-transition: all 0.6s ease-in-out;
   transition: all 0.6s ease-in-out;
 }
+.mobile-submit{
+  background: #486d97;
+  color: #fff !important;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 10px;
+  border-color: #416288;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.otp-submit{
+  background: #486d97;
+  color: #fff !important;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 10px;
+  border-color: #416288;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
 .customer-main-con{
   width: 100%;
   margin: 20px 0;
