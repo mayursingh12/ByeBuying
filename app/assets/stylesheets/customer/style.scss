@@ -54,6 +54,13 @@
   text-transform: uppercase;
   font-size: 13px;
 }
+.time-price{
+  font-size: 20px !important;
+  margin: 10px 0;
+}
+.min-box-height{
+  min-height: 500px;
+}
 .customer-main-con{
   width: 100%;
   margin: 20px 0;
@@ -231,6 +238,12 @@
         color: #486d97;
         margin: 0;
       }
+      .heading{
+        font-size: 15px;
+        color: #486d97;
+        margin: 0;
+        font-weight: 600;
+      }
       p{
         font-size: 14px;
         color: #8e8e8e;
@@ -364,8 +377,20 @@
     }
   }
 }
+.fixed-header{
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+}
+.header-space{
+  height: 85px;
+}
+
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
-  }  
+  }
+  .min-box-height{
+    min-height: inherit;
+  }
 }
