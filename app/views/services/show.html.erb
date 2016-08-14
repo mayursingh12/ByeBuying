@@ -2,8 +2,8 @@
   <header class="page-header">
     <h1 class="page-title"><%#= @service.name.capitalize %></h1>
     <ol class="breadcrumb page-breadcrumb">
-      <li><a href="#"><%= @service.subcategory.category.name %></a></li>
-      <li><a href="#"><%= @service.subcategory.name %></a></li>
+      <li><a href="<%= category_path(@service.subcategory.category)%>"><%= @service.subcategory.category.name %></a></li>
+      <li><a href="<%= subcategory_path(@service.subcategory)%>"><%= @service.subcategory.name %></a></li>
     </ol>
   </header>
   <div class="row">
