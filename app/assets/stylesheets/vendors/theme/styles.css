@@ -19,8 +19,8 @@
 body {
     font-family: 'Roboto', Tahoma, Arial, helvetica, sans-serif;
     font-size: 15px;
-    /*background-color: #ededed;*/
-    background-image: url('../../../assets/texture-icon.png');
+    background-color: #f5f5f5;
+    /*background-image: url('../../../assets/texture-icon.png');*/
     background-repeat: repeat;
 }
 h1,
@@ -34,7 +34,8 @@ h6,
 .h3,
 .h4,
 .h5,
-.h6 {
+.h6,
+label {
     margin-top: 0;
     font-family: 'Open Sans', arial, helvetica, sans-serif;
     font-weight: 600;
@@ -401,8 +402,8 @@ hr {
     filter: none;
 }
 .dropdown-menu-category > li > a {
-    height: 40px;
-    line-height: 40px !important;
+    height: 30px;
+    line-height: 30px !important;
     padding: 0 15px 0 15px !important;
     font-size: 14px;
     position: relative;
@@ -420,9 +421,9 @@ hr {
     font-family: 'FontAwesome';
     top: 0;
     right: 0;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     opacity: 0.6;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
@@ -482,8 +483,8 @@ hr {
     filter: alpha(opacity=30);
 }
 .dropdown-menu-category-section {
-    width: 300px;
-    height: 550px;
+    width: 500px;
+    min-height: 450px;
     position: absolute;
     top: 0;
     left: 230px;
@@ -498,7 +499,7 @@ hr {
 .dropdown-menu-category-section-content {
     position: relative;
     z-index: 2;
-    padding: 20px;
+    padding: 15px;
 }
 .dropdown-menu-category-section-theme-img {
     position: absolute;
@@ -518,7 +519,7 @@ hr {
     font-size: 14px;
 }
 .dropdown-menu-category-list > li {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     border-bottom: 1px solid #eeeeee;
 }
 .dropdown-menu-category-list > li > a {
