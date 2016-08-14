@@ -64,126 +64,182 @@
 
 <div class="top-column-product">
   <div class="container">
-
-    <% if @products.any? %>
-        <div class="gap"></div>
-        <h3 class="widget-title">Products</h3>
-        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-          <% @products.each do |product| %>
-              <div class="owl-item">
-                <div class="product  owl-item-slide">
-                  <ul class="product-labels"></ul>
-                  <div class="product-img-wrap">
-                    <% if product.product_images.any? %>
-                        <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
-                    <% else %>
-                        <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
-                    <% end %>
-                  </div>
-                  <a class="product-link" href="<%= product_path(product)%>"></a>
-                  <div class="product-caption">
-                    <ul class="product-caption-rating">
-                      <% for i in 1..5 %>
-                          <% if i <= product.rating %>
-                              <li class="rated"><i class="fa fa-star"></i></li>
-                          <% else %>
-                              <li class=""><i class="fa fa-star"></i></li>
-                          <% end %>
+    <div class="col-md-3">
+      <div class="custome-filter-block">
+        <aside class="category-filters">
+          <div class="category-filters-section">
+            <h3 class="widget-title-sm">Filter</h3>
+          </div>
+          <div class="category-filters-section">
+            <h3 class="widget-title-sm">Price</h3>
+            <!--<input type="text" id="price-slider" />-->
+            <!--<br>-->
+            <!--<br>-->
+            <div class="filter_main_form">
+              <form action="/">
+                <div class="form-group">
+                  <label>Minimum</label>
+                  <i class="fa fa-inr rupee-icon"></i>
+                  <input type="text" name="min_price" class="form-control set-min-price">
+                </div>
+                <div class="form-group">
+                  <label>Maximum</label>
+                  <i class="fa fa-inr rupee-icon"></i>
+                  <input type="text" name="max_price" class="form-control set-max-price">
+                </div>
+                <div class="form-group">
+                  <label>Minimum Rating</label>
+                  <!--<i class="fa fa-inr rupee-icon"></i>-->
+                  <input type="text" name="rating" class="form-control set-rating">
+                </div>
+                <div class="form-group">
+                  <label>Minimum Product Quantity</label>
+                  <!--<i class="fa fa-inr rupee-icon"></i>-->
+                  <input type="number" name="quantity" class="form-control set-quantity">
+                  <%#= check_box("tag", true, {checked: true}) %>
+                  <!--<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable-->
+                  <%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>
+                </div>
+                <input type="submit" class="btn btn-primary">
+              </form>
+            </div>
+            <!--<span class="btn btn-primary filter-evnt"> filter </span>-->
+          </div>
+        </aside>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <% if @products.any? %>
+          <!--<div class="gap"></div>-->
+          <h3 class="widget-title">Products</h3>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
+            <% @products.each do |product| %>
+                <div class="owl-item">
+                  <div class="product  owl-item-slide">
+                    <ul class="product-labels"></ul>
+                    <div class="product-img-wrap">
+                      <% if product.product_images.any? %>
+                          <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      <% else %>
+                          <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
                       <% end %>
-                    </ul>
-                    <h5 class="product-caption-title">
-                      <%= product.name %>
-                    </h5>
-                    <div class="product-caption-price">
+                    </div>
+                    <a class="product-link" href="<%= product_path(product)%>"></a>
+                    <div class="product-caption">
+                      <ul class="product-caption-rating">
+                        <% for i in 1..5 %>
+                            <% if i <= product.rating %>
+                                <li class="rated"><i class="fa fa-star"></i></li>
+                            <% else %>
+                                <li class=""><i class="fa fa-star"></i></li>
+                            <% end %>
+                        <% end %>
+                      </ul>
+                      <h5 class="product-caption-title">
+                        <%= product.name %>
+                      </h5>
+                      <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     ₹<%= product.per_hour_price %>
                   </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-          <% end %>
-        </div>
-        <div class="gap"></div>
-    <% end %>
+            <% end %>
+          </div>
+          <div class="gap"></div>
+      <% end %>
 
-    <% if @services.any? %>
-        <h3 class="widget-title">Services</h3>
-        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-          <% @services.each do |service| %>
-              <div class="owl-item">
-                <div class="product  owl-item-slide">
-                  <ul class="product-labels"></ul>
-                  <div class="product-img-wrap">
-                    <% if service.service_images.any? %>
-                        <%= image_tag service.service_images.first.image(:size_500x500), class: 'img-responsive' %>
-                    <% else %>
-                        <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
-                    <% end %>
-                  </div>
-                  <a class="product-link" href="<%= service_path(service)%>"></a>
-                  <div class="product-caption">
-                    <ul class="product-caption-rating">
-                      <% for i in 1..5 %>
-                          <% if i <= service.rating %>
-                              <li class="rated"><i class="fa fa-star"></i></li>
-                          <% else %>
-                              <li class=""><i class="fa fa-star"></i></li>
-                          <% end %>
+      <% if @services.any? %>
+          <h3 class="widget-title">Services</h3>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
+            <% @services.each do |service| %>
+                <div class="owl-item">
+                  <div class="product  owl-item-slide">
+                    <ul class="product-labels"></ul>
+                    <div class="product-img-wrap">
+                      <% if service.service_images.any? %>
+                          <%= image_tag service.service_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      <% else %>
+                          <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
                       <% end %>
-                    </ul>
-                    <h5 class="product-caption-title">
-                      <%= service.service_description %>
-                    </h5>
-                    <div class="product-caption-price">
+                    </div>
+                    <a class="product-link" href="<%= service_path(service)%>"></a>
+                    <div class="product-caption">
+                      <ul class="product-caption-rating">
+                        <% for i in 1..5 %>
+                            <% if i <= service.rating %>
+                                <li class="rated"><i class="fa fa-star"></i></li>
+                            <% else %>
+                                <li class=""><i class="fa fa-star"></i></li>
+                            <% end %>
+                        <% end %>
+                      </ul>
+                      <h5 class="product-caption-title">
+                        <%= service.service_description %>
+                      </h5>
+                      <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     ₹<%= service.per_hour_price %>
                   </span>
 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-          <% end %>
-        </div>
-        <div class="gap"></div>
-    <% end %>
+            <% end %>
+          </div>
+          <div class="gap"></div>
+      <% end %>
 
-    <% if @advertisements.any? %>
-        <!--categories Start-->
-        <h3 class="widget-title">Advertisements</h3>
-        <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-          <% @advertisements.each do |advertisement| %>
-              <div class="owl-item">
-                <div class="product  owl-item-slide">
-                  <ul class="product-labels"></ul>
-                  <div class="product-img-wrap">
-                    <% if advertisement.advertisement_images.any? %>
-                        <%= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>
-                    <% else %>
-                        <%= image_tag "theme_img/500x500.png", class: 'product-img' %>
-                    <% end %>
-                    <%#= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
-                  </div>
-                  <a class="product-link" href="#"></a>
-                  <div class="product-caption">
-                    <h5 class="product-caption-title">
-                      <%= advertisement.title %>
-                    </h5>
-                    <div class="product-caption-price">
+      <% if @advertisements.any? %>
+          <!--categories Start-->
+          <h3 class="widget-title">Advertisements</h3>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
+            <% @advertisements.each do |advertisement| %>
+                <div class="owl-item">
+                  <div class="product  owl-item-slide">
+                    <ul class="product-labels"></ul>
+                    <div class="product-img-wrap">
+                      <% if advertisement.advertisement_images.any? %>
+                          <%= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      <% else %>
+                          <%= image_tag "theme_img/500x500.png", class: 'product-img' %>
+                      <% end %>
+                      <%#= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                    </div>
+                    <a class="product-link" href="#"></a>
+                    <div class="product-caption">
+                      <h5 class="product-caption-title">
+                        <%= advertisement.title %>
+                      </h5>
+                      <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     ₹<%= advertisement.per_hour_cost %>
                   </span>
 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-          <% end %>
-        </div>
-        <div class="gap"></div>
-        <!--categories finish-->
-    <% end %>
+            <% end %>
+          </div>
+          <div class="gap"></div>
+          <!--categories finish-->
+      <% end %>
+    </div>
+
   </div>
 </div>
+<script type="text/javascript" charset="utf-8">
+
+    $(document).ready(function(){
+        $('.custome-filter-block .set-min-price').val("<%= params[:min_price].present? ?  params[:min_price] : @min_price %>")
+        $('.custome-filter-block .set-max-price').val("<%= params[:max_price].present? ?  params[:max_price] : @max_price %>")
+        $('.custome-filter-block .set-quantity').val("<%= params[:quantity].present? ?  params[:quantity] : 0 %>")
+        $('.custome-filter-block .set-rating').val("<%= params[:rating].present? ?  params[:rating] : 1 %>")
+    });
+
+</script>
 

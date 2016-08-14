@@ -30,6 +30,19 @@
                     <i class="fa fa-inr rupee-icon"></i>
                     <input type="text" name="max_price" class="form-control set-max-price">
                   </div>
+                  <div class="form-group">
+                    <label>Minimum Rating</label>
+                    <!--<i class="fa fa-inr rupee-icon"></i>-->
+                    <input type="text" name="rating" class="form-control set-rating">
+                  </div>
+                  <div class="form-group">
+                    <label>Minimum Product Quantity</label>
+                    <!--<i class="fa fa-inr rupee-icon"></i>-->
+                    <input type="number" name="quantity" class="form-control set-quantity">
+                    <%#= check_box("tag", true, {checked: true}) %>
+                    <!--<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable-->
+                    <%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>
+                  </div>
                   <input type="submit" class="btn btn-primary">
                 </form>
             </div>
@@ -134,6 +147,8 @@
   $(document).ready(function(){
       $('.custome-filter-block .set-min-price').val("<%= params[:min_price].present? ?  params[:min_price] : @min_price %>")
       $('.custome-filter-block .set-max-price').val("<%= params[:max_price].present? ?  params[:max_price] : @max_price %>")
+      $('.custome-filter-block .set-quantity').val("<%= params[:quantity].present? ?  params[:quantity] : 0 %>")
+      $('.custome-filter-block .set-rating').val("<%= params[:rating].present? ?  params[:rating] : 1 %>")
   });
 
 </script>
