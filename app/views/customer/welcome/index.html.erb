@@ -7,8 +7,10 @@
       <hr />
       <%= form_tag customer_sign_in_path do %>
         <div class="form-group">
-          <%= label_tag :email %>
-          <%= email_field_tag :email, params[:email], class: 'form-control' %>
+          <%#= label_tag :email %>
+          <%#= email_field_tag :email, params[:email], class: 'form-control' %>
+          <%= label_tag :contact %>
+          <%= number_field_tag :contact, params[:contact], class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= label_tag :password %>

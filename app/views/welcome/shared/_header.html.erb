@@ -24,8 +24,10 @@
       <hr />
       <%= form_tag customer_sign_in_path do %>
           <div class="form-group">
-            <%= label_tag :email %>
-            <%= email_field_tag :email, params[:email], class: 'form-control' %>
+            <%#= label_tag :email %>
+            <%#= email_field_tag :email, params[:email], class: 'form-control' %>
+            <%= label_tag :contact %>
+            <%= number_field_tag :contact, params[:contact], class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= label_tag :password %>
@@ -33,6 +35,7 @@
           </div>
           <%= submit_tag 'Sign In', class: 'btn btn-primary' %>
       <%- end %>
+
       <div class="gap gap-small"></div>
       <ul class="list-inline">
         <li>
@@ -42,27 +45,21 @@
       </ul>
     </div>
 
-    <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-account-dialog">
+    <div class="mfp-with-anim mfp-hide mfp-dialog clearfix hdr-registration-form" id="nav-account-dialog">
       <h3 class="widget-title">Register</h3>
       <p>Welcome, Register to get Enter</p>
+      <span style="color:red" class=" registration-error hidden"></span>
       <hr />
-      <%= simple_form_for :customer, :url => customer_sign_up_path do |f| %>
-          <div class="form-group">
-            <%= f.input :name, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.input :email, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.input :password, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.input :password_confirmation, class: 'form-control' %>
-          </div>
-          <%= submit_tag 'Submit', class: 'btn btn-primary' %>
-      <%- end %>
+      Name: <input type="text" class="form-control rgr-frm-name">
+      Email: <input type="email" class="form-control rgr-frm-email">
+      Password: <input type="password" class="form-control rgr-frm-password">
+      Password confirmation: <input type="password" class="form-control rgr-frm-password-confirm">
+
+      <a href="javascript:void(0)" class="btn btn-info hdr-registration-form-submit">Submit</a>
+
       <div class="gap gap-small"></div>
     </div>
+
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-pwd-dialog">
       <h3 class="widget-title">Password Recovery</h3>
       <p>Enter Your Email and We Will Send the Instructions</p>
@@ -79,20 +76,25 @@
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-mobile-dialog">
       <h3 class="widget-title">Mobile Number</h3>
       <hr />
-      <input type="number" class="form-control" min="10" max="10"  />
-      <a href="#nav-otp-dialog" class="popup-text mobile-submit">Proceed</a>
+      <input type="number"id='register-mobile' class="form-control" min="10" max="10"  />
+      <a href="#nav-otp-dialog" class="hidden popup-text mobile-submit2">Proceed</a>
+      <a href="javascript:void(0)" class="mobile-submit evt-resend-otp">Proceed</a>
       <div class="gap gap-small"></div>
 
     </div>
+
+
 
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-otp-dialog">
       <h3 class="widget-title">OTP</h3>
       <p>Enter OTP for Registration</p>
       <hr />
       <div class="form-group">
-        <input type="number" class="form-control" min="4" max="4"  />
+        <input type="number" class="user-otp form-control" min="4" max="4"  />
+        <span style="color:red" class=" otp-error hidden">OTP not matched</span>
       </div>
-      <a href="#nav-account-dialog" class="popup-text otp-submit">Proceed</a>
+      <a href="#nav-account-dialog" class="hidden popup-text otp-submit2">Proceed</a>
+      <a href="javascript:void(0)" class="otp-submit">Proceed</a>
       <div class="gap gap-small"></div>
       <ul class="list-inline">
         <li>
@@ -101,26 +103,6 @@
       </ul>
 
     </div>
-
-    <!--<div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-otp-dialog">-->
-    <!--<h3 class="widget-title">OTP</h3>-->
-    <!--<p>Enter OTP for Registration</p>-->
-    <!--<hr />-->
-    <!--<%#= form_tag customer_step_three_path, method: :post  do %>-->
-    <!--<div class="form-group">-->
-    <!--<%#= text_field_tag :otp, "", class: 'form-control', minlength: 4, maxlength: 4 %>-->
-    <!--</div>-->
-    <!--<%#= hidden_field_tag 'phone', @phone %>-->
-    <!--<%#= submit_tag 'Proceed', class: 'btn btn-primary' %>-->
-    <!--<div class="gap gap-small"></div>-->
-    <!--<ul class="list-inline">-->
-    <!--<li>-->
-    <!--<p style="font-size: 12px; color: #888;">Click on Send OTP to receive 4 digit verification code on your register mobile number.</p>-->
-    <!--<a href="javascript:void(0)" class="popup-text sending-otp">Send OTP</a>-->
-    <!--</ul>-->
-    <!--&lt;!&ndash; <div class=" btn btn-info "></div> &ndash;&gt;-->
-    <!--<%# end %>-->
-    <!--</div>-->
 
     <nav class="navbar navbar-inverse navbar-main yamm">
       <div class="container">
@@ -136,8 +118,6 @@
           <ul class="nav navbar-nav">
             <li class="dropdown"><a href="javascript:void(0)"><i class="fa fa-reorder"></i>&nbsp; Shop by Category<i class="drop-caret" data-toggle="dropdown"></i></a>
               <ul class="dropdown-menu dropdown-menu-category">
-                <!--<li><a href="/products">Products</a></li>-->
-                <!--<li><a href="/services">Services</a></li>-->
                 <% @categories.each do |category| %>
                     <li><a href="<%= category_path(category)%>"><%= category.name %></a>
                       <div class="dropdown-menu-category-section">
@@ -203,7 +183,7 @@
                   <a href="javascript:void(0)">Start</a>
                   <ul class="dropdown-menu dropdown-menu-shipping-cart">
                     <li>
-                      <a href="#nav-login-dialog" class="popup-text">Login</a>
+                      <a href="#nav-login-dialog" class="popup-text login-nav-button">Login</a>
                     </li>
                   </ul>
                 </li>
@@ -216,3 +196,68 @@
   <%= render partial: 'welcome/shared/alerts'%>
 </div>
 <div class="header-space"></div>
+
+<script type="text/javascript" charset="utf-8">
+
+    $( document ).ready(function() {
+        $(".mobile-submit").click(function(){
+            var number = $("#register-mobile").val();
+            $.post('customer/step_two.json', {phone: number})
+                    .done(function(msg){
+                        var otp = msg.new_user.otp
+                        var phone = msg.new_user.phone
+                        $(".mobile-submit2").trigger("click");
+                        $.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone="+phone+"&text= Your OTP is "+otp+"&priority=ndnd& stype=normal", function(data, status){});
+//                            $(".sending-otp").trigger("click");
+                    })
+                    .fail(function(xhr, status, error) {
+                        // error handling
+                        if (xhr.responseJSON.errors.indexOf("Already") >= 0){
+                            $(".login-nav-button").trigger( "click" );
+                        }
+                    });
+
+        });
+
+        $(".sending-otp").click(function(){
+            $(".evt-resend-otp").trigger("click");
+        });
+
+        $(".otp-submit").click(function(){
+            var number = $("#register-mobile").val();
+            var user_otp = $(".user-otp").val();
+
+            $.post('customer/step_three.json', {phone: number, otp: user_otp})
+                    .done(function(msg){
+                        $(".otp-submit2").trigger("click");
+                        $(".otp-error").addClass('hidden')
+                    })
+                    .fail(function(xhr, status, error) {
+                        // error handling
+                        $(".otp-error").removeClass('hidden')
+
+                    });
+        });
+
+        $(".hdr-registration-form-submit ").click(function(){
+            var name = $(".rgr-frm-name").val();
+            var email = $(".rgr-frm-email").val();
+            var contact = $("#register-mobile").val();
+            var password = $(".rgr-frm-password").val();
+            var password_confirmation = $(".rgr-frm-password-confirm").val();
+            $.post('customer/sign_up.json', {customer: {name: name, email: email, contact: contact, password: password, password_confirmation: password_confirmation}})
+                    .done(function(msg){
+                        location.reload();
+                    })
+                    .fail(function(xhr, status, error) {
+                        // error handling
+                        var error_text = xhr.responseText.split(':')[1].replace('"','').replace('}','').replace('"','');
+                        $(".registration-error").text(error_text);
+                        $(".registration-error").removeClass('hidden')
+                    });
+        });
+
+    });
+
+
+</script>
