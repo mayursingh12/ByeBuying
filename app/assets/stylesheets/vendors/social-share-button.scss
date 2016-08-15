@@ -1,0 +1,19 @@
+$size: 18px;
+
+.social-share-button {
+  .ssb-icon {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: $size $size;
+    display: inline-block;
+    height: $size;
+    width: $size;
+  }
+
+  @each $site in twitter, facebook, google_bookmark, google_plus, weibo, qq,
+                 delicious, linkedin, tumblr, pinterest, douban, weichat, vkontakte, email {
+    .ssb-#{$site} {
+      background-image: image-url('social-share-button/#{$site}.svg');
+    }
+  }
+}

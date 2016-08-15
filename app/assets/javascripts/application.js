@@ -16,4 +16,4 @@
 //= require ./vendors/angular
 //= require ./vendors/angular_bootstrap
 //= require ./vendors/bootstrap
-//= require social-share-button
+//= require ./vendors/social-share-button

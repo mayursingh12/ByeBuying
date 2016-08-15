@@ -15,5 +15,5 @@
  *= require ./vendors/bootstrap
  *= require ./vendors/loading-bar
  *= require ./vendors/notify
- *= require social-share-button
+ *= require ./vendors/social-share-button
  */
