@@ -39,9 +39,9 @@
             <div class="product-page-side-section">
               <h5 class="product-page-side-title">Share This Item</h5>
               <% if @product.product_images.any? %>
-                  <%= social_share_button_tag(@product.name, :image => @product.product_images.first.image(:size_500x500)) %>
+                  <%= social_share_button_tag(@product.name, url: root_path, image: @product.product_images.first.image(:size_500x500)) %>
               <% else %>
-                  <%= social_share_button_tag(@product.name, :image => 'theme_img/500x500.png') %>
+                  <%= social_share_button_tag(@product.name, image: 'theme_img/500x500.png') %>
               <% end %>
 
               <!--<ul class="product-page-share-item">-->
