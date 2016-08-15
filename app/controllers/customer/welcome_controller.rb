@@ -37,7 +37,7 @@ class Customer::WelcomeController < Customer::BaseController
         user_ = User.where(contact: @phone).first
         if user_.present?
           # already registered
-          render status: :unprocessable_entity, json: { errors: 'Already registered'}
+          render status: :unprocessable_entity, json: { errors: 'Already registered', move: 0 }
         else
           new_user =  NewUser.where(phone: @phone).first
           if new_user.present?
@@ -93,7 +93,7 @@ class Customer::WelcomeController < Customer::BaseController
       if new_user.present?
         if new_user.otp == params[:otp]
           # do nothing
-          render status: :ok
+          render status: :ok, json: { success: 'matched'}
         else
           render status: :unprocessable_entity, json: { errors: 'OTP not matched'}
         end
@@ -109,7 +109,7 @@ class Customer::WelcomeController < Customer::BaseController
           redirect_to action: :registration, contact: @phone
         else
           flash[:error] = 'OTP not matched'
-          render action: :registration, phone: @phone
+          render action: :otp, phone: @phone
         end
       else
         flash[:error] = 'Something went wrong, try again later.'
@@ -127,10 +127,10 @@ class Customer::WelcomeController < Customer::BaseController
         render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages  }
       end
     else
-      if sign_in_customer
+      if sign_in_customer_
         redirect_to action: :index
       else
-        flash[:error] = 'Email/Password combination wrong, contact super admin.'
+        flash[:error] = 'Mobile Number/Password combination wrong, contact super admin.'
         render action: :index
       end
     end
@@ -221,17 +221,17 @@ class Customer::WelcomeController < Customer::BaseController
 
   private
 
-  def sign_in_customer
-    email = params[:email]
-    password = params[:password]
-    return false unless email.present? or password.present?
-    customer = Customer.where(email: email).first
-    return false unless customer.present?
-    if customer.valid_password?(password)
-      flash[:success] = "Signed in as #{customer.email}."
-      sign_in(customer)
-    end
-  end
+  # def sign_in_customer
+  #   email = params[:email]
+  #   password = params[:password]
+  #   return false unless email.present? or password.present?
+  #   customer = Customer.where(email: email).first
+  #   return false unless customer.present?
+  #   if customer.valid_password?(password)
+  #     flash[:success] = "Signed in as #{customer.email}."
+  #     sign_in(customer)
+  #   end
+  # end
 
   def sign_in_customer_
     contact = params[:contact]
@@ -240,7 +240,7 @@ class Customer::WelcomeController < Customer::BaseController
     customer = Customer.where(contact: contact).first
     return false unless customer.present?
     if customer.valid_password?(password)
-      flash[:success] = "Signed in as #{customer.contact}."
+      flash[:success] = "Signed in as #{customer.name}."
       sign_in(customer)
     end
   end
