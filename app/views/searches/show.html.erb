@@ -1,77 +1,81 @@
 <div class="searches_main_con">
-	<div class="container">
+  <div class="container">
 
-		<% if @results[:products].any? %>
-			<h3>Product:</h3>
-			<% @results[:products].each do |product| %>
-				<div class="search_items">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="col-sm-8 col-xs-12">
-								<h5 class="product-name"><%= product.name %></h5>
-						    	<p class="location"><%= product.location %></p>
-							</div>
-							<div class="col-sm-4 col-xs-12 text-right">
-								<p class="category-name"><%=product.subcategory.category.name%> > <%=product.subcategory.name%> </p>
-							</div>
-							<div class="col-xs-12">
-								<p class="description"><%= product.description %></p>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			<% end %>
-		<% end %>
+    <% if @results[:products].any? %>
+        <h3>Product:</h3>
+        <% @results[:products].each do |product| %>
+            <div class="search_items">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-sm-8 col-xs-12">
+                    <h5 class="product-name"><%= product.name %></h5>
+                    <p class="location"><%= product.location %></p>
+                  </div>
+                  <div class="col-sm-4 col-xs-12 text-right">
+                    <p class="category-name"><%=product.subcategory.category.name%> > <%=product.subcategory.name%> </p>
+                  </div>
+                  <div class="col-xs-12">
+                    <p class="description"><%= product.description %></p>
+                    <a class="read-more-link" href="<%= service_path(service)%>">Read more...</a>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+        <% end %>
+    <% end %>
 
-		<% if @results[:services].any? %>
-			<h3>Service:</h3>
-			<% @results[:services].each do |service| %>
-				<div class="search_items">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="col-sm-8 col-xs-12">
-								<h5 class="product-name"><%= service.subcategory.category.name %></h5>
-						    	<p class="location"><%= service.location %></p>
-							</div>
-							<div class="col-sm-4 col-xs-12 text-right">
-								<p class="category-name"><%=service.subcategory.name%> </p>
-							</div>
-							<div class="col-xs-12">
-								<p class="description"><%= service.service_description %></p>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			<% end %>
-		<% end %>
+    <% if @results[:services].any? %>
+        <h3>Service:</h3>
+        <% @results[:services].each do |service| %>
+            <div class="search_items">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-sm-8 col-xs-12">
+                    <h5 class="product-name"><%= service.subcategory.category.name %></h5>
+                    <p class="location"><%= service.location %></p>
+                  </div>
+                  <div class="col-sm-4 col-xs-12 text-right">
+                    <p class="category-name"><%=service.subcategory.name%> </p>
+                  </div>
+                  <div class="col-xs-12">
+                    <p class="description"><%= service.service_description %></p>
+                    <a class="read-more-link" href="<%= service_path(service)%>">Read more...</a>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+        <% end %>
+    <% end %>
 
-		<% if @results[:advertisements].any? %>
-			<h3>Advertisement:</h3>
-			<% @results[:advertisements].each do |advertisement| %>
-				<div class="search_items">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="col-sm-8 col-xs-12">
-								<h5 class="product-name"><%= advertisement.title %></h5>
-							</div>
-							<div class="col-sm-4 col-xs-12 text-right">
-								<p class="category-name">
-									<%=advertisement.subcategory.category.name%> > <%= advertisement.subcategory.name %>
-								</p>
-							</div>
-							<div class="col-xs-12">
-								<p class="description">
-									<%= advertisement.description %>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			<% end %>
-		<% end %>
+    <% if @results[:advertisements].any? %>
+        <h3>Advertisement:</h3>
+        <% @results[:advertisements].each do |advertisement| %>
+            <div class="search_items">
+              <div class="col-md-1 col-sm-2 col-xs-12">
+                <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+              </div>
+              <div class="col-md-11 col-sm-10 col-xs-12">
+                <div class="row">
+                  <div class="col-sm-8 col-xs-12">
+                    <h5 class="product-name"><%= advertisement.title %></h5>
+                  </div>
+                  <div class="col-sm-4 col-xs-12 text-right">
+                    <p class="category-name">
+                      <%=advertisement.subcategory.category.name%> > <%= advertisement.subcategory.name %>
+                    </p>
+                  </div>
+                  <div class="col-xs-12">
+                    <p class="description"><%= advertisement.description %></p>
+                    <a class="read-more-link" href="<%= service_path(service)%>">Read more...</a>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+        <% end %>
+    <% end %>
 
-	</div>
+  </div>
 </div>
