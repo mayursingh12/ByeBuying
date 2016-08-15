@@ -5,7 +5,10 @@
         <h3>Product:</h3>
         <% @results[:products].each do |product| %>
             <div class="search_items">
-              <div class="col-xs-12">
+              <div class="col-md-1 col-sm-2 col-xs-12">
+                <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+              </div>
+              <div class="col-md-11 col-sm-10 col-xs-12">
                 <div class="row">
                   <div class="col-sm-8 col-xs-12">
                     <h5 class="product-name"><%= product.name %></h5>
@@ -16,7 +19,7 @@
                   </div>
                   <div class="col-xs-12">
                     <p class="description"><%= product.description %></p>
-                    <a class="read-more-link" href="<%= service_path(service)%>">Read more...</a>
+                    <a class="read-more-link" href="<%= product_path(product) %>">Read more...</a>
                   </div>
                 </div>
               </div>
@@ -29,7 +32,10 @@
         <h3>Service:</h3>
         <% @results[:services].each do |service| %>
             <div class="search_items">
-              <div class="col-xs-12">
+              <div class="col-md-1 col-sm-2 col-xs-12">
+                <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+              </div>
+              <div class="col-md-11 col-sm-10 col-xs-12">
                 <div class="row">
                   <div class="col-sm-8 col-xs-12">
                     <h5 class="product-name"><%= service.subcategory.category.name %></h5>
@@ -68,7 +74,7 @@
                   </div>
                   <div class="col-xs-12">
                     <p class="description"><%= advertisement.description %></p>
-                    <a class="read-more-link" href="<%= service_path(service)%>">Read more...</a>
+                    <a class="read-more-link" href="#">Read more...</a>
                   </div>
                 </div>
               </div>
