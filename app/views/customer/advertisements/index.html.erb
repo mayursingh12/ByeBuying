@@ -5,48 +5,45 @@
       <%= link_to 'Post an Add', new_customer_advertisement_path, class: 'btn btn-primary add-btn pull-right'  %>
       <div class="clearfix"></div>
     </div>
-
-    <div class="row">
-      <div class="col-xs-12">
-        <table class="table table-striped">
-          <tr class="info">
-            <th>Title</th>
-            <th>Email</th>
-            <!--<th>Contact</th>-->
-            <th>Category</th>
-            <th>SubCategory</th>
-            <th>Start At</th>
-            <th>End At</th>
-            <th>Per Hour Cost</th>
-            <th>Discription</th>
-            <th>Action</th>
-          </tr>
-          <% @advertisements.each do |advertisement| %>
-              <tr class="data">
-                <td><%= advertisement.title %></td>
-                <td><%= advertisement.user.email if advertisement.user.present? %></td>
-                <!--<td><%#= advertisement.user.contact if advertisement.user.present? %></td>-->
-                <td><%= advertisement.subcategory.category.name if advertisement.subcategory.category.present? %></td>
-                <td><%= advertisement.subcategory.name if advertisement.subcategory.present? %></td>
-                <td><%= advertisement.start_at.strftime(time_format) %></td>
-                <td><%= advertisement.end_at.strftime(time_format) %></td>
-                <td><%= advertisement.per_hour_cost %></td>
-                <td><%= advertisement.description %></td>
-                <td>
-                  <%= link_to customer_advertisement_path(advertisement) do %>
-                      <i class="fa fa-eye"></i>
-                  <%- end %>
-                  <%= link_to edit_customer_advertisement_path(advertisement) do %>
-                      <i class="fa fa-edit"></i>
-                  <%- end %>
-                  <%= link_to customer_advertisement_path(advertisement), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                      <i class="fa fa-trash fa-3"></i>
-                  <%- end %>
-                </td>
-              </tr>
-          <%- end %>
-        </table>
-      </div>
+    <div class="col-xs-12">
+      <table class="table table-striped">
+        <tr class="info">
+          <th>Title</th>
+          <th>Email</th>
+          <!--<th>Contact</th>-->
+          <th>Category</th>
+          <th>SubCategory</th>
+          <th>Start At</th>
+          <th>End At</th>
+          <th>Per Hour Cost</th>
+          <!--<th>Discription</th>-->
+          <th>Action</th>
+        </tr>
+        <% @advertisements.each do |advertisement| %>
+            <tr class="data">
+              <td><%= advertisement.title %></td>
+              <td><%= advertisement.user.email if advertisement.user.present? %></td>
+              <!--<td><%#= advertisement.user.contact if advertisement.user.present? %></td>-->
+              <td><%= advertisement.subcategory.category.name if advertisement.subcategory.category.present? %></td>
+              <td><%= advertisement.subcategory.name if advertisement.subcategory.present? %></td>
+              <td><%= advertisement.start_at.strftime(time_format) %></td>
+              <td><%= advertisement.end_at.strftime(time_format) %></td>
+              <td><%= advertisement.per_hour_cost %></td>
+              <!--<td><%#= advertisement.description %></td>-->
+              <td>
+                <%= link_to customer_advertisement_path(advertisement) do %>
+                    <i class="fa fa-eye"></i>
+                <%- end %>
+                <%= link_to edit_customer_advertisement_path(advertisement) do %>
+                    <i class="fa fa-edit"></i>
+                <%- end %>
+                <%= link_to customer_advertisement_path(advertisement), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
+              </td>
+            </tr>
+        <%- end %>
+      </table>
     </div>
   </div>
 </div>
