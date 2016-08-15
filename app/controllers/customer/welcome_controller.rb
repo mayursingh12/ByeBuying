@@ -146,7 +146,7 @@ class Customer::WelcomeController < Customer::BaseController
           sign_in(@customer)
           render status: :ok , json: { api_token: @customer.api_token }
         else
-          render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages }
+          render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages.first }
         end
       else
         if @customer.save
