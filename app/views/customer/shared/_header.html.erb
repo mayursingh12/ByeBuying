@@ -1,173 +1,177 @@
-<div class="global-wrapper clearfix" id="global-wrapper">
-  <div class="navbar-before mobile-hidden">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <ul class="nav navbar-nav navbar-right navbar-right-no-mar">
-            <li><a href="/about_us">About Us</a>
-            </li>
-            <li><a href="/listing_policy">Listing Policy</a>
-            </li>
-            <li><a href="/contact_us">Contact Us</a>
-            </li>
-          </ul>
+<div class="fixed-header">
+  <div class="global-wrapper clearfix" id="global-wrapper">
+    <div class="navbar-before mobile-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="nav navbar-nav navbar-right navbar-right-no-mar">
+              <li><a href="/about_us">About Us</a>
+              </li>
+              <li><a href="/listing_policy">Listing Policy</a>
+              </li>
+              <li><a href="/contact_us">Contact Us</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-login-dialog">
-    <h3 class="widget-title">Member Login</h3>
-    <p>Welcome back, friend. Login to get started</p>
-    <hr />
-    <form>
-      <div class="form-group">
-        <label>Email or Username</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="checkbox">
-        <label>
-          <input class="i-check" type="checkbox" />Remeber Me</label>
-      </div>
-      <input class="btn btn-primary" type="submit" value="Sign In" />
-    </form>
-    <div class="gap gap-small"></div>
-    <ul class="list-inline">
-      <li>
-        <%= link_to 'Register Here', customer_step_one_path %>
-        <!--<a href="#nav-account-dialog" class="popup-text">Register Here</a>-->
-      </li>
-      <li><a href="#nav-pwd-dialog" class="popup-text">Forgot Password?</a>
-      </li>
-    </ul>
-  </div>
-  <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-account-dialog">
-    <h3 class="widget-title">Create TheBox Account</h3>
-    <p>Ready to get best offers? Let's get started!</p>
-    <hr />
-    <form>
-      <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="form-group">
-        <label>Repeat Password</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input class="form-control" type="text" />
-      </div>
-      <div class="checkbox">
-        <label>
-          <input class="i-check" type="checkbox" />Subscribe to the Newsletter</label>
-      </div>
-      <input class="btn btn-primary" type="submit" value="Create Account" />
-    </form>
-    <div class="gap gap-small"></div>
-    <ul class="list-inline">
-      <li><a href="#nav-login-dialog" class="popup-text">Already Memeber</a>
-      </li>
-    </ul>
-  </div>
-  <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-pwd-dialog">
-    <h3 class="widget-title">Password Recovery</h3>
-    <p>Enter Your Email and We Will Send the Instructions</p>
-    <hr />
-    <form>
-      <div class="form-group">
-        <label>Your Email</label>
-        <input class="form-control" type="text" />
-      </div>
-      <input class="btn btn-primary" type="submit" value="Recover Password" />
-    </form>
-  </div>
+    <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-login-dialog">
+      <h3 class="widget-title">Member Login</h3>
+      <p>Welcome back, friend. Login to get started</p>
+      <hr />
+      <form>
+        <div class="form-group">
+          <label>Email or Username</label>
+          <input class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-control" type="text" />
+        </div>
+        <div class="checkbox">
+          <label>
+            <input class="i-check" type="checkbox" />Remeber Me</label>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Sign In" />
+      </form>
+      <div class="gap gap-small"></div>
+      <ul class="list-inline">
+        <li>
+          <%= link_to 'Register Here', customer_step_one_path %>
+          <!--<a href="#nav-account-dialog" class="popup-text">Register Here</a>-->
+        </li>
+        <li><a href="#nav-pwd-dialog" class="popup-text">Forgot Password?</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-account-dialog">
+      <h3 class="widget-title">Create TheBox Account</h3>
+      <p>Ready to get best offers? Let's get started!</p>
+      <hr />
+      <form>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+          <label>Repeat Password</label>
+          <input class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input class="form-control" type="text" />
+        </div>
+        <div class="checkbox">
+          <label>
+            <input class="i-check" type="checkbox" />Subscribe to the Newsletter</label>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Create Account" />
+      </form>
+      <div class="gap gap-small"></div>
+      <ul class="list-inline">
+        <li><a href="#nav-login-dialog" class="popup-text">Already Memeber</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-pwd-dialog">
+      <h3 class="widget-title">Password Recovery</h3>
+      <p>Enter Your Email and We Will Send the Instructions</p>
+      <hr />
+      <form>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input class="form-control" type="text" />
+        </div>
+        <input class="btn btn-primary" type="submit" value="Recover Password" />
+      </form>
+    </div>
 
 
-  <nav class="navbar navbar-inverse navbar-main yamm">
-    <div class="container">
-      <div class="navbar-header">
-        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-nav-collapse" area_expanded="false"><span class="sr-only">Main Menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">
-          ByeBuying
-          <!--Barter-->
-        </a>
-      </div>
-      <div class="collapse navbar-collapse" id="main-nav-collapse">
-        <ul class="nav navbar-nav">
-          <li class="dropdown"><a href="javascript:void(0)"><i class="fa fa-reorder"></i>&nbsp; Shop by Category<i class="drop-caret" data-toggle="dropdown"></i></a>
-            <ul class="dropdown-menu dropdown-menu-category">
-              <!--<li><a href="/products">Products</a></li>-->
-              <!--<li><a href="/services">Services</a></li>-->
-              <% @categories.each do |category| %>
-                  <li><a href="<%= category_path(category) %>"><%= category.name %></a>
-                    <div class="dropdown-menu-category-section">
-                      <div class="dropdown-menu-category-section-inner">
-                        <div class="dropdown-menu-category-section-content">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <ul class="dropdown-menu-category-list">
-                                <% category.subcategories.each do |subcategory|%>
-                                    <li><a href="<%= subcategory_path(subcategory) %>"><%= subcategory.name %></a>
-                                    </li>
-                                <% end %>
-                              </ul>
+    <nav class="navbar navbar-inverse navbar-main yamm">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-nav-collapse" area_expanded="false"><span class="sr-only">Main Menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            ByeBuying
+            <!--Barter-->
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="main-nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="javascript:void(0)"><i class="fa fa-reorder"></i>&nbsp; Shop by Category<i class="drop-caret" data-toggle="dropdown"></i></a>
+              <ul class="dropdown-menu dropdown-menu-category">
+                <!--<li><a href="/products">Products</a></li>-->
+                <!--<li><a href="/services">Services</a></li>-->
+                <% @categories.each do |category| %>
+                    <li><a href="<%= category_path(category) %>"><%= category.name %></a>
+                      <div class="dropdown-menu-category-section">
+                        <div class="dropdown-menu-category-section-inner">
+                          <div class="dropdown-menu-category-section-content">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <ul class="dropdown-menu-category-list">
+                                  <% category.subcategories.each do |subcategory|%>
+                                      <li><a href="<%= subcategory_path(subcategory) %>"><%= subcategory.name %></a>
+                                      </li>
+                                  <% end %>
+                                </ul>
+                              </div>
+                              <!--<div class="col-md-6">-->
+                              <!--<ul class="dropdown-menu-category-list">-->
+                              <!--<li><a href="#">Washing Machines</a>-->
+                              <!--</li>-->
+                              <!--<li><a href="#">Vaccumm Cleaner</a>-->
+                              <!--</li>-->
+                              <!--<li><a href="#">Air Purifiers</a>-->
+                              <!--</li>-->
+                              <!--<li><a href="#">Others</a>-->
+                              <!--</li>-->
+                              <!--</ul>-->
+                              <!--</div>-->
                             </div>
-                            <!--<div class="col-md-6">-->
-                            <!--<ul class="dropdown-menu-category-list">-->
-                            <!--<li><a href="#">Washing Machines</a>-->
-                            <!--</li>-->
-                            <!--<li><a href="#">Vaccumm Cleaner</a>-->
-                            <!--</li>-->
-                            <!--<li><a href="#">Air Purifiers</a>-->
-                            <!--</li>-->
-                            <!--<li><a href="#">Others</a>-->
-                            <!--</li>-->
-                            <!--</ul>-->
-                            <!--</div>-->
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
+                    </li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
 
-        <%= simple_form_for [Search.new], html: {class: 'navbar-form navbar-left navbar-main-search' }, role: 'search' do |f| %>
-            <div class="form-group">
-              <%= f.input :name, label: false, class: 'form-control', placeholder: 'Search...'  %>
-              <%#= f.input :controller_name, :as => :hidden, input_html: { value: "#{params[:controller]}" }  %>
-              <%#= f.input :action_name, :as => :hidden, input_html: {value: "#{params[:action]}"} %>
-              <%= f.submit '', class: 'fa fa-search navbar-main-search-submit' %>
-              <i class="fa fa-search search-icon"></i>
-            </div>
-        <% end %>
+          <%= simple_form_for [Search.new], html: {class: 'navbar-form navbar-left navbar-main-search' }, role: 'search' do |f| %>
+              <div class="form-group">
+                <%= f.input :name, label: false, class: 'form-control', placeholder: 'Search...'  %>
+                <%#= f.input :controller_name, :as => :hidden, input_html: { value: "#{params[:controller]}" }  %>
+                <%#= f.input :action_name, :as => :hidden, input_html: {value: "#{params[:action]}"} %>
+                <%= f.submit '', class: 'fa fa-search navbar-main-search-submit' %>
+                <i class="fa fa-search search-icon"></i>
+              </div>
+          <% end %>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-              <li class="dropdown"><a href="/customer/profile"><%#= current_user.email %> My Account</a>
-                <ul class="dropdown-menu dropdown-menu-shipping-cart">
-                  <li><%= link_to 'Dashboard', customer_dashboard_path %></li>
-                  <li><%= link_to 'Advertisements', customer_advertisements_path %></li>
-                  <li><%= link_to 'Products', customer_products_path %></li>
-                  <li><%= link_to 'Services', customer_services_path %></li>
-                  <li><%= link_to 'Enquiries', customer_enquiries_path %></li>
-                </ul>
-              </li>
-              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-          <%- end %>
-        </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+                <li class="dropdown"><a href="/customer/profile"><%#= current_user.email %> My Account</a>
+                  <ul class="dropdown-menu dropdown-menu-shipping-cart">
+                    <li><%= link_to 'Dashboard', customer_dashboard_path %></li>
+                    <li><%= link_to 'Advertisements', customer_advertisements_path %></li>
+                    <li><%= link_to 'Products', customer_products_path %></li>
+                    <li><%= link_to 'Services', customer_services_path %></li>
+                    <li><%= link_to 'Enquiries', customer_enquiries_path %></li>
+                  </ul>
+                </li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+            <%- end %>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </div>
+<div class="header-space"></div>
+
