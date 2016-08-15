@@ -73,3 +73,5 @@ gem 'momentjs-rails'
 # gem 'rmagick'
 
 gem 'city-state'
+
+gem 'social-share-button'
