@@ -6,20 +6,26 @@
         <% @results[:products].each do |product| %>
             <div class="search_items">
               <div class="col-md-1 col-sm-2 col-xs-12">
-                <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+                <% if product.product_images.any? %>
+                        <%= image_tag product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
+                <% else %>
+                    <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+                <% end %>
+
               </div>
               <div class="col-md-11 col-sm-10 col-xs-12">
                 <div class="row">
                   <div class="col-sm-8 col-xs-12">
                     <h5 class="product-name"><%= product.name %></h5>
-                    <p class="location"><%= product.location %></p>
+                    <p class="location"><%= product.state.name %></p>
                   </div>
                   <div class="col-sm-4 col-xs-12 text-right">
-                    <p class="category-name"><%=product.subcategory.category.name%> > <%=product.subcategory.name%> </p>
+                    <p class="category-name"><a href="<%=category_path(product.subcategory.category)%>"><%= product.subcategory.category.name %></a> >
+                      <a href="<%=subcategory_path(product.subcategory)%>"><%=product.subcategory.name%></a> </p>
                   </div>
                   <div class="col-xs-12">
                     <p class="description"><%= product.description %></p>
-                    <a class="read-more-link" href="<%= product_path(product) %>">Read more...</a>
+                    <a class="read-more-link" href="<%= product_path(product) %>">Detail</a>
                   </div>
                 </div>
               </div>
@@ -33,20 +39,28 @@
         <% @results[:services].each do |service| %>
             <div class="search_items">
               <div class="col-md-1 col-sm-2 col-xs-12">
-                <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+                <% if service.service_images.any? %>
+                    <%= image_tag service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
+                <% else %>
+                    <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+                <% end %>
               </div>
               <div class="col-md-11 col-sm-10 col-xs-12">
                 <div class="row">
                   <div class="col-sm-8 col-xs-12">
-                    <h5 class="product-name"><%= service.subcategory.category.name %></h5>
-                    <p class="location"><%= service.location %></p>
+                    <h5 class="product-name"><%= service.id %></h5>
+                    <p class="location"><%= service.state.name %></p>
                   </div>
                   <div class="col-sm-4 col-xs-12 text-right">
-                    <p class="category-name"><%=service.subcategory.name%> </p>
+
+                    <p class="category-name">
+                      <a href="<%=category_path(service.subcategory.category)%>"><%=service.subcategory.category.name%></a> >
+                      <a href="<%=subcategory_path(service.subcategory)%>"><%=service.subcategory.name%></a>
+                    </p>
                   </div>
                   <div class="col-xs-12">
                     <p class="description"><%= service.service_description %></p>
-                    <a class="read-more-link" href="<%= service_path(service)%>">Read more...</a>
+                    <a class="read-more-link" href="<%= service_path(service)%>">Detail</a>
                   </div>
                 </div>
               </div>
@@ -60,7 +74,11 @@
         <% @results[:advertisements].each do |advertisement| %>
             <div class="search_items">
               <div class="col-md-1 col-sm-2 col-xs-12">
-                <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+                <% if advertisement.advertisement_images.any? %>
+                    <%= image_tag advertisement.advertisement_images.first.image.url(AdvertisementImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
+                <% else %>
+                    <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+                <% end %>
               </div>
               <div class="col-md-11 col-sm-10 col-xs-12">
                 <div class="row">
@@ -69,12 +87,13 @@
                   </div>
                   <div class="col-sm-4 col-xs-12 text-right">
                     <p class="category-name">
-                      <%=advertisement.subcategory.category.name%> > <%= advertisement.subcategory.name %>
+                      <a href="<%=category_path(advertisement.subcategory.category)%>"><%=advertisement.subcategory.category.name%></a> >
+                      <a href="<%=subcategory_path(advertisement.subcategory)%>"><%=advertisement.subcategory.name%></a>
                     </p>
                   </div>
                   <div class="col-xs-12">
                     <p class="description"><%= advertisement.description %></p>
-                    <a class="read-more-link" href="#">Read more...</a>
+                    <!--<a class="read-more-link" href="#">View detail</a>-->
                   </div>
                 </div>
               </div>
