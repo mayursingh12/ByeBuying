@@ -1,4 +1,4 @@
-class EnquiriesController < WelcomeController
+class EnquiriesController < ApplicationController
 
   before_action :set_variable
 
@@ -11,7 +11,7 @@ class EnquiriesController < WelcomeController
       if @product.present?
         @enquiry = Enquiry.new(enquiry_params)
         if @enquiry.save
-          render status: :ok
+          render status: :ok, json: {success: 'Successfully enquired.'}
         else
           render status: :unprocessable_entity, json: {errors: @enquiry.errors.full_messages}
         end
