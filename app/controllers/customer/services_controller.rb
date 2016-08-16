@@ -16,7 +16,7 @@ class Customer::ServicesController < Customer::BaseController
     @service = Service.new(service_params)
     if request.format == 'application/json'
       if @service.save
-        render status: :ok
+        render status: :ok, json: {success: 'successfully saved.'}
       else
         render status: :unprocessable_entity, json: { errors: @service.errors.full_messages }
       end
