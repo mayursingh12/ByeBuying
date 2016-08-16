@@ -16,7 +16,7 @@ class Customer::ProductsController < Customer::BaseController
     @product = Product.new(product_params)
     if request.format == 'application/json'
       if @product.save
-        render status: :ok
+        render status: :ok, json: {success: 'successfully saved.'}
       else
         render status: :unprocessable_entity, json: { errors: @product.errors.full_messages }
       end
