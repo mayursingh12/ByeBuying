@@ -18,7 +18,7 @@ class EnquiriesController < ApplicationController
       else
         @enquiry = Enquiry.new(service_enquiry_params)
         if @enquiry.save
-          render status: :ok
+          render status: :ok, json: {success: 'Successfully enquired.'}
         else
           render status: :unprocessable_entity, json: {errors: @enquiry.errors.full_messages}
         end
