@@ -71,3 +71,4 @@ json.services{
     json.admin_verified service.admin_verified?
   end
 }
+@enquiries
