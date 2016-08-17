@@ -13,9 +13,9 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def dashboard
-    # @advertisements = current_user.advertisements
-    # @products = current_user.products
-    # @services = current_user.services
+    @advertisements = current_user.advertisements
+    @products = current_user.products
+    @services = current_user.services
 
     @enquiries = EnquiriesAlgorithm.new(current_user).result.first
 
