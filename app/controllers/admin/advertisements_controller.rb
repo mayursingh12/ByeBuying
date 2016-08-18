@@ -70,6 +70,7 @@ class Admin::AdvertisementsController < Admin::BaseController
 
   def advertisement_params
     params.require(:advertisement).permit(:title,
+                                          :redirect_link,
                                           :description,
                                           :start_at,
                                           :end_at,

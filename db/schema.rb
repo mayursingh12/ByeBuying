@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813163016) do
+ActiveRecord::Schema.define(version: 20160818171340) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160813163016) do
     t.boolean  "admin_verified",               default: false
     t.datetime "deleted_at"
     t.integer  "user_id",        limit: 4
+    t.text     "redirect_link",  limit: 65535
   end
 
   add_index "advertisements", ["deleted_at"], name: "index_advertisements_on_deleted_at", using: :btree

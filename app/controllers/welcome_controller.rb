@@ -22,8 +22,8 @@ class WelcomeController < ApplicationController
   end
 
   def categories
-    @advertisements = Advertisement.where(admin_verified: true).last(15)
-    @categories = Category.all
+    # @advertisements = Advertisement.where(admin_verified: true).last(15)
+    # @categories = Category.all
   end
 
   # def subcategories
