@@ -2,7 +2,8 @@ class Customer::EnquiriesController < Customer::BaseController
 
   before_filter :authenticate_user_admin
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+  before_action :set_categories
 
   before_action :set_enquiry, only: [:show, :edit, :update, :deal]
 

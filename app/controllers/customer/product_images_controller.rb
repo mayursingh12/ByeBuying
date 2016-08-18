@@ -4,7 +4,8 @@ class Customer::ProductImagesController < Customer::BaseController
 
   before_action :set_product_image, only: [:destroy]
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+  before_action :set_categories
 
   def new
 

@@ -6,7 +6,8 @@ class Customer::WelcomeController < Customer::BaseController
 
   before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail]
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+  before_action :set_categories
 
   def index
 

@@ -2,7 +2,9 @@ class SearchesController < ApplicationController
 
   layout 'default'
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+
+  before_action :set_categories
 
   def create
     @search = Search.create(search_params)
@@ -42,8 +44,8 @@ class SearchesController < ApplicationController
     params.required(:search).permit(:name)
   end
 
-  def set_header_categories
-    @categories = Category.all
-  end
+  # def set_header_categories
+  #   @categories = Category.all
+  # end
 
 end

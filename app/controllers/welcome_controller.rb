@@ -60,9 +60,9 @@ class WelcomeController < ApplicationController
 
   private
 
-  def set_categories
-    @categories = Category.all
-  end
+  # def set_categories
+  #   @categories = Category.all
+  # end
 
   def set_min_max_price
 

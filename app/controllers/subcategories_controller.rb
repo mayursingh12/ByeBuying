@@ -2,7 +2,8 @@ class SubcategoriesController < ApplicationController
 
   layout 'default'
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+  before_action :set_categories
 
   before_action :set_subcategory, only: [:show]
 
@@ -38,9 +39,9 @@ class SubcategoriesController < ApplicationController
 
   private
 
-  def set_header_categories
-    @categories = Category.all
-  end
+  # def set_header_categories
+  #   @categories = Category.all
+  # end
 
   def set_subcategory
     @subcategory = Subcategory.find params[:id]
