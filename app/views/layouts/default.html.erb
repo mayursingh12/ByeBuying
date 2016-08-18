@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= query_diet_widget if Rails.env.development? %>
 <%= render partial: 'welcome/shared/header' %>
 <%= yield %>
 <%= render partial: 'welcome/shared/footer' %>
