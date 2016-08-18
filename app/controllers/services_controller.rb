@@ -2,7 +2,8 @@ class ServicesController < ApplicationController
 
   layout 'default'
 
-  before_action :set_header_categories
+  before_action :set_categories
+  # before_action :set_header_categories
 
   before_action :set_service, only: [:show]
 
@@ -16,9 +17,9 @@ class ServicesController < ApplicationController
 
   private
 
-  def set_header_categories
-    @categories = Category.all
-  end
+  # def set_header_categories
+  #   @categories = Category.all
+  # end
 
   def set_service
     @service = Service.find params[:id]

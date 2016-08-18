@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   layout 'default'
 
   def index
-    @categories = Category.all
+    # @categories = Category.all
   end
 
   def show
@@ -20,8 +20,8 @@ class CategoriesController < ApplicationController
     @category = Category.find params[:id]
   end
 
-  def set_categories
-    @categories = Category.all
-  end
+  # def set_categories
+  #   @categories = Category.all
+  # end
 
 end

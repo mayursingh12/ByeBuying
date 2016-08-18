@@ -1,6 +1,7 @@
 class SubscribersController < ApplicationController
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+  before_action :set_categories
 
   def create
     @subscriber = Subscriber.new(name: params[:name],
@@ -17,8 +18,8 @@ class SubscribersController < ApplicationController
 
   private
 
-  def set_header_categories
-    @categories = Category.all
-  end
+  # def set_header_categories
+  #   @categories = Category.all
+  # end
 
 end

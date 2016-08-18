@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def current_user
     params[:api_token].present? ? api_user : super
   end
+
+  def set_categories
+    @categories = Category.all
+  end
 end

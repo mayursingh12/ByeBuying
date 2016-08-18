@@ -2,7 +2,8 @@ class Customer::ProductsController < Customer::BaseController
 
   before_action :set_product, only: [:edit, :update, :show, :destroy]
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+  before_action :set_categories
 
   def index
     @products = current_user.products
