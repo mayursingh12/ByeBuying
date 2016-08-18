@@ -70,7 +70,9 @@ gem 'momentjs-rails'
 
 # gem 'aws-sdk'
 
-# gem 'rmagick'
+gem 'aws-sdk', '< 2.0'
+
+gem 'rmagick'
 
 gem 'city-state'
 

@@ -81,22 +81,31 @@ Rails.application.configure do
   # Custom Settings =======================
   # =======================================
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      :user_name => 'AKIAIBX3UZ4VUNU53K7A',
-      :password => 'Aq3WrgNACueVOIxoYlBjIikqSgcmlGs3SEetL3RT5u26',
-      :domain => 'https://infinite-taiga-60098.herokuapp.com',
-      :address => 'email-smtp.us-east-1.amazonaws.com',
-      :port => 587,
-      :authentication => :plain,
-      :enable_starttls_auto => true
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 'byebuyingproduction',
+          :access_key_id => 'AKIAJVESGCOIWUWZTALQ',
+          :secret_access_key => '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'
+      }
   }
-
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
-                                          :email => {
-                                              :email_prefix => 'ByeBuying new ERROR OCCURRED',
-                                              :sender_address => %{'notifier' <mayursingh1220@gmail.com>},
-                                              :exception_recipients => %w{mayursingh1220@gmail.com}
-                                          }
+  #
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     :user_name => 'AKIAIBX3UZ4VUNU53K7A',
+  #     :password => 'Aq3WrgNACueVOIxoYlBjIikqSgcmlGs3SEetL3RT5u26',
+  #     :domain => 'https://infinite-taiga-60098.herokuapp.com',
+  #     :address => 'email-smtp.us-east-1.amazonaws.com',
+  #     :port => 587,
+  #     :authentication => :plain,
+  #     :enable_starttls_auto => true
+  # }
+  #
+  # Rails.application.config.middleware.use ExceptionNotification::Rack,
+  #                                         :email => {
+  #                                             :email_prefix => 'ByeBuying new ERROR OCCURRED',
+  #                                             :sender_address => %{'notifier' <mayursingh1220@gmail.com>},
+  #                                             :exception_recipients => %w{mayursingh1220@gmail.com}
+  #                                         }
   # HOST_URL_FOR_MAILER = 'http://www.mysolutions4u.com'
 end

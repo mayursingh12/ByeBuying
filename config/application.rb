@@ -24,5 +24,12 @@ module Byebuying
     config.active_record.raise_in_transactional_callbacks = true
   end
 
+  # Mobile massege api
   # http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone=Your phone no&text=TestSMS&priority=ndnd& stype=normal
+
+  # S3 Credential
+  #
+  # Access Key ID: AKIAJVESGCOIWUWZTALQ
+  # Secret Access Key: m+v2xuU0cCreXzUl9b06TXaOatSuvJSvgjDj8Bqr
+
 end

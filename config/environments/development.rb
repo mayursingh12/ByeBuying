@@ -41,14 +41,23 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.serve_static_files = true
-  #
+
   # config.paperclip_defaults = {
   #     :storage => :s3,
+  #     :bucket => ENV['S3_BUCKET'],
   #     :s3_credentials => {
-  #         :bucket => ENV['S3_BUCKET'],
   #         :access_key_id => ENV['S3_BUCKET_ACCESS_KEY'],
   #         :secret_access_key => ENV['S3_BUCKET_SECRET']
   #     }
   # }
+
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 'byebuyingdevelopment',
+          :access_key_id => 'AKIAJVESGCOIWUWZTALQ',
+          :secret_access_key => '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'
+      }
+  }
 
 end
