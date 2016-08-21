@@ -4,6 +4,7 @@
       <table class="table table-striped">
         <thead>
         <tr class="info">
+          <th>ID</th>
           <th>Description</th>
           <th>Category</th>
           <th>Subcategory</th>
@@ -15,6 +16,7 @@
         <tbody>
         <% @services.each do |service| %>
             <tr class="data">
+              <td><%= service.id %></td>
               <td><%= service.service_description %></td>
               <td><%= service.subcategory.category.name %></td>
               <td><%= service.subcategory.name %></td>
