@@ -102,9 +102,9 @@ class WelcomeController < ApplicationController
       @services = Service.where(admin_verified: true).where('(per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ? )', params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
       @advertisements = Advertisement.where(admin_verified: true).where('per_hour_cost > ? AND per_hour_cost < ? OR per_hour_cost = ? OR per_hour_cost = ?', params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
     else
-      @products = Product.where(admin_verified: true).order('id DESC')
+      @products = Product.where(admin_verified: true).where('end_at > ?', DateTime.now).order('id DESC')
       @advertisements = Advertisement.where(admin_verified: true).order('id DESC')
-      @services = Service.where(admin_verified: true).order('id DESC')
+      @services = Service.where(admin_verified: true).where('end_at > ?', DateTime.now).order('id DESC')
     end
   end
 

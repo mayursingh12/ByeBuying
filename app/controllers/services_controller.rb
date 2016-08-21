@@ -8,7 +8,11 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show]
 
   def index
-    @services = Service.all.paginate(:page => params[:page], :per_page => 20)
+    if request.format == 'application/json'
+      @services = Service.where(admin_verified: true)
+    else
+      @services = Service.where(admin_verified: true).paginate(:page => params[:page], :per_page => 20)
+    end
   end
 
   def show

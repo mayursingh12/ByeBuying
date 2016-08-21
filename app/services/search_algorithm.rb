@@ -21,8 +21,8 @@ class SearchAlgorithm
 
   def find_and_load_models(product_ids, service_ids, advertisement_ids)
     @results << {
-        products: Product.where(id: product_ids, admin_verified: true),
-        services: Service.where(id: service_ids, admin_verified: true),
+        products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now),
+        services: Service.where(id: service_ids, admin_verified: true).where('end_at > ?', DateTime.now),
         advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids)
     }
   end

@@ -25,7 +25,7 @@ class Customer::EnquiriesController < Customer::BaseController
     else
       if @enquiry.update_attributes(enquiry_params)
         flash[:success] = 'Quote successfully sent'
-        redirect_to customer_enquiries_path
+        redirect_to customer_dashboard_path
       else
         flash[:error] = 'Something went wrong'
         render action: :show
@@ -82,7 +82,11 @@ class Customer::EnquiriesController < Customer::BaseController
   end
 
   def enquiry_params
-    params.required(:enquiry).permit(:expected_price, :description).merge(status: 'Quoted')
+    params.required(:enquiry).permit(:expected_per_hour_price,
+                                     :expected_per_day_price,
+                                     :expected_per_week_price,
+                                     :expected_per_month_price,
+                                     :description).merge(status: 'Quoted')
   end
 
 end

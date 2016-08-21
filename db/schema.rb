@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813163016) do
+ActiveRecord::Schema.define(version: 20160821063746) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160813163016) do
     t.boolean  "admin_verified",               default: false
     t.datetime "deleted_at"
     t.integer  "user_id",        limit: 4
+    t.text     "redirect_link",  limit: 65535
   end
 
   add_index "advertisements", ["deleted_at"], name: "index_advertisements_on_deleted_at", using: :btree
@@ -60,15 +61,19 @@ ActiveRecord::Schema.define(version: 20160813163016) do
   create_table "enquiries", force: :cascade do |t|
     t.datetime "start_at"
     t.datetime "end_at"
-    t.float    "expected_price", limit: 24
-    t.integer  "user_id",        limit: 4
-    t.string   "status",         limit: 255
-    t.integer  "product_id",     limit: 4
-    t.integer  "service_id",     limit: 4
+    t.float    "expected_price",           limit: 24
+    t.integer  "user_id",                  limit: 4
+    t.string   "status",                   limit: 255
+    t.integer  "product_id",               limit: 4
+    t.integer  "service_id",               limit: 4
     t.boolean  "is_product"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.text     "description",    limit: 65535
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.text     "description",              limit: 65535
+    t.float    "expected_per_hour_price",  limit: 24,    default: 0.0
+    t.float    "expected_per_day_price",   limit: 24,    default: 0.0
+    t.float    "expected_per_week_price",  limit: 24,    default: 0.0
+    t.float    "expected_per_month_price", limit: 24,    default: 0.0
   end
 
   create_table "new_users", force: :cascade do |t|

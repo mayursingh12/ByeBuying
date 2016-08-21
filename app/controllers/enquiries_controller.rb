@@ -1,5 +1,9 @@
 class EnquiriesController < ApplicationController
 
+  layout 'default'
+
+  before_action :set_categories
+
   before_action :set_variable
 
   def new
@@ -58,7 +62,10 @@ class EnquiriesController < ApplicationController
 
   def enquiry_params
     params.required(:enquiry).permit(:start_at,
-                                     :expected_price,
+                                     :expected_per_hour_price,
+                                     :expected_per_day_price,
+                                     :expected_per_week_price,
+                                     :expected_per_month_price,
                                      :end_at).merge(product_id: @product.id,
                                                     is_product: true,
                                                     status: 'Enquiry',
@@ -67,7 +74,10 @@ class EnquiriesController < ApplicationController
 
   def service_enquiry_params
     params.required(:enquiry).permit(:start_at,
-                                     :expected_price,
+                                     :expected_per_hour_price,
+                                     :expected_per_day_price,
+                                     :expected_per_week_price,
+                                     :expected_per_month_price,
                                      :end_at).merge(service_id: @service.id,
                                                     is_product: false,
                                                     status: 'Enquiry',
