@@ -13,3 +13,14 @@
 //$(document).on('ready page:load', function(){
 //    $('#advertisement_category_id, #advertisement_subcategory_id').select2();
 //});
+
+function remove_fields(link) {
+    $(link).prev("input[type=hidden]").val("1");
+    $(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g")
+    $(link).parent().before(content.replace(regexp, new_id));
+}

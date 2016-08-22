@@ -1,23 +1,23 @@
 <%#= simple_form_for [:customer, @product] do |f| %>
-    <%#= f.input :category_id, collection: product_category_collection, prompt: 'Select category' %>
-    <%#= f.input :gender, collection: ['Male', 'Female'], prompt: 'Select gender' %>
-    <%#= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory' %>
-    <%#= f.input :name %>
-    <%#= f.input :description %>
-    <%#= f.input :technical_specification %>
-    <%#= f.input :state_id, collection: state_for_collection, prompt: 'Select state' %>
-    <%#= f.input :city_id, collection: city_for_collection, prompt: 'Select city' %>
-    <%#= f.input :location %>
-    <%#= f.input :start_at %>
-    <%#= f.input :end_at %>
-    <%#= f.input :quantity %>
-    <%#= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent' %>
-    <%#= f.input :price_in_rupees %>
-    <%#= f.input :refundable_security %>
-    <%#= f.input :cost_of_replacement %>
-    <%#= f.input :youtube_link %>
-    <%#= f.input :other %>
-    <%#= f.submit 'Save', class: 'btn btn-primary' %>
+<%#= f.input :category_id, collection: product_category_collection, prompt: 'Select category' %>
+<%#= f.input :gender, collection: ['Male', 'Female'], prompt: 'Select gender' %>
+<%#= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory' %>
+<%#= f.input :name %>
+<%#= f.input :description %>
+<%#= f.input :technical_specification %>
+<%#= f.input :state_id, collection: state_for_collection, prompt: 'Select state' %>
+<%#= f.input :city_id, collection: city_for_collection, prompt: 'Select city' %>
+<%#= f.input :location %>
+<%#= f.input :start_at %>
+<%#= f.input :end_at %>
+<%#= f.input :quantity %>
+<%#= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent' %>
+<%#= f.input :price_in_rupees %>
+<%#= f.input :refundable_security %>
+<%#= f.input :cost_of_replacement %>
+<%#= f.input :youtube_link %>
+<%#= f.input :other %>
+<%#= f.submit 'Save', class: 'btn btn-primary' %>
 <%# end %>
 <div class="content-main-section">
   <div class="container">
@@ -27,6 +27,14 @@
         <div class="col-md-12">
           <div class="contact-main-form">
             <%= simple_form_for [:customer, @product] do |f| %>
+
+                <div>
+                  <%= f.fields_for :product_images do |builder| %>
+                      <%= render partial: 'application/product_image_fields', locals: { f: builder } %>
+                  <%- end %>
+                  <p><%= link_to_add_fields "Add Product Image", f, :product_images %></p>
+                </div>
+
                 <div class="col-xs-12">
                   <div class="field-con">
                     <%= f.input :category_id, collection: product_category_collection, prompt: 'Select category', label: 'Product Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
@@ -88,15 +96,15 @@
                   </div>
                 </div>
                 <!--<div class="col-xs-12">-->
-                  <!--<div class="field-con">-->
-                    <!--<%#= f.input :rent, label: 'Rent' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
-                    <!--<%#= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent',label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
-                  <!--</div>-->
+                <!--<div class="field-con">-->
+                <!--<%#= f.input :rent, label: 'Rent' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
+                <!--<%#= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent',label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
+                <!--</div>-->
                 <!--</div>-->
                 <!--<div class="col-xs-12">-->
-                  <!--<div class="field-con">-->
-                    <!--<%#= f.input :price_in_rupees, label: 'Price in Rupees' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
-                  <!--</div>-->
+                <!--<div class="field-con">-->
+                <!--<%#= f.input :price_in_rupees, label: 'Price in Rupees' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
+                <!--</div>-->
                 <!--</div>-->
 
                 <div class="col-xs-12">
