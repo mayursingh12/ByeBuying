@@ -84,7 +84,9 @@ class Customer::ProductsController < Customer::BaseController
                                     :refundable_security,
                                     :cost_of_replacement,
                                     :youtube_link,
-                                    :other).merge(user_id: current_user.id)
+                                    :other,
+                                    product_images_attributes: [:image]
+    ).merge(user_id: current_user.id)
   end
 
 end
