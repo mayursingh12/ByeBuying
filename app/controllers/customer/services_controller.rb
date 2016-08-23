@@ -82,7 +82,9 @@ class Customer::ServicesController < Customer::BaseController
                                     :per_month_price,
                                     :negotiable,
                                     :youtube_link,
-                                    :other).merge(user_id: current_user.id)
+                                    :other,
+                                    service_images_attributes: [:image]
+    ).merge(user_id: current_user.id)
   end
 
 end
