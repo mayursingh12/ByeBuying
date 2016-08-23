@@ -7,6 +7,7 @@ class Service < ActiveRecord::Base
   belongs_to :subcategory
 
   has_many :service_images, dependent: :destroy
+  accepts_nested_attributes_for :service_images, allow_destroy: true
 
   has_many :enquiries
 
