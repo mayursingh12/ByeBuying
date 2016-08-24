@@ -79,3 +79,5 @@ gem 'city-state'
 gem 'social-share-button'
 
 gem 'query_diet', group: :development
+
+gem 'http'
