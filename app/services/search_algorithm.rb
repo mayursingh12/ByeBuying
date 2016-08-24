@@ -1,9 +1,14 @@
 class SearchAlgorithm
 
-  def initialize(search_id)
+  def initialize(search_id, max_price, min_price, rating, quantity)
 
     # puts '==== Loading search from id'
     @search = Search.find(search_id)
+
+    @min_price = min_price
+    @max_price = max_price
+    @rating = rating
+    @quantity = quantity
 
     @results = []
   end
@@ -19,10 +24,18 @@ class SearchAlgorithm
 
   private
 
+  # def find_and_load_models(product_ids, service_ids, advertisement_ids)
+  #   @results << {
+  #       products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now),
+  #       services: Service.where(id: service_ids, admin_verified: true).where('end_at > ?', DateTime.now),
+  #       advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids)
+  #   }
+  # end
+
   def find_and_load_models(product_ids, service_ids, advertisement_ids)
     @results << {
-        products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now),
-        services: Service.where(id: service_ids, admin_verified: true).where('end_at > ?', DateTime.now),
+        products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?)', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating).order('id DESC'),
+        services: Service.where(id: service_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?)', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating).order('id DESC'),
         advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids)
     }
   end
