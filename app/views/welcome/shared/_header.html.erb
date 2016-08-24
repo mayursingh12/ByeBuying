@@ -18,33 +18,58 @@
         </div>
       </div>
     </div>
+
+    <!--Login Form Start-->
+    <!--<div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-login-dialog">-->
+      <!--<h3 class="widget-title">Login</h3>-->
+      <!--<p>Welcome, Login to get started</p>-->
+      <!--<hr />-->
+      <!--<%#= form_tag customer_sign_in_path do %>-->
+          <!--<div class="form-group">-->
+            <!--<%#= label_tag :contact %>-->
+            <!--<%#= number_field_tag :contact, params[:contact], class: 'form-control' %>-->
+          <!--</div>-->
+          <!--<div class="form-group">-->
+            <!--<%#= label_tag :password %>-->
+            <!--<%#= password_field_tag :password, '',class: 'form-control' %>-->
+          <!--</div>-->
+          <!--<%#= submit_tag 'Sign In', class: 'btn btn-primary' %>-->
+      <!--<%#- end %>-->
+
+      <!--<div class="gap gap-small"></div>-->
+      <!--<ul class="list-inline">-->
+        <!--<li>-->
+          <!--<%#= link_to 'Register Here', customer_step_one_path %>-->
+          <!--<a href="#nav-mobile-dialog" class="popup-text">Register Here</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+    <!--Login Form End-->
+
+    <!--Login Form Start-->
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-login-dialog">
       <h3 class="widget-title">Login</h3>
       <p>Welcome, Login to get started</p>
       <hr />
-      <%= form_tag customer_sign_in_path do %>
-          <div class="form-group">
-            <%#= label_tag :email %>
-            <%#= email_field_tag :email, params[:email], class: 'form-control' %>
-            <%= label_tag :contact %>
-            <%= number_field_tag :contact, params[:contact], class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= label_tag :password %>
-            <%= password_field_tag :password, '',class: 'form-control' %>
-          </div>
-          <%= submit_tag 'Sign In', class: 'btn btn-primary' %>
-      <%- end %>
+      <span style="color:red" class=" login-error hidden"></span>
+      <div class="form-group">
+        Contact: <input type="number" class="form-control rgr-frm-mumber">
+      </div>
+      <div class="form-group">
+        Password: <input type="password" class="form-control rgr-frm-pwd">
+      </div>
+      <span class="btn btn-primary btn-sign-in">Sign In</span>
 
       <div class="gap gap-small"></div>
       <ul class="list-inline">
         <li>
-          <%#= link_to 'Register Here', customer_step_one_path %>
           <a href="#nav-mobile-dialog" class="popup-text">Register Here</a>
         </li>
       </ul>
     </div>
+    <!--Login Form End-->
 
+    <!--Registration Form Start-->
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix hdr-registration-form" id="nav-account-dialog">
       <h3 class="widget-title">Register</h3>
       <p>Welcome, Register to get Enter</p>
@@ -62,12 +87,12 @@
       <div class="form-group">
         Password confirmation: <input type="password" class="form-control rgr-frm-password-confirm">
       </div>
-
       <a href="javascript:void(0)" class="btn btn-primary hdr-registration-form-submit">Submit</a>
-
       <div class="gap gap-small"></div>
     </div>
+    <!--Registration Form End-->
 
+    <!--Password Recovery Form Start-->
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-pwd-dialog">
       <h3 class="widget-title">Password Recovery</h3>
       <p>Enter Your Email and We Will Send the Instructions</p>
@@ -80,7 +105,9 @@
         <input class="btn btn-primary" type="submit" value="Recover Password" />
       </form>
     </div>
+    <!--Password Recovery Form End-->
 
+    <!--Mobile Form Start-->
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-mobile-dialog">
       <h3 class="widget-title">Mobile Number</h3>
       <hr />
@@ -88,11 +115,11 @@
       <a href="#nav-otp-dialog" class="hidden popup-text mobile-submit2">Proceed</a>
       <a href="javascript:void(0)" class="mobile-submit evt-resend-otp">Proceed</a>
       <div class="gap gap-small"></div>
-
     </div>
+    <!--Mobile Form End-->
 
 
-
+    <!--OTP Form Start-->
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-otp-dialog">
       <h3 class="widget-title">OTP</h3>
       <p>Enter OTP for Registration</p>
@@ -109,8 +136,8 @@
           <p style="font-size: 12px; color: #888;">Click on Send OTP to receive 4 digit verification code on your register mobile number.</p>
           <a href="javascript:void(0)" class="sending-otp">Resend OTP</a>
       </ul>
-
     </div>
+    <!--OTP Form End-->
 
     <nav class="navbar navbar-inverse navbar-main yamm">
       <div class="container">
@@ -263,6 +290,24 @@
                         $(".registration-error").text(error_text);
                         $(".registration-error").removeClass('hidden')
                     });
+        });
+
+        $(".btn-sign-in").click(function(){
+            var phone = $(".rgr-frm-mumber").val();
+            var pwd = $(".rgr-frm-pwd").val();
+            $.post('customer/sign_in', {contact: phone, password: pwd })
+                    .done(function(msg){
+                        location.reload();
+                        $(".login-error").addClass('hidden')
+//                        do nothing
+                    })
+                    .fail(function(xhr, status, error) {
+                        // error handling
+                        var error_text = xhr.responseText.split(':')[1].replace('"','').replace('}','').replace('"','');
+                        $(".login-error").text(error_text);
+                        $(".login-error").removeClass('hidden')
+                    });
+
         });
 
     });
