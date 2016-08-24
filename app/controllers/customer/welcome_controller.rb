@@ -43,6 +43,8 @@ class Customer::WelcomeController < Customer::BaseController
           new_user =  NewUser.where(phone: @phone).first
           if new_user.present?
             if new_user.update_attributes(otp: @otp)
+              # HTTP.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone=#{@phone}&text=Your OTP is #{@otp}&priority=ndnd& stype=normal")
+              HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: @phone, text: "Your OTP is #{@otp}", priority: 'ndnd', style: 'normal'})
               # do nothing
               render status: :ok, json: {new_user: new_user }
             else
@@ -50,6 +52,8 @@ class Customer::WelcomeController < Customer::BaseController
             end
           else
             new_user_ = NewUser.create(phone: @phone, otp: @otp)
+            # HTTP.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone=#{@phone}&text=Your OTP is #{@otp}&priority=ndnd& stype=normal")
+            HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: @phone, text: "Your OTP is #{@otp}", priority: 'ndnd', style: 'normal'})
             render status: :ok, json: {new_user: new_user_ }
           end
         end

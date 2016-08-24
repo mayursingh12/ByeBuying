@@ -215,7 +215,7 @@
                         var otp = msg.new_user.otp
                         var phone = msg.new_user.phone
                         $(".mobile-submit2").trigger("click");
-                        $.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone="+phone+"&text= Your OTP is "+otp+"&priority=ndnd& stype=normal", function(data, status){});
+//                        $.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone="+phone+"&text= Your OTP is "+otp+"&priority=ndnd& stype=normal", function(data, status){});
 //                            $(".sending-otp").trigger("click");
                     })
                     .fail(function(xhr, status, error) {
