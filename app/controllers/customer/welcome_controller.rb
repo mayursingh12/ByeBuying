@@ -133,10 +133,12 @@ class Customer::WelcomeController < Customer::BaseController
       end
     else
       if sign_in_customer_
-        redirect_to action: :index
+        # redirect_to action: :index
+        render status: :ok, json: { massege: "Signin as #{current_user.name}" }
       else
-        flash[:error] = 'Mobile Number/Password combination wrong, contact super admin.'
-        render action: :index
+        # flash[:error] = 'Mobile Number/Password combination wrong, contact super admin.'
+        render status: :unprocessable_entity, json: { errors: 'Mobile Number/Password combination wrong, contact super admin'  }
+        # render action: :index
       end
     end
 
