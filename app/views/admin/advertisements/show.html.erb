@@ -24,6 +24,7 @@
   </div>
   <div class="col-sm-6">
     <div class="row">
+      <span style="color:red">Note: *Image size must be 1400×700</span>
       <% @advertisement.advertisement_images.each do |advertisement_image| %>
           <div class="col-sm-12">
             <%= image_tag advertisement_image.image.url(AdvertisementImage::DEFAULT_SIZE) %>

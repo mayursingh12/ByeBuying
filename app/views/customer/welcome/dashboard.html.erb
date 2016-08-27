@@ -21,29 +21,60 @@
             },
             displayEventTime: false,
             defaultDate: "<%= DateTime.now %>",
+//            ignoreTimezone: true,
 //            editable: true,
             eventLimit: true, // allow "more" link when too many events
 //            eventColor: 'red',
             events: [
-                <%# @advertisements.each do |advertisement| %>
-//                {
-//                    title: "<%#= advertisement.title %>",
-//                    start: "<%#= advertisement.start_at %>",
-//                    end: "<%#= advertisement.end_at %>",
-//                    description: "<%#= advertisement.description %>",
-//                    color: "red",
-//                    url: "<%#= customer_advertisement_path(advertisement) %>"
-//                },
-                <%# end %>
+                <% @advertisements.each do |advertisement| %>
+                {
+                    title: "<%= advertisement.title %>",
+                    start: "<%= advertisement.start_at %>",
+                    end: "<%= advertisement.end_at %>",
+                    description: "<%= advertisement.description %>",
+                    color: "red",
+                    url: "<%= customer_advertisement_path(advertisement) %>"
+                },
+                <% end %>
+                <% @products.each do |product| %>
+                {
+                    title: "<%= product.name %>",
+                    start: "<%= product.start_at %>",
+                    end: "<%= product.end_at %>",
+                    description: "<%= product.subcategory.name %>",
+                    color: "green",
+                    url: "<%= customer_product_path(product) %>"
+                },
+                <% end %>
+                <% @services.each do |service| %>
+                {
+                    title: "<%= service.service_description %>",
+                    start: "<%= service.start_at %>",
+                    end: "<%= service.end_at %>",
+                    description: "<%= service.subcategory.name %>",
+                    color: "blue",
+                    url: "<%= customer_service_path(service) %>"
+                },
+                <% end %>
                 <% if @enquiries[:product_enquiries].any? %>
                 <% @enquiries[:product_enquiries].each do |product_enquiry| %>
                 {
                     title: "<%= product_enquiry.product.name %>",
-                    start: "<%= product_enquiry.start_at.utc %>",
+                    start: "<%= product_enquiry.start_at %>",
                     end: "<%= product_enquiry.end_at %>",
                     description: "<%= product_enquiry.expected_price %>",
-                    color: "#0fa688",
-                    url: "<%= customer_enquiry_path(product_enquiry) %>"
+                    color: "<%= case product_enquiry.status
+                    when 'Confirmed'
+                      'black'
+                    when 'Quoted'
+                      'yellow'
+                    else
+                      'pink'
+                    end
+                     # "#0fa688"
+                    %>",
+                    url: "<%= customer_enquiry_path(product_enquiry) %>",
+                    currentTimezone: 'India/Mumbai'
                 },
                 <% end %>
                 <% end %>
@@ -54,7 +85,17 @@
                     start: "<%= service_enquiry.start_at %>",
                     end: "<%= service_enquiry.end_at %>",
                     description: "<%= service_enquiry.expected_price %>",
-                    color: "#ff8e18",
+                    color: "<%= case service_enquiry.status
+                    when 'Confirmed'
+                      'black'
+                    when 'Quoted'
+                      'yellow'
+                    else
+                      'pink'
+                    end
+                     # "#0fa688"
+                    %>",
+//                    color: "#ff8e18",
                     url: "<%= customer_enquiry_path(service_enquiry) %>"
                 },
                 <% end %>
