@@ -36,7 +36,6 @@
       <%- end %>
     </div>
     <% unless @advertisement.advertisement_images.count > 2 %>
-        <label >Image size must be 1280×500</label>
         <fieldset>
           <legend><small>Add new images</small></legend>
           <%= render partial: 'admin/advertisement_images/form', locals: { advertisement: @advertisement, advertisement_image: @advertisement.advertisement_images.new } %>
