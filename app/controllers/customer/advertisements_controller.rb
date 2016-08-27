@@ -4,7 +4,8 @@ class Customer::AdvertisementsController < Customer::BaseController
 
   before_action :set_advertisement, only: [:edit, :update, :show, :destroy]
 
-  before_action :set_header_categories
+  # before_action :set_header_categories
+  before_action :set_categories
 
   def index
     @advertisements = current_user.advertisements
