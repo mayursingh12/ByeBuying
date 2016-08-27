@@ -1,5 +1,6 @@
 <%= simple_form_for [:admin, @advertisement] do |f| %>
     <%= f.input :title %>
+    <%= f.input :redirect_link %>
     <%= f.input :category_id, collection: category_for_collection, prompt: 'Select Category'  %>
     <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select Subcategory' %>
     <%= f.input :start_at %>
