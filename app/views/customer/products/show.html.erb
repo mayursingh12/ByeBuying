@@ -167,3 +167,16 @@
     </div>
   </div>
 </div>
+
+
+
+<script type="text/javascript" charset="utf-8">
+    $('.product-image-save').hide();
+
+    $('#product_image_image').change(function(){
+        if ($("#product_image_image").val().length > 0){
+            $('.product-image-save').show();
+        }
+
+    });
+</script>

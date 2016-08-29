@@ -170,3 +170,14 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+    $('.service-image-save').hide();
+
+    $('#service_image_image').change(function(){
+        if ($("#service_image_image").val().length > 0){
+            $('.service-image-save').show();
+        }
+    });
+</script>
