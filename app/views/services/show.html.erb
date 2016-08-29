@@ -55,7 +55,7 @@
                     <td>Start from: <%= @service.start_at.strftime(time_format) %></td>
                   </tr>
                   <tr>
-                    <td>End from: <%= @service.end_at.strftime(time_format) %></td>
+                    <td>End at: <%= @service.end_at.strftime(time_format) %></td>
                   </tr>
               <% end %>
               <% if @service.subcategory.category.name == 'Commercial Space' %>
