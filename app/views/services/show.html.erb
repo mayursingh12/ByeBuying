@@ -109,29 +109,39 @@
             <p class="product-page-price time-price">₹<%= @service.per_week_price %>/week</p>
             <p class="product-page-price time-price">₹<%= @service.per_month_price %>/month</p>
             <% if current_user.present? %>
-                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_service_enquiry_path(@service) %>">Enquire</a>
+                <% if current_user.id == @service.user.id %>
+                    <a class="btn btn-block btn-success" style="margin-top: 10px" href="javascript:void(0);" %>Your Service</a>
+                <% else %>
+                    <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_service_enquiry_path(@service) %>">Enquire</a>
+                <% end %>
+
             <% else %>
                 <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
             <% end %>
             <div class="product-page-side-section">
               <h5 class="product-page-side-title">Share This Item</h5>
-              <ul class="product-page-share-item">
-                <li>
-                  <a class="fa fa-facebook" href="#"></a>
-                </li>
-                <li>
-                  <a class="fa fa-twitter" href="#"></a>
-                </li>
-                <li>
-                  <a class="fa fa-pinterest" href="#"></a>
-                </li>
-                <li>
-                  <a class="fa fa-instagram" href="#"></a>
-                </li>
-                <li>
-                  <a class="fa fa-google-plus" href="#"></a>
-                </li>
-              </ul>
+              <% if @service.service_images.any? %>
+                  <%= social_share_button_tag(@service.service_description, image: "#{root_path}#{@service.service_images.first.image(:size_500x500)}") %>
+              <% else %>
+                  <%= social_share_button_tag(@service.service_description, image: 'theme_img/500x500.png') %>
+              <% end %>
+              <!--<ul class="product-page-share-item">-->
+                <!--<li>-->
+                  <!--<a class="fa fa-facebook" href="#"></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<a class="fa fa-twitter" href="#"></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<a class="fa fa-pinterest" href="#"></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<a class="fa fa-instagram" href="#"></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<a class="fa fa-google-plus" href="#"></a>-->
+                <!--</li>-->
+              <!--</ul>-->
             </div>
             <div class="product-page-side-section">
               <h5 class="product-page-side-title">Shipping & Returns</h5>

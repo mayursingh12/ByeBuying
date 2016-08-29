@@ -32,7 +32,11 @@
             <p class="product-page-price time-price">₹<%= @product.per_week_price %>/week</p>
             <p class="product-page-price time-price">₹<%= @product.per_month_price %>/month</p>
             <% if current_user.present? %>
-                <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
+                <% if current_user.id == @product.user.id %>
+                    <a class="btn btn-block btn-success" style="margin-top: 10px" href="javascript:void(0);" %>Your Product</a>
+                <% else %>
+                    <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
+                <% end %>
             <% else %>
                 <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
             <% end %>

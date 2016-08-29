@@ -105,7 +105,7 @@ class WelcomeController < ApplicationController
     else
       @products = Product.where(admin_verified: true).where('end_at > ?', DateTime.now).order('id DESC')
       # @advertisements = Advertisement.where(admin_verified: true).order('id DESC')
-      @services = Service.where(admin_verified: true).where('end_at > ?', DateTime.now).order('id DESC')
+      @services = Service.where(admin_verified: true).order('id DESC')
     end
   end
 
