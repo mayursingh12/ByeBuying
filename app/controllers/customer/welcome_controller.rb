@@ -137,7 +137,7 @@ class Customer::WelcomeController < Customer::BaseController
         render status: :ok, json: { massege: "Signin as #{current_user.name}" }
       else
         # flash[:error] = 'Mobile Number/Password combination wrong, contact super admin.'
-        render status: :unprocessable_entity, json: { errors: 'Mobile Number/Password combination wrong, contact super admin'  }
+        render status: :unprocessable_entity, json: { errors: "Mobile Number/Password are'nt matching."  }
         # render action: :index
       end
     end
