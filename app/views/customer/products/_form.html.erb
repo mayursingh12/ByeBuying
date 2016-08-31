@@ -28,12 +28,14 @@
           <div class="contact-main-form">
             <%= simple_form_for [:customer, @product] do |f| %>
 
-                <div>
+                <% unless params[:action] == 'edit' %>
+                <div id="nested-product-images">
                   <%= f.fields_for :product_images do |builder| %>
                       <%= render partial: 'application/product_image_fields', locals: { f: builder } %>
                   <%- end %>
-                  <p><%= link_to_add_fields "Add Product Image", f, :product_images %></p>
+                  <p id="nested-click"><%= link_to_add_fields "Add Product Image", f, :product_images %></p>
                 </div>
+                    <%end%>
 
                 <div class="col-xs-12">
                   <div class="field-con">
@@ -164,3 +166,17 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript" charset="utf-8">
+//    $('.submit-main').hide();
+//
+    $('#nested-product-images #nested-click').click(function(){
+        if ($("#nested-product-images :input").length > 4){
+            this.remove();
+        }
+//        if ($("#nested-product-images :input").length > 0){
+//            $('.submit-main').show();
+//        }
+    });
+</script>

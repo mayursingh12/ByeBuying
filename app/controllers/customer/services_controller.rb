@@ -84,7 +84,7 @@ class Customer::ServicesController < Customer::BaseController
                                     :youtube_link,
                                     :other,
                                     service_images_attributes: [:image]
-    ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id, admin_verified: false)
   end
 
 end

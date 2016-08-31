@@ -34,12 +34,14 @@
         <div class="col-md-12">
           <div class="contact-main-form">
             <%= simple_form_for [:customer, @service] do |f| %>
-                <div>
+                <% unless params[:action] == 'edit' %>
+                <div id="nested-service-images">
                   <%= f.fields_for :service_images do |builder| %>
                       <%= render partial: 'application/service_image_fields', locals: { f: builder } %>
                   <%- end %>
-                  <p><%= link_to_add_fields "Add Service Image", f, :service_images %></p>
+                  <p id="nested-click"><%= link_to_add_fields "Add Service Image", f, :service_images %></p>
                 </div>
+                <% end %>
 
                 <div class="col-xs-12">
                   <div class="field-con">
@@ -155,3 +157,12 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+
+    $('#nested-service-images #nested-click').click(function(){
+        if ($("#nested-service-images :input").length > 4){
+            this.remove();
+        }
+    });
+</script>

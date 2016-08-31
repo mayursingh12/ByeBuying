@@ -60,7 +60,7 @@ class Customer::AdvertisementsController < Customer::BaseController
                                            :end_at,
                                            :per_hour_cost,
                                            :category_id,
-                                           :subcategory_id).merge(user_id: current_user.id)
+                                           :subcategory_id).merge(user_id: current_user.id, admin_verified: false)
   end
 
 end
