@@ -55,11 +55,14 @@
   font-size: 13px;
 }
 .time-price{
-  font-size: 20px !important;
+  font-size: 18px !important;
   margin: 10px 0;
 }
 .min-box-height{
   min-height: 500px;
+}
+.save-full-btn{
+  width: 100%;
 }
 .customer-main-con{
   width: 100%;
@@ -233,9 +236,16 @@
   .white-bg{
     background-color: #ffffff;
     border-radius: 5px;
+    h2{
+      font-size: 20px;
+      color: #000;
+      font-weight: bold;
+      width: 100%;
+      padding-top: 30px;
+    }
     .product-detail{
       width: 100%;
-      padding: 15px 5px 5px 5px;
+      padding: 12px 5px 10px 5px;
       border-bottom: 1px solid #eeeeee;
       h4{
         font-size: 15px;
@@ -256,6 +266,10 @@
     }
     .add-image-con{
       padding: 26px 0;
+      .img-overflow{
+        height: 950px;
+        overflow-x: scroll;
+      }
       .img-con{
         position: relative;
         display: inline-block;
