@@ -19,7 +19,7 @@ class WelcomeController < ApplicationController
     #   @advertisements = Advertisement.all.where(admin_verified: true)
     # end
 
-    @advertisements = Advertisement.where(admin_verified: true).order('id DESC').last(3)
+    @advertisements = Advertisement.where(admin_verified: true).last(3)
   end
 
   def categories
