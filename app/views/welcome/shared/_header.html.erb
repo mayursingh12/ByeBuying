@@ -132,7 +132,7 @@
       <a href="#nav-account-dialog" class="hidden popup-text otp-submit2">Proceed</a>
       <a href="javascript:void(0)" class="otp-submit">Proceed</a>
       <div class="gap gap-small"></div>
-      <ul class="list-inline">
+      <ul class="list-inline sending-otp-box">
         <li>
           <p style="font-size: 12px; color: #888;">Click on Send OTP to receive 4 digit verification code on your register mobile number.</p>
           <a href="javascript:void(0)" class="sending-otp">Resend OTP</a>
@@ -243,6 +243,10 @@
                     .done(function(msg){
                         var otp = msg.new_user.otp
                         var phone = msg.new_user.phone
+                        $('.sending-otp-box').hide();
+                        setTimeout(function(){
+                            $('.sending-otp-box').show();
+                        }, 30000);
                         $(".mobile-submit2").trigger("click");
 //                        $.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone="+phone+"&text= Your OTP is "+otp+"&priority=ndnd& stype=normal", function(data, status){});
 //                            $(".sending-otp").trigger("click");
