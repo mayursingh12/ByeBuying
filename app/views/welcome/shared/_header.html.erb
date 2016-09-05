@@ -112,6 +112,7 @@
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-mobile-dialog">
       <h3 class="widget-title">Mobile Number</h3>
       <hr />
+      <span class="msg-number-validation text-danger"></span>
       <input type="number"id='register-mobile' class="form-control" min="10" max="10"  />
       <a href="#nav-otp-dialog" class="hidden popup-text mobile-submit2">Proceed</a>
       <a href="javascript:void(0)" class="mobile-submit evt-resend-otp">Proceed</a>
@@ -216,12 +217,13 @@
             <% else %>
                 <li class="dropdown">
                   <!--<a href="#nav-account-dialog" data-effect="mfp-move-from-top" class="popup-text">Start</a>-->
-                  <a href="javascript:void(0)">Start</a>
-                  <ul class="dropdown-menu dropdown-menu-shipping-cart">
-                    <li>
-                      <a href="#nav-login-dialog" class="popup-text login-nav-button">Login</a>
-                    </li>
-                  </ul>
+                  <!--<a href="javascript:void(0)">Start</a>-->
+                  <a href="#nav-login-dialog" class="popup-text login-nav-button">Start</a>
+                  <!--<ul class="dropdown-menu dropdown-menu-shipping-cart">-->
+                    <!--<li>-->
+                      <!--<a href="#nav-login-dialog" class="popup-text login-nav-button">Login</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
                 </li>
             <%- end %>
           </ul>
@@ -237,29 +239,40 @@
 
     $( document ).ready(function() {
         $('.msg-already-registred').hide();
+        $('.msg-number-validation').hide();
         $(".mobile-submit").click(function(){
             var number = $("#register-mobile").val();
-            $.post('customer/step_two.json', {phone: number})
-                    .done(function(msg){
-                        var otp = msg.new_user.otp
-                        var phone = msg.new_user.phone
-                        $('.sending-otp-box').hide();
-                        setTimeout(function(){
-                            $('.sending-otp-box').show();
-                        }, 30000);
-                        $(".mobile-submit2").trigger("click");
+
+            var phone_regax = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
+            if(phone_regax.test(number) && number.length == 10){
+                $.post('customer/step_two.json', {phone: number})
+                        .done(function(msg){
+                            var otp = msg.new_user.otp
+                            var phone = msg.new_user.phone
+                            $('.sending-otp-box').hide();
+                            setTimeout(function(){
+                                $('.sending-otp-box').show();
+                            }, 30000);
+                            $('.msg-number-validation').hide();
+                            $(".mobile-submit2").trigger("click");
 //                        $.get("http://bhashsms.com/api/sendmsg.php?user=ravikataria&pass=123&sender=BYEBUY&phone="+phone+"&text= Your OTP is "+otp+"&priority=ndnd& stype=normal", function(data, status){});
 //                            $(".sending-otp").trigger("click");
-                    })
-                    .fail(function(xhr, status, error) {
-                        // error handling
-                        if (xhr.responseJSON.errors.indexOf("Already") >= 0){
-                            var phone = $('#register-mobile').val();
-                            $(".rgr-frm-mumber").val(phone);
-                            $('.msg-already-registred').show();
-                            $(".login-nav-button").trigger( "click" );
-                        }
-                    });
+                        })
+                        .fail(function(xhr, status, error) {
+                            // error handling
+                            if (xhr.responseJSON.errors.indexOf("Already") >= 0){
+                                var phone = $('#register-mobile').val();
+                                $(".rgr-frm-mumber").val(phone);
+                                $('.msg-already-registred').show();
+                                $(".login-nav-button").trigger( "click" );
+                            }
+                        });
+            }
+            else{
+                $('.msg-number-validation').html('Number invalid.');
+                $('.msg-number-validation').show();
+            }
+
 
         });
 
@@ -320,6 +333,10 @@
                     });
 
         });
+
+        setTimeout(function(){
+            $('.alert').remove();
+        }, 6000);
 
     });
 
