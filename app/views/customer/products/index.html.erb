@@ -1,3 +1,11 @@
+<script type="application/javascript">
+    $(document).ready(function(){
+        $('.sort-arrow').click(function(){
+            var click_id = this.getAttribute('dyn_click');
+            $('ul.product_'+ click_id).slideToggle();
+        });
+    });
+</script>
 <div class="customer-main-con">
   <div class="row">
     <div class="col-sm-12">
@@ -9,37 +17,80 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <table class="table table-striped">
-        <thead>
-        <tr class="info">
-          <th>Name</th>
-          <th>Start at</th>
-          <th>End at</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @products.each do |product| %>
-            <tr class="data">
-              <td><%= product.name %></td>
-              <td><%= product.start_at.strftime(time_format) %></td>
-              <td><%= product.end_at.strftime(time_format) %></td>
-              <td>
+      <!--<table class="table table-striped">-->
+        <!--<thead>-->
+        <!--<tr class="info">-->
+          <!--<th>Name</th>-->
+          <!--<th>Start at</th>-->
+          <!--<th>End at</th>-->
+          <!--<th>Action</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<%# @products.each do |product| %>-->
+            <!--<tr class="data">-->
+              <!--<td><%#= product.name %></td>-->
+              <!--<td><%#= product.start_at.strftime(time_format) %></td>-->
+              <!--<td><%#= product.end_at.strftime(time_format) %></td>-->
+              <!--<td>-->
 
-                <%= link_to customer_product_path(product) do %>
-                    <i class="fa fa-eye"></i>
-                <% end %>
-                <%= link_to edit_customer_product_path(product) do %>
-                    <i class="fa fa-edit"></i>
-                <% end %>
-                <%= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                    <i class="fa fa-trash fa-3"></i>
-                <%- end %>
-              </td>
-            </tr>
+                <!--<%#= link_to customer_product_path(product) do %>-->
+                    <!--<i class="fa fa-eye"></i>-->
+                <!--<%# end %>-->
+                <!--<%#= link_to edit_customer_product_path(product) do %>-->
+                    <!--<i class="fa fa-edit"></i>-->
+                <!--<%# end %>-->
+                <!--<%#= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>-->
+                    <!--<i class="fa fa-trash fa-3"></i>-->
+                <!--<%#- end %>-->
+              <!--</td>-->
+            <!--</tr>-->
+        <!--<%#- end %>-->
+        <!--</tbody>-->
+      <!--</table>-->
+      <div class="customer-main-show">
+        <% @products.each_with_index do |product, index| %>
+            <div class="white-bg">
+              <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                <div class="add-image-con">
+                  <% if product.product_images.any? %>
+                      <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+                  <% else %>
+                      <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-md-10 col-sm-9 col-xs-12">
+                <h2 class="heading"><%= product.name %></h2>
+                <h5 class="time-option"><%= product.start_at.strftime(time_format) %> - <%= product.end_at.strftime(time_format) %></h5>
+                <p class="description"><%= product.description %></p>
+                <div class="dropdown-main">
+                  <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                  <div class="clearfix"></div>
+                  <ul class="dropdown-option product_<%= index + 1 %>">
+                    <span class="arrow-top"></span>
+                    <li>
+                      <%= link_to customer_product_path(product) do %>
+                          <i class="fa fa-eye"></i> Show
+                      <%- end %>
+                    </li>
+                    <li>
+                      <%= link_to edit_customer_product_path(product) do %>
+                          <i class="fa fa-edit"></i> Edit
+                      <%- end %>
+                    </li>
+                    <li class="no_border">
+                      <%= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                          <i class="fa fa-trash fa-3"></i> Delete
+                      <%- end %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
         <%- end %>
-        </tbody>
-      </table>
+      </div>
     </div>
   </div>
 </div>

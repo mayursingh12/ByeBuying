@@ -123,31 +123,45 @@
       <!--</table>-->
     <!--</div>-->
     <div class="col-sm-12">
-      <h3>My Enquiries</h3>
-      <table class="table table-striped">
-        <thead>
-        <tr class="info">
-          <th>Enquiry</th>
-          <th>Status</th>
-          <th>Start at</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
+      <h1 class="page-title">My Enquiries</h1>
+      <!--<table class="table table-striped">-->
+        <!--<thead>-->
+        <!--<tr class="info">-->
+          <!--<th>Enquiry</th>-->
+          <!--<th>Status</th>-->
+          <!--<th>Start at</th>-->
+          <!--<th>End at</th>-->
+          <!--<th>Action</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<%# @enquiries[:customer_enquiries].each do |customer_enquiry| %>-->
+            <!--<tr class="data">-->
+              <!--<td><%#= customer_enquiry.is_product ? 'Product' : 'Service' %></td>-->
+              <!--<td><%#= customer_enquiry.status %></td>-->
+              <!--<td><%#= customer_enquiry.start_at.strftime(time_format) %></td>-->
+              <!--<td><%#= customer_enquiry.end_at.strftime(time_format) %></td>-->
+              <!--<td>-->
+              <!--<%#= link_to customer_enquiry_path(customer_enquiry) do %>-->
+              <!--<i class="fa fa-eye"></i>-->
+              <!--<%# end %>-->
+              <!--</td>-->
+            <!--</tr>-->
+        <!--<%#- end %>-->
+        <!--</tbody>-->
+      <!--</table>-->
+      <div class="customer-main-show">
         <% @enquiries[:customer_enquiries].each do |customer_enquiry| %>
-            <tr class="data">
-              <td><%= customer_enquiry.is_product ? 'Product' : 'Service'   %></td>
-              <td><%= customer_enquiry.status %></td>
-              <td><%= customer_enquiry.start_at.strftime(time_format) %></td>
-              <td>
-              <%= link_to customer_enquiry_path(customer_enquiry) do %>
-              <i class="fa fa-eye"></i>
-              <% end %>
-              </td>
-            </tr>
+            <div class="white-bg">
+              <div class="col-xs-12">
+                <h2 class="heading"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
+                <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
+                <p class="description"><%= customer_enquiry.description %></p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
         <%- end %>
-        </tbody>
-      </table>
+      </div>
     </div>
   </div>
 </div>
