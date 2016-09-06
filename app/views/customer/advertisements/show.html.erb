@@ -1,70 +1,22 @@
 <div class="customer-main-show">
   <div class="row">
     <div class="white-bg">
-      <div class="col-sm-6">
-        <div class="col-xs-6">
-          <div class="product-detail">
-            <h4>Title:</h4>
-            <p><%= @advertisement.title%></p>
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="product-detail">
-            <h4>Status:</h4>
-            <p><%= @advertisement.admin_verified? ? 'Approved' : 'Pending'%></p>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="product-detail">
-            <h4>Description:</h4>
-            <p><%= @advertisement.description%></p>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="product-detail">
-            <h4>Category:</h4>
-            <p><%= @advertisement.subcategory.category.name %></p>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="product-detail">
-            <h4>Subcategory:</h4>
-            <p><%= @advertisement.subcategory.name %></p>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="product-detail">
-            <h4>Per hour cost:</h4>
-            <p><%= @advertisement.per_hour_cost %></p>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="product-detail">
-            <h4>Start at:</h4>
-            <p><%= @advertisement.start_at.strftime(time_format)%></p>
-          </div>
-        </div>
-        <div class="col-xs-12">
-          <div class="product-detail">
-            <h4>End at:</h4>
-            <p><%= @advertisement.end_at.strftime(time_format)%></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-xs-12">
         <div class="add-image-con">
           <div class="row">
             <div class="col-xs-12">
-              <% @advertisement.advertisement_images.each do |advertisement_image| %>
+              <div class="img-overflow overflow-ads-img">
+                <% @advertisement.advertisement_images.each do |advertisement_image| %>
                 <span class="img-con">
                   <%= image_tag advertisement_image.image.url(AdvertisementImage::DEFAULT_SIZE), class: 'upload-img' %>
-                    <% if advertisement_image.id.present? %>
+                  <% if advertisement_image.id.present? %>
                       <%= link_to customer_advertisement_advertisement_image_path(@advertisement, advertisement_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
                           <i class="fa fa-times cross-icon"></i>
                       <%- end %>
                   <%- end %>
                 </span>
               <%- end %>
+              </div>
             </div>
           </div>
           <% unless @advertisement.advertisement_images.count > 2 %>
@@ -73,6 +25,106 @@
                 <%= render partial: 'customer/advertisement_images/form', locals: { advertisement: @advertisement, advertisement_image: @advertisement.advertisement_images.new } %>
               </fieldset>
           <% end %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>DETAIL</h2>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Title:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @advertisement.title %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Status:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @advertisement.admin_verified? ? 'Approved' : 'Pending' %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Category:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @advertisement.subcategory.category.name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Subcategory:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @advertisement.subcategory.name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Per hour cost:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @advertisement.per_hour_cost %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Start at:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @advertisement.start_at.strftime(time_format) %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>End at:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @advertisement.end_at.strftime(time_format) %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <h2>Ohters</h2>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <h4>Description:</h4>
+              <p><%= @advertisement.description%></p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="clearfix"></div>

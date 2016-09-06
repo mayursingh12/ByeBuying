@@ -247,6 +247,7 @@
     }
     h2.heading{
       margin: 0;
+      margin-bottom: 2px;
     }
     p.description{
       font-size: 13px;
@@ -337,8 +338,14 @@
     .add-image-con{
       padding: 26px 0;
       .img-overflow{
-        height: 950px;
+        min-height: 950px;
         overflow-x: scroll;
+      }
+      .overflow-ads-img{
+        min-height: 400px;
+      }
+      .overflow-servic-img{
+        min-height: 750px;
       }
       .img-con{
         position: relative;

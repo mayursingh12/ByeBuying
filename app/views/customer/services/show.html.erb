@@ -1,158 +1,12 @@
 <div class="customer-main-show">
   <div class="row">
     <div class="white-bg">
-      <div class="col-sm-6">
-        <div class="col-sm-6">
-          <div class="product-detail">
-            <h4>Category:</h4>
-            <p><%= @service.subcategory.category.name %></p>
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="product-detail">
-            <h4>Status:</h4>
-            <p><%= @service.admin_verified? ? 'Approved' : 'Pending' %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Subcategory:</h4>
-            <p><%= @service.subcategory.name %></p>
-          </div>
-        </div>
-
-        <% if  @service.subcategory.name == 'Others'%>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Nature of service:</h4>
-                <p><%= @service.nature_of_service %></p>
-              </div>
-            </div>
-        <% end %>
-
-
-        <% if  @service.subcategory.category.name == 'Membership'%>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Club name:</h4>
-                <p><%= @service.club_name %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Membership plan:</h4>
-                <p><%= @service.membership_plan %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Start at:</h4>
-                <p><%= @service.start_at.strftime(time_format) %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>End at:</h4>
-                <p><%= @service.end_at.strftime(time_format) %></p>
-              </div>
-            </div>
-        <% end %>
-
-        <% if @service.subcategory.category.name == 'Commercial Space' %>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Area in meters:</h4>
-                <p><%= @service.area_in_meters %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Amenities available:</h4>
-                <p><%= @service.amenities_available %></p>
-              </div>
-            </div>
-        <% end %>
-
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Service description:</h4>
-            <p><%= @service.service_description %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>State:</h4>
-            <p><%= @service.state.name %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>City:</h4>
-            <p><%= @service.city.name %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Location:</h4>
-            <p><%= @service.location %></p>
-          </div>
-        </div>
-
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Per hour price:</h4>
-            <p><%= @service.per_hour_price %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Per day price:</h4>
-            <p><%= @service.per_day_price %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Per week price:</h4>
-            <p><%= @service.per_week_price %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Per month price:</h4>
-            <p><%= @service.per_month_price %></p>
-          </div>
-        </div>
-
-        <!--<div class="col-sm-12">-->
-          <!--<div class="product-detail">-->
-            <!--<h4>Price type:</h4>-->
-            <!--<p><%#= @service.price_type %></p>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-sm-12">-->
-          <!--<div class="product-detail">-->
-            <!--<h4>Price in rupees:</h4>-->
-            <!--<p><%#= @service.price_in_rupees %></p>-->
-          <!--</div>-->
-        <!--</div>-->
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Youtube link:</h4>
-            <p><%= @service.youtube_link %></p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="product-detail">
-            <h4>Others:</h4>
-            <p><%= @service.other %></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-xs-12">
         <div class="add-image-con">
           <div class="row">
             <div class="col-sm-12">
-              <% @service.service_images.each do |service_image| %>
+              <div class="img-overflow overflow-servic-img">
+                <% @service.service_images.each do |service_image| %>
                 <span class="img-con">
                   <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img' %>
                   <% if service_image.id.present? %>
@@ -161,7 +15,8 @@
                       <%- end %>
                   <%- end %>
                 </span>
-              <%- end %>
+                <%- end %>
+              </div>
             </div>
           </div>
           <% unless @service.service_images.count > 4 %>
@@ -170,6 +25,264 @@
                 <%= render partial: 'customer/service_images/form', locals: { service: @service, service_image: @service.service_images.new } %>
               </fieldset>
           <% end %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>DETAIL</h2>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Category:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.subcategory.category.name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Subcategory:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.subcategory.name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Status:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.admin_verified? ? 'Approved' : 'Pending' %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% if  @service.subcategory.name == 'Others'%>
+              <div class="col-sm-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Nature of service:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @service.nature_of_service %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+
+
+          <% if  @service.subcategory.category.name == 'Membership'%>
+              <div class="col-sm-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Club name:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @service.club_name %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Membership plan:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @service.membership_plan %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Start at:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @service.start_at.strftime(time_format) %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>End at:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @service.end_at.strftime(time_format) %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+
+          <% if @service.subcategory.category.name == 'Commercial Space' %>
+              <div class="col-sm-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Area in meters:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @service.area_in_meters %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Amenities available:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @service.amenities_available %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>State:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.state.name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>City:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.city.name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Location:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.location %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <h2>COST</h2>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Per hour price:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.per_hour_price %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Per day price:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.per_day_price %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Per week price:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.per_week_price %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <div class="row">
+                <div class="col-xs-5">
+                  <h4>Per month price:</h4>
+                </div>
+                <div class="col-xs-7">
+                  <p><%= @service.per_month_price %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <h2>OTHER</h2>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <h4>Service description:</h4>
+              <p><%= @service.service_description %></p>
+            </div>
+          </div>
+
+          <!--<div class="col-sm-12">-->
+          <!--<div class="product-detail">-->
+          <!--<h4>Price type:</h4>-->
+          <!--<p><%#= @service.price_type %></p>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--<div class="col-sm-12">-->
+          <!--<div class="product-detail">-->
+          <!--<h4>Price in rupees:</h4>-->
+          <!--<p><%#= @service.price_in_rupees %></p>-->
+          <!--</div>-->
+          <!--</div>-->
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <h4>Youtube link:</h4>
+              <p><%= @service.youtube_link %></p>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="product-detail">
+              <h4>Others:</h4>
+              <p><%= @service.other %></p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="clearfix"></div>

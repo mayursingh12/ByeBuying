@@ -1,7 +1,8 @@
 <script type="application/javascript">
     $(document).ready(function(){
         $('.sort-arrow').click(function(){
-            $('.dropdown-option').slideToggle();
+            var click_id = this.getAttribute('dyn_click');
+            $('ul.product_'+ click_id).slideToggle();
         });
     });
 </script>
@@ -48,7 +49,7 @@
         <!--</tbody>-->
       <!--</table>-->
       <div class="customer-main-show">
-        <% @products.each do |product| %>
+        <% @products.each_with_index do |product, index| %>
             <div class="white-bg">
               <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                 <div class="add-image-con">
@@ -64,9 +65,9 @@
                 <h5 class="time-option"><%= product.start_at.strftime(time_format) %> - <%= product.end_at.strftime(time_format) %></h5>
                 <p class="description"><%= product.description %></p>
                 <div class="dropdown-main">
-                  <span class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                  <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                   <div class="clearfix"></div>
-                  <ul class="dropdown-option">
+                  <ul class="dropdown-option product_<%= index + 1 %>">
                     <span class="arrow-top"></span>
                     <li>
                       <%= link_to customer_product_path(product) do %>
