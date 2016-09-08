@@ -6,7 +6,7 @@ class Customer::ServicesController < Customer::BaseController
   before_action :set_categories
 
   def index
-    @services = current_user.services
+    @services = current_user.services.includes(:service_images, :subcategory)
   end
 
   def new

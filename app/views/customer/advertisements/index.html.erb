@@ -66,6 +66,7 @@
               </div>
               <div class="col-md-10 col-sm-9 col-xs-12">
                 <h2 class="heading"><%= advertisement.title %></h2>
+                <span>Status: <%= advertisement.admin_verified ? 'Approved' : 'Pending' %></span>
                 <h5 class="time-option"><%= advertisement.start_at.strftime(time_format) %> - <%= advertisement.end_at.strftime(time_format) %></h5>
                 <p class="description"><%= advertisement.description %></p>
                 <div class="dropdown-main">

@@ -6,7 +6,7 @@ class Customer::ProductsController < Customer::BaseController
   before_action :set_categories
 
   def index
-    @products = current_user.products
+    @products = current_user.products.includes(:product_images)
   end
 
   def new
