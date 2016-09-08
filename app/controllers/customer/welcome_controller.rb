@@ -195,7 +195,7 @@ class Customer::WelcomeController < Customer::BaseController
       flash[:success] = 'Successfully removed'
       redirect_to action: :profile
     else
-      render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages }
+      render action: :profile
     end
   end
 
