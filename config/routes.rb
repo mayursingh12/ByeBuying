@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     put 'change_password_' => 'welcome#change_password_'
     put 'change_mobile' => 'welcome#change_mobile'
     delete 'sign_out_' => 'welcome#sign_out_'
+    delete 'profile_image' => 'welcome#profile_image'
 
 
     resources :advertisements do
