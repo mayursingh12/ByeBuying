@@ -189,6 +189,17 @@ class Customer::WelcomeController < Customer::BaseController
     end
   end
 
+  def profile_image
+    current_user.image.destroy
+    if current_user.save
+      flash[:success] = 'Successfully removed'
+      redirect_to action: :profile
+    else
+      flash[:error] = 'Something went wrong, please try again later'
+      render action: :profile
+    end
+  end
+
   def change_password_
     if request.format == 'application/json'
       if @customer.update_attributes(password: params[:password])
