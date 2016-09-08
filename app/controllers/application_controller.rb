@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_categories
-    @categories = Category.all
+    @categories = Category.all.includes(:subcategories)
   end
 end
