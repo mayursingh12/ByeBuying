@@ -195,6 +195,7 @@ class Customer::WelcomeController < Customer::BaseController
       flash[:success] = 'Successfully removed'
       redirect_to action: :profile
     else
+      flash[:error] = 'Something went wrong, please try again later'
       render action: :profile
     end
   end
