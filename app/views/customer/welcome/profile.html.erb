@@ -24,7 +24,7 @@
           <div class="img-section">
             <% if @customer.image.present? %>
                 <%= image_tag @customer.image(:size_250x250), class: 'img-responsive' %>
-                <%= link_to 'Remove', 'profile_image', method: :delete, confirm: 'Are you sure?' %>
+                <%= link_to 'Remove', 'profile_image', method: :delete, data: {confirm: "Are you sure?"}  %>
             <% end %>
             <%= form_tag customer_update_profile_image_path, class: 'upload-form', method: :put, multipart: true do %>
                 <%= file_field_tag :image, class: 'upload-img' %>
