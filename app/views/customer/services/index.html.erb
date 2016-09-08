@@ -65,6 +65,7 @@
               </div>
               <div class="col-md-10 col-sm-9 col-xs-12">
                 <h2 class="heading"><%= service.subcategory.name %></h2>
+                <span>Status: <%= service.admin_verified ? 'Approved' : 'Pending' %></span>
                 <h5 class="time-option"><%= service.start_at.strftime(time_format) %> - <%= service.end_at.strftime(time_format) %></h5>
                 <p class="description"><%= service.service_description %></p>
                 <div class="dropdown-main">

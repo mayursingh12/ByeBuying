@@ -8,7 +8,7 @@ class Customer::AdvertisementsController < Customer::BaseController
   before_action :set_categories
 
   def index
-    @advertisements = current_user.advertisements
+    @advertisements = current_user.advertisements.includes(:advertisement_images, :subcategory)
   end
 
   def new
