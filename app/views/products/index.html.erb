@@ -10,44 +10,7 @@
     <div class="col-md-12">
       <div class="row" data-gutter="15">
         <% @products.each do |product| %>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="product ">
-                <ul class="product-labels"></ul>
-                <div class="product-img-wrap">
-                  <% if product.product_images.any? %>
-                      <% product.product_images.each_with_index do |product_image, index|%>
-                          <% if index == 0 %>
-                              <%= image_tag product_image.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
-                          <% else %>
-                              <%= image_tag product_image.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive product-img-alt' %>
-                          <% end%>
-                      <% end %>
-                  <% else %>
-                      <%= image_tag 'theme_img/500x500.png', class: 'img-responsive product-img-primary' %>
-                      <%= image_tag 'theme_img/500x500.png', class: 'img-responsive product-img-alt' %>
-                  <% end %>
-                </div>
-                <a class="product-link" href="<%= product_path(product)%>"></a>
-                <div class="product-caption">
-                  <ul class="product-caption-rating">
-                    <% for i in 1..5 %>
-                        <% if i <= product.rating %>
-                            <li class="rated"><i class="fa fa-star"></i></li>
-                        <% else %>
-                            <li class=""><i class="fa fa-star"></i></li>
-                        <% end %>
-                    <% end %>
-                  </ul>
-                  <h5 class="product-caption-title"><%= product.name %></h5>
-                  <div class="product-caption-price">
-                    <span class="product-caption-price-new">
-                      <i class="fa fa-inr"></i>
-                      <%= product.per_hour_price %>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <%= render partial: 'product', locals: { product: product } %>
         <% end %>
       </div>
       <%= will_paginate @products %>

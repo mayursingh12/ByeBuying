@@ -49,21 +49,21 @@
               <% end %>
 
               <!--<ul class="product-page-share-item">-->
-                <!--<li>-->
-                  <!--<a class="fa fa-facebook" href="#"></a>-->
-                <!--</li>-->
-                <!--<li>-->
-                  <!--<a class="fa fa-twitter" href="#"></a>-->
-                <!--</li>-->
-                <!--<li>-->
-                  <!--<a class="fa fa-pinterest" href="#"></a>-->
-                <!--</li>-->
-                <!--<li>-->
-                  <!--<a class="fa fa-instagram" href="#"></a>-->
-                <!--</li>-->
-                <!--<li>-->
-                  <!--<a class="fa fa-google-plus" href="#"></a>-->
-                <!--</li>-->
+              <!--<li>-->
+              <!--<a class="fa fa-facebook" href="#"></a>-->
+              <!--</li>-->
+              <!--<li>-->
+              <!--<a class="fa fa-twitter" href="#"></a>-->
+              <!--</li>-->
+              <!--<li>-->
+              <!--<a class="fa fa-pinterest" href="#"></a>-->
+              <!--</li>-->
+              <!--<li>-->
+              <!--<a class="fa fa-instagram" href="#"></a>-->
+              <!--</li>-->
+              <!--<li>-->
+              <!--<a class="fa fa-google-plus" href="#"></a>-->
+              <!--</li>-->
               <!--</ul>-->
             </div>
             <div class="product-page-side-section">
@@ -112,7 +112,7 @@
                 <td>Quantity: <%= @product.quantity %></td>
               </tr>
               <!--<tr>-->
-                <!--<td>Rent: <%#= @product.rent %></td>-->
+              <!--<td>Rent: <%#= @product.rent %></td>-->
               <!--</tr>-->
               <tr>
                 <td>Refundable security: <%= @product.refundable_security %></td>
@@ -132,6 +132,13 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p>
+        <%= link_to 'View all from this seller', all_user_path(@product.user_id) %>
+      </p>
     </div>
   </div>
 </div>
