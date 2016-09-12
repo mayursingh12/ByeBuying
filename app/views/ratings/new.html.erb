@@ -1,0 +1,7 @@
+<%= form_for @rating do |f| %>
+    <%= f.hidden_field :rateable_id %>
+    <%= f.hidden_field :rateable_type %>
+    <%= f.hidden_field :user_id %>
+    <%= f.text_field :number, placeholder: 'Rate - 1 to 5' %>
+    <%= f.submit %>
+<%- end %>

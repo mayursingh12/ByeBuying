@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 20160912125201) do
     t.integer  "number",        limit: 4
     t.integer  "rateable_id",   limit: 4
     t.string   "rateable_type", limit: 255
+    t.integer  "user_id",       limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end

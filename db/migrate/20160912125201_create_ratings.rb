@@ -4,6 +4,7 @@ class CreateRatings < ActiveRecord::Migration
       t.integer :number
       t.integer :rateable_id
       t.string :rateable_type
+      t.integer :user_id
 
       t.timestamps null: false
     end
