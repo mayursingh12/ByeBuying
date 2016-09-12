@@ -81,3 +81,5 @@ gem 'social-share-button'
 gem 'query_diet', group: :development
 
 gem 'http'
+
+gem 'delayed_job_active_record'

@@ -245,7 +245,7 @@
 
             var phone_regax = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
             if(phone_regax.test(number) && number.length == 10){
-                $.post('customer/step_two.json', {phone: number})
+                $.post('/customer/step_two.json', {phone: number})
                         .done(function(msg){
                             var otp = msg.new_user.otp
                             var phone = msg.new_user.phone
