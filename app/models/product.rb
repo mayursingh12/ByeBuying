@@ -13,6 +13,8 @@ class Product < ActiveRecord::Base
 
   belongs_to :user, class_name: 'User', foreign_key: :user_id
 
+  has_many :ratings, as: :rateable
+
   validates :category_id, presence: true
   validates :subcategory_id, presence: true
   validates :name, presence: true

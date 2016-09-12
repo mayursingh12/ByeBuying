@@ -1,0 +1,1 @@
+<%= link_to 'Feedback', controller: 'ratings', action: 'new', product_type: @enquiry.is_product? ? 'Product' : 'Service', product_id: @enquiry.is_product? ? @enquiry.product_id : @enquiry.service_id, user_id: @enquiry.user_id, only_path: false %>

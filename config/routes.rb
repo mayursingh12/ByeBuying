@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :ratings
+
   resources :users do
     member do
       get 'all'

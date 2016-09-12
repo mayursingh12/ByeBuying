@@ -7,4 +7,12 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def enquiry_ending(enquiry)
+    @enquiry = enquiry
+    mail(
+        to: @enquiry.user.email,
+        subject: 'Please rate your product/service'
+    )
+  end
+
 end
