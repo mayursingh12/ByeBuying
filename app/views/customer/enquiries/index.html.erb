@@ -155,7 +155,7 @@
             <%= link_to customer_enquiry_path(customer_enquiry) do %>
                 <div class="white-bg">
                   <div class="col-xs-12">
-                    <h2 class="description"><%= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>
+                    <!--<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>-->
                     <h2 class="heading"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
                     <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
                     <p class="description"><%= customer_enquiry.status %></p>
