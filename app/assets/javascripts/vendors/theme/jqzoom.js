@@ -218,7 +218,7 @@
                     $(el).attr('title', el.title);
                     if (settings.alwaysOn) {
                         lens.setcenter();
-                    } else {
+                    }else {
                         stage.hide();
                         lens.hide();
                     }
