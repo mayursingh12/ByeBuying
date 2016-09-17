@@ -455,14 +455,20 @@
       left: 0;
       right: 0;
     }
+    //.change-btn{
+    //  width: 100%;
+    //  max-width: 400px;
+    //  background-color: #486d97;
+    //  display: inline-block;
+    //  margin-top: 20px;
+    //  padding: 10px;
+    //  color: #ffffff;
+    //}
     .change-btn{
-      width: 100%;
-      max-width: 400px;
-      background-color: #486d97;
+      color: #486d97;
       display: inline-block;
       margin-top: 20px;
-      padding: 10px;
-      color: #ffffff;
+      font-size: 13px;
     }
     .change-form{
       margin-top: 20px;
