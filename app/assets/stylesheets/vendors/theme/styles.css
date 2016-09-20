@@ -404,7 +404,7 @@ hr {
 .dropdown-menu-category > li > a {
     height: 30px;
     line-height: 30px !important;
-    padding: 0 15px 0 15px !important;
+    padding: 0 15px 0 40px !important;
     font-size: 14px;
     position: relative;
     width: 230px;
@@ -471,7 +471,7 @@ hr {
 }
 .dropdown-menu-category-icon {
     position: absolute;
-    top: 13px;
+    top: 7px;
     left: 0;
     height: 40px;
     line-height: 40px;
@@ -483,8 +483,8 @@ hr {
     filter: alpha(opacity=30);
 }
 .dropdown-menu-category-section {
-    width: 500px;
-    min-height: 450px;
+    width: 800px;
+    min-height: 500px;
     position: absolute;
     top: 0;
     left: 230px;
@@ -520,7 +520,7 @@ hr {
 }
 .dropdown-menu-category-list > li {
     margin-bottom: 15px;
-    border-bottom: 1px solid #eeeeee;
+    /*border-bottom: 1px solid #eeeeee;*/
 }
 .dropdown-menu-category-list > li > a {
     color: #595959;
@@ -1236,6 +1236,7 @@ hr {
     font-size: 60px;
     margin-bottom: 15px;
     text-transform: uppercase;
+    text-shadow: 0px 0px 3px rgba(150, 150, 150, 1);
 }
 @media (max-width:992px) {
     .slider-item-caption-title {
