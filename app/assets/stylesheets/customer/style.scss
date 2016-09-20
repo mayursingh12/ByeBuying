@@ -166,9 +166,6 @@
         -webkit-appearance:none;
         display: inline-block;
       }
-      .optional{
-        top: -2px;
-      }
       .meterial_result{
         font-size: 20px;
         margin-top: 22px;
@@ -493,7 +490,19 @@
 .header-space{
   height: 85px;
 }
-
+.negotiable-text{
+  float: left;
+}
+.product_negotiable{
+  float: left;
+  margin-bottom: 0;
+}
+.negotiable-field{
+  top: -10px;
+  height: 20px;
+  width: 20px;
+  left: 23px;
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;

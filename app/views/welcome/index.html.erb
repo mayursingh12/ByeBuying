@@ -88,51 +88,51 @@
 
 <div class="top-column-product">
   <div class="container">
-    <div class="col-md-3">
-      <div class="custome-filter-block">
-        <aside class="category-filters">
-          <div class="category-filters-section">
-            <h3 class="widget-title-sm">Filter</h3>
-          </div>
-          <div class="category-filters-section">
-            <h3 class="widget-title-sm">Price</h3>
-            <!--<input type="text" id="price-slider" />-->
-            <!--<br>-->
-            <!--<br>-->
-            <div class="filter_main_form">
-              <form action="/">
-                <div class="form-group">
-                  <label>Minimum</label>
-                  <i class="fa fa-inr rupee-icon"></i>
-                  <input type="text" name="min_price" class="form-control set-min-price">
-                </div>
-                <div class="form-group">
-                  <label>Maximum</label>
-                  <i class="fa fa-inr rupee-icon"></i>
-                  <input type="text" name="max_price" class="form-control set-max-price">
-                </div>
-                <div class="form-group">
-                  <label>Minimum Rating</label>
+    <!--<div class="col-md-3">-->
+      <!--<div class="custome-filter-block">-->
+        <!--<aside class="category-filters">-->
+          <!--<div class="category-filters-section">-->
+            <!--<h3 class="widget-title-sm">Filter</h3>-->
+          <!--</div>-->
+          <!--<div class="category-filters-section">-->
+            <!--<h3 class="widget-title-sm">Price</h3>-->
+            <!--&lt;!&ndash;<input type="text" id="price-slider" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<br>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br>&ndash;&gt;-->
+            <!--<div class="filter_main_form">-->
+              <!--<form action="/">-->
+                <!--<div class="form-group">-->
+                  <!--<label>Minimum</label>-->
                   <!--<i class="fa fa-inr rupee-icon"></i>-->
-                  <input type="text" name="rating" class="form-control set-rating">
-                </div>
-                <div class="form-group">
-                  <label>Minimum Product Quantity</label>
+                  <!--<input type="text" name="min_price" class="form-control set-min-price">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label>Maximum</label>-->
                   <!--<i class="fa fa-inr rupee-icon"></i>-->
-                  <input type="number" name="quantity" class="form-control set-quantity">
-                  <%#= check_box("tag", true, {checked: true}) %>
-                  <!--<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable-->
-                  <%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>
-                </div>
-                <input type="submit" class="btn btn-primary save-full-btn">
-              </form>
-            </div>
-            <!--<span class="btn btn-primary filter-evnt"> filter </span>-->
-          </div>
-        </aside>
-      </div>
-    </div>
-    <div class="col-md-9">
+                  <!--<input type="text" name="max_price" class="form-control set-max-price">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label>Minimum Rating</label>-->
+                  <!--&lt;!&ndash;<i class="fa fa-inr rupee-icon"></i>&ndash;&gt;-->
+                  <!--<input type="text" name="rating" class="form-control set-rating">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label>Minimum Product Quantity</label>-->
+                  <!--&lt;!&ndash;<i class="fa fa-inr rupee-icon"></i>&ndash;&gt;-->
+                  <!--<input type="number" name="quantity" class="form-control set-quantity">-->
+                  <!--<%#= check_box("tag", true, {checked: true}) %>-->
+                  <!--&lt;!&ndash;<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable&ndash;&gt;-->
+                  <!--<%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>-->
+                <!--</div>-->
+                <!--<input type="submit" class="btn btn-primary save-full-btn">-->
+              <!--</form>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<span class="btn btn-primary filter-evnt"> filter </span>&ndash;&gt;-->
+          <!--</div>-->
+        <!--</aside>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="col-xs-12">
       <% if @products.any? %>
           <!--<div class="gap"></div>-->
           <h3 class="widget-title">Products</h3>
@@ -164,7 +164,16 @@
                       </h5>
                       <div class="product-caption-price">
                   <span class="product-caption-price-new">
-                    ₹<%= product.per_hour_price %>
+                    starting @ ₹<%= product.per_hour_price %>
+                    <%# if product.per_hour_price.present? %>
+                        <!--Per Hr-->
+                    <%# else if product.per_day_price.present? %>
+                        <!--Per Day-->
+                    <%# else if product.per_week_price.present? %>
+                        <!--Per Week-->
+                    <%# else product.per_month_price.present? %>
+                        <!--Per Month-->
+                    <%# end %>
                   </span>
                       </div>
                     </div>
