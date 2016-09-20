@@ -166,7 +166,8 @@
                               <div class="col-md-12">
                                 <ul class="dropdown-menu-category-list">
                                   <% category.subcategories.each do |subcategory|%>
-                                      <li><a href="<%= subcategory_path(subcategory) %>"><%= subcategory.name %></a>
+                                      <li>
+                                        <a href="<%= subcategory_path(subcategory) %>"><%= subcategory.name %></a>
                                       </li>
                                   <% end %>
                                 </ul>
@@ -186,6 +187,7 @@
                             </div>
                           </div>
                         </div>
+                        <%= image_tag "theme_img/test_cat/6-i.png", class: 'img-responsive dropdown-menu-category-section-theme-img' %>
                       </div>
                     </li>
                 <% end %>
