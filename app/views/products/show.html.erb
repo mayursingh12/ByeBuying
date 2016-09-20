@@ -27,10 +27,10 @@
         <div class="col-md-4 col-sm-4 col-xs-12 pull-sm-right">
           <div class="box-highlight">
             <!--<p class="product-page-price-list"><%#= @product.price_in_rupees %></p>-->
-            <p class="product-page-price time-price">₹<%= @product.per_hour_price %> <span class="pull-right">/hr</span></p>
-            <p class="product-page-price time-price">₹<%= @product.per_day_price %> <span class="pull-right">/day</span></p>
-            <p class="product-page-price time-price">₹<%= @product.per_week_price %> <span class="pull-right">/week</span></p>
-            <p class="product-page-price time-price">₹<%= @product.per_month_price %> <span class="pull-right">/month</span></p>
+            <p class="product-page-price time-price">₹<%= @product.per_hour_price %>/ <span class="pull-right">hr</span></p>
+            <p class="product-page-price time-price">₹<%= @product.per_day_price %>/ <span class="pull-right">day</span></p>
+            <p class="product-page-price time-price">₹<%= @product.per_week_price %>/ <span class="pull-right">week</span></p>
+            <p class="product-page-price time-price">₹<%= @product.per_month_price %>/ <span class="pull-right">month</span></p>
             <% if current_user.present? %>
                 <% if current_user.id == @product.user.id %>
                     <a class="btn btn-block btn-success" style="margin-top: 10px" href="javascript:void(0);" %>Your Product</a>

@@ -11,7 +11,7 @@
       <div class="product-page-product-wrap jqzoom-stage">
         <div class="clearfix">
           <% if @service.service_images.any? %>
-              <a href="<%= @service.service_images.first.image(:size_500x500) %>" id="jqzoom" data-rel="gal-1">
+              <a href="<%= @service.service_images.first.image(:original) %>" id="jqzoom" data-rel="gal-1">
                 <%= image_tag @service.service_images.first.image(:size_500x500), class: 'img-responsive' %>
               </a>
           <% else %>
@@ -104,10 +104,10 @@
         <div class="col-md-4">
           <div class="box-highlight">
             <!--<p class="product-page-price">₹<%#= @service.price_in_rupees %></p>-->
-            <p class="product-page-price time-price">₹<%= @service.per_hour_price %>/hr</p>
-            <p class="product-page-price time-price">₹<%= @service.per_day_price %>/day</p>
-            <p class="product-page-price time-price">₹<%= @service.per_week_price %>/week</p>
-            <p class="product-page-price time-price">₹<%= @service.per_month_price %>/month</p>
+            <p class="product-page-price time-price">₹<%= @service.per_hour_price %>/ <span class="pull-right">hr</span></p>
+            <p class="product-page-price time-price">₹<%= @service.per_day_price %>/ <span class="pull-right">day</span></p>
+            <p class="product-page-price time-price">₹<%= @service.per_week_price %>/ <span class="pull-right">week</span></p>
+            <p class="product-page-price time-price">₹<%= @service.per_month_price %>/ <span class="pull-right">month</span></p>
             <% if current_user.present? %>
                 <% if current_user.id == @service.user.id %>
                     <a class="btn btn-block btn-success" style="margin-top: 10px" href="javascript:void(0);" %>Your Service</a>

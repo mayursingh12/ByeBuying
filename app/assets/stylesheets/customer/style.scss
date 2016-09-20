@@ -445,16 +445,30 @@
     }
     .upload-img{
       display: inline-block;
-      border: 1px solid #eeeeee;
-    }
-    .change-btn{
+      border: 1px solid #dedede;
+      margin-bottom: 15px;
+      opacity: 0;
       width: 100%;
-      max-width: 400px;
-      background-color: #486d97;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    //.change-btn{
+    //  width: 100%;
+    //  max-width: 400px;
+    //  background-color: #486d97;
+    //  display: inline-block;
+    //  margin-top: 20px;
+    //  padding: 10px;
+    //  color: #ffffff;
+    //}
+    .change-btn{
+      color: #486d97;
       display: inline-block;
       margin-top: 20px;
-      padding: 10px;
-      color: #ffffff;
+      font-size: 13px;
     }
     .change-form{
       margin-top: 20px;
@@ -470,13 +484,24 @@
       }
     }
     .img-section{
+      width: 100%;
+      position: relative;
+      text-align: center;
+      img{
+        width: 250px;
+        height: 250px;
+        display: inline-block;
+      }
       .upload-form{
-        margin-top: 10px;
-        text-align: center;
         .upload-btn{
-          height: 26px;
-          border-radius: 0px;
-          padding: 0px 40px;
+          opacity: 0;
+          //border-radius: 0px;
+          //display: inline-block;
+          //width: 100%;
+          //background-color: #486d97;
+          //padding: 10px;
+          //border: 0;
+          //color: #ffffff;
         }
       }
     }
