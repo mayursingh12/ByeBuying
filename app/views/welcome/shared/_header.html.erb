@@ -158,7 +158,7 @@
             <li class="dropdown"><a href="javascript:void(0)"><i class="fa fa-reorder"></i>&nbsp; Shop by Category<i class="drop-caret" data-toggle="dropdown"></i></a>
               <ul class="dropdown-menu dropdown-menu-category">
                 <% @categories.each do |category| %>
-                    <li><a href="<%= category_path(category)%>"><%= category.name %></a>
+                    <li><a href="<%= category_path(category)%>"><i class="fa fa-home dropdown-menu-category-icon"></i> <%= category.name %></a>
                       <div class="dropdown-menu-category-section">
                         <div class="dropdown-menu-category-section-inner">
                           <div class="dropdown-menu-category-section-content">
