@@ -529,9 +529,10 @@
   left: 23px;
 }
 .all_post_button{
-  min-width: 280px;
+  width: 100%;
   margin-top: 30px;
   padding: 10px;
+  text-transform: none !important;
 }
 @media(max-width: 767px){
   .otp-min-height{

@@ -483,7 +483,7 @@ hr {
     filter: alpha(opacity=30);
 }
 .dropdown-menu-category-section {
-    width: 800px;
+    width: 650px;
     min-height: 500px;
     position: absolute;
     top: 0;
