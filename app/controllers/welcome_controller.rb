@@ -60,8 +60,6 @@ class WelcomeController < ApplicationController
   end
 
   def forgot_password
-    1
-
    if params[:phone].present?
      @phone = params[:phone]
 
@@ -79,11 +77,6 @@ class WelcomeController < ApplicationController
 
    end
 
-  end
-
-
-  def forgot_password_token
-    1
   end
 
   private
