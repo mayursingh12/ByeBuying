@@ -142,6 +142,9 @@ Rails.application.routes.draw do
 
   get 'test' => 'welcome#test'
 
+  get 'forgot_password' => 'welcome#forgot_password'
+  get 'forgot_password' => 'welcome#forgot_password_token'
+
 
   # ==========Temp URL==============
   # ====== Must be delete ==========

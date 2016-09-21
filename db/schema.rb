@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912125201) do
+ActiveRecord::Schema.define(version: 20160921145402) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -246,6 +246,7 @@ ActiveRecord::Schema.define(version: 20160912125201) do
     t.datetime "deleted_at"
     t.string   "contact",                limit: 255
     t.text     "api_token",              limit: 65535
+    t.string   "forgot_token",           limit: 255
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
