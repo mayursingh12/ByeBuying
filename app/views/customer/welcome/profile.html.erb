@@ -37,7 +37,8 @@
         <% end %>
       </div>
       <div class="text-right">
-        <a href="javascript:void(0)" class="change-btn">Change Password</a>
+        <!--<a href="javascript:void(0)" class="change-btn">Change Password</a>-->
+        <a href="#change_password" class="popup-text login-nav-button">Change Password</a>
       </div>
     </div>
     <div class="col-xs-12">
@@ -52,6 +53,22 @@
     <div class="clearfix"></div>
   </div>
 </div>
+
+<!--Login Form Start-->
+<div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="change_password">
+  <h3 class="widget-title">Change Password</h3>
+  <hr />
+  <div class="form-group">
+    New Password: <input type="password" class="form-control rgr-frm-mumber">
+  </div>
+  <div class="form-group">
+    Confirm Password: <input type="password" class="form-control rgr-frm-pwd">
+  </div>
+  <span class="btn btn-primary btn-sign-in">Submit</span>
+
+  <div class="gap gap-small"></div>
+</div>
+<!--Login Form End-->
 
 <script type="text/javascript">
     $(document).ready(function(){
