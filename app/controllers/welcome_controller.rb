@@ -71,10 +71,12 @@ class WelcomeController < ApplicationController
 
        if responce.code == 200
          @user_.update_attributes(password: @token)
+         flash[:success] = 'Password successfully reset.'
+         render status: :ok, nothing: true
        end
      end
    else
-
+     render status: :unprocessable_entity, json: { errors: ['Invalid Phone Number'] }
    end
 
   end
