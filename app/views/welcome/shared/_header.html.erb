@@ -68,6 +68,9 @@
         <li>
           <a href="#nav-mobile-dialog" class="popup-text">Register Here</a>
         </li>
+        <li class="pull-right">
+          <a href="#nav-forgot-password-dialog" class="popup-text">Forgot password?</a>
+        </li>
       </ul>
     </div>
     <!--Login Form End-->
@@ -122,6 +125,18 @@
     </div>
     <!--Mobile Form End-->
 
+
+    <!--Forgot Password Form Start-->
+    <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-forgot-password-dialog">
+      <h3 class="widget-title">Forgot Password?</h3>
+      <hr />
+      <span class="msg-forgot-password-validation text-danger"></span>
+      <input type="number" id='forgot-password' class="form-control" min="10" max="10"  />
+      <a href="#nav-forgot-password-dialog" class="hidden popup-text forgot-password-submit2">Proceed</a>
+      <a href="javascript:void(0)" class="forgot-password evt-forgot-password">Proceed</a>
+      <div class="gap gap-small"></div>
+    </div>
+    <!--Forgot Password Form End-->
 
     <!--OTP Form Start-->
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-otp-dialog">
@@ -342,6 +357,32 @@
         setTimeout(function(){
             $('.alert').remove();
         }, 6000);
+
+        $('.forgot-password').click(function(){
+            var phone = $('#forgot-password').val();
+            if (phone.length == 10){
+                $.get('/forgot_password', {phone: phone })
+                        .done(function(msg){
+                            location.reload();
+                            $('.msg-forgot-password-validation').text('');
+//                        do nothing
+                        })
+                        .fail(function(xhr, status, error) {
+                            // error handling
+                            var error_text = xhr.responseText.split(':')[1].replace('"','').replace('}','').replace('"','');
+                            $('.msg-forgot-password-validation').text('Invalid Phone number');
+//                            $(".login-error").text(error_text);
+//                            $(".login-error").removeClass('hidden');
+//                            $('.msg-already-registred').hide();
+                        });
+
+            }
+            else{
+                $('.msg-forgot-password-validation').text('Invalid Phone number');
+            }
+
+
+        });
 
     });
 

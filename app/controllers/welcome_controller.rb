@@ -59,6 +59,28 @@ class WelcomeController < ApplicationController
     redirect_to root_path
   end
 
+  def forgot_password
+   if params[:phone].present?
+     @phone = params[:phone]
+
+     @user_ = User.where(contact: @phone).first
+
+     if @user_.present?
+       @token = SecureRandom.urlsafe_base64(8)
+       responce =  HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: @phone, text: "Your updated password for ByeBuying is #{@token.to_s}", priority: 'ndnd', style: 'normal'})
+
+       if responce.code == 200
+         @user_.update_attributes(password: @token)
+         flash[:success] = 'Password successfully reset.'
+         render status: :ok, nothing: true
+       end
+     end
+   else
+     render status: :unprocessable_entity, json: { errors: ['Invalid Phone Number'] }
+   end
+
+  end
+
   private
 
   # def set_categories
