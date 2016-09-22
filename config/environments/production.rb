@@ -108,4 +108,7 @@ Rails.application.configure do
   #                                             :exception_recipients => %w{mayursingh1220@gmail.com}
   #                                         }
   # HOST_URL_FOR_MAILER = 'http://www.mysolutions4u.com'
+
+
+  # ByeBuying Logo = 'http://s3.amazonaws.com/byebuyingproduction/advertisement_images/images/000/000/038/original/logo.jpeg?1474540580'
 end
