@@ -67,13 +67,10 @@ class WelcomeController < ApplicationController
 
      if @user_.present?
        @token = SecureRandom.urlsafe_base64(8)
-       responce =  HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: @phone, text: "Your updated password for ByeBuying is #{@token.to_s}", priority: 'ndnd', style: 'normal'})
-
-       if responce.code == 200
-         @user_.update_attributes(password: @token)
-         flash[:success] = 'Password successfully reset.'
-         render status: :ok, nothing: true
-       end
+       SmsDelivery.new(@phone, SmsTemplates.change_password(@token.to_s)).delay.deliver
+       @user_.update_attributes(password: @token)
+       flash[:success] = 'Your updated password has been sent successfully.'
+       render status: :ok, nothing: true
      end
    else
      render status: :unprocessable_entity, json: { errors: ['Invalid Phone Number'] }
