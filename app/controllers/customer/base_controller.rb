@@ -6,7 +6,7 @@ class Customer::BaseController < ApplicationController
     if current_user.present? and current_user.customer?
       #proceed
     else
-      redirect_to customer_path
+      redirect_to root_path
     end
   end
 

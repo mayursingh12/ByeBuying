@@ -46,7 +46,7 @@
         <!--<a href="javascript:void(0)" class="change-btn">Change Password</a>-->
         <%= form_tag customer_change_password__path, class: 'change-form', method: :put do %>
             <%= password_field_tag :password, "", class: 'pass-textfield' %>
-            <%= submit_tag("update", class: "btn btn-primary change-submit") %>
+            <%= submit_tag("update", class: "btn btn-primary chg-pwd-submit") %>
         <% end %>
       </div>
     </div>
@@ -54,17 +54,18 @@
   </div>
 </div>
 
-<!--Login Form Start-->
+<!--Change Password Form Start-->
 <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="change_password">
-  <h3 class="widget-title">Change Password</h3>
+  <h3 class="widget-title">Update Password</h3>
   <hr />
+  <span class="msg-change-password-validation text-danger"></span>
   <div class="form-group">
-    New Password: <input type="password" class="form-control rgr-frm-mumber">
+    New Password: <input type="password" class="form-control rgr-frm-pwd1">
   </div>
   <div class="form-group">
-    Confirm Password: <input type="password" class="form-control rgr-frm-pwd">
+    Confirm Password: <input type="password" class="form-control rgr-frm-pwd2">
   </div>
-  <span class="btn btn-primary btn-sign-in">Submit</span>
+  <span class="btn btn-primary btn-submit-chg-pwd">Submit</span>
 
   <div class="gap gap-small"></div>
 </div>
@@ -93,6 +94,23 @@
 //        });
         $('.upload-img').change(function(){
             $('.upload-btn').click();
+        });
+
+        $('.btn-submit-chg-pwd').click(function(){
+            if ($('.rgr-frm-pwd1').val().length > 7){
+                if ($('.rgr-frm-pwd1').val() == $('.rgr-frm-pwd2').val()){
+                    var password = $('.rgr-frm-pwd1').val();
+                    $('.pass-textfield').val(password);
+                    $(".chg-pwd-submit").trigger("click");
+
+                }
+                else{
+                    $('.msg-change-password-validation').text("Password doesn't match.")
+                }
+            }
+            else{
+                $('.msg-change-password-validation').text('Password is too short (minimum is 8 characters)')
+            }
         });
 
     });
