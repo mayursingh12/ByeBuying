@@ -42,14 +42,13 @@ class Admin::ProductsController < Admin::BaseController
 
   def admin_approve
     if @product.update_attribute(:admin_verified, params[:admin_verified])
+      unless @product.admin_verified
+        CustomerMailer.product_un_verified(@product).deliver_later
+      end
       redirect_to action: :index
     else
       redirect_to action: :index
     end
-  end
-
-  def reject
-
   end
 
   private

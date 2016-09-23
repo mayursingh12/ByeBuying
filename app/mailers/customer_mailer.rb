@@ -64,4 +64,22 @@ class CustomerMailer < ApplicationMailer
 
   end
 
+  def product_un_verified(product)
+    @product = product
+    @user = @product.user
+    mail(
+        to: @user.email,
+        subject: "Your Ad Cannot be Published - Prohibited Content Detected: Ad #{@product.id} "
+    )
+  end
+
+  def service_un_verified(service)
+    @service = service
+    @user = @service.user
+    mail(
+        to: @user.email,
+        subject: "Your Ad Cannot be Published - Prohibited Content Detected: Ad #{@service.id} "
+    )
+  end
+
 end
