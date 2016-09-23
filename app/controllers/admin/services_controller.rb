@@ -24,6 +24,11 @@ class Admin::ServicesController < Admin::BaseController
 
   def admin_approve
     if @service.update_attribute(:admin_verified, params[:admin_verified])
+      unless @service.admin_verified
+        CustomerMailer.service_un_verified(@service).deliver_later
+      else
+        CustomerMailer.service_verified(@service).deliver_later
+      end
       redirect_to action: :index
     else
       redirect_to action: :index
@@ -31,8 +36,8 @@ class Admin::ServicesController < Admin::BaseController
   end
 
   def destroy
-    @service.destroy
-    redirect_to action: :index
+    # @service.destroy
+    # redirect_to action: :index
   end
 
   private

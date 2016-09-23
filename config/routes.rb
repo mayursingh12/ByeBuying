@@ -84,9 +84,9 @@ Rails.application.routes.draw do
     delete 'profile_image' => 'welcome#profile_image'
 
 
-    resources :advertisements do
-      resources :advertisement_images
-    end
+    # resources :advertisements do
+    #   resources :advertisement_images
+    # end
 
     resources :products do
       resources :product_images

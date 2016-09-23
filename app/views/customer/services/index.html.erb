@@ -81,11 +81,13 @@
                               <i class="fa fa-eye"></i> Show
                           <%- end %>
                         </li>
-                        <li>
-                          <%= link_to edit_customer_service_path(service) do %>
-                              <i class="fa fa-edit"></i> Edit
-                          <%- end %>
-                        </li>
+                        <% unless service.is_enquired %>
+                            <li>
+                              <%= link_to edit_customer_service_path(service) do %>
+                                  <i class="fa fa-edit"></i> Edit
+                              <%- end %>
+                            </li>
+                        <% end %>
                         <li class="no_border">
                           <%= link_to customer_service_path(service), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
                               <i class="fa fa-trash fa-3"></i> Delete

@@ -28,11 +28,18 @@
                   <span class="text-danger">Not verified</span>
                   <%= link_to( 'Verify' , admin_approve_admin_product_path(product, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
               <%- end %>
+
               <%= link_to admin_product_path(product) do %>
                   <i class="fa fa-eye"></i>
               <% end %>
-              <%= link_to admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                  <i class="fa fa-trash fa-3"></i>
+              <%#= link_to admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                  <!--<i class="fa fa-trash fa-3"></i>-->
+              <%#- end %>
+
+              <% if product.admin_verified? %>
+                  <%= link_to( 'Reject' , admin_approve_admin_product_path(product, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+              <%- else %>
+                  <!--Do nothing-->
               <%- end %>
             </td>
           </tr>

@@ -1,5 +1,7 @@
 class UserMailer < ApplicationMailer
 
+  add_template_helper(ApplicationHelper)
+
   def test_mailer(email)
     mail(
         to: email,

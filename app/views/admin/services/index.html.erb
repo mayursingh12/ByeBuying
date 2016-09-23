@@ -33,9 +33,17 @@
                 <%= link_to admin_service_path(service) do %>
                     <i class="fa fa-eye"></i>
                 <% end %>
-                <%= link_to admin_service_path(service), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                    <i class="fa fa-trash fa-3"></i>
+                <%#= link_to admin_service_path(service), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <!--<i class="fa fa-trash fa-3"></i>-->
+                <%#- end %>
+
+
+                <% if service.admin_verified? %>
+                    <%= link_to( 'Reject' , admin_approve_admin_service_path(service, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+                <%- else %>
+                    <!--Do nothing-->
                 <%- end %>
+
               </td>
             </tr>
         <%- end %>

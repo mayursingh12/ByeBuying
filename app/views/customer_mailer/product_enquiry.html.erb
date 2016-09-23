@@ -1,0 +1,35 @@
+Hi <%= @user.name %>,
+<br>
+<br>
+You have received one enquiry from <%= @enquiry.user.name %> on your product having Ad Enquiry#<%= @enquiry.id %> and <%= @enquiry.description %>. Enquiry details are as:
+<br><br>
+Ad ID: Enquiry#<%= @enquiry.id %>
+<br>
+Ad Description: <%= @product.description %>
+<br>
+Enquired by: <%= @enquiry.user.name %>
+<br>
+Enquired on: <%= @enquiry.created_at.strftime(time_format)%>
+<br>
+Product required for duration: <%= @enquiry.start_at.strftime(time_format)%> to <%= @enquiry.end_at.strftime(time_format)%>
+<br>
+Price requested per hour: <%= @enquiry.expected_per_hour_price %>
+<br>
+Price requested per day : <%= @enquiry.expected_per_day_price %>
+<br>
+Price requested per week : <%= @enquiry.expected_per_week_price %>
+<br>
+Price requested per month : <%= @enquiry.expected_per_month_price %>
+<br>
+
+<%= "Other details: #{@product.technical_specification}"  if @product.technical_specification.present?%>
+<br><br>
+
+Please login into your account on <a href="http://byebuying.com">www.ByeBuying.com</a> and provide your approval. Please note the enquiry will remain active for 48 Hours from the time it is generated.
+<br><br>
+In case you cannot see this email properly, please login and visit the enquiry section in your account section.
+<br>
+<br>
+Regards,
+<br>
+ByeBuying Team

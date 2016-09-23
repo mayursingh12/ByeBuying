@@ -30,19 +30,23 @@ class Admin::ProductsController < Admin::BaseController
    if @product.update_attributes(rating: params[:rating])
      flash[:success] = 'Rating successfully updated.'
      redirect_to action: :show
-
    else
      render action: :show
    end
   end
 
   def destroy
-    @product.destroy
-    redirect_to action: :index
+    # @product.destroy
+    # redirect_to action: :index
   end
 
   def admin_approve
     if @product.update_attribute(:admin_verified, params[:admin_verified])
+      unless @product.admin_verified
+        CustomerMailer.product_un_verified(@product).deliver_later
+      else
+        CustomerMailer.product_verified(@product).deliver_later
+      end
       redirect_to action: :index
     else
       redirect_to action: :index
