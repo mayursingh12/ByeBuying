@@ -31,6 +31,7 @@ class EnquiriesController < ApplicationController
       if @product.present?
         @enquiry = Enquiry.new(enquiry_params)
         if @enquiry.save
+          @enquiry.product.update_attributes(is_enquired: true)
           flash[:success] = 'Enquired successfully'
           CustomerMailer.product_enquiry(@enquiry).deliver_later
           redirect_to product_path(@product)
@@ -41,6 +42,7 @@ class EnquiriesController < ApplicationController
       else
         @enquiry = Enquiry.new(service_enquiry_params)
         if @enquiry.save
+          @enquiry.service.update_attributes(is_enquired: true)
           flash[:success] = 'Enquired successfully'
           CustomerMailer.service_enquiry(@enquiry).deliver_later
           redirect_to service_path(@service)

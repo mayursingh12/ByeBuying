@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_product, only: [:show, :update_rating, :admin_approve, :destroy]
+  before_action :set_product, only: [:show, :update_rating, :admin_approve, :destroy, :reject]
 
   def index
     @products = Product.all
@@ -30,7 +30,6 @@ class Admin::ProductsController < Admin::BaseController
    if @product.update_attributes(rating: params[:rating])
      flash[:success] = 'Rating successfully updated.'
      redirect_to action: :show
-
    else
      render action: :show
    end
@@ -47,6 +46,10 @@ class Admin::ProductsController < Admin::BaseController
     else
       redirect_to action: :index
     end
+  end
+
+  def reject
+
   end
 
   private
