@@ -32,4 +32,14 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def service_enquiry(enquiry)
+    @enquiry = enquiry
+    @service = @enquiry.service
+    @user = @enquiry.service.user
+    mail(
+        to: @user.email,
+        subject: "Enquiry Received– Ad##{@enquiry.id}"
+    )
+  end
+
 end

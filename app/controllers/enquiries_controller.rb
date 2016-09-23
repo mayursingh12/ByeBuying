@@ -42,6 +42,7 @@ class EnquiriesController < ApplicationController
         @enquiry = Enquiry.new(service_enquiry_params)
         if @enquiry.save
           flash[:success] = 'Enquired successfully'
+          CustomerMailer.service_enquiry(@enquiry).deliver_later
           redirect_to service_path(@service)
         else
           flash[:success] = 'Something went wrong'
