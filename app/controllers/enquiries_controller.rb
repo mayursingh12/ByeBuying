@@ -32,6 +32,7 @@ class EnquiriesController < ApplicationController
         @enquiry = Enquiry.new(enquiry_params)
         if @enquiry.save
           flash[:success] = 'Enquired successfully'
+          CustomerMailer.product_enquiry(@enquiry).deliver_later
           redirect_to product_path(@product)
         else
           flash[:success] = 'Something went wrong'

@@ -151,6 +151,7 @@ class Customer::WelcomeController < Customer::BaseController
         if @customer.save
           @customer.update_attribute(:api_token, SecureRandom.urlsafe_base64(32))
           sign_in(@customer)
+          CustomerMailer.registration(@customer,  @customer.password).deliver_later
           render status: :ok , json: { api_token: @customer.api_token }
         else
           render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages.first }
@@ -160,6 +161,7 @@ class Customer::WelcomeController < Customer::BaseController
           @customer.update_attribute(:api_token, SecureRandom.urlsafe_base64(32))
           flash[:success] = 'successfully registered.'
           sign_in(@customer)
+          CustomerMailer.registration(@customer,  @customer.password).deliver_later
           redirect_to action: :dashboard
         else
           flash[:error] = @customer.errors.full_messages.first
@@ -203,6 +205,7 @@ class Customer::WelcomeController < Customer::BaseController
   def change_password_
     if request.format == 'application/json'
       if @customer.update_attributes(password: params[:password])
+        CustomerMailer.change_password(@customer, params[:password]).deliver_later
         render status: :ok
       else
         render status: :unprocessable_entity , json: { errors: @customer.errors.full_messages }
@@ -210,6 +213,7 @@ class Customer::WelcomeController < Customer::BaseController
     else
       if @customer.update_attributes(password: params[:password])
         flash[:success] = 'Successfully updated'
+        CustomerMailer.change_password(@customer, params[:password]).deliver_later
         redirect_to customer_profile_path
       else
         flash[:error] = "#{@customer.errors.full_messages.first}"
