@@ -36,8 +36,8 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def destroy
-    @product.destroy
-    redirect_to action: :index
+    # @product.destroy
+    # redirect_to action: :index
   end
 
   def admin_approve

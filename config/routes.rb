@@ -53,7 +53,6 @@ Rails.application.routes.draw do
       member do
         put 'update_rating'
         put 'admin_approve'
-        put 'reject'
       end
     end
 

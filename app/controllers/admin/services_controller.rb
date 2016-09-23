@@ -31,8 +31,8 @@ class Admin::ServicesController < Admin::BaseController
   end
 
   def destroy
-    @service.destroy
-    redirect_to action: :index
+    # @service.destroy
+    # redirect_to action: :index
   end
 
   private
