@@ -42,4 +42,26 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def product_reminder_enquiry(enquiry)
+    @enquiry = enquiry
+    @product = @enquiry.product
+    @user = @enquiry.product.user
+    mail(
+        to: @user.email,
+        subject: "Enquiry Received– Ad##{@enquiry.id}"
+    )
+
+  end
+
+  def service_reminder_enquiry(enquiry)
+    @enquiry = enquiry
+    @service = @enquiry.service
+    @user = @enquiry.service.user
+    mail(
+        to: @user.email,
+        subject: "Enquiry Received– Ad##{@enquiry.id}"
+    )
+
+  end
+
 end
