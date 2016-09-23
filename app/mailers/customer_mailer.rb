@@ -82,4 +82,22 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def product_verified(product)
+    @product = product
+    @user = @product.user
+    mail(
+        to: @user.email,
+        subject: "Congratulations!!! Your Ad has been published."
+    )
+  end
+
+  def service_verified(service)
+    @service = service
+    @user = @service.user
+    mail(
+        to: @user.email,
+        subject: "Congratulations!!! Your Ad has been published."
+    )
+  end
+
 end

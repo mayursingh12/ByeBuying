@@ -44,6 +44,8 @@ class Admin::ProductsController < Admin::BaseController
     if @product.update_attribute(:admin_verified, params[:admin_verified])
       unless @product.admin_verified
         CustomerMailer.product_un_verified(@product).deliver_later
+      else
+        CustomerMailer.product_verified(@product).deliver_later
       end
       redirect_to action: :index
     else
