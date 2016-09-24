@@ -534,6 +534,18 @@
   padding: 10px;
   text-transform: none !important;
 }
+.nested_images{
+  a{
+    padding: 25px 0;
+    width: 73px;
+    height: 73px;
+    background-color: #ffffff;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    text-align: center;
+    text-decoration: none;
+  }
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
