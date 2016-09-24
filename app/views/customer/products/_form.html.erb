@@ -149,6 +149,16 @@
                   <div class="field-con">
                     <% unless params[:action] == 'edit' %>
                         <div id="nested-product-images" class="nested_images">
+                          <% @product.product_images.each do |product_image| %>
+                            <span class="img-con">
+                              <%= image_tag product_image.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img' %>
+                              <% if product_image.id.present? %>
+                                  <%= link_to customer_product_product_image_path(@product, product_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                                      <i class="fa fa-times cross-icon"></i>
+                                  <%- end %>
+                              <%- end %>
+                            </span>
+                          <%- end %>
                           <%= f.fields_for :product_images do |builder| %>
                               <%= render partial: 'application/product_image_fields', locals: { f: builder } %>
                           <%- end %>
