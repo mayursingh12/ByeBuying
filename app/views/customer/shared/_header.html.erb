@@ -113,7 +113,7 @@
                 <!--<li><a href="/products">Products</a></li>-->
                 <!--<li><a href="/services">Services</a></li>-->
                 <% @categories.each do |category| %>
-                    <li><a href="<%= category_path(category) %>"><%= category.name %></a>
+                    <li><a href="<%= category_path(category) %>"><i class="fa fa-home dropdown-menu-category-icon"></i><%= category.name %></a>
                       <div class="dropdown-menu-category-section">
                         <div class="dropdown-menu-category-section-inner">
                           <div class="dropdown-menu-category-section-content">
@@ -141,6 +141,7 @@
                             </div>
                           </div>
                         </div>
+                        <%= image_tag "theme_img/test_cat/6-i.png", class: 'img-responsive dropdown-menu-category-section-theme-img' %>
                       </div>
                     </li>
                 <% end %>
