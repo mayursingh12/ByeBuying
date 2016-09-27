@@ -2,39 +2,232 @@
     <div class="customer-main-show">
       <div class="row">
         <div class="white-bg">
-          <div class="col-sm-6">
-            <div class="col-sm-12">
-              <a href="<%= product_path(@enquiry.product)%>">
-                <div class="product-detail">
-                  <h4>Product Name:</h4>
-                  <p><%= @enquiry.product.name %></p>
+          <div class="col-sm-6 col-xs-12">
+            <div class="add-image-con">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="img-overflow overflow-servic-img">
+                      <% if @enquiry.product.product_images.any? %>
+                        <span class="img-con">
+                          <%= image_tag @enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img' %>
+                        </span>
+                      <%- end %>
+                  </div>
                 </div>
-              </a>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Status</h4>
-                <p><%= @enquiry.status %></p>
               </div>
             </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Enquiry by:</h4>
-                <p><%= @enquiry.user.email %></p>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2>DETAIL</h2>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <a href="<%= product_path(@enquiry.product)%>">
+                      <div class="col-xs-5">
+                        <h4>Product Name:</h4>
+                      </div>
+                      <div class="col-xs-7">
+                        <p><%= @enquiry.product.name %></p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Status:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.status %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Enquiry By:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.user.email %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Enquiry From:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.start_at.strftime(time_format) %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Enquiry To:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.end_at.strftime(time_format) %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <h2>COST</h2>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Hour Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.product.per_hour_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Day Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.product.per_day_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Week Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.product.per_week_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Month Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.product.per_month_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <% if @enquiry.status == 'Enquiry' and @enquiry.product.user_id == current_user.id %>
+                    <div class="product-detail">
+                      <%= simple_form_for [:customer, @enquiry] do |f| %>
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_hour_price, label: 'Expected Per Hour Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_day_price, label: 'Expected Per Day Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_week_price, label: 'Expected Per Week Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_month_price, label: 'Expected Per Month Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :description, label: 'Description:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.submit 'Send quote', class: 'btn btn-primary'%>
+                            </div>
+                          </div>
+                      <% end %>
+                    </div>
+                <% else %>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted  Per Week Price' : ' Expected Per Week Price'%>:</h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_hour_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted  Per Day Price' : ' Expected Per Day Price'%></h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_day_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted Per Week Price' : ' Expected Per Week Price'%></h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_week_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted  per month price' : ' Expected per month price'%></h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_month_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <% if @enquiry.status == 'Confirmed'%>
+                        <div class="product-detail">
+                          <div class="row">
+                            <div class="col-xs-5">
+                              <h4>Description:</h4>
+                            </div>
+                            <div class="col-xs-7">
+                              <p><%= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>
+                            </div>
+                          </div>
+                        </div>
+                    <% end %>
+                    <% if @enquiry.status == 'Quoted' and @enquiry.user_id == current_user.id %>
+                        <div class="product-detail">
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <%= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>
+                              <%= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>
+                            </div>
+                          </div>
+                        </div>
+                    <% end %>
+                <% end %>
               </div>
             </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Enquiry From:</h4>
-                <p><%= @enquiry.start_at.strftime(time_format) %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Enquiry To:</h4>
-                <p><%= @enquiry.end_at.strftime(time_format) %></p>
-              </div>
-            </div>
+
             <!--<div class="col-sm-12">-->
             <!--<div class="product-detail">-->
             <!--<h4>Product plan:</h4>-->
@@ -48,96 +241,58 @@
             <!--</div>-->
             <!--</div>-->
 
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per Hour Price:</h4>
-                <p><%= @enquiry.product.per_hour_price %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per Day Price:</h4>
-                <p><%= @enquiry.product.per_day_price %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per Week Price:</h4>
-                <p><%= @enquiry.product.per_week_price %></p>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per Month Price:</h4>
-                <p><%= @enquiry.product.per_month_price %></p>
-              </div>
-            </div>
-
-            <div class="col-sm-12">
-              <% if @enquiry.status == 'Enquiry' and @enquiry.product.user_id == current_user.id %>
-                  <div class="product-detail">
-                    <%= simple_form_for [:customer, @enquiry] do |f| %>
-                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price:', label_html: {class: 'heading'} %>
-                        <%= f.input :expected_per_day_price, label: 'Expected per day price:', label_html: {class: 'heading'} %>
-                        <%= f.input :expected_per_week_price, label: 'Expected per week price:', label_html: {class: 'heading'} %>
-                        <%= f.input :expected_per_month_price, label: 'Expected per month price:', label_html: {class: 'heading'} %>
-                        <%= f.input :description, label: 'Description:', label_html: {class: 'heading'} %>
-                        <%= f.submit 'Send quote', class: 'btn btn-primary'%>
-                    <% end %>
-                  </div>
-              <% else %>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per hour price' : ' Expected per hour price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_hour_price %></p>
-                  </div>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per day price' : ' Expected per day price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_day_price %></p>
-                  </div>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per week price' : ' Expected per week price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_week_price %></p>
-                  </div>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per month price' : ' Expected per month price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_month_price %></p>
-                  </div>
-              <% end %>
-              <% if @enquiry.status == 'Confirmed'%>
-                  <div class="product-detail">
-                    <h4>Description:</h4>
+            <!--<div class="col-sm-12">-->
+              <!--<%# if @enquiry.status == 'Enquiry' and @enquiry.product.user_id == current_user.id %>-->
+                  <!--<div class="product-detail">-->
+                    <!--<%#= simple_form_for [:customer, @enquiry] do |f| %>-->
+                        <!--<%#= f.input :expected_per_hour_price, label: 'Expected per hour price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :expected_per_day_price, label: 'Expected per day price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :expected_per_week_price, label: 'Expected per week price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :expected_per_month_price, label: 'Expected per month price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :description, label: 'Description:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.submit 'Send quote', class: 'btn btn-primary'%>-->
+                    <!--<%# end %>-->
+                  <!--</div>-->
+              <!--<%# else %>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per hour price' : ' Expected per hour price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_hour_price %></p>-->
+                  <!--</div>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per day price' : ' Expected per day price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_day_price %></p>-->
+                  <!--</div>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per week price' : ' Expected per week price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_week_price %></p>-->
+                  <!--</div>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per month price' : ' Expected per month price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_month_price %></p>-->
+                  <!--</div>-->
+              <!--<%# end %>-->
+              <!--<%# if @enquiry.status == 'Confirmed'%>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>Description:</h4>-->
+                    <!--&lt;!&ndash;<p><%#= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>&ndash;&gt;-->
                     <!--<p><%#= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>-->
-                    <p><%= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>
-                  </div>
-              <% end %>
-              <% if @enquiry.status == 'Quoted' and @enquiry.user_id == current_user.id %>
-                  <div class="product-detail">
-                    <%= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>
-                    <%= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>
-                  </div>
-              <%- end %>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="add-image-con">
-              <div class="row">
-                <div class="col-sm-12">
-                  <% if @enquiry.product.product_images.any? %>
-                <span class="img-con">
-                  <%= image_tag @enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img' %>
-                </span>
-                  <%- end %>
-                </div>
-              </div>
-            </div>
+                  <!--</div>-->
+              <!--<%# end %>-->
+              <!--<%# if @enquiry.status == 'Quoted' and @enquiry.user_id == current_user.id %>-->
+                  <!--<div class="product-detail">-->
+                    <!--<%#= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>-->
+                    <!--<%#= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>-->
+                  <!--</div>-->
+              <!--<%#- end %>-->
+            <!--</div>-->
           </div>
           <div class="clearfix"></div>
         </div>
@@ -148,59 +303,226 @@
       <div class="row">
         <div class="white-bg">
           <div class="col-sm-6">
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Service description:</h4>
-                <p><%= @enquiry.service.service_description %></p>
+            <div class="add-image-con">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="img-overflow overflow-servic-img">
+                      <% if @enquiry.service.service_images.any? %>
+                        <span class="img-con">
+                          <%= image_tag @enquiry.service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img' %>
+                        </span>
+                      <%- end %>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Status</h4>
-                <p><%= @enquiry.status %></p>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2>DETAIL</h2>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Enquiry by:</h4>
-                <p><%= @enquiry.user.email %></p>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Service description:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.service.service_description %></p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Enquiry From:</h4>
-                <p><%= @enquiry.start_at.strftime(time_format) %></p>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Status:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.status %></p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Enquiry To:</h4>
-                <p><%= @enquiry.end_at.strftime(time_format) %></p>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Enquiry By:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.user.email %></p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per Hour Price:</h4>
-                <p><%= @enquiry.service.per_hour_price %></p>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Enquiry From:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.start_at.strftime(time_format) %></p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per Day Price:</h4>
-                <p><%= @enquiry.service.per_day_price %></p>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Enquiry To:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.end_at.strftime(time_format) %></p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per Week Price:</h4>
-                <p><%= @enquiry.service.per_week_price %></p>
+              <div class="col-xs-12">
+                <h2>COST</h2>
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="product-detail">
-                <h4>Per month price:</h4>
-                <p><%= @enquiry.service.per_month_price %></p>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Hour Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.service.per_hour_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Day Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.service.per_day_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Week Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.service.per_week_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Per Month Price:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.service.per_month_price %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <% if @enquiry.status == 'Enquiry' and @enquiry.service.user_id == current_user.id %>
+                    <div class="product-detail">
+                      <%= simple_form_for [:customer, @enquiry] do |f| %>
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_hour_price, label: 'Expected Per Hour Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_day_price, label: 'Expected Per Day Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_week_price, label: 'Expected Per Week Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :expected_per_month_price, label: 'Expected Per Month Price:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.input :description, label: 'Description:', label_html: {class: 'heading'} %>
+                            </div>
+                            <div class="col-xs-12">
+                              <%= f.submit 'Send quote', class: 'btn btn-primary'%>
+                            </div>
+                          </div>
+                      <% end %>
+                    </div>
+                <% else %>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted  Per Hour Price' : ' Expected Per Hour Price'%>:</h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_hour_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted  Per Day Price' : ' Expected Per Day Price'%>:</h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_day_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted  Per Week Price' : ' Expected Per Week Price'%>:</h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_week_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-detail">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <h4><%= @enquiry.status == 'Quoted' ? 'Quoted  Per Month Price' : ' Expected Per Month Price'%>:</h4>
+                        </div>
+                        <div class="col-xs-7">
+                          <p><i class="fa fa-inr" aria-hidden="true"></i> <%= @enquiry.expected_per_month_price %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <% if (@enquiry.status == 'Confirmed') or (@enquiry.status == 'Quoted' and @enquiry.service.user_id != current_user.id)  %>
+                        <div class="product-detail">
+                          <div class="row">
+                            <div class="col-xs-5">
+                              <h4>Description:</h4>
+                            </div>
+                            <div class="col-xs-7">
+                              <p><%= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>
+                            </div>
+                          </div>
+                        </div>
+                    <% end %>
+                    <% if @enquiry.status == 'Quoted' and @enquiry.user_id == current_user.id %>
+                        <div class="product-detail">
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <%= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>
+                              <%= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>
+                            </div>
+                          </div>
+                        </div>
+                    <% end %>
+                <% end %>
               </div>
             </div>
 
@@ -223,71 +545,58 @@
             <!--<p><%#= @enquiry.expected_price %><br></p>-->
             <!--</div>-->
             <!--</div>-->
-            <div class="col-sm-12">
-              <% if @enquiry.status == 'Enquiry' and @enquiry.service.user_id == current_user.id %>
-                  <div class="product-detail">
-                    <%= simple_form_for [:customer, @enquiry] do |f| %>
-                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price:', label_html: {class: 'heading'} %>
-                        <%= f.input :expected_per_day_price, label: 'Expected per day price:', label_html: {class: 'heading'} %>
-                        <%= f.input :expected_per_week_price, label: 'Expected per week price:', label_html: {class: 'heading'} %>
-                        <%= f.input :expected_per_month_price, label: 'Expected per month price:', label_html: {class: 'heading'} %>
-                        <%= f.input :description, label: 'Description:', label_html: {class: 'heading'} %>
-                        <%= f.submit 'Send quote', class: 'btn btn-primary'%>
-                    <% end %>
-                  </div>
-              <% else %>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per hour price' : ' Expected per hour price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_hour_price %></p>
-                  </div>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per day price' : ' Expected per day price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_day_price %></p>
-                  </div>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per week price' : ' Expected per week price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_week_price %></p>
-                  </div>
-                  <div class="product-detail">
-                    <h4>
-                      <%= @enquiry.status == 'Quoted' ? 'Quoted  per month price' : ' Expected per month price'%>
-                    </h4>
-                    <p><%= @enquiry.expected_per_month_price %></p>
-                  </div>
-                  <% if (@enquiry.status == 'Confirmed') or (@enquiry.status == 'Quoted' and @enquiry.service.user_id != current_user.id)  %>
-                      <div class="product-detail">
-                        <h4>Description:</h4>
+            <!--<div class="col-sm-12">-->
+              <!--<%# if @enquiry.status == 'Enquiry' and @enquiry.service.user_id == current_user.id %>-->
+                  <!--<div class="product-detail">-->
+                    <!--<%#= simple_form_for [:customer, @enquiry] do |f| %>-->
+                        <!--<%#= f.input :expected_per_hour_price, label: 'Expected per hour price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :expected_per_day_price, label: 'Expected per day price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :expected_per_week_price, label: 'Expected per week price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :expected_per_month_price, label: 'Expected per month price:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.input :description, label: 'Description:', label_html: {class: 'heading'} %>-->
+                        <!--<%#= f.submit 'Send quote', class: 'btn btn-primary'%>-->
+                    <!--<%# end %>-->
+                  <!--</div>-->
+              <!--<%# else %>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per hour price' : ' Expected per hour price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_hour_price %></p>-->
+                  <!--</div>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per day price' : ' Expected per day price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_day_price %></p>-->
+                  <!--</div>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per week price' : ' Expected per week price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_week_price %></p>-->
+                  <!--</div>-->
+                  <!--<div class="product-detail">-->
+                    <!--<h4>-->
+                      <!--<%#= @enquiry.status == 'Quoted' ? 'Quoted  per month price' : ' Expected per month price'%>-->
+                    <!--</h4>-->
+                    <!--<p><%#= @enquiry.expected_per_month_price %></p>-->
+                  <!--</div>-->
+                  <!--<%# if (@enquiry.status == 'Confirmed') or (@enquiry.status == 'Quoted' and @enquiry.service.user_id != current_user.id)  %>-->
+                      <!--<div class="product-detail">-->
+                        <!--<h4>Description:</h4>-->
+                        <!--&lt;!&ndash;<p><%#= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>&ndash;&gt;-->
                         <!--<p><%#= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>-->
-                        <p><%= @enquiry.description.present? ? @enquiry.description : 'Not Available' %></p>
-                      </div>
-                  <% end %>
-                  <% if @enquiry.status == 'Quoted' and @enquiry.user_id == current_user.id %>
-                      <div class="product-detail">
-                        <%= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>
-                        <%= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>
-                      </div>
-                  <%- end %>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="add-image-con">
-              <div class="row">
-                <div class="col-sm-12">
-                  <% if @enquiry.service.service_images.any? %>
-                <span class="img-con">
-                  <%= image_tag @enquiry.service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img' %>
-                </span>
-                  <%- end %>
-                </div>
-              </div>
-            </div>
+                      <!--</div>-->
+                  <!--<%# end %>-->
+                  <!--<%# if @enquiry.status == 'Quoted' and @enquiry.user_id == current_user.id %>-->
+                      <!--<div class="product-detail">-->
+                        <!--<%#= link_to( 'Deal' , deal_customer_enquiry_path(@enquiry, deal: true), method: :put, class: 'btn btn-primary') %>-->
+                        <!--<%#= link_to( 'No-Deal' , deal_customer_enquiry_path(@enquiry, deal: false), method: :put, class: 'btn btn-danger') %>-->
+                      <!--</div>-->
+                  <!--<%#- end %>-->
+              <!--<%# end %>-->
+            <!--</div>-->
           </div>
           <div class="clearfix"></div>
         </div>

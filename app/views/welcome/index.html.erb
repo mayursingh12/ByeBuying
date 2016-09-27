@@ -185,6 +185,41 @@
           <div class="gap"></div>
       <% end %>
 
+      <% if @advertisements.any? %>
+          <!--Advertisements Start-->
+          <h3 class="widget-title">Advertisements</h3>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
+            <% @advertisements.each do |advertisement| %>
+                <div class="owl-item">
+                  <div class="product  owl-item-slide">
+                    <ul class="product-labels"></ul>
+                    <div class="product-img-wrap">
+                      <% if advertisement.advertisement_images.any? %>
+                          <%= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      <% else %>
+                          <%= image_tag "theme_img/500x500.png", class: 'product-img' %>
+                      <% end %>
+                    </div>
+                    <a class="product-link" href="#"></a>
+                    <div class="product-caption">
+                      <h5 class="product-caption-title">
+                        <%= advertisement.title %>
+                      </h5>
+                      <div class="product-caption-price">
+                       <span class="product-caption-price-new">
+                        ₹ <%= advertisement.per_hour_cost %>
+                       </span>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="gap"></div>
+          <!--Advertisements finish-->
+      <% end %>
+
       <% if @services.any? %>
           <h3 class="widget-title">Services</h3>
           <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
@@ -228,42 +263,6 @@
           <div class="gap"></div>
       <% end %>
 
-      <%# if @advertisements.any? %>
-      <!--Advertisements Start-->
-      <!--<h3 class="widget-title">Advertisements</h3>-->
-      <!--<div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>-->
-        <!--<%# @advertisements.each do |advertisement| %>-->
-        <!--<div class="owl-item">-->
-          <!--<div class="product  owl-item-slide">-->
-            <!--<ul class="product-labels"></ul>-->
-            <!--<div class="product-img-wrap">-->
-              <!--<%# if advertisement.advertisement_images.any? %>-->
-              <!--<%#= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>-->
-              <!--<%# else %>-->
-              <!--<%#= image_tag "theme_img/500x500.png", class: 'product-img' %>-->
-              <!--<%# end %>-->
-              <!--<%#= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>-->
-            <!--</div>-->
-            <!--<a class="product-link" href="#"></a>-->
-            <!--<div class="product-caption">-->
-              <!--<h5 class="product-caption-title">-->
-                <!--<%#= advertisement.title %>-->
-              <!--</h5>-->
-              <!--<div class="product-caption-price">-->
-               <!--<span class="product-caption-price-new">-->
-                <!--₹-->
-                <%#= advertisement.per_hour_cost %>
-               <!--</span>-->
-
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<%# end %>-->
-      <!--</div>-->
-      <!--<div class="gap"></div>-->
-      <!--Advertisements finish-->
-      <%# end %>
     </div>
 
   </div>
