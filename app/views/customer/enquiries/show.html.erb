@@ -11,6 +11,10 @@
                         <span class="img-con">
                           <%= image_tag @enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img' %>
                         </span>
+                      <% else %>
+                        <span class="img-con">
+                          <%= image_tag "theme_img/500x500.png", class: 'product-img' %>
+                        </span>
                       <%- end %>
                   </div>
                 </div>
