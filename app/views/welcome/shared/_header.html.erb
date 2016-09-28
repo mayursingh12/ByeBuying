@@ -391,6 +391,13 @@
 
         });
 
+
+        $('.rgr-frm-mumber').keyup(function(){
+            var number = this.value;
+           if(number.length > 10){
+               $('.rgr-frm-mumber').val(this.value.substr(0, 10));
+           }
+        });
     });
 
 
