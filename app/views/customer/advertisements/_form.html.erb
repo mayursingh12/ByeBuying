@@ -19,7 +19,7 @@
             <%= simple_form_for [:customer, @advertisement] do |f| %>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :title, label: 'Title' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :title, label: 'Title ⓘ', label_html: {class: 'label pull-left', 'data-toggle': 'tooltip', 'data-placement': 'right' , title: 'Title'}, input_html: {class: 'text-field' } %>
                   </div>
                 </div>
                 <div class="col-xs-12">
@@ -64,3 +64,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
