@@ -1,11 +1,11 @@
-json.advertisements{
-  json.array! @advertisements do |advertisement|
-    json.id advertisement.id
-    json.name advertisement.title
-    json.name advertisement.description
-    json.admin_verified advertisement.admin_verified?
-  end
-}
+# json.advertisements{
+#   json.array! @advertisements do |advertisement|
+#     json.id advertisement.id
+#     json.name advertisement.title
+#     json.name advertisement.description
+#     json.admin_verified advertisement.admin_verified?
+#   end
+# }
 
 json.products{
   json.array! @products do |product|
@@ -71,4 +71,4 @@ json.services{
     json.admin_verified service.admin_verified?
   end
 }
-@enquiries
+# @enquiries

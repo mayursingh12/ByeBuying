@@ -100,4 +100,24 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def product_quoted(quote)
+    @quote = quote
+    @product = @quote.product
+    @user = @quote.user
+    mail(
+        to: @user.email,
+        subject: "Enquiry Received– Ad##{@quote.id}"
+    )
+  end
+
+  def service_quoted(quote)
+    @quote = quote
+    @service = @quote.service
+    @user = @quote.user
+    mail(
+        to: @user.email,
+        subject: "Enquiry Received– Ad##{@quote.id}"
+    )
+  end
+
 end

@@ -24,6 +24,12 @@ class Customer::EnquiriesController < Customer::BaseController
       end
     else
       if @enquiry.update_attributes(enquiry_params)
+        if @enquiry.is_product
+          CustomerMailer.product_quoted(@enquiry).deliver_later
+        else
+          CustomerMailer.service_quoted(@enquiry).deliver_later
+        end
+
         flash[:success] = 'Quote successfully sent'
         redirect_to customer_dashboard_path
       else
