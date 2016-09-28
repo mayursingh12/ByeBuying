@@ -152,6 +152,67 @@
       <!--</table>-->
       <div class="customer-main-show">
         <% if @enquiries[:customer_enquiries].present?%>
+            <div class="tabbable product-tabs">
+              <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a href="#product" data-toggle="tab">Product</a>
+                </li>
+                <li><a href="#service" data-toggle="tab">Services</a>
+                </li>
+              </ul>
+              <% @enquiries[:customer_enquiries].each do |customer_enquiry| %>
+                  <div class="tab-content">
+                    <% if customer_enquiry.is_product %>
+                        <div class="tab-pane fade in active" id="product">
+                          <%= link_to customer_enquiry_path(customer_enquiry) do %>
+                              <div class="white-bg">
+                                <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                                  <div class="add-image-con">
+                                    <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                                  </div>
+                                </div>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                  <!--<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>-->
+                                  <!--<h2 class="heading"><%#= customer_enquiry.is_product ? 'Product' : '' %></h2>-->
+                                  <h2 class="heading">Product</h2>
+                                  <span style="color: #000"><%= customer_enquiry.status %></span>
+                                  <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
+                                  <p class="description"><%= customer_enquiry.description %></p>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                          <% end %>
+                        </div>
+                    <% else %>
+                        <div class="tab-pane fade" id="service">
+                          <%= link_to customer_enquiry_path(customer_enquiry) do %>
+                              <div class="white-bg">
+                                <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                                  <div class="add-image-con">
+                                    <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                                  </div>
+                                </div>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                  <!--<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>-->
+                                  <!--<h2 class="heading"><%#= customer_enquiry.is_product ? '' : 'Service' %></h2>-->
+                                  <h2 class="heading">Service</h2>
+                                  <span style="color: #000"><%= customer_enquiry.status %></span>
+                                  <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
+                                  <p class="description"><%= customer_enquiry.description %></p>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                          <% end %>
+                        </div>
+                    <% end %>
+                  </div>
+              <% end %>
+            </div>
+        <%- else %>
+            <h2 class="text-center">No Enquiry Available</h2>
+        <%- end %>
+
+
+        <% if @enquiries[:customer_enquiries].present?%>
             <% @enquiries[:customer_enquiries].each do |customer_enquiry| %>
                 <%= link_to customer_enquiry_path(customer_enquiry) do %>
                     <div class="white-bg">
