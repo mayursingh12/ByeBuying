@@ -209,11 +209,7 @@
                             </div>
                           </div>
                         </div>
-                        <% if category.detail_image.present? %>
-                            <%= image_tag category.detail_image.url(:original), class: 'img-responsive dropdown-menu-category-section-theme-img' %>
-                        <% else %>
-                            <%= image_tag "theme_img/test_cat/6-i.png", class: 'img-responsive dropdown-menu-category-section-theme-img' %>
-                        <% end %>
+                        <%= image_tag category.detail_image.present? ? category.detail_image.url(:original) : 'theme_img/test_cat/6-i.png' , class: 'img-responsive dropdown-menu-category-section-theme-img' %>
                       </div>
                     </li>
                 <% end %>
