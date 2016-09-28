@@ -391,6 +391,27 @@
 
         });
 
+
+        $('.rgr-frm-mumber').keyup(function(){
+            var number = this.value;
+           if(number.length > 10){
+               $('.rgr-frm-mumber').val(this.value.substr(0, 10));
+           }
+        });
+
+        $('#forgot-password').keyup(function(){
+            var number = this.value;
+            if(number.length > 10){
+                $('#forgot-password').val(this.value.substr(0, 10));
+            }
+        });
+        $('#register-mobile').keyup(function(){
+            var number = this.value;
+            if(number.length > 10){
+                $('#register-mobile').val(this.value.substr(0, 10));
+            }
+        });
+
     });
 
 
