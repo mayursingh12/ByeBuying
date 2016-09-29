@@ -28,7 +28,7 @@ class CustomerMailer < ApplicationMailer
     @user = @enquiry.product.user
     mail(
         to: @user.email,
-        subject: "Enquiry Received– Ad##{@enquiry.id}"
+        subject: "Enquiry Received– Ad Product##{@product.id}"
     )
   end
 
@@ -38,7 +38,7 @@ class CustomerMailer < ApplicationMailer
     @user = @enquiry.service.user
     mail(
         to: @user.email,
-        subject: "Enquiry Received– Ad##{@enquiry.id}"
+        subject: "Enquiry Received– Ad Service##{@service.id}"
     )
   end
 
@@ -48,7 +48,7 @@ class CustomerMailer < ApplicationMailer
     @user = @enquiry.product.user
     mail(
         to: @user.email,
-        subject: "Enquiry Received– Ad##{@enquiry.id}"
+        subject: "Enquiry Received– Ad Product##{@product.id}"
     )
 
   end
@@ -59,7 +59,7 @@ class CustomerMailer < ApplicationMailer
     @user = @enquiry.service.user
     mail(
         to: @user.email,
-        subject: "Enquiry Received– Ad##{@enquiry.id}"
+        subject: "Enquiry Received– Ad Service##{@service.id}"
     )
 
   end
@@ -69,7 +69,7 @@ class CustomerMailer < ApplicationMailer
     @user = @product.user
     mail(
         to: @user.email,
-        subject: "Your Ad Cannot be Published - Prohibited Content Detected: Ad #{@product.id} "
+        subject: "Your Ad Cannot be Published - Prohibited Content Detected: Ad Product##{@product.id} "
     )
   end
 
@@ -78,7 +78,7 @@ class CustomerMailer < ApplicationMailer
     @user = @service.user
     mail(
         to: @user.email,
-        subject: "Your Ad Cannot be Published - Prohibited Content Detected: Ad #{@service.id} "
+        subject: "Your Ad Cannot be Published - Prohibited Content Detected: Ad Service##{@service.id} "
     )
   end
 
@@ -106,7 +106,7 @@ class CustomerMailer < ApplicationMailer
     @user = @quote.user
     mail(
         to: @user.email,
-        subject: "Enquiry Received– Ad##{@quote.id}"
+        subject: "Enquiry Received– Ad Product##{@product.id}"
     )
   end
 
@@ -116,7 +116,43 @@ class CustomerMailer < ApplicationMailer
     @user = @quote.user
     mail(
         to: @user.email,
-        subject: "Enquiry Received– Ad##{@quote.id}"
+        subject: "Enquiry Received– Ad Service##{@service.id}"
+    )
+  end
+
+  def product_deal_confirmed(confirmed_enquiry)
+    @confirmed_enquiry = confirmed_enquiry
+    @product = @confirmed_enquiry.product
+    mail(
+        to: @product.user.email,
+        subject: "DEAL Confirmation: Enquiry Made– Ad Product##{@product.id}"
+    )
+  end
+
+  def service_deal_confirmed(confirmed_enquiry)
+    @confirmed_enquiry = confirmed_enquiry
+    @service = @confirmed_enquiry.service
+    mail(
+        to: @service.user.email,
+        subject: "DEAL Confirmation: Enquiry Made– Ad Service##{@service.id}"
+    )
+  end
+
+  def product_deal_cancelled(cancelled_enquiry)
+    @cancelled_enquiry = cancelled_enquiry
+    @product = @confirmed_enquiry.product
+    mail(
+        to: @product.user.email,
+        subject: "NO DEAL: Enquiry Made on– Ad Product##{@product.id}"
+    )
+  end
+
+  def service_deal_cancelled(cancelled_enquiry)
+    @cancelled_enquiry = cancelled_enquiry
+    @service = @confirmed_enquiry.service
+    mail(
+        to: @service.user.email,
+        subject: "NO DEAL: Enquiry Made on– Ad Service##{@service.id}"
     )
   end
 

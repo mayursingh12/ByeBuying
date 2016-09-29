@@ -43,6 +43,11 @@ class Customer::EnquiriesController < Customer::BaseController
     if params[:deal].present?
       if params[:deal] == 'true'
         if @enquiry.update_attributes(status: 'Confirmed')
+          if @enquiry.is_product
+            CustomerMailer.product_deal_confirmed(@enquiry).deliver_later
+          else
+            CustomerMailer.service_deal_confirmed(@enquiry).deliver_later
+          end
           flash[:success] = 'Thanks for deal. Contact you soon.'
           redirect_to action: :index
         else
@@ -51,6 +56,11 @@ class Customer::EnquiriesController < Customer::BaseController
         end
       elsif params[:deal] == 'false'
         if @enquiry.update_attributes(status: 'Cancelled')
+          if @enquiry.is_product
+            CustomerMailer.product_deal_cancelled(@enquiry).deliver_later
+          else
+            CustomerMailer.product_deal_cancelled(@enquiry).deliver_later
+          end
           flash[:success] = 'Thank you for your response.'
           redirect_to action: :index
         else

@@ -1,9 +1,9 @@
 Hi <%= @user.name %>,
 <br>
 <br>
-You have received one enquiry from <%= @enquiry.user.name %> on your product having Ad Enquiry#<%= @enquiry.id %> and <%= @enquiry.description %>. Enquiry details are as:
+You have received one enquiry from <%= @enquiry.user.name %> on your product having Ad Enquiry#<%= @product.id %>  <%= "and #{@product.description}" if @product.description.present? %>. Enquiry details are as:
 <br><br>
-Ad ID: Enquiry#<%= @enquiry.id %>
+Ad ID: Product#<%=@product.id %>
 <br>
 Ad Description: <%= @product.description %>
 <br>
