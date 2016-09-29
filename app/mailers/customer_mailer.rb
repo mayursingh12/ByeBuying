@@ -140,7 +140,7 @@ class CustomerMailer < ApplicationMailer
 
   def product_deal_cancelled(cancelled_enquiry)
     @cancelled_enquiry = cancelled_enquiry
-    @product = @confirmed_enquiry.product
+    @product = @cancelled_enquiry.product
     mail(
         to: @product.user.email,
         subject: "NO DEAL: Enquiry Made on– Ad Product##{@product.id}"
@@ -149,7 +149,7 @@ class CustomerMailer < ApplicationMailer
 
   def service_deal_cancelled(cancelled_enquiry)
     @cancelled_enquiry = cancelled_enquiry
-    @service = @confirmed_enquiry.service
+    @service = @cancelled_enquiry.service
     mail(
         to: @service.user.email,
         subject: "NO DEAL: Enquiry Made on– Ad Service##{@service.id}"

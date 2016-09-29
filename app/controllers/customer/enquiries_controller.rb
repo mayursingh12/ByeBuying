@@ -59,7 +59,7 @@ class Customer::EnquiriesController < Customer::BaseController
           if @enquiry.is_product
             CustomerMailer.product_deal_cancelled(@enquiry).deliver_later
           else
-            CustomerMailer.product_deal_cancelled(@enquiry).deliver_later
+            CustomerMailer.service_deal_cancelled(@enquiry).deliver_later
           end
           flash[:success] = 'Thank you for your response.'
           redirect_to action: :index
