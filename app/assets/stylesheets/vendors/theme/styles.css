@@ -1236,7 +1236,7 @@ hr {
     font-size: 60px;
     margin-bottom: 15px;
     text-transform: uppercase;
-    text-shadow: 0px 0px 3px rgba(150, 150, 150, 1);
+    text-shadow: 0px 0px 5px rgba(150, 150, 150, 1);
 }
 @media (max-width:992px) {
     .slider-item-caption-title {
@@ -1250,6 +1250,7 @@ hr {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
     filter: alpha(opacity=75);
     margin-bottom: 20px;
+    text-shadow: 0px 0px 3px rgba(150, 150, 150, 1);
 }
 @media (max-width:992px) {
     .slider-item-caption-desc {

@@ -175,7 +175,7 @@
                 <% @categories.each do |category| %>
                     <li><a href="<%= category_path(category)%>">
                       <%  if category.icon_image.present? %>
-                          <%= image_tag category.icon_image.url(:original), style: 'height:25px; width:25px;' %>
+                          <%= image_tag category.icon_image.url(:original), class: 'dropdown-menu-category-img' %>
                       <% else %>
                           <i class="fa fa-home dropdown-menu-category-icon"></i>
                       <%end%>
