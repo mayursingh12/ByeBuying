@@ -537,6 +537,13 @@
   padding: 10px;
   text-transform: none !important;
 }
+.dropdown-menu-category-img{
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  left: 13px;
+  top: 7px;
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
