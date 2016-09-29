@@ -151,29 +151,126 @@
         <!--</tbody>-->
       <!--</table>-->
       <div class="customer-main-show">
+
+        <!--====================-->
+
         <% if @enquiries[:customer_enquiries].present?%>
-            <% @enquiries[:customer_enquiries].each do |customer_enquiry| %>
-                <%= link_to customer_enquiry_path(customer_enquiry) do %>
-                    <div class="white-bg">
-                      <div class="col-md-2 col-sm-3 col-xs-12 text-center">
-                        <div class="add-image-con">
-                          <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
-                        </div>
-                      </div>
-                      <div class="col-md-10 col-sm-9 col-xs-12">
-                        <!--<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>-->
-                        <h2 class="heading"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
-                        <span style="color: #000"><%= customer_enquiry.status %></span>
-                        <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
-                        <p class="description"><%= customer_enquiry.description %></p>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                <% end %>
-            <%- end %>
-        <%- else %>
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#enquiry">Enquiry</a></li>
+              <li><a data-toggle="tab" href="#quoted">Quoted</a></li>
+              <li><a data-toggle="tab" href="#confirmed">Confirmed</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="enquiry" class="tab-pane fade in active">
+                <%if @enquiries[:customer_enquiries].where(status: 'Enquiry').any? %>
+                    <% @enquiries[:customer_enquiries].where(status: 'Enquiry').each do |customer_enquiry| %>
+                        <%= link_to customer_enquiry_path(customer_enquiry) do %>
+                            <div class="white-bg">
+                              <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                                <div class="add-image-con">
+                                  <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                                </div>
+                              </div>
+                              <div class="col-md-10 col-sm-9 col-xs-12">
+                                <!--<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>-->
+                                <h2 class="heading"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
+                                <span style="color: #000"><%= customer_enquiry.status %></span>
+                                <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
+                                <p class="description"><%= customer_enquiry.description %></p>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                <%else%>
+                    <h2 class="text-center">No Enquiry Available</h2>
+                <%end%>
+
+              </div>
+              <div id="quoted" class="tab-pane fade">
+                <%if @enquiries[:customer_enquiries].where(status: 'Quoted').any? %>
+                    <% @enquiries[:customer_enquiries].where(status: 'Quoted').each do |customer_enquiry| %>
+                        <%= link_to customer_enquiry_path(customer_enquiry) do %>
+                            <div class="white-bg">
+                              <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                                <div class="add-image-con">
+                                  <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                                </div>
+                              </div>
+                              <div class="col-md-10 col-sm-9 col-xs-12">
+                                <!--<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>-->
+                                <h2 class="heading"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
+                                <span style="color: #000"><%= customer_enquiry.status %></span>
+                                <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
+                                <p class="description"><%= customer_enquiry.description %></p>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                <%else%>
+                    <h2 class="text-center">No Quote Available</h2>
+                <%end%>
+              </div>
+              <div id="confirmed" class="tab-pane fade">
+                <%if @enquiries[:customer_enquiries].where(status: 'Confirmed').any? %>
+                    <% @enquiries[:customer_enquiries].where(status: 'Confirmed').each do |customer_enquiry| %>
+                        <%= link_to customer_enquiry_path(customer_enquiry) do %>
+                            <div class="white-bg">
+                              <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                                <div class="add-image-con">
+                                  <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                                </div>
+                              </div>
+                              <div class="col-md-10 col-sm-9 col-xs-12">
+                                <!--<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>-->
+                                <h2 class="heading"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
+                                <span style="color: #000"><%= customer_enquiry.status %></span>
+                                <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
+                                <p class="description"><%= customer_enquiry.description %></p>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                <%else%>
+                    <h2 class="text-center">No Confirm Enquiry Available</h2>
+                <%end%>
+
+              </div>
+            </div>
+        <% else %>
             <h2 class="text-center">No Enquiry Available</h2>
-        <%- end %>
+        <% end %>
+
+        <!--======================-->
+
+
+        <!--<%# if @enquiries[:customer_enquiries].present?%>-->
+            <!--<%# @enquiries[:customer_enquiries].each do |customer_enquiry| %>-->
+                <!--<%#= link_to customer_enquiry_path(customer_enquiry) do %>-->
+                    <!--<div class="white-bg">-->
+                      <!--<div class="col-md-2 col-sm-3 col-xs-12 text-center">-->
+                        <!--<div class="add-image-con">-->
+                          <!--<%#= image_tag "theme_img/500x500.png", class: 'img-responsive' %>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                      <!--<div class="col-md-10 col-sm-9 col-xs-12">-->
+                        <!--&lt;!&ndash;<h2 class="description"><%#= customer_enquiry.is_product ?  customer_enquiry.product.name : customer_enquiry.service.service_description %></h2>&ndash;&gt;-->
+                        <!--<h2 class="heading"><%#= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>-->
+                        <!--<span style="color: #000"><%#= customer_enquiry.status %></span>-->
+                        <!--<h5 class="time-option"><%#= customer_enquiry.start_at.strftime(time_format) %> - <%#= customer_enquiry.end_at.strftime(time_format) %></h5>-->
+                        <!--<p class="description"><%#= customer_enquiry.description %></p>-->
+                      <!--</div>-->
+                      <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                <!--<%# end %>-->
+            <!--<%#- end %>-->
+        <!--<%#- else %>-->
+            <!--<h2 class="text-center">No Enquiry Available</h2>-->
+        <!--<%#- end %>-->
+
       </div>
     </div>
   </div>
