@@ -46,6 +46,7 @@ class Admin::ProductsController < Admin::BaseController
         CustomerMailer.product_un_verified(@product).deliver_later
       else
         CustomerMailer.product_verified(@product).deliver_later
+        CustomerMailer.product_publish(@product).deliver_later
       end
       redirect_to action: :index
     else

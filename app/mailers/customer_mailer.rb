@@ -156,4 +156,20 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def product_publish(product)
+    @product = product
+    mail(
+        to: @product.user.email,
+        subject: "Congratulations!!! Your Ad has been published."
+    )
+  end
+
+  def service_publish(service)
+    @service = service
+    mail(
+        to: @service.user.email,
+        subject: "Congratulations!!! Your Ad has been published."
+    )
+  end
+
 end

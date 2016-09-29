@@ -28,6 +28,7 @@ class Admin::ServicesController < Admin::BaseController
         CustomerMailer.service_un_verified(@service).deliver_later
       else
         CustomerMailer.service_verified(@service).deliver_later
+        CustomerMailer.service_publish(@service).deliver_later
       end
       redirect_to action: :index
     else
