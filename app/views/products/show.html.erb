@@ -11,7 +11,7 @@
       <div class="product-page-product-wrap jqzoom-stage">
         <div class="clearfix">
           <% if @product.product_images.any? %>
-              <a href="<%= @product.product_images.first.image(:size_500x500) %>" id="jqzoom" data-rel="gal-1">
+              <a href="<%= @product.product_images.first.image(:original) %>" id="jqzoom" data-rel="gal-1">
                 <%= image_tag @product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
               </a>
 

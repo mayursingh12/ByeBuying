@@ -21,6 +21,19 @@
           <%end%>
         </div>
       </div>
+      <% if @service.service_images.any? %>
+          <ul class="jqzoom-list">
+            <% @service.service_images.each_with_index do |service_image, index| %>
+                <li>
+                  <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{service_image.image(:size_500x500)}',largeimage:'#{service_image.image(:original)}'}" %>>
+                    <%= image_tag service_image.image(:size_500x500), class: 'img-responsive' %>
+                  </a>
+                </li>
+            <% end %>
+          </ul>
+      <% else %>
+          <!-- DO Nothing-->
+      <% end %>
     </div>
     <div class="col-md-7">
       <div class="row" data-gutter="10">
