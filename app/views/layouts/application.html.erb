@@ -21,5 +21,16 @@
 
 <%= yield %>
 
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        setTimeout(function(){
+            if($('img').css('display') == "none") {
+//                HERE YOU CREATE CUSTOM LOGIC
+                alert('Please disable Ads Blocker.');
+            }
+        }, 500);
+    });
+</script>
+
 </body>
 </html>

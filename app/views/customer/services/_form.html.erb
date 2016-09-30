@@ -34,15 +34,6 @@
         <div class="col-md-12">
           <div class="contact-main-form">
             <%= simple_form_for [:customer, @service] do |f| %>
-                <% unless params[:action] == 'edit' %>
-                <div id="nested-service-images">
-                  <%= f.fields_for :service_images do |builder| %>
-                      <%= render partial: 'application/service_image_fields', locals: { f: builder } %>
-                  <%- end %>
-                  <p id="nested-click"><%= link_to_add_fields "Add Service Image", f, :service_images %></p>
-                </div>
-                <% end %>
-
                 <div class="col-xs-12">
                   <div class="field-con">
                     <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category', label: 'Service Category ⓘ' ,label_html: {class: 'label', 'data-toggle': 'tooltip', 'data-placement': 'right' , title: 'Service Category'}, input_html: {class: 'full-select-field'} %>
@@ -84,6 +75,16 @@
                   <div class="field-con">
                     <%= f.input :service_description, label: 'Service Description ⓘ' ,label_html: {class: 'label', 'data-toggle': 'tooltip', 'data-placement': 'right' , title: 'Service Description'}, input_html: {class: 'text-discription'} %>
                   </div>
+                </div>
+                <div class="col-xs-12">
+                  <% unless params[:action] == 'edit' %>
+                      <div id="nested-service-images">
+                        <%= f.fields_for :service_images do |builder| %>
+                            <%= render partial: 'application/service_image_fields', locals: { f: builder } %>
+                        <%- end %>
+                        <p id="nested-click"><%= link_to_add_fields "Add Service Image", f, :service_images %></p>
+                      </div>
+                  <% end %>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
