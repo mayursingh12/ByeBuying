@@ -24,6 +24,13 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <label>Mobile</label>
+              <%= number_field_tag :mobile, '',class: 'form-control', length: {max: 10} %>
+              <!--<input class="form-control" type="text" />-->
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
               <label>E-mail</label>
               <%= text_field_tag :email, '',class: 'form-control' %>
               <!--<input class="form-control" type="text" />-->
@@ -58,38 +65,49 @@
               <a href="https://termsandcondiitionssample.com">terms and conditions sample</a>
             </small>
           </div>
-          <style>
-              #gmap_canvas img{
-                  max-width:none!important;
-                  background:none!important
-              }
-          </style>
+
         </div>
-        <script type='text/javascript'>
-            $( document ).ready(function() {
-                function init_map(){
-                    var myOptions = {
-                        zoom:10,center:new google.maps.LatLng(28.4138045,77.32239149999998),mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                    marker = new google.maps.Marker({
-                        map: map,position: new google.maps.LatLng(28.4138045,77.32239149999998)
-                    });
-                    infowindow = new google.maps.InfoWindow({
-                        content:'<strong>ByeBuying</strong><br>Sec 16, Faridabad<br>'
-                    });
-                    google.maps.event.addListener(marker, 'click', function(){
-                        infowindow.open(map,marker);
-                    });
-                    infowindow.open(map,marker);
-                }
-                google.maps.event.addDomListener(window, 'load', init_map);
-            });
-
-
-        </script>
       </div>
     </div>
   </div>
 </div>
 <div class="gap gap-small"></div>
+
+<style>
+    #gmap_canvas img{
+        max-width:none!important;
+        background:none!important
+    }
+</style>
+
+<script type='text/javascript'>
+    $( document ).ready(function() {
+        function init_map(){
+            var myOptions = {
+                zoom:10,center:new google.maps.LatLng(28.4138045,77.32239149999998),mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+            marker = new google.maps.Marker({
+                map: map,position: new google.maps.LatLng(28.4138045,77.32239149999998)
+            });
+            infowindow = new google.maps.InfoWindow({
+                content:'<strong>ByeBuying</strong><br>Sec 16, Faridabad<br>'
+            });
+            google.maps.event.addListener(marker, 'click', function(){
+                infowindow.open(map,marker);
+            });
+            infowindow.open(map,marker);
+        }
+        google.maps.event.addDomListener(window, 'load', init_map);
+
+
+        $('#mobile').keyup(function(){
+            var number = this.value;
+            if(number.length > 10){
+                $('#mobile').val(this.value.substr(0, 10));
+            }
+        });
+    });
+
+
+</script>
