@@ -344,7 +344,7 @@
         $(".btn-sign-in").click(function(){
             var phone = $(".rgr-frm-mumber").val();
             var pwd = $(".rgr-frm-pwd").val();
-            $.post('customer/sign_in', {contact: phone, password: pwd })
+            $.post('/customer/sign_in', {contact: phone, password: pwd })
                     .done(function(msg){
                         location.reload();
                         $(".login-error").addClass('hidden');
