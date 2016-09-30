@@ -156,9 +156,9 @@
 
         <% if @enquiries[:customer_enquiries].present?%>
             <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" href="#enquiry">Enquiry</a></li>
-              <li><a data-toggle="tab" href="#quoted">Quoted</a></li>
-              <li><a data-toggle="tab" href="#confirmed">Confirmed</a></li>
+              <li class="active"><a data-toggle="tab" href="#enquiry">Enquiry(<%= @enquiries[:customer_enquiries].where(status: 'Enquiry').count%>)</a></li>
+              <li><a data-toggle="tab" href="#quoted">Quoted(<%= @enquiries[:customer_enquiries].where(status: 'Quoted').count%>)</a></li>
+              <li><a data-toggle="tab" href="#confirmed">Confirmed(<%= @enquiries[:customer_enquiries].where(status: 'Confirmed').count%>)</a></li>
             </ul>
 
             <div class="tab-content">
