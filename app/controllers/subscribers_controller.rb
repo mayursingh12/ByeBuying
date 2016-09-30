@@ -5,6 +5,7 @@ class SubscribersController < ApplicationController
 
   def create
     @subscriber = Subscriber.new(name: params[:name],
+                                 mobile: params[:mobile],
                                  email: params[:email],
                                  message: params[:message])
     if @subscriber.save
