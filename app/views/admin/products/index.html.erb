@@ -8,6 +8,7 @@
     <table class="table table-striped">
       <thead>
       <tr class="info">
+        <th>ID</th>
         <th>Name</th>
         <th>Category</th>
         <th>Subcategory</th>
@@ -17,7 +18,8 @@
       <tbody>
       <% @products.each do |product| %>
           <tr>
-            <td>Product#<%= product.name %></td>
+            <td>Product#<%= product.id %></td>
+            <td><%= product.name %></td>
             <td><%= product.subcategory.category.name %></td>
             <td><%= product.subcategory.name %></td>
             <td>
