@@ -274,6 +274,15 @@
         $('.custome-filter-block .set-max-price').val("<%= params[:max_price].present? ?  params[:max_price] : @max_price %>")
         $('.custome-filter-block .set-quantity').val("<%= params[:quantity].present? ?  params[:quantity] : 0 %>")
         $('.custome-filter-block .set-rating').val("<%= params[:rating].present? ?  params[:rating] : 1 %>")
+
+
+        setTimeout(function(){
+            if($('img').css('display') == "none") {
+//                HERE YOU CREATE CUSTOM LOGIC
+                alert('Please disable Ads Blocker.');
+            }
+        }, 500);
+
     });
 
 </script>
