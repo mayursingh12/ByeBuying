@@ -35,7 +35,7 @@ class SearchAlgorithm
   def find_and_load_models(product_ids, service_ids, advertisement_ids)
     @results << {
         products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?)', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating).order('id DESC'),
-        services: Service.where(id: service_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?)', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating).order('id DESC'),
+        services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?)', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating).order('id DESC'),
         advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids)
     }
   end
@@ -57,7 +57,7 @@ class SearchAlgorithm
   def get_product_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Product.where(admin_verified: true).where('name LIKE ?', "%#{search}%").map(&:id)
+      ids << Product.where(admin_verified: true).where('name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%").map(&:id)
     end
     single_arr(ids).uniq
   end
