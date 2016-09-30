@@ -172,4 +172,14 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def forgot_password(user, new_password)
+    @user = user
+    @password = new_password
+    mail(
+        from: 'no-reply@byebuying.com',
+        to: @user.email,
+        subject: "Updated password"
+    )
+  end
+
 end
