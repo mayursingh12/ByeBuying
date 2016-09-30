@@ -11,9 +11,17 @@
       <div class="product-page-product-wrap jqzoom-stage">
         <div class="clearfix">
           <% if @product.product_images.any? %>
-              <a href="<%= @product.product_images.first.image(:size_500x500) %>" id="jqzoom" data-rel="gal-1">
+              <a href="<%= @product.product_images.first.image(:original) %>" id="jqzoom" data-rel="gal-1">
                 <%= image_tag @product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
               </a>
+
+              <!--<%# @product.product_images.each_with_index do |product_image, index| %>-->
+
+                    <!--<a href="<%#= product_image.image(:size_500x500) %>" id="jqzoom" data-rel="gal-1">-->
+                      <!--<%#= image_tag product_image.image(:size_500x500), class: 'img-responsive' %>-->
+                    <!--</a>-->
+
+              <!--<%# end %>-->
           <% else %>
               <a href="../../../assets/theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
                 <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
@@ -21,6 +29,19 @@
           <% end %>
         </div>
       </div>
+      <% if @product.product_images.any? %>
+          <ul class="jqzoom-list">
+            <% @product.product_images.each_with_index do |product_image, index| %>
+                <li>
+                  <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{product_image.image(:size_500x500)}',largeimage:'#{product_image.image(:original)}'}" %>>
+                    <%= image_tag product_image.image(:size_500x500), class: 'img-responsive' %>
+                  </a>
+                </li>
+            <% end %>
+          </ul>
+      <% else %>
+      <!-- DO Nothing-->
+      <% end %>
     </div>
     <div class="col-md-7 col-sm-8 col-xs-12">
       <div class="row" data-gutter="10">
