@@ -274,7 +274,13 @@
           <div class="col-sm-12">
             <div class="product-detail">
               <h4>Youtube link:</h4>
-              <p><%= @service.youtube_link %></p>
+              <p>
+                <% if @service.youtube_link.present? %>
+                    <%= @service.youtube_link %>
+                <% else %>
+                    NA
+                <% end %>
+              </p>
             </div>
           </div>
           <div class="col-sm-12">
