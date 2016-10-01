@@ -4,21 +4,26 @@
       <table width="100%">
         <tr>
           <td class="inner contents">
-            <p class="h1">Hi <%= @user.name %>,</p>
+            <p class="h1" style="">Hi <%= @user.name %>,</p>
             <br>
             <p>
               Thanks for registering on ByeBuying.com. You have successfully created a new account and your credentials are as under:
             </p>
+            <br>
             <p>
               Mobile no.	:	<%= @user.contact %>
             </p>
+            <br>
             <p>
               Password	:	<%= @password %>
             </p>
+            <br>
             <p>As a registered user, you can now browse wide range of products  & services and start renting on www.ByeBuying.com</p>
+            <br>
             <p>In case of any queries, do reach out to us at info@byebuying.com.</p>
+            <br>
             <p>Important Security Tips:</p>
-            <ul>
+            <ul style="padding-left: 20px;">
               <li>Always keep your account details safe.</li>
               <li>Never disclose your login details to anyone.</li>
               <li>Change your password regularly.</li>

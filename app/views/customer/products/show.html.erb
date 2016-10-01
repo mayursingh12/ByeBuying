@@ -283,7 +283,13 @@
           <div class="col-xs-12">
             <div class="product-detail">
               <h4>Youtube link:</h4>
-              <p><%= @product.youtube_link %></p>
+              <p>
+                <% if @product.youtube_link.present? %>
+                    <%= @product.youtube_link %>
+                <% else %>
+                    NA
+                <% end %>
+              </p>
             </div>
           </div>
           <div class="col-xs-12">
