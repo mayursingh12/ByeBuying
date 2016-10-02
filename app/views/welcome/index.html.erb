@@ -165,7 +165,7 @@
                       <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     <!--starting @ -->
-                    ₹<%= product.per_hour_price %>
+                    ₹<%= product.per_hour_price > 0 ?  product.per_hour_price : ( product.per_day_price > 0 ?  product.per_day_price : ( product.per_week_price > 0 ?  product.per_week_price : ( product.per_month_price > 0 ?  product.per_month_price : 0 ))) %>
                     <%# if product.per_hour_price.present? %>
                         <!--Per Hr-->
                     <%# else if product.per_day_price.present? %>
@@ -251,7 +251,8 @@
                       <div class="product-caption-price">
                   <span class="product-caption-price-new">
                     <!--starting @ -->
-                    ₹<%= service.per_hour_price %>
+                    ₹<%#= service.per_hour_price %>
+                    <%= service.per_hour_price > 0 ?  service.per_hour_price : ( service.per_day_price > 0 ?  service.per_day_price : ( service.per_week_price > 0 ?  service.per_week_price : ( service.per_month_price > 0 ?  service.per_month_price : 0 ))) %>
                   </span>
 
                       </div>
