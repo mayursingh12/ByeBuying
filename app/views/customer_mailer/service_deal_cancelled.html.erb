@@ -1,14 +1,26 @@
-Hi <%= @service.user.name %>,
-
-<br>
-<br>
-We regret to inform you that your final offer made on your service with Ad Service#<%=@service.id%> & <%= @service.service_description %> dated: <%= @cancelled_enquiry.start_at.strftime(time_format)%> to <%= @cancelled_enquiry.end_at.strftime(time_format)%>.has been declined by the Renter.
-<br>
-<br>
-Renter has provided the following remarks:
-<br>
-<br>
-
-Regards,
-<br>
-ByeBuying Team
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1" style="">Hi <%= @product.user.name %>,</p>
+            <br>
+            <p>
+              We regret to inform you that your final offer made on your service with Ad Service#<%=@service.id%> & <%= @service.service_description %> dated: <%= @cancelled_enquiry.start_at.strftime(time_format)%> to <%= @cancelled_enquiry.end_at.strftime(time_format)%>.has been declined by the Renter.
+            </p>
+            <br>
+            <p>
+              Renter has provided the following remarks:
+            </p>
+            <br>
+            <p>
+              Regards,<br>
+              ByeBuyingTeam
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

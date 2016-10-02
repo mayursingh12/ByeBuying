@@ -26,16 +26,16 @@
               Product required for duration: <%= @enquiry.start_at.strftime(time_format)%> to <%= @enquiry.end_at.strftime(time_format)%>
             </p>
             <p>
-              <%= "Price requested per hour: #{@enquiry.expected_per_hour_price}" if @enquiry.expected_per_hour_price > 0%>
+              <%= "Price Requested Per Hour: #{@enquiry.expected_per_hour_price}" if @enquiry.expected_per_hour_price > 0%>
             </p>
             <p>
-              <%= "Price requested per day: #{@enquiry.expected_per_day_price}" if @enquiry.expected_per_day_price > 0%>
+              <%= "Price Requested Per Day: #{@enquiry.expected_per_day_price}" if @enquiry.expected_per_day_price > 0%>
             </p>
             <p>
-              <%= "Price requested per week: #{@enquiry.expected_per_week_price}" if @enquiry.expected_per_week_price > 0%>
+              <%= "Price Requested Per Week: #{@enquiry.expected_per_week_price}" if @enquiry.expected_per_week_price > 0%>
             </p>
             <p>
-              <%= "Price requested per month: #{@enquiry.expected_per_month_price}" if @enquiry.expected_per_month_price > 0%>
+              <%= "Price Requested Per Month: #{@enquiry.expected_per_month_price}" if @enquiry.expected_per_month_price > 0%>
             </p>
             <br>
             <p>

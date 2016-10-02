@@ -1,40 +1,71 @@
-Hi <%= @service.user.name %>,
-
-<br>
-<br>
-Congratulations..!!!
-<br>
-<br>
-The DEAL for the enquiry made on Ad Service#<%=@service.id%>  <%= "& #{@service.service_description }" if @service.service_description.present?  %> dated: <%= @confirmed_enquiry.start_at.strftime(time_format)%> to <%= @confirmed_enquiry.end_at.strftime(time_format)%>.has been confirmed by the Renter. DEAL details are as:
-<br>
-<br>
-Ad ID: Service#<%=@service.id%>
-<br>
-Description: <%= @service.service_description %>
-<br>
-Service required for duration: <%= @confirmed_enquiry.start_at.strftime(time_format)%> to <%= @confirmed_enquiry.end_at.strftime(time_format)%>
-<br>
-Final Per Hour Price: <%= @confirmed_enquiry.expected_per_hour_price%>
-<br>
-Final Per Day Price: <%= @confirmed_enquiry.expected_per_day_price%>
-<br>
-Final Per Week Price: <%= @confirmed_enquiry.expected_per_week_price%>
-<br>
-Final Per Month Price: <%= @confirmed_enquiry.expected_per_month_price%>
-<br>
-<br>
-Renter details are as under for further communication:
-<br><br>
-
-Name: <%= @confirmed_enquiry.user.name %>
-<br>
-Email Address: <%= @confirmed_enquiry.user.email %>
-<br>
-Mobile No.: <%= @confirmed_enquiry.user.contact %>
-<br><br>
-
-Please note that your details have also been shared with Renter and Renter may contact you for any further query.
-<br><br>
-Regards,
-<br>
-ByeBuying Team
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1" style="">Hi <%= @service.user.name %>,</p>
+            <br>
+            <p>
+              Congratulations!!!
+            </p>
+            <br>
+            <p>
+              The DEAL for the enquiry made on Ad Service#<%=@service.id%>  <%= "& #{@service.service_description }" if @service.service_description.present?  %> dated: <%= @confirmed_enquiry.start_at.strftime(time_format)%> to <%= @confirmed_enquiry.end_at.strftime(time_format)%>.has been confirmed by the Renter. DEAL details are as:
+            </p>
+            <br>
+            <p>
+              Ad ID: Service#<%=@service.id%>
+            </p>
+            <br>
+            <p>
+              Description: <%= @service.service_description %>
+            </p>
+            <br>
+            <p>
+              Service required for duration: <%= @confirmed_enquiry.start_at.strftime(time_format)%> to <%= @confirmed_enquiry.end_at.strftime(time_format)%>
+            </p>
+            <br>
+            <p>
+              <%= "Final Per Hour Price: #{@confirmed_enquiry.expected_per_hour_price}" if @confirmed_enquiry.expected_per_hour_price > 0 %>
+            </p>
+            <p>
+              <%= "Final Per Day Price: #{@confirmed_enquiry.expected_per_day_price}" if @confirmed_enquiry.expected_per_day_price > 0 %>
+            </p>
+            <p>
+              <%= "Final Per Week Price: #{@confirmed_enquiry.expected_per_week_price}" if @confirmed_enquiry.expected_per_week_price > 0 %>
+            </p>
+            <p>
+              <%= "Final Per Month Price: #{@confirmed_enquiry.expected_per_month_price}" if @confirmed_enquiry.expected_per_month_price > 0 %>
+            </p>
+            <br>
+            <p>
+              Renter details are as under for further communication:
+            </p>
+            <br>
+            <p>
+              Name: <%= @confirmed_enquiry.user.name %>
+            </p>
+            <br>
+            <p>
+              Email Address: <%= @confirmed_enquiry.user.email %>
+            </p>
+            <br>
+            <p>
+              Mobile No.: <%= @confirmed_enquiry.user.contact %>
+            </p>
+            <br>
+            <p>
+              Please note that your details have also been shared with Renter and Renter may contact you for any further query.
+            </p>
+            <br>
+            <p>
+              Regards,<br>
+              ByeBuyingTeam
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
