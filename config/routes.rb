@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'all'
+      put 'wish_list'
     end
   end
 

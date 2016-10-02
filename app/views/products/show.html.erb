@@ -57,6 +57,7 @@
                     <a class="btn btn-block btn-success" style="margin-top: 10px" href="javascript:void(0);" %>Your Product</a>
                 <% else %>
                     <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_product_enquiry_path(@product) %>">Enquire</a>
+                    <%= link_to 'Add to wishlist', wish_list_user_path(current_user, is_product: true, wish_id: @product.id), method: :put , class: 'btn btn-block btn-primary', style: 'margin-top: 10px;' unless current_user.wish_list.detect{|i| i == "1-#{@product.id}"}.present?%>
                 <% end %>
             <% else %>
                 <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>
