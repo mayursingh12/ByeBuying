@@ -3,9 +3,9 @@
   <h1 class="page-title"><%= @user.name %></h1>
   <div class="tabbable product-tabs">
     <ul class="nav nav-tabs" id="myTab">
-      <li class="active"><a href="#tab-1" data-toggle="tab">Products</a>
+      <li class="active"><a href="#tab-1" data-toggle="tab">Products(<%=@products.count%>)</a>
       </li>
-      <li><a href="#tab-2" data-toggle="tab">Services</a>
+      <li><a href="#tab-2" data-toggle="tab">Services(<%=@services.count%>)</a>
       </li>
       <div class="clearfix"></div>
     </ul>
