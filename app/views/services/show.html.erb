@@ -127,6 +127,7 @@
                 <% else %>
                     <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_service_enquiry_path(@service) %>">Enquire</a>
                 <% end %>
+                <%= link_to 'Add to wishlist', wish_list_user_path(current_user, is_product: false, wish_id: @service.id), method: :put , class: 'btn btn-block btn-primary', style: 'margin-top: 10px;' unless current_user.wish_list.detect{|i| i == "0-#{@service.id}"}.present?%>
 
             <% else %>
                 <a class="btn btn-block btn-primary popup-text" style="margin-top: 10px" data-effect="mfp-move-from-top" href="#nav-login-dialog">Enquire</a>

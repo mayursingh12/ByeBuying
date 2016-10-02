@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   validates :contact, length: { is: 10 }
 
+  serialize :wish_list, Array
+
 
   def admin?
     self.type == 'Admin'
