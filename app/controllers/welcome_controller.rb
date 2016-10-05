@@ -74,7 +74,7 @@ class WelcomeController < ApplicationController
        render status: :ok, nothing: true
      end
    else
-     render status: :unprocessable_entity, json: { errors: ['Invalid Phone Number'] }
+     render status: :unprocessable_entity, json: { errors: ['User Not Registered'] }
    end
 
   end

@@ -1,14 +1,14 @@
 <div class="customer-main-show">
   <div class="row">
     <div class="white-bg">
-      <div class="col-sm-6 col-xs-12">
+      <div class="col-sm-4 col-xs-12">
         <div class="add-image-con">
           <div class="row">
             <div class="col-sm-12">
               <div class="img-overflow overflow-servic-img">
                 <% @service.service_images.each do |service_image| %>
                 <span class="img-con">
-                  <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img' %>
+                  <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img img-responsive' %>
                   <% if service_image.id.present? %>
                       <%= link_to customer_service_service_image_path(@service, service_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
                           <i class="fa fa-times cross-icon"></i>
@@ -27,7 +27,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-sm-6 col-xs-12">
+      <div class="col-sm-8 col-xs-12">
         <div class="row">
           <div class="col-xs-12">
             <h2>DETAIL</h2>

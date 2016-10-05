@@ -114,16 +114,16 @@
             <table class="table table-striped product-page-features-table">
               <tbody>
               <tr>
-                <td><%= @product.technical_specification %></td>
+                <td><%= @product.technical_specification.present? ? @product.technical_specification : 'NA' %></td>
               </tr>
               <tr>
-                <td>State: <%= @product.state.name %></td>
+                <td>State: <%= @product.state.name.present? ? @product.state.name : 'NA' %></td>
               </tr>
               <tr>
-                <td>City: <%= @product.city.name %></td>
+                <td>City: <%= @product.city.name.present? ? @product.city.name : 'NA' %></td>
               </tr>
               <tr>
-                <td>Location: <%= @product.location %></td>
+                <td>Location: <%= @product.location.present? ? @product.location : 'NA'  %></td>
               </tr>
               <tr>
                 <td>Start from: <%= @product.start_at.strftime(time_format) %></td>
@@ -132,22 +132,22 @@
                 <td>End from: <%= @product.end_at.strftime(time_format) %></td>
               </tr>
               <tr>
-                <td>Quantity: <%= @product.quantity %></td>
+                <td>Quantity: <%= @product.quantity.present? ? @product.quantity : 'NA' %></td>
               </tr>
               <!--<tr>-->
               <!--<td>Rent: <%#= @product.rent %></td>-->
               <!--</tr>-->
               <tr>
-                <td>Refundable security: <%= @product.refundable_security %></td>
+                <td>Refundable security: <%= @product.refundable_security.present? ? @product.refundable_security : 'NA' %></td>
               </tr>
               <tr>
-                <td>Cost of replacement: <%= @product.cost_of_replacement %></td>
+                <td>Cost of replacement: <%= @product.cost_of_replacement.present? ? @product.cost_of_replacement : 'NA' %></td>
               </tr>
               <tr>
-                <td>Youtube: <%= @product.youtube_link %></td>
+                <td>Youtube: <%= @product.youtube_link.present? ? @product.youtube_link : 'NA' %></td>
               </tr>
               <tr>
-                <td>Other: <%= @product.other %></td>
+                <td>Other: <%= @product.other.present? ? @product.other : 'NA' %></td>
               </tr>
 
               </tbody>
