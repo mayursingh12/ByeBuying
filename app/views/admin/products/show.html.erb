@@ -11,7 +11,19 @@
       <div class="product-page-product-wrap jqzoom-stage">
         <div class="clearfix">
           <a href="../../../assets/theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
-            <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
+            <% if @product.product_images.any? %>
+                <ul class="jqzoom-list">
+                  <% @product.product_images.each_with_index do |product_image, index| %>
+                      <li>
+                        <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{product_image.image(:size_500x500)}',largeimage:'#{product_image.image(:original)}'}" %>>
+                          <%= image_tag product_image.image(:size_500x500), class: 'img-responsive' %>
+                        </a>
+                      </li>
+                  <% end %>
+                </ul>
+            <% else %>
+                <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
+            <% end %>
           </a>
         </div>
       </div>
