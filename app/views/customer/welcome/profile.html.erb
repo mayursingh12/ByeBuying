@@ -4,6 +4,7 @@
       <div class="img-section">
         <% if @customer.image.present? %>
             <%= image_tag @customer.image(:size_250x250), class: 'img-responsive' %>
+            <%= link_to 'Remove Image', '/customer/profile_image', method: :delete, data: { message: 'Are you sure?' }, style: 'z-index: 9999999; position: relative;' %>
             <%#= link_to 'Remove', 'profile_image', method: :delete, data: {confirm: "Are you sure?"}  %>
         <% else %>
             <%= image_tag "theme_img/no-photo.png", class: 'img-responsive' %>
@@ -113,33 +114,3 @@
 
     });
 </script>
-
-
-<%#= @customer.name %>
-
-<%#= @customer.email %>
-<%#= @customer.contact %>
-
-<%# if @customer.image.present? %>
-<%#= image_tag @customer.image(:size_500x500) %>
-<%# end %>
-
-
-<%#= form_tag customer_update_profile_image_path, method: :put, multipart: true do %>
-<%#= label_tag :image %>
-<%#= file_field_tag :image %>
-<%#= submit_tag("upload", class: "btn btn-primary") %>
-<%# end %>
-
-
-<%#= form_tag customer_change_password__path, method: :put do %>
-<%#= label_tag :change_password %>
-<%#= password_field_tag :password %>
-<%#= submit_tag("update", class: "btn btn-primary") %>
-<%# end %>
-
-<%#= form_tag customer_change_mobile_path, method: :put do %>
-<%#= label_tag :mobile %>
-<%#= password_field_tag :contact %>
-<%#= submit_tag("update", class: "btn btn-primary") %>
-<%# end %>

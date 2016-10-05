@@ -30,7 +30,7 @@
       <div class="product-caption-price">
                     <span class="product-caption-price-new">
                       <i class="fa fa-inr"></i>
-                      <%= service.per_hour_price > 0 ?  service.per_hour_price : ( service.per_day_price > 0 ?  service.per_day_price : ( service.per_week_price > 0 ?  service.per_week_price : ( service.per_month_price > 0 ?  service.per_month_price : 0 ))) %>
+                      <%= service.per_hour_price > 0 ?  "#{service.per_hour_price}/Hour " : ( service.per_day_price > 0 ?  "#{service.per_day_price}/Day" : ( service.per_week_price > 0 ? "#{service.per_week_price}/Week" : ( service.per_month_price > 0 ?  "#{service.per_month_price}/Month" : 0 ))) %>
                     </span>
       </div>
     </div>

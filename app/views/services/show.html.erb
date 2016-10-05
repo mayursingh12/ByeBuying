@@ -39,7 +39,7 @@
       <div class="row" data-gutter="10">
         <div class="col-md-8">
           <div class="box min-box-height">
-            <p class="product-page-desc"><%= @service.service_description %></p>
+            <p class="product-page-desc"><%= @service.service_description.present? ? @service.service_description : 'NA' %></p>
             <ul class="product-page-product-rating">
               <% for i in 1..5 %>
                   <% if i <= @service.rating %>
@@ -54,39 +54,39 @@
               <tbody>
               <% if  @service.subcategory.name == 'Others'%>
                   <tr>
-                    <td>Nature of service: <%= @service.nature_of_service %></td>
+                    <td>Nature of service: <%= @service.nature_of_service.present? ? @service.nature_of_service : 'NA' %></td>
                   </tr>
               <% end %>
               <% if  @service.subcategory.category.name == 'Membership'%>
                   <tr>
-                    <td>Club name: <%= @service.club_name %></td>
+                    <td>Club name: <%= @service.club_name.present? ? @service.club_name : 'NA' %></td>
                   </tr>
                   <tr>
-                    <td>Membership plan: <%= @service.membership_plan %></td>
+                    <td>Membership plan: <%= @service.membership_plan.present? ? @service.membership_plan : 'NA' %></td>
                   </tr>
                   <tr>
-                    <td>Start from: <%= @service.start_at.strftime(time_format) %></td>
+                    <td>Start from: <%= @service.start_at.strftime(time_format).present? ? @service.start_at.strftime(time_format) : 'NA' %></td>
                   </tr>
                   <tr>
-                    <td>End at: <%= @service.end_at.strftime(time_format) %></td>
+                    <td>End at: <%= @service.end_at.strftime(time_format).present? ? @service.end_at.strftime(time_format) : 'NA' %></td>
                   </tr>
               <% end %>
               <% if @service.subcategory.category.name == 'Commercial Space' %>
                   <tr>
-                    <td>Area in meters: <%= @service.area_in_meters %></td>
+                    <td>Area in meters: <%= @service.area_in_meters.present? ? @service.area_in_meters : 'NA'%></td>
                   </tr>
                   <tr>
-                    <td>Amenities available: <%= @service.amenities_available %></td>
+                    <td>Amenities available: <%= @service.amenities_available.present? ? @service.amenities_available : 'NA' %></td>
                   </tr>
               <% end %>
               <tr>
-                <td>State: <%= @service.state.name %></td>
+                <td>State: <%= @service.state.name.present? ? @service.state.name : 'NA' %></td>
               </tr>
               <tr>
-                <td>City: <%= @service.city.name %></td>
+                <td>City: <%= @service.city.name.present? ? @service.city.name : 'NA' %></td>
               </tr>
               <tr>
-                <td>Location: <%= @service.location %></td>
+                <td>Location: <%= @service.location.present? ? @service.location : 'NA' %></td>
               </tr>
               <!--<tr>-->
                 <!--<td>Price: <%#= @service.price_type %></td>-->
@@ -105,10 +105,10 @@
               <!--</tr>-->
 
               <tr>
-                <td>Youtube: <%= @service.youtube_link %></td>
+                <td>Youtube: <%= @service.youtube_link.present? ? @service.youtube_link : 'NA' %></td>
               </tr>
               <tr>
-                <td>Other: <%= @service.other %></td>
+                <td>Other: <%= @service.other.present? ? @service.other : 'NA' %></td>
               </tr>
               </tbody>
             </table>
@@ -165,8 +165,8 @@
               <p class="product-page-side-text">* Except remote areas</p>
               <p class="product-page-side-text">You have one month from the shipping confirmation email.</p>
             </div>
-            <%= link_to 'View all Post of this seller', all_user_path(@service.user_id), class: 'btn seller_post_button btn-primary' %>
           </div>
+          <%= link_to 'View all Post of this seller', all_user_path(@service.user_id), class: 'btn seller_post_button btn-primary' %>
         </div>
       </div>
     </div>

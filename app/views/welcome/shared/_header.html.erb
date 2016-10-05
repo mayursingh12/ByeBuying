@@ -377,7 +377,7 @@
                         .fail(function(xhr, status, error) {
                             // error handling
                             var error_text = xhr.responseText.split(':')[1].replace('"','').replace('}','').replace('"','');
-                            $('.msg-forgot-password-validation').text('Invalid Phone number');
+                            $('.msg-forgot-password-validation').text('User Not Registered');
 //                            $(".login-error").text(error_text);
 //                            $(".login-error").removeClass('hidden');
 //                            $('.msg-already-registred').hide();
@@ -385,7 +385,7 @@
 
             }
             else{
-                $('.msg-forgot-password-validation').text('Invalid Phone number');
+                $('.msg-forgot-password-validation').text('User Not Registered');
             }
 
 
