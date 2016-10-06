@@ -79,18 +79,6 @@
                     <%= f.input :quantity, label: 'Quantity ⓘ' ,label_html: {class: 'label', 'data-toggle': 'tooltip', 'data-placement': 'right' , title: 'Quantity'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
-                <!--<div class="col-xs-12">-->
-                <!--<div class="field-con">-->
-                <!--<%#= f.input :rent, label: 'Rent' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
-                <!--<%#= f.input :rent, collection: ['Per day', 'Per week', 'Per month'], prompt: 'choose rent',label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-xs-12">-->
-                <!--<div class="field-con">-->
-                <!--<%#= f.input :price_in_rupees, label: 'Price in Rupees' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>-->
-                <!--</div>-->
-                <!--</div>-->
-
                 <div class="col-xs-12">
                   <div class="field-con">
                     <%= f.input :per_hour_price, label: 'Per Hour Price ⓘ' ,label_html: {class: 'label', 'data-toggle': 'tooltip', 'data-placement': 'right' , title: 'Per Hour Price'}, input_html: {class: 'text-field'} %>
@@ -153,7 +141,7 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"]').popover();
     });
 //    $('.submit-main').hide();
 //

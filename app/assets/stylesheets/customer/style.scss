@@ -179,6 +179,17 @@
       .select-text{
         margin: 15px 0;
       }
+      .popover{
+        z-index: 1;
+        .popover-title{
+          background-color: transparent;
+          font-size: 12px;
+          border-bottom: none;
+        }
+        .popover-content{
+          display: none;
+        }
+      }
     }
     .grey-color{
       background-color: #F4F7F5;
@@ -543,6 +554,37 @@
   position: absolute;
   left: 13px;
   top: 7px;
+}
+.color-code-con{
+  width: 100%;
+  font-size: 12px;
+  margin-top: 20px;
+  .color-code{
+    margin: 5px 0;
+    color: #888888;
+  }
+  .defined_color{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #3445d3;
+  }
+  .green-color{
+    background-color: green;
+  }
+  .blue-color{
+    background-color: blue;
+  }
+  .black-color{
+    background-color: black;
+  }
+  .yellow-color{
+    background-color: yellow;
+  }
+  .pink-color{
+    background-color: pink;
+  }
 }
 @media(max-width: 767px){
   .otp-min-height{
