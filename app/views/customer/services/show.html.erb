@@ -81,7 +81,7 @@
                       <h4>Nature of service:</h4>
                     </div>
                     <div class="col-xs-7">
-                      <p><%= @service.nature_of_service %></p>
+                      <p><%= @service.nature_of_service.present? ? @service.nature_of_service : 'NA' %></p>
                     </div>
                   </div>
                 </div>
@@ -97,7 +97,7 @@
                       <h4>Club name:</h4>
                     </div>
                     <div class="col-xs-7">
-                      <p><%= @service.club_name %></p>
+                      <p><%= @service.club_name.present? ? @service.club_name : 'NA' %></p>
                     </div>
                   </div>
                 </div>
@@ -109,7 +109,7 @@
                       <h4>Membership plan:</h4>
                     </div>
                     <div class="col-xs-7">
-                      <p><%= @service.membership_plan %></p>
+                      <p><%= @service.membership_plan.present? ? @service.membership_plan : 'NA' %></p>
                     </div>
                   </div>
                 </div>
@@ -148,7 +148,7 @@
                       <h4>Area in meters:</h4>
                     </div>
                     <div class="col-xs-7">
-                      <p><%= @service.area_in_meters %></p>
+                      <p><%= @service.area_in_meters.present? ? @service.area_in_meters : 'NA' %></p>
                     </div>
                   </div>
                 </div>
@@ -160,7 +160,7 @@
                       <h4>Amenities available:</h4>
                     </div>
                     <div class="col-xs-7">
-                      <p><%= @service.amenities_available %></p>
+                      <p><%= @service.amenities_available.present? ? @service.amenities_available : 'NA' %></p>
                     </div>
                   </div>
                 </div>
@@ -197,7 +197,7 @@
                   <h4>Location:</h4>
                 </div>
                 <div class="col-xs-7">
-                  <p><%= @service.location %></p>
+                  <p><%= @service.location.present? ? @service.location : 'NA' %></p>
                 </div>
               </div>
             </div>
@@ -290,7 +290,7 @@
           <div class="col-sm-12">
             <div class="product-detail">
               <h4>Others:</h4>
-              <p><%= @service.other %></p>
+              <p><%= @service.other.present? ? @service.other : 'NA' %></p>
             </div>
           </div>
         </div>
