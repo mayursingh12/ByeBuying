@@ -176,7 +176,6 @@ class CustomerMailer < ApplicationMailer
     @user = user
     @password = new_password
     mail(
-        from: 'no-reply@byebuying.com',
         to: @user.email,
         subject: "Updated password"
     )
