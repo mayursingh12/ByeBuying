@@ -1,16 +1,61 @@
-<h4>Products:</h4>
-
-<% @products.each do |product|%>
-
-    <%= product.id %>
-
-<% end %>
-
-<h4>Services:</h4>
-
-
-<% @services.each do |service|%>
-
-    <%= service.id %>
-
-<% end %>
+<div class="customer-main-con">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="page-title">My Enquiries</h1>
+      <div class="customer-main-show">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#products">Products(<%=@products.count%>)</a></li>
+          <li><a data-toggle="tab" href="#services">Services(<%=@services.count%>)</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="products" class="tab-pane fade in active">
+            <% @products.each do |product|%>
+                <a class="" href="<%= product_path(product)%>">
+                    <div class="white-bg">
+                      <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                        <div class="add-image-con">
+                          <% if product.product_images.any? %>
+                              <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+                          <% else %>
+                              <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="col-md-10 col-sm-9 col-xs-12">
+                        <h2 class="heading"><%= product.name.capitalize %></h2>
+                        <h5 class="time-option"><%= product.start_at.strftime(time_format) %> - <%= product.end_at.strftime(time_format) %></h5>
+                        <p class="description"><%= product.description %></p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                </a>
+            <% end %>
+          </div>
+          <div id="services" class="tab-pane fade">
+            <% @services.each do |service|%>
+                <a class="" href="<%= service_path(service)%>">
+                  <div class="white-bg">
+                    <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                      <div class="add-image-con">
+                        <% if service.service_images.any? %>
+                            <%= image_tag service.service_images.first.image(:size_500x500), class: 'img-responsive' %>
+                        <% else %>
+                            <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-xs-12">
+                      <h2 class="heading"><%= service.service_description %></h2>
+                      <h5 class="time-option"><%= service.start_at.strftime(time_format) %> - <%= service.end_at.strftime(time_format) %></h5>
+                      <p class="description"><%= service.subcategory.category.name %></p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
