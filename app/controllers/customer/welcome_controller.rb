@@ -1,10 +1,10 @@
 class Customer::WelcomeController < Customer::BaseController
 
-  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_]
+  before_filter :authenticate_user_admin, only: [:dashboard, :profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :wish_list]
 
   before_filter :authenticate_no_user_admin, only: [:index]
 
-  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail]
+  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail, :wish_list]
 
   # before_action :set_header_categories
   before_action :set_categories
@@ -238,6 +238,24 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def user_detail
+
+  end
+
+  def wish_list
+    product_ids = []
+    service_ids = []
+    for i in @customer.wish_list
+      arr = i.split('-')
+      if arr.first == '0'
+        service_ids << arr.second.to_i
+      else
+        product_ids << arr.second.to_i
+      end
+
+    end
+
+    @products = Product.where(id: product_ids)
+    @services = Service.where(id: service_ids)
 
   end
 
