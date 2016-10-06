@@ -68,9 +68,10 @@ class WelcomeController < ApplicationController
      if @user_.present?
        @token = SecureRandom.urlsafe_base64(8)
        @user_.update_attributes(password: @token)
-       SmsDelivery.new(@phone, SmsTemplates.change_password(@token.to_s)).delay.deliver
-       # SmsDelivery.new(@phone, SmsTemplates.change_password(@token.to_s)).deliver
-       CustomerMailer.forgot_password(@user_, @token).deliver_later
+       # SmsDelivery.new(@phone, SmsTemplates.change_password(@token.to_s)).delay.deliver
+       SmsDelivery.new(@phone, SmsTemplates.change_password(@token.to_s)).deliver
+       # CustomerMailer.forgot_password(@user_, @token).deliver_later
+       CustomerMailer.forgot_password(@user_, @token).deliver
        flash[:success] = 'Your updated password has been sent successfully.'
        render status: :ok, nothing: true
      end
