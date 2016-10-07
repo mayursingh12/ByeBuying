@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  get 'welcome/index' => 'welcome#index'
+
   namespace :admin do
 
     get '/' => 'welcome#index'
