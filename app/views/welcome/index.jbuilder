@@ -29,6 +29,7 @@ json.products{
     json.negotiable product.negotiable?
     json.rating product.rating
     json.admin_verified product.admin_verified?
+    json.images product.product_images.map{ |i| i.image.url(:size_500x500) }
   end
 }
 
@@ -60,6 +61,7 @@ json.services{
     json.negotiable service.negotiable?
     json.rating service.rating
     json.admin_verified service.admin_verified?
+    json.images service.service_images.map{ |i| i.image.url(:size_500x500) }
   end
 }
 
@@ -67,7 +69,9 @@ json.advertisements{
   json.array! @advertisements do |advertisement|
     json.id advertisement.id
     json.name advertisement.title
-    json.name advertisement.description
+    json.description advertisement.description
+    json.redirect_link advertisement.redirect_link
+    json.images advertisement.advertisement_images.map{ |i| i.image.url(:original) }
   end
 }
 
