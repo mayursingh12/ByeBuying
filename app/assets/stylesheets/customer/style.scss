@@ -440,6 +440,7 @@
 
 .profile-page-con{
   width: 100%;
+  position: relative;
   .profile-white-con{
     max-width: inherit;
     .product-detail{
@@ -517,6 +518,27 @@
           //border: 0;
           //color: #ffffff;
         }
+      }
+    }
+  }
+  .email-edit-icon{
+    color: #486d97;
+    font-size: 18px;
+    position: absolute;
+    top: -7px;
+    right: -18px;
+    cursor: pointer;
+  }
+  .edit-user-profile{
+    .product-detail{
+      padding: 10px 0;
+      h4{
+        margin-top: 10px;
+      }
+      .edit-profile-text{
+        width: 100%;
+        max-width: 350px;
+        padding: 5px;
       }
     }
   }

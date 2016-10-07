@@ -16,8 +16,8 @@
       </div>
     </div>
 
-    <span class="edit-profile-btn btn btn-info">Edit</span>
     <div class="col-md-9 col-sm-8 col-xs-12 user-profile">
+      <span class="edit-profile-btn"><i class="fa fa-edit email-edit-icon"></i></span>
       <div class="product-detail">
         <h4>Name:</h4>
         <p><%= @customer.name%></p>
@@ -46,20 +46,30 @@
     <!--=======Edit Profile=============-->
 
     <div class="col-md-9 col-sm-8 col-xs-12 edit-user-profile" style="display: none;">
+      <span class="cross-profile-btn"><i class="fa fa-times email-edit-icon"></i></span>
       <%= form_for @customer, url: customer_edit_profile_path, method: :post   do |f| %>
           <div class="product-detail">
-            <h4>Name:</h4>
-            <p><%= f.text_field :name %></p>
+            <div class="row">
+              <div class="col-sm-3 col-xs-12">
+                <h4>Name:</h4>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p><%= f.text_field :name, class: 'edit-profile-text' %></p>
+              </div>
+            </div>
           </div>
           <div class="product-detail">
-            <h4>Email:</h4>
-            <p><%= f.text_field :email %></p>
+            <div class="row">
+              <div class="col-sm-3 col-xs-12">
+                <h4>Email:</h4>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p><%= f.text_field :email, class: 'edit-profile-text' %></p>
+              </div>
+            </div>
           </div>
-          <div class="product-detail">
-            <p class="mobile-number">
-              <%= f.submit 'Save' %>
-            </p>
-          </div>
+          <div class="gap-small"></div>
+          <%= f.submit 'Save', class: "btn btn-primary update-phn-btn" %>
       <% end %>
     </div>
     <!--======================-->
@@ -138,6 +148,13 @@
 
         $('.edit-profile-btn').click(function(){
             $(this).hide();
+            $('.cross-profile-btn').show();
+            $('.edit-user-profile').toggle();
+            $('.user-profile').toggle();
+        });
+        $('.cross-profile-btn').click(function(){
+            $(this).hide();
+            $('.edit-profile-btn').show();
             $('.edit-user-profile').toggle();
             $('.user-profile').toggle();
         });
