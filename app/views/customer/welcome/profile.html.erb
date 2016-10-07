@@ -15,7 +15,9 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-9 col-sm-8 col-xs-12">
+
+    <span class="edit-profile-btn btn btn-info">Edit</span>
+    <div class="col-md-9 col-sm-8 col-xs-12 user-profile">
       <div class="product-detail">
         <h4>Name:</h4>
         <p><%= @customer.name%></p>
@@ -40,6 +42,28 @@
         <a href="#change_password" class="popup-text login-nav-button">Change Password</a>
       </div>
     </div>
+
+    <!--=======Edit Profile=============-->
+
+    <div class="col-md-9 col-sm-8 col-xs-12 edit-user-profile" style="display: none;">
+      <%= form_for @customer, url: customer_edit_profile_path, method: :post   do |f| %>
+          <div class="product-detail">
+            <h4>Name:</h4>
+            <p><%= f.text_field :name %></p>
+          </div>
+          <div class="product-detail">
+            <h4>Email:</h4>
+            <p><%= f.text_field :email %></p>
+          </div>
+          <div class="product-detail">
+            <p class="mobile-number">
+              <%= f.submit 'Save' %>
+            </p>
+          </div>
+      <% end %>
+    </div>
+    <!--======================-->
+
     <div class="col-xs-12">
       <div class="text-center">
         <!--<a href="javascript:void(0)" class="change-btn">Change Password</a>-->
@@ -110,6 +134,12 @@
             else{
                 $('.msg-change-password-validation').text('Password is too short (minimum is 8 characters)')
             }
+        });
+
+        $('.edit-profile-btn').click(function(){
+            $(this).hide();
+            $('.edit-user-profile').toggle();
+            $('.user-profile').toggle();
         });
 
     });

@@ -84,6 +84,7 @@ Rails.application.routes.draw do
     put 'change_mobile' => 'welcome#change_mobile'
     delete 'sign_out_' => 'welcome#sign_out_'
     delete 'profile_image' => 'welcome#profile_image'
+    post 'edit_profile' => 'welcome#edit_profile'
 
 
     # resources :advertisements do

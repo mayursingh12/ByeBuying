@@ -174,6 +174,33 @@ class Customer::WelcomeController < Customer::BaseController
 
   end
 
+  def edit_profile
+    if request.format == 'application/json'
+      if current_user.present?
+        if current_user.update_attributes(customer_edit_params)
+          render status: :ok, nothing: true
+        else
+          render status: :unprocessable_entity, json: { errors: current_user.errors.full_messages }
+        end
+      else
+        render status: :unprocessable_entity, json: { errors: ['user not login'] }
+      end
+    else
+      if current_user.present?
+        if current_user.update_attributes(customer_edit_params)
+          flash[:success] = 'Successfully updated'
+          redirect_to customer_profile_path
+        else
+          flash[:error] = "#{current_user.errors.full_messages.first}"
+          redirect_to customer_profile_path
+        end
+      else
+        render status: :unprocessable_entity
+      end
+    end
+
+  end
+
   def update_profile_image
     if request.format == 'application/json'
       if @customer.update_attributes(image: params[:image])
@@ -299,6 +326,10 @@ class Customer::WelcomeController < Customer::BaseController
 
   def customer_image_params
     params.require(:customer).permit(:image)
+  end
+
+  def customer_edit_params
+    params.require(:customer).permit(:name, :email)
   end
 
 
