@@ -17,7 +17,7 @@
 <div class="owl-carousel owl-loaded owl-nav-dots-inner" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
   <% @advertisements.each do |advertisement|%>
       <% next unless advertisement.advertisement_images.any? %>
-      <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>">
+      <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" target="_blank">
         <div class="owl-item">
           <div class="slider-item" style="background-image: url(<%= "#{advertisement.advertisement_images.first.image.url(:original)}" %>)">
             <div class="container">
@@ -136,7 +136,7 @@
       <% if @products.any? %>
           <!--<div class="gap"></div>-->
           <h3 class="widget-title">Products</h3>
-          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
             <% @products.each do |product| %>
                 <div class="owl-item">
                   <div class="product  owl-item-slide">
@@ -188,7 +188,7 @@
       <% if @advertisements.any? %>
           <!--Advertisements Start-->
           <h3 class="widget-title">Advertisements</h3>
-          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
             <% @advertisements.each do |advertisement| %>
                 <div class="owl-item">
                   <div class="product  owl-item-slide">
@@ -222,7 +222,7 @@
 
       <% if @services.any? %>
           <h3 class="widget-title">Services</h3>
-          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":4,"loop":true,"nav":true}'>
+          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
             <% @services.each do |service| %>
                 <div class="owl-item">
                   <div class="product  owl-item-slide">
