@@ -5,22 +5,48 @@
         <div class="add-image-con">
           <div class="row">
             <div class="col-sm-12">
-              <div class="img-overflow overflow-servic-img">
-                <%if @service.service_images.any? %>
-                    <% @service.service_images.each do |service_image| %>
-                        <span class="img-con">
-                          <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img img-responsive' %>
-                          <% if service_image.id.present? %>
-                              <%= link_to customer_service_service_image_path(@service, service_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                                  <i class="fa fa-times cross-icon"></i>
-                              <%- end %>
-                          <%- end %>
-                        </span>
-                    <%- end %>
-                <% else %>
-                    <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
-                <% end %>
+              <div class="product-page-product-wrap jqzoom-stage">
+                <div class="clearfix">
+                  <% if @service.service_images.any? %>
+                      <a href="<%= @service.service_images.first.image(:original) %>" id="jqzoom" data-rel="gal-1">
+                        <%= image_tag @service.service_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      </a>
+                  <% else %>
+                      <a href="../../../assets/theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
+                        <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                      </a>
+                  <%end%>
+                </div>
               </div>
+              <% if @service.service_images.any? %>
+                  <ul class="jqzoom-list">
+                    <% @service.service_images.each_with_index do |service_image, index| %>
+                        <li>
+                          <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{service_image.image(:size_500x500)}',largeimage:'#{service_image.image(:original)}'}" %>>
+                            <%= image_tag service_image.image(:size_500x500), class: 'img-responsive' %>
+                          </a>
+                        </li>
+                    <% end %>
+                  </ul>
+              <% else %>
+                  <!-- DO Nothing-->
+              <% end %>
+              <!--<div class="img-overflow overflow-servic-img">-->
+                <!--<%#if @service.service_images.any? %>-->
+                    <!--<%# @service.service_images.each do |service_image| %>-->
+                        <!--<span class="img-con">-->
+                          <!--<%#= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img img-responsive' %>-->
+                          <!--<%# if service_image.id.present? %>-->
+                              <!--<%#= link_to customer_service_service_image_path(@service, service_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>-->
+                                  <!--<i class="fa fa-times cross-icon"></i>-->
+                              <!--<%#- end %>-->
+                          <!--<%#- end %>-->
+                        <!--</span>-->
+                    <!--<%#- end %>-->
+                <!--<%# else %>-->
+                    <!--<%#= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>-->
+                <!--<%# end %>-->
+              <!--</div>-->
             </div>
           </div>
           <% unless @service.service_images.count > 4 %>

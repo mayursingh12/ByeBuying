@@ -5,22 +5,56 @@
         <div class="add-image-con">
           <div class="row">
             <div class="col-xs-12">
-              <div class="img-overflow">
-                <% if @product.product_images.any? %>
-                    <% @product.product_images.each do |product_image| %>
-                    <span class="img-con">
-                      <%= image_tag product_image.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img img-responsive' %>
-                      <% if product_image.id.present? %>
-                          <%= link_to customer_product_product_image_path(@product, product_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                              <i class="fa fa-times cross-icon"></i>
-                          <%- end %>
-                      <%- end %>
-                    </span>
-                    <%- end %>
-                <% else %>
-                    <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
-                <% end %>
+              <div class="product-page-product-wrap jqzoom-stage">
+                <div class="clearfix">
+                  <% if @product.product_images.any? %>
+                      <a href="<%= @product.product_images.first.image(:original) %>" id="jqzoom" data-rel="gal-1">
+                        <%= image_tag @product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+                      </a>
+
+                      <!--<%# @product.product_images.each_with_index do |product_image, index| %>-->
+
+                      <!--<a href="<%#= product_image.image(:size_500x500) %>" id="jqzoom" data-rel="gal-1">-->
+                      <!--<%#= image_tag product_image.image(:size_500x500), class: 'img-responsive' %>-->
+                      <!--</a>-->
+
+                      <!--<%# end %>-->
+                  <% else %>
+                      <a href="../../../assets/theme_img/500x500.png" id="jqzoom" data-rel="gal-1">
+                        <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                      </a>
+                  <% end %>
+                </div>
               </div>
+              <% if @product.product_images.any? %>
+                  <ul class="jqzoom-list">
+                    <% @product.product_images.each_with_index do |product_image, index| %>
+                        <li>
+                          <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{product_image.image(:size_500x500)}',largeimage:'#{product_image.image(:original)}'}" %>>
+                            <%= image_tag product_image.image(:size_500x500), class: 'img-responsive' %>
+                          </a>
+                        </li>
+                    <% end %>
+                  </ul>
+              <% else %>
+                  <!-- DO Nothing-->
+              <% end %>
+              <!--<div class="img-overflow">-->
+                <!--<%# if @product.product_images.any? %>-->
+                    <!--<%# @product.product_images.each do |product_image| %>-->
+                    <!--<span class="img-con">-->
+                      <!--<%#= image_tag product_image.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img img-responsive' %>-->
+                      <!--<%# if product_image.id.present? %>-->
+                          <!--<%#= link_to customer_product_product_image_path(@product, product_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>-->
+                              <!--<i class="fa fa-times cross-icon"></i>-->
+                          <!--<%#- end %>-->
+                      <!--<%#- end %>-->
+                    <!--</span>-->
+                    <!--<%#- end %>-->
+                <!--<%# else %>-->
+                    <!--<%#= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>-->
+                <!--<%# end %>-->
+              <!--</div>-->
             </div>
           </div>
           <% unless @product.product_images.count > 4 %>
