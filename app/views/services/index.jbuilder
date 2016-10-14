@@ -24,4 +24,11 @@ json.array! @services do |service|
   json.per_week_price service.per_week_price
   json.per_month_price service.per_month_price
 
+  json.service_images{
+    json.array! service.service_images do |service_image|
+      json.id service_image.id
+      json.url service_image.image.url(:original)
+    end
+  }
+
 end
