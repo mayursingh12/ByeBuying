@@ -56,10 +56,10 @@
       <span class='msg-already-registred' style="color:red">Number already registered.</span>
       <span style="color:red" class=" login-error hidden"></span>
       <div class="form-group">
-        Enter your Mobile Number: <input type="number" class="form-control rgr-frm-mumber">
+        Enter your Mobile Number: <input type="number" class="form-control rgr-frm-mumber custom-key-press">
       </div>
       <div class="form-group">
-        Enter your Password: <input type="password" class="form-control rgr-frm-pwd">
+        Enter your Password: <input type="password" class="form-control rgr-frm-pwd custom-key-press">
       </div>
       <span class="btn btn-primary btn-sign-in">Sign In</span>
 
@@ -414,6 +414,15 @@
                 $('#register-mobile').val(this.value.substr(0, 10));
             }
         });
+
+        // Enter key pressed
+        $('.custom-key-press').keypress(function(e){
+            var code = e.keyCode || e.which;
+            if(code == 13) {
+                $(".btn-sign-in").trigger("click");
+            }
+        });
+
 
     });
 
