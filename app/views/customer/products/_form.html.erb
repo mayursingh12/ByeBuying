@@ -1,143 +1,129 @@
-<div class="content-main-section">
-  <div class="container">
-    <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10 col-xs-12">
-      <h2 class="text-center">Add New Product</h2>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="contact-main-form">
-            <%= simple_form_for [:customer, @product] do |f| %>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :category_id, collection: product_category_collection, prompt: 'Select category', label: 'Product Category ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Category'}, input_html: {class: 'full-select-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :gender, collection: ['Male', 'Female'], prompt: 'Select gender', label: 'Gender ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Gender'}, input_html: {class: 'full-select-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Product Subcategory ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Category'}, input_html: {class: 'full-select-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :name, label: 'Product Name ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Name'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :description, label: 'Product Description ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Description'}, input_html: {class: 'text-discription'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :technical_specification, label: 'Technical Specification ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Technical Specification'}, input_html: {class: 'text-discription'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <% unless params[:action] == 'edit' %>
-                        <div id="nested-product-images">
-                          <%= f.fields_for :product_images do |builder| %>
-                              <%= render partial: 'application/product_image_fields', locals: { f: builder } %>
-                          <%- end %>
-                          <p id="nested-click"><%= link_to_add_fields "Add Product Image", f, :product_images %></p>
-                        </div>
-                    <%end%>
-                  </div>
-                </div>
-
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state', label: 'State ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'State'}, input_html: {class: 'full-select-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city', label: 'City ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'City'}, input_html: {class: 'full-select-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :location, label: 'Location ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Location'}, input_html: {class: 'text-discription'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :start_at, label: 'Start at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start at'}, input_html: {class: 'select-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :end_at, label: 'End at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'End at'}, input_html: {class: 'select-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :quantity, label: 'Quantity ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Quantity'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :per_hour_price, label: 'Rent Per Hour ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Hour'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :per_day_price, label: 'Rent Per Day ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Day'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :per_week_price, label: 'Rent Per Week ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Week'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :per_month_price, label: 'Rent Per Month ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Month'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <span class="negotiable-text">Negotiable</span> <%= f.input :negotiable, label: '', input_html: {class: 'negotiable-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :refundable_security, label: 'Refundable Security ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Refundable Security'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :cost_of_replacement, label: 'Cost of Replacement ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Cost of Replacement'}, input_html: {class: 'text-field'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :youtube_link, label: 'Product Youtube Link ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Youtube Link'}, input_html: {class: 'text-discription'} %>
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="field-con">
-                    <%= f.input :other, label: 'Other ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Other'}, input_html: {class: 'text-discription'} %>
-                  </div>
-                </div>
-
-                <div class="clearfix"></div>
-                <div class="submit-main">
-                  <%= f.submit 'Save', class: 'pushbutton-wide s-button btn btn-primary' %>
-                </div>
-            <% end %>
-          </div>
-        </div>
+<%= simple_form_for [:customer, @product] do |f| %>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :category_id, collection: product_category_collection, prompt: 'Select category', label: 'Product Category ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Category'}, input_html: {class: 'full-select-field'} %>
       </div>
     </div>
-  </div>
-</div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :gender, collection: ['Male', 'Female'], prompt: 'Select gender', label: 'Gender ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Gender'}, input_html: {class: 'full-select-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Product Subcategory ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Category'}, input_html: {class: 'full-select-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :name, label: 'Product Name ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Name'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :description, label: 'Product Description ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Description'}, input_html: {class: 'text-discription'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :technical_specification, label: 'Technical Specification ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Technical Specification'}, input_html: {class: 'text-discription'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <% unless params[:action] == 'edit' %>
+            <div id="nested-product-images">
+              <%= f.fields_for :product_images do |builder| %>
+                  <%= render partial: 'application/product_image_fields', locals: { f: builder } %>
+              <%- end %>
+              <p id="nested-click"><%= link_to_add_fields "Add Product Image", f, :product_images %></p>
+            </div>
+        <%end%>
+      </div>
+    </div>
 
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state', label: 'State ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'State'}, input_html: {class: 'full-select-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city', label: 'City ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'City'}, input_html: {class: 'full-select-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :location, label: 'Location ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Location'}, input_html: {class: 'text-discription'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :start_at, label: 'Start at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start at'}, input_html: {class: 'select-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :end_at, label: 'End at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'End at'}, input_html: {class: 'select-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :quantity, label: 'Quantity ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Quantity'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :per_hour_price, label: 'Rent Per Hour ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Hour'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :per_day_price, label: 'Rent Per Day ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Day'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :per_week_price, label: 'Rent Per Week ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Week'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :per_month_price, label: 'Rent Per Month ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Month'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="field-con">
+        <span class="negotiable-text">Negotiable</span> <%= f.input :negotiable, label: '', input_html: {class: 'negotiable-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :refundable_security, label: 'Refundable Security ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Refundable Security'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :cost_of_replacement, label: 'Cost of Replacement ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Cost of Replacement'}, input_html: {class: 'text-field'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :youtube_link, label: 'Product Youtube Link ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Youtube Link'}, input_html: {class: 'text-discription'} %>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="field-con">
+        <%= f.input :other, label: 'Other ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Other'}, input_html: {class: 'text-discription'} %>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="submit-main">
+      <%= f.submit 'Save', class: 'pushbutton-wide s-button btn btn-primary' %>
+    </div>
+<% end %>
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){

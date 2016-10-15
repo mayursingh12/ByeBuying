@@ -288,6 +288,13 @@ class Customer::WelcomeController < Customer::BaseController
 
   private
 
+
+  def RemoveFromWishList
+
+    @customer.wish_list remove_instance_variable 0-serviceId else 1-productId
+
+  end
+
   # def sign_in_customer
   #   email = params[:email]
   #   password = params[:password]
