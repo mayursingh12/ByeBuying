@@ -57,7 +57,7 @@ class SearchAlgorithm
   def get_product_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Product.where(admin_verified: true).where('name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%").map(&:id)
+      ids << Product.where(admin_verified: true).where('lower(name) LIKE ? OR lower(description) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%").map(&:id)
     end
     single_arr(ids).uniq
   end
@@ -65,7 +65,7 @@ class SearchAlgorithm
   def get_service_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Service.where(admin_verified: true).where('service_description LIKE ?', "%#{search}%").map(&:id)
+      ids << Service.where(admin_verified: true).where('lower(service_description) LIKE ?', "%#{search.downcase}%").map(&:id)
     end
     single_arr(ids).uniq
   end
@@ -73,7 +73,7 @@ class SearchAlgorithm
   def get_advertisement_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Advertisement.where(admin_verified: true).where('title LIKE ?', "%#{search}%").map(&:id)
+      ids << Advertisement.where(admin_verified: true).where('lower(title) LIKE ?', "%#{search.downcase}%").map(&:id)
     end
     single_arr(ids).uniq
   end

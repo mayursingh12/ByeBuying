@@ -8,32 +8,32 @@
             <%= simple_form_for [:customer, @product] do |f| %>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :category_id, collection: product_category_collection, prompt: 'Select category', label: 'Product Category ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Category'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :category_id, collection: product_category_collection, prompt: 'Select category', label: 'Product Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :gender, collection: ['Male', 'Female'], prompt: 'Select gender', label: 'Gender ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Gender'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :gender, collection: ['Male', 'Female'], prompt: 'Select gender', label: 'Gender' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Product Subcategory ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Category'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Product Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :name, label: 'Product Name ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Name'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :name, label: 'Product Name ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Name. Good to put brand name as well.'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :description, label: 'Product Description ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Description'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :description, label: 'Product Description ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Short description of product including details such as brand name, sizes, use, colour, etc.'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :technical_specification, label: 'Technical Specification ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Technical Specification'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :technical_specification, label: 'Technical Specification ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Detailed description of the product including technical specifications such as dimension, battery life, size and weight, Material type, Technical details, Ranges etc., as applicable.'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
@@ -51,52 +51,52 @@
 
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state', label: 'State ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'State'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state', label: 'State' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city', label: 'City ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'City'}, input_html: {class: 'full-select-field'} %>
+                    <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city', label: 'City' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :location, label: 'Location ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Location'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :location, label: 'Location' ,label_html: {class: 'label', 'data-toggle': 'popover'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :start_at, label: 'Start at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start at'}, input_html: {class: 'select-field'} %>
+                    <%= f.input :start_at, label: 'Start at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'When can the product be available. We suggest to choose the dates for which you have fair visibility that your product will be available'}, input_html: {class: 'select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :end_at, label: 'End at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'End at'}, input_html: {class: 'select-field'} %>
+                    <%= f.input :end_at, label: 'End at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'When can the product be available. We suggest to choose the dates for which you have fair visibility that your product will be available'}, input_html: {class: 'select-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :quantity, label: 'Quantity ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Quantity'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :quantity, label: 'Quantity' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :per_hour_price, label: 'Rent Per Hour ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Hour'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :per_hour_price, label: 'Rent Per Hour' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :per_day_price, label: 'Rent Per Day ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Day'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :per_day_price, label: 'Rent Per Day' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :per_week_price, label: 'Rent Per Week ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Week'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :per_week_price, label: 'Rent Per Week' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :per_month_price, label: 'Rent Per Month ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Month'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :per_month_price, label: 'Rent Per Month' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
 
@@ -107,22 +107,22 @@
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :refundable_security, label: 'Refundable Security ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Refundable Security'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :refundable_security, label: 'Refundable Security ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Balance security deposit after adjusting rent will be refunded at the time of return of product.'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :cost_of_replacement, label: 'Cost of Replacement ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Cost of Replacement'}, input_html: {class: 'text-field'} %>
+                    <%= f.input :cost_of_replacement, label: 'Cost of Replacement ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'If the product is considerably damaged, lost, stolen, this is the amount the renter has to pay to the owner. Cost of replacement should not be more than market value of the product.'}, input_html: {class: 'text-field'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :youtube_link, label: 'Product Youtube Link ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Product Youtube Link'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :youtube_link, label: 'Product Youtube Link ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'We suggest to make video of your product, upload the video on youtube and share the link of your youtube video for better demonstration of your product.'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="field-con">
-                    <%= f.input :other, label: 'Other ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Other'}, input_html: {class: 'text-discription'} %>
+                    <%= f.input :other, label: 'Other' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
                   </div>
                 </div>
 
@@ -141,18 +141,18 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-//        $('[data-toggle="popover"]').popover();
+        $('[data-toggle="popover"]').tooltip();
 //        $('body').click(function(e) {
 //            if ($(e.target).data('toggle') !== 'popover' && $(e.target).parents('.popover.in').length === 0) {
 //                debugger
 //                $('[data-toggle="popover"]').popover('');
 //            }
 //        });
-        $('[data-toggle="popover"]').popover().click(function(){
-            setTimeout(function () {
-                $('[data-toggle="popover"]').popover('hide');
-            }, 10000);
-        });
+//        $('[data-toggle="popover"]').popover().click(function(){
+//            setTimeout(function () {
+//                $('[data-toggle="popover"]').popover('hide');
+//            }, 10000);
+//        });
     });
 
 //    $('.submit-main').hide();

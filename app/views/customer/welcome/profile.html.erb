@@ -4,7 +4,7 @@
       <div class="img-section">
         <% if @customer.image.present? %>
             <%= image_tag @customer.image(:size_250x250), class: 'img-responsive' %>
-            <%= link_to 'Remove Image', '/customer/profile_image', method: :delete, data: { message: 'Are you sure?' }, style: 'z-index: 9999999; position: relative;' %>
+            <%= link_to 'Remove Image', '/customer/profile_image', method: :delete, data: { message: 'Are you sure?' }, style: 'z-index: 9; position: relative;' %>
             <%#= link_to 'Remove', 'profile_image', method: :delete, data: {confirm: "Are you sure?"}  %>
         <% else %>
             <%= image_tag "theme_img/no-photo.png", class: 'img-responsive' %>
