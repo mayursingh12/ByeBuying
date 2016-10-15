@@ -11,6 +11,8 @@ class Subcategory < ActiveRecord::Base
   validates :category_id, presence: true
   validates :name, presence: true, uniqueness: {:scope => [:name, :category_id], :message => "already exists", case_sensitive: false }
 
+  has_attached_file :interior_image
+  validates_attachment_content_type :interior_image, content_type: /\Aimage\/.*\Z/
 
   validate def wed_plan
              if self.name.present? and self.category.name == 'Wedding Collection' and self.male.blank? and self.female.blank?
