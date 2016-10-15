@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002061145) do
+ActiveRecord::Schema.define(version: 20161015132356) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -46,17 +46,21 @@ ActiveRecord::Schema.define(version: 20161002061145) do
   add_index "advertisements", ["deleted_at"], name: "index_advertisements_on_deleted_at", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",                      limit: 255
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.string   "icon_image_file_name",      limit: 255
-    t.string   "icon_image_content_type",   limit: 255
-    t.integer  "icon_image_file_size",      limit: 4
+    t.string   "name",                        limit: 255
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "icon_image_file_name",        limit: 255
+    t.string   "icon_image_content_type",     limit: 255
+    t.integer  "icon_image_file_size",        limit: 4
     t.datetime "icon_image_updated_at"
-    t.string   "detail_image_file_name",    limit: 255
-    t.string   "detail_image_content_type", limit: 255
-    t.integer  "detail_image_file_size",    limit: 4
+    t.string   "detail_image_file_name",      limit: 255
+    t.string   "detail_image_content_type",   limit: 255
+    t.integer  "detail_image_file_size",      limit: 4
     t.datetime "detail_image_updated_at"
+    t.string   "interior_image_file_name",    limit: 255
+    t.string   "interior_image_content_type", limit: 255
+    t.integer  "interior_image_file_size",    limit: 4
+    t.datetime "interior_image_updated_at"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -216,13 +220,17 @@ ActiveRecord::Schema.define(version: 20161002061145) do
   end
 
   create_table "subcategories", force: :cascade do |t|
-    t.string   "name",             limit: 255
-    t.integer  "category_id",      limit: 4
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.boolean  "male",                         default: false
-    t.boolean  "female",                       default: false
-    t.string   "subcategory_type", limit: 255
+    t.string   "name",                        limit: 255
+    t.integer  "category_id",                 limit: 4
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.boolean  "male",                                    default: false
+    t.boolean  "female",                                  default: false
+    t.string   "subcategory_type",            limit: 255
+    t.string   "interior_image_file_name",    limit: 255
+    t.string   "interior_image_content_type", limit: 255
+    t.integer  "interior_image_file_size",    limit: 4
+    t.datetime "interior_image_updated_at"
   end
 
   create_table "subscribers", force: :cascade do |t|

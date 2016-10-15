@@ -11,6 +11,12 @@
             <%= image_tag @category.detail_image.url(:original) %>
         <%- end %>
         <%= f.input :detail_image %>
+
+        <% if @category.interior_image.present? %>
+            <%= image_tag @category.interior_image.url(:original) %>
+        <%- end %>
+        <%= f.input :interior_image %>
+
         <%= f.submit 'Save', class: 'btn btn-primary ' %>
       </div>
       <div class="col-sm-6"></div>

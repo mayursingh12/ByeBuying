@@ -7,6 +7,10 @@
         <%= f.input :male, label: 'For male', as: :boolean  %>
         <%= f.input :female, label: 'For female', as: :boolean  %>
         <%= f.input :subcategory_type, collection: ['Product', 'Service', 'Membership', 'Commercial Space'], prompt: 'Select type'%>
+        <% if @subcategory.interior_image.present? %>
+            <%= image_tag @subcategory.interior_image.url(:original) %>
+        <%- end %>
+        <%= f.input :interior_image %>
         <%= f.submit 'Save', class: 'btn btn-primary' %>
       </div>
     </div>
