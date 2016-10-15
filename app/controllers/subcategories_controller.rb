@@ -30,7 +30,7 @@ class SubcategoriesController < ApplicationController
       end
     else
       if params[:subcategory_type].present?
-        @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type])
+        @subcategories = Subcategory.where(category_id: params[:id], subcategory_type: params[:subcategory_type].capitalize)
       else
         @subcategories = Subcategory.where(category_id: params[:id])
       end
