@@ -609,6 +609,17 @@
     background-color: pink;
   }
 }
+p.lead{
+  font-size: 17px !important;
+}
+.google-map{
+  .email-con{
+    color: #416288;
+    a{
+      text-decoration: none;
+    }
+  }
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
