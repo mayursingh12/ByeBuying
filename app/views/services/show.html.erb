@@ -117,11 +117,27 @@
         <div class="col-md-4">
           <div class="box-highlight">
             <!--<p class="product-page-price">₹<%#= @service.price_in_rupees %></p>-->
-            <!--<p class="product-page-price time-price">₹<%#= @service.per_hour_price %>/ <span class="pull-right">hr</span></p>-->
-            <!--<p class="product-page-price time-price">₹<%#= @service.per_day_price %>/ <span class="pull-right">day</span></p>-->
-            <!--<p class="product-page-price time-price">₹<%#= @service.per_week_price %>/ <span class="pull-right">week</span></p>-->
-            <!--<p class="product-page-price time-price">₹<%#= @service.per_month_price %>/ <span class="pull-right">month</span></p>-->
-            <p class="product-page-price time-price">₹ <%= @service.per_hour_price > 0 ?  "#{@service.per_hour_price}/Hour " : ( @service.per_day_price > 0 ?  "#{@service.per_day_price}/Day" : ( @service.per_week_price > 0 ? "#{@service.per_week_price}/Week" : ( @service.per_month_price > 0 ?  "#{@service.per_month_price}/Month" : 0 ))) %></p>
+            <p class="product-page-price time-price">
+              <%if @service.per_hour_price > 0 %>
+                  ₹<%= @service.per_hour_price %>/ <span class="pull-right">hr</span>
+              <% end %>
+            </p>
+            <p class="product-page-price time-price">
+              <%if @service.per_day_price > 0 %>
+                  ₹<%= @service.per_day_price %>/ <span class="pull-right">day</span>
+              <% end %>
+            </p>
+            <p class="product-page-price time-price">
+              <%if @service.per_week_price > 0 %>
+                  ₹<%= @service.per_week_price %>/ <span class="pull-right">week</span>
+              <% end %>
+            </p>
+            <p class="product-page-price time-price">
+              <%if @service.per_month_price > 0 %>
+                  ₹<%= @service.per_month_price %>/ <span class="pull-right">month</span>
+              <% end %>
+            </p>
+            <!--<p class="product-page-price time-price">₹ <%#= @service.per_hour_price > 0 ?  "#{@service.per_hour_price}/Hour " : ( @service.per_day_price > 0 ?  "#{@service.per_day_price}/Day" : ( @service.per_week_price > 0 ? "#{@service.per_week_price}/Week" : ( @service.per_month_price > 0 ?  "#{@service.per_month_price}/Month" : 0 ))) %></p>-->
 
             <% if current_user.present? %>
                 <% if current_user.id == @service.user.id %>
