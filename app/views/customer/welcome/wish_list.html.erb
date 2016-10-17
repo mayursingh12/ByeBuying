@@ -11,8 +11,8 @@
           <div id="products" class="tab-pane fade in active">
             <%if @products.any? %>
                 <% @products.each do |product|%>
-                    <a class="" href="<%= product_path(product)%>">
-                      <div class="white-bg">
+                    <a class="target-1-<%=product.id%>" href="<%= product_path(product)%>">
+                      <div class="white-bg ">
                         <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                           <div class="add-image-con">
                             <% if product.product_images.any? %>
@@ -27,6 +27,9 @@
                           <h5 class="time-option"><%= product.start_at.strftime(time_format) %> - <%= product.end_at.strftime(time_format) %></h5>
                           <p class="description"><%= product.description %></p>
                         </div>
+                        <!--<div class="remove_wish" wish-id="<%#="1-#{product.id}"%>">Remove</div>-->
+                        <a href="/customer/remove_wishlist?wish_id=<%="1-#{product.id}"%>">Remove</a>
+                        <%#= link_to('Remove', '') %>
                         <div class="clearfix"></div>
                       </div>
                     </a>
@@ -39,7 +42,7 @@
           <div id="services" class="tab-pane fade">
             <%if @services.any? %>
                 <% @services.each do |service|%>
-                    <a class="" href="<%= service_path(service)%>">
+                    <a class="target-0-<%=product.id%>" href="<%= service_path(service)%>">
                       <div class="white-bg">
                         <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                           <div class="add-image-con">
@@ -55,6 +58,8 @@
                           <h5 class="time-option"><%= service.start_at.strftime(time_format) %> - <%= service.end_at.strftime(time_format) %></h5>
                           <p class="description"><%= service.subcategory.category.name %></p>
                         </div>
+                        <!--<span class="remove_wish" wish-id="<%#="0-#{service.id}"%>"></span>-->
+                        <a href="/customer/remove_wishlist?wish_id=<%="0-#{service.id}"%>">Remove</a>
                         <div class="clearfix"></div>
                       </div>
                     </a>
@@ -69,3 +74,5 @@
     </div>
   </div>
 </div>
+
+

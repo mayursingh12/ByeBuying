@@ -96,6 +96,8 @@ Rails.application.routes.draw do
     delete 'profile_image' => 'welcome#profile_image'
     post 'edit_profile' => 'welcome#edit_profile'
 
+    get 'remove_wishlist' => 'welcome#remove_wishlist'
+
 
     # resources :advertisements do
     #   resources :advertisement_images
