@@ -65,6 +65,8 @@ Rails.application.routes.draw do
         put 'update_rating'
         put 'admin_approve'
       end
+
+      resources :product_images
     end
 
     resources :services do
