@@ -18,6 +18,7 @@
                         <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{product_image.image(:size_500x500)}',largeimage:'#{product_image.image(:original)}'}" %>>
                           <%= image_tag product_image.image(:size_500x500), class: 'img-responsive' %>
                         </a>
+                        <%= link_to('remove', admin_product_product_image_path(@product, product_image), method: :delete, confirm: "Are you sure ?")%>
                       </li>
                   <% end %>
                 </ul>
