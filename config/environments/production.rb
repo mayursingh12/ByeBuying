@@ -90,16 +90,30 @@ Rails.application.configure do
       }
   }
 
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     :user_name => 'AKIAJGXMXDHVJXCYEJHA',
+  #     :password => 'ArK8Q4JxT7Fopp9QyrxihJsdFamy9skF1BF1l/t9hrsK',
+  #     :domain => 'byebuying.com',
+  #     :address => 'email-smtp.us-east-1.amazonaws.com',
+  #     :port => 587,
+  #     :authentication => :plain,
+  #     :enable_starttls_auto => true
+  # }
+
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :user_name => 'AKIAJGXMXDHVJXCYEJHA',
-      :password => 'ArK8Q4JxT7Fopp9QyrxihJsdFamy9skF1BF1l/t9hrsK',
+      :user_name => 'AKIAJCW6NWZGWC4VAAUQ',
+      :password => 'Ajzcm+NmX4+ZLMVSuJcYfg5lVfZI81f6PbT/Nv6AaPo0',
       :domain => 'byebuying.com',
       :address => 'email-smtp.us-east-1.amazonaws.com',
       :port => 587,
       :authentication => :plain,
       :enable_starttls_auto => true
   }
+
+
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
                                           :email => {
