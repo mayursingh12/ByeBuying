@@ -22,7 +22,8 @@ class Customer::BaseController < ApplicationController
   # end
 
   def set_categories
-    @categories = Category.all.includes(:subcategories)
+    # @categories = Category.all.includes(:subcategories)
+    @categories = Category.where(is_verified: true).includes(:subcategories).where(subcategories: { is_verified: true } )
   end
 
   def authenticate_user_api
