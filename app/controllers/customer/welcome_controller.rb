@@ -4,7 +4,7 @@ class Customer::WelcomeController < Customer::BaseController
 
   before_filter :authenticate_no_user_admin, only: [:index]
 
-  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail, :wish_list]
+  before_action :set_customer, only: [:profile, :update_profile_image, :change_password_, :change_mobile, :sign_out_, :user_detail, :wish_list, :remove_wishlist]
 
   # before_action :set_header_categories
   before_action :set_categories
@@ -284,6 +284,17 @@ class Customer::WelcomeController < Customer::BaseController
     @products = Product.where(id: product_ids)
     @services = Service.where(id: service_ids)
 
+  end
+
+  def remove_wishlist
+    arr = []
+    current_user.wish_list.each do |f|
+      next if f == params[:wish_id]
+      arr << f
+    end
+    current_user.update_attribute(:wish_list, arr)
+    redirect_to '/customer/wish_list'
+    # render status: :ok, json: {masseges: ['successfully removed.']}
   end
 
   private
