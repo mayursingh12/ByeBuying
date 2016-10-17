@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015132356) do
+ActiveRecord::Schema.define(version: 20161017064626) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20161015132356) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",                        limit: 255
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.string   "icon_image_file_name",        limit: 255
     t.string   "icon_image_content_type",     limit: 255
     t.integer  "icon_image_file_size",        limit: 4
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20161015132356) do
     t.string   "interior_image_content_type", limit: 255
     t.integer  "interior_image_file_size",    limit: 4
     t.datetime "interior_image_updated_at"
+    t.boolean  "is_verified",                             default: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -231,6 +232,7 @@ ActiveRecord::Schema.define(version: 20161015132356) do
     t.string   "interior_image_content_type", limit: 255
     t.integer  "interior_image_file_size",    limit: 4
     t.datetime "interior_image_updated_at"
+    t.boolean  "is_verified",                             default: false
   end
 
   create_table "subscribers", force: :cascade do |t|
