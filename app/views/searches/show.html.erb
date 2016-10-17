@@ -50,6 +50,7 @@
                   <label>Subcategory</label>
                   <%= select_tag "subcategory_id", options_for_select(subcategory_for_collection, params[:subcategory_id]), prompt: "choose subcategory", class: 'form-control set-subcategory filter_subcategory' %>
                 </div>
+                <span class="reset-filter btn btn-primary save-full-btn" style="cursor: pointer">Reset</span>
                 <input type="submit" class="btn btn-primary save-full-btn">
               </form>
             </div>
@@ -173,13 +174,27 @@
         $('.custome-filter-block .set-rating').val("<%= params[:rating].present? ?  params[:rating] : 0 %>")
 
         var selected_category_id = $('.filter_category').val();
+        var selected_subcategory_id = $('.filter_subcategory').val();
+        var selected_state_id = $('.filter_state').val();
+        var selected_city_id = $('.filter_city').val();
+
 
         $.get("/get_subcategories/"+ selected_category_id +".json", function(data, status){
-            var appendString = '';
+            var appendString = '<option value="">Select Category</option>';
             for(var i=0; i < data.length;i++){
                 appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
             }
             $('.filter_subcategory').html(appendString);
+            $('.filter_subcategory').val(selected_subcategory_id);
+        });
+
+        $.get("/cities/collection_by_state/"+selected_state_id+".json", function(data, status){
+            var appendString = '<option value="">Select city</option>';
+            for(var i=0; i < data.length;i++){
+                appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+            }
+            $('.filter_city').html(appendString);
+            $('.filter_city').val(selected_city_id);
         });
 
         $('.custome-filter-block .set-category').change(function(){
@@ -194,6 +209,21 @@
                 $('.filter_subcategory').html(appendString);
             });
 
+        });
+
+        $(".custome-filter-block .set-state").change(function() {
+            var selected_state_id = this.value;
+            $.get("/cities/collection_by_state/"+selected_state_id+".json", function(data, status){
+                var appendString = '<option value="">Select city</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('.filter_city').html(appendString);
+            });
+        });
+
+        $('.reset-filter').click(function(){
+            window.location.href = location.pathname
         });
 
     });

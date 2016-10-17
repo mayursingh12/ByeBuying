@@ -42,6 +42,8 @@ class SearchesController < ApplicationController
     quantity = params[:quantity]
     category_id = params[:category_id]
     subcategory_id = params[:subcategory_id]
+    state_id = params[:state_id]
+    city_id = params[:city_id]
 
     min_price = 0 unless params[:min_price].present?
     max_price = @max_price unless params[:max_price].present?
@@ -50,7 +52,7 @@ class SearchesController < ApplicationController
 
     max_price = @max_price unless params[:max_price].present?
 
-    @results = SearchAlgorithm.new(params[:id], max_price, min_price, rating, quantity, category_id, subcategory_id).results.first
+    @results = SearchAlgorithm.new(params[:id], max_price, min_price, rating, quantity, category_id, subcategory_id, city_id, state_id).results.first
   end
 
   private
