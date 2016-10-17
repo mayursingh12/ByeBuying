@@ -137,6 +137,12 @@
                   ₹<%= @service.per_month_price %>/ <span class="pull-right">month</span>
               <% end %>
             </p>
+
+            <p class="product-page-price time-price">
+              <%if @service.per_hour_price < 1 and @service.per_day_price > 1 and @service.per_week_price > 1 and @service.per_month_price > 1 %>
+                  ₹ 0
+              <% end %>
+            </p>
             <!--<p class="product-page-price time-price">₹ <%#= @service.per_hour_price > 0 ?  "#{@service.per_hour_price}/Hour " : ( @service.per_day_price > 0 ?  "#{@service.per_day_price}/Day" : ( @service.per_week_price > 0 ? "#{@service.per_week_price}/Week" : ( @service.per_month_price > 0 ?  "#{@service.per_month_price}/Month" : 0 ))) %></p>-->
 
             <% if current_user.present? %>
