@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017064626) do
+ActiveRecord::Schema.define(version: 20161017165822) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20161017064626) do
     t.integer  "user_id",                 limit: 4
     t.float    "price_in_rupees",         limit: 24,    default: 0.0
     t.boolean  "negotiable",                            default: false
-    t.integer  "rating",                  limit: 4,     default: 1
+    t.integer  "rating",                  limit: 4,     default: 0
     t.boolean  "admin_verified",                        default: false
     t.float    "per_hour_price",          limit: 24,    default: 0.0
     t.float    "per_day_price",           limit: 24,    default: 0.0
@@ -204,7 +204,7 @@ ActiveRecord::Schema.define(version: 20161017064626) do
     t.datetime "updated_at",                                        null: false
     t.float    "price_in_rupees",     limit: 24,    default: 0.0
     t.boolean  "negotiable",                        default: false
-    t.integer  "rating",              limit: 4,     default: 1
+    t.integer  "rating",              limit: 4,     default: 0
     t.boolean  "admin_verified",                    default: false
     t.float    "per_hour_price",      limit: 24,    default: 0.0
     t.float    "per_day_price",       limit: 24,    default: 0.0
