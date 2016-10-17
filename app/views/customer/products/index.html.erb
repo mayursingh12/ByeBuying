@@ -1,11 +1,3 @@
-<script type="application/javascript">
-    $(document).ready(function(){
-        $('.sort-arrow').click(function(){
-            var click_id = this.getAttribute('dyn_click');
-            $('ul.product_'+ click_id).slideToggle();
-        });
-    });
-</script>
 <div class="customer-main-con">
   <div class="row">
     <div class="col-sm-12">
@@ -19,88 +11,127 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <!--<table class="table table-striped">-->
-        <!--<thead>-->
-        <!--<tr class="info">-->
-          <!--<th>Name</th>-->
-          <!--<th>Start at</th>-->
-          <!--<th>End at</th>-->
-          <!--<th>Action</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<%# @products.each do |product| %>-->
-            <!--<tr class="data">-->
-              <!--<td><%#= product.name %></td>-->
-              <!--<td><%#= product.start_at.strftime(time_format) %></td>-->
-              <!--<td><%#= product.end_at.strftime(time_format) %></td>-->
-              <!--<td>-->
-
-                <!--<%#= link_to customer_product_path(product) do %>-->
-                    <!--<i class="fa fa-eye"></i>-->
-                <!--<%# end %>-->
-                <!--<%#= link_to edit_customer_product_path(product) do %>-->
-                    <!--<i class="fa fa-edit"></i>-->
-                <!--<%# end %>-->
-                <!--<%#= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>-->
-                    <!--<i class="fa fa-trash fa-3"></i>-->
-                <!--<%#- end %>-->
-              <!--</td>-->
-            <!--</tr>-->
-        <!--<%#- end %>-->
-        <!--</tbody>-->
-      <!--</table>-->
       <div class="customer-main-show">
-        <%if @products.present? %>
-            <% @products.each_with_index do |product, index| %>
-                <div class="white-bg">
-                  <div class="col-md-2 col-sm-3 col-xs-12 text-center">
-                    <div class="add-image-con">
-                      <% if product.product_images.any? %>
-                          <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
-                      <% else %>
-                          <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="col-md-10 col-sm-9 col-xs-12">
-                    <h2 class="heading"><%= product.name.capitalize %></h2>
-                    <span>Status: <%= product.admin_verified ? 'Approved' : 'Pending' %></span>
-                    <h5 class="time-option"><%= product.start_at.strftime(time_format) %> - <%= product.end_at.strftime(time_format) %></h5>
-                    <p class="description"><%= product.description %></p>
-                    <div class="dropdown-main">
-                      <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                      <div class="clearfix"></div>
-                      <ul class="dropdown-option product_<%= index + 1 %>">
-                        <span class="arrow-top"></span>
-                        <li>
-                          <%= link_to customer_product_path(product) do %>
-                              <i class="fa fa-eye"></i> Show
-                          <%- end %>
-                        </li>
-                        <% unless product.is_enquired %>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#approved">Approved (<%=  @products.where(admin_verified: true).count %>)</a></li>
+          <li><a data-toggle="tab" href="#pending">Pending (<%=  @products.where(admin_verified: false).count %>)</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="approved" class="tab-pane fade in active">
+            <%if @products.where(admin_verified: true).present? %>
+                <% @products.where(admin_verified: true).each_with_index do |product, index| %>
+                    <div class="white-bg">
+                      <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                        <div class="add-image-con">
+                          <% if product.product_images.any? %>
+                              <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+                          <% else %>
+                              <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="col-md-10 col-sm-9 col-xs-12">
+                        <h2 class="heading"><%= product.name.capitalize %></h2>
+                        <span>Status: <%= product.admin_verified ? 'Approved' : 'Pending' %></span>
+                        <h5 class="time-option"><%= product.start_at.strftime(time_format) %> - <%= product.end_at.strftime(time_format) %></h5>
+                        <p class="description"><%= product.description %></p>
+                        <div class="dropdown-main">
+                          <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                          <div class="clearfix"></div>
+                          <ul class="dropdown-option product_<%= index + 1 %>">
+                            <span class="arrow-top"></span>
                             <li>
-                              <%= link_to edit_customer_product_path(product) do %>
-                                  <i class="fa fa-edit"></i> Edit
+                              <%= link_to customer_product_path(product) do %>
+                                  <i class="fa fa-eye"></i> Show
                               <%- end %>
                             </li>
-                        <%end%>
+                            <% unless product.is_enquired %>
+                                <li>
+                                  <%= link_to edit_customer_product_path(product) do %>
+                                      <i class="fa fa-edit"></i> Edit
+                                  <%- end %>
+                                </li>
+                            <%end%>
 
-                        <li class="no_border">
-                          <%= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                              <i class="fa fa-trash fa-3"></i> Delete
-                          <%- end %>
-                        </li>
-                      </ul>
+                            <li class="no_border">
+                              <%= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                                  <i class="fa fa-trash fa-3"></i> Delete
+                              <%- end %>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
                     </div>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-            <%- end %>
-        <% else %>
-            <h2 class="text-center">No Product Available</h2>
-        <% end %>
+                <%- end %>
+            <% else %>
+                <div class="gap"></div>
+                <h2 class="text-center">No Product Available</h2>
+            <% end %>
+          </div>
+          <div id="pending" class="tab-pane fade">
+            <%if @products.where(admin_verified: false).present? %>
+                <% @products.where(admin_verified: false).each_with_index do |product, index| %>
+                    <div class="white-bg">
+                      <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                        <div class="add-image-con">
+                          <% if product.product_images.any? %>
+                              <%= image_tag product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
+                          <% else %>
+                              <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="col-md-10 col-sm-9 col-xs-12">
+                        <h2 class="heading"><%= product.name.capitalize %></h2>
+                        <span>Status: <%= product.admin_verified ? 'Approved' : 'Pending' %></span>
+                        <h5 class="time-option"><%= product.start_at.strftime(time_format) %> - <%= product.end_at.strftime(time_format) %></h5>
+                        <p class="description"><%= product.description %></p>
+                        <div class="dropdown-main">
+                          <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                          <div class="clearfix"></div>
+                          <ul class="dropdown-option product_<%= index + 1 %>">
+                            <span class="arrow-top"></span>
+                            <li>
+                              <%= link_to customer_product_path(product) do %>
+                                  <i class="fa fa-eye"></i> Show
+                              <%- end %>
+                            </li>
+                            <% unless product.is_enquired %>
+                                <li>
+                                  <%= link_to edit_customer_product_path(product) do %>
+                                      <i class="fa fa-edit"></i> Edit
+                                  <%- end %>
+                                </li>
+                            <%end%>
+
+                            <li class="no_border">
+                              <%= link_to customer_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                                  <i class="fa fa-trash fa-3"></i> Delete
+                              <%- end %>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                <%- end %>
+            <% else %>
+                <div class="gap"></div>
+                <h2 class="text-center">No Product Available</h2>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<script type="application/javascript">
+    $(document).ready(function(){
+        $('.sort-arrow').click(function(){
+            var click_id = this.getAttribute('dyn_click');
+            $('ul.product_'+ click_id).slideToggle();
+        });
+    });
+</script>
