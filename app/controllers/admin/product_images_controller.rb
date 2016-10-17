@@ -21,10 +21,4 @@ class Admin::ProductImagesController < Admin::BaseController
     @product_image = ProductImage.find params[:id]
   end
 
-  # def product_image_params
-  #   params.require(:product_image).permit(
-  #       :image
-  #   )
-  # end
-
 end

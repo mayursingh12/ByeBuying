@@ -15,11 +15,13 @@
                 <% @service.service_images.each do |service_image| %>
                 <span class="img-con">
                   <%= image_tag service_image.image.url(ServiceImage::DEFAULT_SIZE), class: 'upload-img img-responsive' %>
-                  <% if service_image.id.present? %>
-                      <%= link_to customer_service_service_image_path(@service, service_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
-                          <i class="fa fa-times cross-icon"></i>
-                      <%- end %>
-                  <%- end %>
+
+                  <%= link_to('remove', admin_service_service_image_path(@service, service_image), method: :delete, data: { confirm: "Are you sure ?"} )%>
+                  <%# if service_image.id.present? %>
+                      <%#= link_to customer_service_service_image_path(@service, service_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                          <!--<i class="fa fa-times cross-icon"></i>-->
+                      <%#- end %>
+                  <%#- end %>
                 </span>
                 <%- end %>
             <% else %>
