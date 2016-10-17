@@ -41,6 +41,15 @@
                   <!--<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable-->
                   <%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>
                 </div>
+
+                <div class="form-group">
+                  <label>Category</label>
+                  <%= select_tag "category_id", options_for_select(category_for_collection, params[:category_id]), prompt: "choose category", class: 'form-control set-category filter_category' %>
+                </div>
+                <div class="form-group">
+                  <label>Subcategory</label>
+                  <%= select_tag "subcategory_id", options_for_select(subcategory_for_collection, params[:subcategory_id]), prompt: "choose subcategory", class: 'form-control set-subcategory filter_subcategory' %>
+                </div>
                 <input type="submit" class="btn btn-primary save-full-btn">
               </form>
             </div>
@@ -161,7 +170,32 @@
         $('.custome-filter-block .set-min-price').val("<%= params[:min_price].present? ?  params[:min_price] : @min_price %>")
         $('.custome-filter-block .set-max-price').val("<%= params[:max_price].present? ?  params[:max_price] : @max_price %>")
         $('.custome-filter-block .set-quantity').val("<%= params[:quantity].present? ?  params[:quantity] : 0 %>")
-        $('.custome-filter-block .set-rating').val("<%= params[:rating].present? ?  params[:rating] : 1 %>")
+        $('.custome-filter-block .set-rating').val("<%= params[:rating].present? ?  params[:rating] : 0 %>")
+
+        var selected_category_id = $('.filter_category').val();
+
+        $.get("/get_subcategories/"+ selected_category_id +".json", function(data, status){
+            var appendString = '';
+            for(var i=0; i < data.length;i++){
+                appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+            }
+            $('.filter_subcategory').html(appendString);
+        });
+
+        $('.custome-filter-block .set-category').change(function(){
+
+            var selected_category_id = this.value;
+
+            $.get("/get_subcategories/"+ selected_category_id +".json", function(data, status){
+                var appendString = '<option value="">Select Subcategory</option>';
+                for(var i=0; i < data.length;i++){
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
+                }
+                $('.filter_subcategory').html(appendString);
+            });
+
+        });
+
     });
 
 </script>
