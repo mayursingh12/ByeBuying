@@ -189,6 +189,9 @@
                             <div class="row">
                               <div class="col-md-12">
                                 <ul class="dropdown-menu-category-list">
+                                  <li style="color: red">
+                                   <h4><%= category.name %></h4>
+                                  </li>
                                   <% category.subcategories.each do |subcategory|%>
                                       <li>
                                         <a href="<%= subcategory_path(subcategory) %>"><%= subcategory.name %></a>
