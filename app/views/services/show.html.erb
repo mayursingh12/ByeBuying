@@ -139,7 +139,7 @@
             </p>
 
             <p class="product-page-price time-price">
-              <%if @service.per_hour_price < 1 and @service.per_day_price > 1 and @service.per_week_price > 1 and @service.per_month_price > 1 %>
+              <%if @service.per_hour_price < 1 and @service.per_day_price < 1 and @service.per_week_price < 1 and @service.per_month_price < 1 %>
                   ₹ 0
               <% end %>
             </p>
