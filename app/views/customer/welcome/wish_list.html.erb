@@ -42,7 +42,7 @@
           <div id="services" class="tab-pane fade">
             <%if @services.any? %>
                 <% @services.each do |service|%>
-                    <a class="target-0-<%=product.id%>" href="<%= service_path(service)%>">
+                    <a class="target-0-<%=service.id%>" href="<%= service_path(service)%>">
                       <div class="white-bg">
                         <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                           <div class="add-image-con">
