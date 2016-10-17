@@ -25,6 +25,11 @@
                           <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{service_image.image(:size_500x500)}',largeimage:'#{service_image.image(:original)}'}" %>>
                             <%= image_tag service_image.image(:size_500x500), class: 'img-responsive' %>
                           </a>
+                          <% if service_image.id.present? %>
+                              <%= link_to customer_service_service_image_path(@service, service_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                                  <i class="fa fa-times cross-icon"></i>
+                              <%- end %>
+                          <%- end %>
                         </li>
                     <% end %>
                   </ul>

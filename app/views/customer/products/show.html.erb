@@ -33,6 +33,12 @@
                           <a class="<%= index == 0 ? 'zoomThumbActive' : '' %>" href="javascript:void(0)" data-rel=<%="{gallery:'gal-1',smallimage:'#{product_image.image(:size_500x500)}',largeimage:'#{product_image.image(:original)}'}" %>>
                             <%= image_tag product_image.image(:size_500x500), class: 'img-responsive' %>
                           </a>
+                          <% if product_image.id.present? %>
+                              <%= link_to customer_product_product_image_path(@product, product_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                                  <i class="fa fa-times cross-icon"></i>
+                              <%- end %>
+                          <%- end %>
+
                         </li>
                     <% end %>
                   </ul>
