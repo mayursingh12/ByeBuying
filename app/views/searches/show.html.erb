@@ -1,5 +1,10 @@
 <div class="searches_main_con">
   <div class="container">
+    <div class="col-xs-12">
+      <div class="page-header-banner-inner">
+        <h1>Total Searches#<%= @results[:products].count + @results[:services].count + @results[:advertisements].count %></h1>
+      </div>
+    </div>
     <div class="col-md-3">
       <div class="custome-filter-block">
         <aside class="category-filters">
@@ -46,18 +51,18 @@
     </div>
     <div class="col-md-9">
       <% if @results[:products].any? %>
-          <h3>Product:</h3>
+          <h3 style="margin-top: 0">Product:</h3>
           <% @results[:products].each do |product| %>
               <div class="search_items">
-                <div class="col-md-1 col-sm-2 col-xs-12">
+                <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                   <% if product.product_images.any? %>
                       <%= image_tag product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
                   <% else %>
-                      <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
+                      <%= image_tag 'theme_img/500x500.png', class: 'img-responsive', alt: '' %>
                   <% end %>
 
                 </div>
-                <div class="col-md-11 col-sm-10 col-xs-12">
+                <div class="col-md-10 col-sm-9 col-xs-12">
                   <div class="row">
                     <div class="col-sm-8 col-xs-12">
                       <h5 class="product-name"><%= product.name %></h5>
@@ -82,14 +87,14 @@
           <h3>Service:</h3>
           <% @results[:services].each do |service| %>
               <div class="search_items">
-                <div class="col-md-1 col-sm-2 col-xs-12">
+                <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                   <% if service.service_images.any? %>
                       <%= image_tag service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
                   <% else %>
                       <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
                   <% end %>
                 </div>
-                <div class="col-md-11 col-sm-10 col-xs-12">
+                <div class="col-md-10 col-sm-9 col-xs-12">
                   <div class="row">
                     <div class="col-sm-8 col-xs-12">
                       <h5 class="product-name"><%= service.service_description %></h5>
@@ -117,14 +122,14 @@
           <h3>Advertisement:</h3>
           <% @results[:advertisements].each do |advertisement| %>
               <div class="search_items">
-                <div class="col-md-1 col-sm-2 col-xs-12">
+                <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                   <% if advertisement.advertisement_images.any? %>
                       <%= image_tag advertisement.advertisement_images.first.image.url(AdvertisementImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
                   <% else %>
                       <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
                   <% end %>
                 </div>
-                <div class="col-md-11 col-sm-10 col-xs-12">
+                <div class="col-md-10 col-sm-9 col-xs-12">
                   <div class="row">
                     <div class="col-sm-8 col-xs-12">
                       <h5 class="product-name"><%= advertisement.title %></h5>
