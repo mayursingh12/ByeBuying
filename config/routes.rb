@@ -24,9 +24,17 @@ Rails.application.routes.draw do
     post 'sign_in' => 'welcome#log_in', as:'sign_in'
     get 'dashboard' => 'welcome#dashboard'
 
-    resources :categories
+    resources :categories do
+      member do
+        put :admin_approve
+      end
+    end
 
-    resources :subcategories
+    resources :subcategories do
+      member do
+        put :admin_approve
+      end
+    end
 
     resources :states
 

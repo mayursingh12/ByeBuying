@@ -2,7 +2,7 @@ class Admin::SubcategoriesController < Admin::BaseController
 
   before_filter :authenticate_admin
 
-  before_action :set_subcategory, only: [:edit, :update]
+  before_action :set_subcategory, only: [:edit, :update, :admin_approve]
 
   def index
     @subcategories = Subcategory.paginate(:page => params[:page], :per_page => 20).all.order(:name)
@@ -37,6 +37,14 @@ class Admin::SubcategoriesController < Admin::BaseController
 
   def get_subcategories_for_category
       @subcategories = Subcategory.where(category_id: params[:id])
+  end
+
+  def admin_approve
+    if @subcategory.update_attribute(:is_verified, params[:is_verified])
+      redirect_to action: :index
+    else
+      redirect_to action: :index
+    end
   end
 
   private
