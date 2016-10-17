@@ -41,6 +41,15 @@
                   <!--<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable-->
                   <%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>
                 </div>
+                <div class="form-group">
+                  <label>State</label>
+                  <%= select_tag "state_id", options_for_select(state_for_collection, params[:state_id]), prompt: "choose state", class: 'form-control set-state filter_state' %>
+                </div>
+
+                <div class="form-group">
+                  <label>City</label>
+                  <%= select_tag "city_id", options_for_select(city_for_collection, params[:city_id]), prompt: "choose city", class: 'form-control set-city filter_city' %>
+                </div>
 
                 <div class="form-group">
                   <label>Category</label>
