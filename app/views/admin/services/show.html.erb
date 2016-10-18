@@ -97,6 +97,7 @@
         </div>
         <div class="col-md-4">
           <%= form_tag update_rating_admin_service_path(@service), method: :put do %>
+              <span>Rating</span>
               <%= select_tag :rating, options_for_select([1,2,3,4,5],  @service.rating), class: 'form-control'%>
               <%= submit_tag 'Save', class: 'btn btn-primary' %>
           <% end %>
