@@ -37,6 +37,8 @@
               <% if advertisement.admin_verified? %>
                   <span class="text-success">Verified by admin</span>
                   <%= link_to( 'Un-verify' , admin_approve_admin_advertisement_path(advertisement, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
+              <%elsif !advertisement.advertisement_images.any? %>
+                <span style="color:red">minimum one image need</span>
               <%- else %>
                   <span class="text-danger">Not verified</span>
                   <%= link_to( 'Verify' , admin_approve_admin_advertisement_path(advertisement, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>

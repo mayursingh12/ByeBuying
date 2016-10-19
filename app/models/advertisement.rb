@@ -7,19 +7,19 @@ class Advertisement < ActiveRecord::Base
 
   has_many :advertisement_images, dependent: :destroy
 
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :start_at, presence: true
-  validates :end_at, presence: true
-  validates :per_hour_cost, presence: true
+  # validates :title, presence: true
+  # validates :description, presence: true
+  # validates :start_at, presence: true
+  # validates :end_at, presence: true
+  # validates :per_hour_cost, presence: true
   validates :category_id, presence: true
   validates :subcategory_id, presence: true
-  validates :user_id, presence: true
-
-  validate def end_date_after_start_date
-    if self.start_at >= self.end_at
-      self.errors.add(:end_at, 'must come after Start time')
-    end
-  end
+  # validates :user_id, presence: true
+  #
+  # validate def end_date_after_start_date
+  #   if self.start_at >= self.end_at
+  #     self.errors.add(:end_at, 'must come after Start time')
+  #   end
+  # end
 
 end

@@ -12,6 +12,10 @@
     <div class="tab-content">
       <div class="tab-pane fade in active" id="tab-1">
         <div class="row" data-gutter="15">
+          <% unless @products.present? %>
+              <div class="gap"></div>
+              <h2 class="text-center">No Product Available</h2>
+          <%end%>
           <% @products.each do |product| %>
               <%= render partial: 'products/product', locals: { product: product } %>
           <% end %>
@@ -22,6 +26,10 @@
           <% @services.each do |service| %>
               <%= render partial: 'services/service', locals: { service: service } %>
           <% end %>
+          <% unless @services.present? %>
+              <div class="gap"></div>
+              <h2 class="text-center">No Service Available</h2>
+          <%end%>
         </div>
       </div>
     </div>
