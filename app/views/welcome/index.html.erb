@@ -17,7 +17,7 @@
 <div class="owl-carousel owl-loaded owl-nav-dots-inner" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
   <% @top_advertisements.each do |advertisement|%>
       <% next unless advertisement.advertisement_images.any? %>
-      <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+      <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#'%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
         <div class="owl-item">
           <div class="slider-item" style="background-image: url(<%= "#{advertisement.advertisement_images.first.image.url(:original)}" %>)">
             <div class="container">
@@ -225,7 +225,7 @@
         <div class="advertisement_image">
           <% @mid_advertisements.each_with_index do |advertisement, index| %>
               <% next if index > 1 %>
-              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#' %>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
                 <div class="col-sm-6 col-xs-12">
                   <%#= advertisement.advertisement_images %>
                   <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
@@ -236,7 +236,7 @@
         </div>
         <div class="advertisement_image">
           <% @bottom_advertisements.each do |advertisement| %>
-              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#' %>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
                 <div class="col-sm-4 col-xs-12">
                   <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
                 </div>
@@ -247,7 +247,7 @@
         <div class="advertisement_image">
           <% @mid_advertisements.each_with_index do |advertisement, index| %>
               <% next if index < 2 %>
-              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#' %>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
                 <div class="col-sm-6 col-xs-12">
                   <%#= advertisement.advertisement_images %>
                   <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>

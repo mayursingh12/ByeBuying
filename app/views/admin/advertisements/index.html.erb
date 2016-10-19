@@ -30,8 +30,8 @@
       <% @advertisements.each do |advertisement| %>
           <tr>
             <td><%= advertisement.title %></td>
-            <td><%= advertisement.subcategory.category.name %></td>
-            <td><%= advertisement.subcategory.name %></td>
+            <td><%= advertisement.subcategory.category.name if advertisement.subcategory.present?%></td>
+            <td><%= advertisement.subcategory.name if advertisement.subcategory.present? %></td>
             <td><%= advertisement.user.email %></td>
             <td>
               <% if advertisement.admin_verified? %>

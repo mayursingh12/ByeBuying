@@ -12,8 +12,8 @@ class Advertisement < ActiveRecord::Base
   # validates :start_at, presence: true
   # validates :end_at, presence: true
   # validates :per_hour_cost, presence: true
-  validates :category_id, presence: true
-  validates :subcategory_id, presence: true
+  # validates :category_id, presence: true
+  # validates :subcategory_id, presence: true
   # validates :user_id, presence: true
   #
   # validate def end_date_after_start_date

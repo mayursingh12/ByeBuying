@@ -7,6 +7,8 @@
     <% if @advertisement.admin_verified? %>
         <span class="text-success">Verified by admin</span>
         <%= link_to( 'Un-verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: false), method: :put, class: 'btn btn-danger') %>
+    <%elsif !@advertisement.advertisement_images.any? %>
+        <span style="color:red">Minimum one image needed</span>
     <%- else %>
         <span class="text-danger">Not verified</span>
         <%= link_to( 'Verify' , admin_approve_admin_advertisement_path(@advertisement, admin_verified: true), method: :put, class: 'btn btn-success') %>
@@ -18,8 +20,8 @@
       <dt>Start at</dt><dd><%= @advertisement.start_at.strftime(time_format) %></dd>
       <dt>End at</dt><dd><%= @advertisement.end_at.strftime(time_format) %></dd>
       <dt>Per hour cost</dt><dd><%= @advertisement.per_hour_cost %></dd>
-      <dt>Category</dt><dd><%= @advertisement.subcategory.category.name %></dd>
-      <dt>Subcategory</dt><dd><%= @advertisement.subcategory.name %></dd>
+      <dt>Category</dt><dd><%= @advertisement.subcategory.category.name  if @advertisement.subcategory.present?%></dd>
+      <dt>Subcategory</dt><dd><%= @advertisement.subcategory.name if @advertisement.subcategory.present?%></dd>
     </dl>
   </div>
   <div class="col-sm-3">
