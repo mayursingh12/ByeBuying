@@ -37,9 +37,9 @@
                         <h5 class="time-option"><%= service.start_at.strftime(time_format) %> - <%= service.end_at.strftime(time_format) %></h5>
                         <p class="description"><%= service.service_description %></p>
                         <div class="dropdown-main">
-                          <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                          <span class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                           <div class="clearfix"></div>
-                          <ul class="dropdown-option product_<%= index + 1 %>">
+                          <ul class="dropdown-option">
                             <span class="arrow-top"></span>
                             <li>
                               <%= link_to customer_service_path(service) do %>
@@ -88,9 +88,9 @@
                         <h5 class="time-option"><%= service.start_at.strftime(time_format) %> - <%= service.end_at.strftime(time_format) %></h5>
                         <p class="description"><%= service.service_description %></p>
                         <div class="dropdown-main">
-                          <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                          <span class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                           <div class="clearfix"></div>
-                          <ul class="dropdown-option product_<%= index + 1 %>">
+                          <ul class="dropdown-option">
                             <span class="arrow-top"></span>
                             <li>
                               <%= link_to customer_service_path(service) do %>

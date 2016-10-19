@@ -311,7 +311,7 @@
               <h4>Youtube link:</h4>
               <p>
                 <% if @service.youtube_link.present? %>
-                    <%= @service.youtube_link %>
+                    <a href="<%= @service.youtube_link %>" target="_blank"><%= @service.youtube_link %></a>
                 <% else %>
                     NA
                 <% end %>

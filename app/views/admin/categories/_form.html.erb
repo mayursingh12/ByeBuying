@@ -1,24 +1,23 @@
-<%= simple_form_for [:admin, @category] do |f| %>
-    <div class="row">
-      <div class="col-sm-6">
+<div class="row">
+  <%= simple_form_for [:admin, @category] do |f| %>
+      <div class="col-sm-4">
         <%= f.error_notification %>
         <%= f.input :name %>
         <% if @category.icon_image.present? %>
-            <%= image_tag @category.icon_image.url(:original) %>
+            <%= image_tag @category.icon_image.url(:original), class: 'img-responsive' %>
         <%- end %>
         <%= f.input :icon_image %>
         <% if @category.detail_image.present? %>
-            <%= image_tag @category.detail_image.url(:original) %>
+            <%= image_tag @category.detail_image.url(:original), class: 'img-responsive' %>
         <%- end %>
         <%= f.input :detail_image %>
 
         <% if @category.interior_image.present? %>
-            <%= image_tag @category.interior_image.url(:original) %>
+            <%= image_tag @category.interior_image.url(:original), class: 'img-responsive' %>
         <%- end %>
         <%= f.input :interior_image %>
 
         <%= f.submit 'Save', class: 'btn btn-primary ' %>
       </div>
-      <div class="col-sm-6"></div>
-    </div>
-<% end %>
+  <% end %>
+</div>

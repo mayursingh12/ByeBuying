@@ -19,7 +19,10 @@ class WelcomeController < ApplicationController
     #   @advertisements = Advertisement.all.where(admin_verified: true)
     # end
 
-    @advertisements = Advertisement.where(admin_verified: true).includes(:advertisement_images).last(5)
+    # @advertisements = Advertisement.where(admin_verified: true).includes(:advertisement_images).last(5)
+    @top_advertisements = Advertisement.where(admin_verified: true, position: 1).includes(:advertisement_images).last(5)
+    @mid_advertisements = Advertisement.where(admin_verified: true, position: 2).includes(:advertisement_images).last(4)
+    @bottom_advertisements = Advertisement.where(admin_verified: true, position: 3).includes(:advertisement_images).last(3)
   end
 
   def categories

@@ -105,7 +105,15 @@
               <!--</tr>-->
 
               <tr>
-                <td>Youtube: <%= @service.youtube_link.present? ? @service.youtube_link : 'NA' %></td>
+                <td>Youtube:
+                  <%if @service.youtube_link.present? %>
+                      <a href="<%= @service.youtube_link %>" target="_blank">
+                        <%= @service.youtube_link %>
+                      </a>
+                  <% else %>
+                      NA
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <td>Other: <%= @service.other.present? ? @service.other : 'NA' %></td>

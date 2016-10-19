@@ -15,7 +15,7 @@
 <!--slider start-->
 
 <div class="owl-carousel owl-loaded owl-nav-dots-inner" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
-  <% @advertisements.each do |advertisement|%>
+  <% @top_advertisements.each do |advertisement|%>
       <% next unless advertisement.advertisement_images.any? %>
       <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
         <div class="owl-item">
@@ -23,8 +23,8 @@
             <div class="container">
               <div class="slider-item-inner">
                 <div class="slider-item-caption-left">
-                  <h4 class="slider-item-caption-title" style="color:white"><%= advertisement.title %></h4>
-                  <p class="slider-item-caption-desc" style="color:white"><%= advertisement.description %></p>
+                  <!--<h4 class="slider-item-caption-title" style="color:white"><%#= advertisement.title %></h4>-->
+                  <!--<p class="slider-item-caption-desc" style="color:white"><%#= advertisement.description %></p>-->
                   <!--<a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>-->
                 </div>
                 <%#= image_tag 'slider_img/slider-img1.png', class: 'slider-item-img-right', style:'top: 60%; width: 56%;' %>
@@ -185,40 +185,79 @@
           <div class="gap"></div>
       <% end %>
 
-      <% if @advertisements.any? %>
+      <%# if @advertisements.any? %>
           <!--Advertisements Start-->
-          <h3 class="widget-title">Advertisements</h3>
-          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-            <% @advertisements.each do |advertisement| %>
-                <div class="owl-item">
-                  <div class="product  owl-item-slide">
-                    <ul class="product-labels"></ul>
-                    <div class="product-img-wrap">
-                      <% if advertisement.advertisement_images.any? %>
-                          <%= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>
-                      <% else %>
-                          <%= image_tag "theme_img/500x500.png", class: 'product-img' %>
-                      <% end %>
-                    </div>
-                    <a class="product-link" href="#"></a>
-                    <div class="product-caption">
-                      <h5 class="product-caption-title">
-                        <%= advertisement.title %>
-                      </h5>
-                      <div class="product-caption-price">
-                       <span class="product-caption-price-new">
-                        ₹ <%= advertisement.per_hour_cost %>
-                       </span>
+          <!--<h3 class="widget-title">Advertisements</h3>-->
+          <!--<div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>-->
+            <!--<%# @advertisements.each do |advertisement| %>-->
+                <!--<div class="owl-item">-->
+                  <!--<div class="product  owl-item-slide">-->
+                    <!--<ul class="product-labels"></ul>-->
+                    <!--<div class="product-img-wrap">-->
+                      <!--<%# if advertisement.advertisement_images.any? %>-->
+                          <!--<%#= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>-->
+                      <!--<%# else %>-->
+                          <!--<%#= image_tag "theme_img/500x500.png", class: 'product-img' %>-->
+                      <!--<%# end %>-->
+                    <!--</div>-->
+                    <!--<a class="product-link" href="#"></a>-->
+                    <!--<div class="product-caption">-->
+                      <!--<h5 class="product-caption-title">-->
+                        <!--<%#= advertisement.title %>-->
+                      <!--</h5>-->
+                      <!--<div class="product-caption-price">-->
+                       <!--<span class="product-caption-price-new">-->
+                        <!--₹ -->
+                        <%#= advertisement.per_hour_cost %>
+                       <!--</span>-->
 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            <% end %>
-          </div>
-          <div class="gap"></div>
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+            <%# end %>
+          <!--</div>-->
+          <!--<div class="gap"></div>-->
           <!--Advertisements finish-->
-      <% end %>
+      <%# end %>
+      <h3 class="widget-title">Advertisement</h3>
+      <div class="row" data-gutter="15">
+        <div class="advertisement_image">
+          <% @mid_advertisements.each_with_index do |advertisement, index| %>
+              <% next if index > 1 %>
+              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+                <div class="col-sm-6 col-xs-12">
+                  <%#= advertisement.advertisement_images %>
+                  <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
+                </div>
+              </a>
+          <% end %>
+          <div class="clearfix"></div>
+        </div>
+        <div class="advertisement_image">
+          <% @bottom_advertisements.each do |advertisement| %>
+              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+                <div class="col-sm-4 col-xs-12">
+                  <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
+                </div>
+              </a>
+          <% end %>
+          <div class="clearfix"></div>
+        </div>
+        <div class="advertisement_image">
+          <% @mid_advertisements.each_with_index do |advertisement, index| %>
+              <% next if index < 2 %>
+              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : subcategory_path(advertisement.subcategory)%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+                <div class="col-sm-6 col-xs-12">
+                  <%#= advertisement.advertisement_images %>
+                  <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
+                </div>
+              </a>
+          <% end %>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="gap"></div>
 
       <% if @services.any? %>
           <h3 class="widget-title">Services</h3>

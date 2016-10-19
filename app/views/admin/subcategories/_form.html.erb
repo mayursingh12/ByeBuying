@@ -8,7 +8,8 @@
         <%= f.input :female, label: 'For female', as: :boolean  %>
         <%= f.input :subcategory_type, collection: ['Product', 'Service', 'Membership', 'Commercial Space'], prompt: 'Select type'%>
         <% if @subcategory.interior_image.present? %>
-            <%= image_tag @subcategory.interior_image.url(:original) %>
+            <lable style="color: #c20000">image size 650x433, PNG Format.</lable>
+            <%= image_tag @subcategory.interior_image.url(:original), class: 'img-responsive' %>
         <%- end %>
         <%= f.input :interior_image %>
         <%= f.submit 'Save', class: 'btn btn-primary' %>

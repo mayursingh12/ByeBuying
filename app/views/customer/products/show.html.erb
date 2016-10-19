@@ -211,7 +211,7 @@
             </div>
           </div>
           <div class="col-xs-12">
-            <h2>Cost</h2>
+            <h2>COST</h2>
           </div>
           <div class="col-sm-12">
             <div class="product-detail">
@@ -300,7 +300,7 @@
             </div>
           </div>
           <div class="col-xs-12">
-            <h2>Others</h2>
+            <h2>OTHER</h2>
           </div>
           <div class="col-xs-12">
             <div class="product-detail">
@@ -343,7 +343,7 @@
               <h4>Youtube link:</h4>
               <p>
                 <% if @product.youtube_link.present? %>
-                    <%= @product.youtube_link %>
+                    <a href="<%= @product.youtube_link %>" target="_blank"><%= @product.youtube_link %></a>
                 <% else %>
                     NA
                 <% end %>
