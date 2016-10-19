@@ -185,40 +185,73 @@
           <div class="gap"></div>
       <% end %>
 
-      <% if @advertisements.any? %>
+      <%# if @advertisements.any? %>
           <!--Advertisements Start-->
-          <h3 class="widget-title">Advertisements</h3>
-          <div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>
-            <% @advertisements.each do |advertisement| %>
-                <div class="owl-item">
-                  <div class="product  owl-item-slide">
-                    <ul class="product-labels"></ul>
-                    <div class="product-img-wrap">
-                      <% if advertisement.advertisement_images.any? %>
-                          <%= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>
-                      <% else %>
-                          <%= image_tag "theme_img/500x500.png", class: 'product-img' %>
-                      <% end %>
-                    </div>
-                    <a class="product-link" href="#"></a>
-                    <div class="product-caption">
-                      <h5 class="product-caption-title">
-                        <%= advertisement.title %>
-                      </h5>
-                      <div class="product-caption-price">
-                       <span class="product-caption-price-new">
-                        ₹ <%= advertisement.per_hour_cost %>
-                       </span>
+          <!--<h3 class="widget-title">Advertisements</h3>-->
+          <!--<div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>-->
+            <!--<%# @advertisements.each do |advertisement| %>-->
+                <!--<div class="owl-item">-->
+                  <!--<div class="product  owl-item-slide">-->
+                    <!--<ul class="product-labels"></ul>-->
+                    <!--<div class="product-img-wrap">-->
+                      <!--<%# if advertisement.advertisement_images.any? %>-->
+                          <!--<%#= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>-->
+                      <!--<%# else %>-->
+                          <!--<%#= image_tag "theme_img/500x500.png", class: 'product-img' %>-->
+                      <!--<%# end %>-->
+                    <!--</div>-->
+                    <!--<a class="product-link" href="#"></a>-->
+                    <!--<div class="product-caption">-->
+                      <!--<h5 class="product-caption-title">-->
+                        <!--<%#= advertisement.title %>-->
+                      <!--</h5>-->
+                      <!--<div class="product-caption-price">-->
+                       <!--<span class="product-caption-price-new">-->
+                        <!--₹ -->
+                        <%#= advertisement.per_hour_cost %>
+                       <!--</span>-->
 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            <% end %>
-          </div>
-          <div class="gap"></div>
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+            <%# end %>
+          <!--</div>-->
+          <!--<div class="gap"></div>-->
           <!--Advertisements finish-->
-      <% end %>
+      <%# end %>
+
+      <div class="row" data-gutter="15">
+        <% @advertisements.each do |advertisement| %>
+            <div class="col-md-6 col-xs-12">
+              <%= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>
+            </div>
+        <% end %>
+        <div class="col-md-6">
+          <div class="banner" style="background-color:#9C7B60;">
+            <a class="banner-link" href="#"></a>
+            <div class="banner-caption-left">
+              <h5 class="banner-title">New Furniture for new Home</h5>
+              <p class="banner-desc">New Thinking. New Furniture.</p>
+              <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
+              </p>
+            </div>
+            <img class="banner-img" src="img/test_banner/5-i.png" alt="Image Alternative text" title="Image Title" style="bottom: -8px; right: 11px; width: 238px;" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="banner" style="background-color:#DF643B;">
+            <a class="banner-link" href="#"></a>
+            <div class="banner-caption-left">
+              <h5 class="banner-title">Let's Have a Ride!</h5>
+              <p class="banner-desc">30% Off for Best Selling Bicycles</p>
+              <p class="banner-shop-now">Shop Now <i class="fa fa-caret-right"></i>
+              </p>
+            </div>
+            <img class="banner-img" src="img/test_banner/6-i.png" alt="Image Alternative text" title="Image Title" style="bottom: 0px; right: -20px; width: 326px;" />
+          </div>
+        </div>
+      </div>
 
       <% if @services.any? %>
           <h3 class="widget-title">Services</h3>
