@@ -1,21 +1,34 @@
-Hi <%= @user.name %>,
-
-<br><br>
-This is an auto reminder for the enquiry you received on “Ad <%= @enquiry.id %> & <%= @enquiry.description %>” <%= @enquiry.start_at.strftime(time_format) %>
-
-<br><br>
-
-You still haven’t responded to the request. Please login into your account on <a href="http://www.byebuying.com/">www.ByeBuying.com</a> and provide your approval.
-<br>
-<br>
-Please note the enquiry will remain active for 24 Hours from the time this email is generated.
-<br>
-<br>
-In case you cannot see this email properly, please login and visit the enquiry section in your account section.
-<br>
-<br>
-Regards,
-<br>
-ByeBuying Team
-<br>
-<br>
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1" style="">Hi <%= @user.name %>,</p>
+            <br>
+            <p>
+              This is an auto reminder for the enquiry you received on “Ad <%= @enquiry.id %> & <%= @enquiry.description %>” <%= @enquiry.start_at.strftime(time_format) %>
+            </p>
+            <br>
+            <p>
+              You still haven’t responded to the request. Please login into your account on <a href="http://www.byebuying.com/">www.ByeBuying.com</a> and provide your approval.
+            </p>
+            <br>
+            <p>
+              Please note the enquiry will remain active for 24 Hours from the time this email is generated.
+            </p>
+            <br>
+            <p>
+              In case you cannot see this email properly, please login and visit the enquiry section in your account section.
+            </p>
+            <br>
+            <p>
+              Regards,<br>
+              ByeBuyingTeam
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

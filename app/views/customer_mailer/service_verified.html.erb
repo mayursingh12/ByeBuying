@@ -1,17 +1,32 @@
-Hi <%= @user.name %>,
-<br>
-<br>
-Congratulations!!!
-
-<br>
-<br>
-Your service <%= @service.service_description %> has been published on <a href="http://www.byebuying.com/">www.ByeBuying.com</a> for the rent.  Please
-<a href="http://byebuying.com/customer/services/<%=@service.id%>">click here</a> to view the Ad details. You can make changes or delete the Ad by login into your account on <a href="http://www.byebuying.com/">www.ByeBuying.com</a>
-<br>
-<br>
-In case you have not posted this Ad or this Ad has been posted by mistake, please login into your account and edit/delete the Ad or you can also write to us at info@byebuying.com.
-<br>
-<br>
-Regards,
-<br>
-ByeBuying Team
+<table class="outer" align="center">
+  <tr>
+    <td class="one-column">
+      <table width="100%">
+        <tr>
+          <td class="inner contents">
+            <p class="h1" style="">Hi <%= @user.name %>,</p>
+            <br>
+            <p>
+              Congratulations!!!
+            </p>
+            <br>
+            <p>
+              Your service <%= @service.service_description %> has been published on <a href="http://www.byebuying.com/">www.ByeBuying.com</a> for the rent.  Please
+              <a href="http://byebuying.com/customer/services/<%=@service.id%>">click here</a> to view the Ad details. You can make changes or delete the Ad by login into your account on <a href="http://www.byebuying.com/">www.ByeBuying.com</a>
+            </p>
+            <br>
+            <p>
+              In case you have not posted this Ad or this Ad has been posted by mistake, please login into your account and edit/delete the Ad or you can also write to us at
+              <a href="mailto:info@byebuying.com.">info@byebuying.com.</a>
+            </p>
+            <br>
+            <p>
+              Regards,<br>
+              ByeBuyingTeam
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
