@@ -9,6 +9,7 @@ class SubscribersController < ApplicationController
                                  email: params[:email],
                                  message: params[:message])
     if @subscriber.save
+      AdminMailer.contact_us(@subscriber).deliver_later
       flash[:success] = 'We have recieved your query, we will contact you soon.'
       redirect_to contact_us_path
     else

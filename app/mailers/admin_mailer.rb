@@ -7,4 +7,12 @@ class AdminMailer < ApplicationMailer
     )
   end
 
+  def contact_us(subscriber)
+    @subscriber = subscriber
+    mail(
+        to: email,
+        subject: 'contact us enquiry'
+    )
+  end
+
 end
