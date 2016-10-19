@@ -167,7 +167,15 @@
                 <td>Cost of replacement: <%= @product.cost_of_replacement.present? ? @product.cost_of_replacement : 'NA' %></td>
               </tr>
               <tr>
-                <td>Youtube: <%= @product.youtube_link.present? ? @product.youtube_link : 'NA' %></td>
+                <td>Youtube:
+                  <%if @product.youtube_link.present? %>
+                      <a href="<%= @product.youtube_link %>" target="_blank">
+                        <%= @product.youtube_link %>
+                      </a>
+                  <% else %>
+                    NA
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <td>Other: <%= @product.other.present? ? @product.other : 'NA' %></td>
