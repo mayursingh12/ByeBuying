@@ -441,7 +441,12 @@
     .rupee-icon{
       position: absolute;
       left: 10px;
-      top: 35px;
+      bottom: 10px;
+    }
+    .rupee-icon-scnd{
+      position: absolute;
+      right: 75px;
+      bottom: 10px;
     }
     .form-control{
       padding-left: 20px;

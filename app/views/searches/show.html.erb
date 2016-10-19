@@ -19,15 +19,20 @@
             <div class="filter_main_form">
               <form action="/searches/<%=params[:id]%>">
                 <div class="form-group">
-                  <label>Minimum</label>
+                  <!--<label>Minimum</label>-->
+                  <div class="clearfix"></div>
                   <i class="fa fa-inr rupee-icon"></i>
-                  <input type="number" name="min_price" class="form-control set-min-price">
+                  <input type="number" name="min_price" class="form-control set-min-price" style="width: 45%; float: left">
+                  <span style="font-size: 14px; margin-left: 5px; margin-top: 6px; display: inline-block;">to</span>
+                  <i class="fa fa-inr rupee-icon-scnd"></i>
+                  <input type="number" name="max_price" class="form-control set-max-price" style="width: 45%; float: right">
+                  <div class="clearfix"></div>
                 </div>
-                <div class="form-group">
-                  <label>Maximum</label>
-                  <i class="fa fa-inr rupee-icon"></i>
-                  <input type="number" name="max_price" class="form-control set-max-price">
-                </div>
+                <!--<div class="form-group">-->
+                  <!--<label>Maximum</label>-->
+                  <!--<i class="fa fa-inr rupee-icon"></i>-->
+                  <!--<input type="number" name="max_price" class="form-control set-max-price">-->
+                <!--</div>-->
                 <div class="form-group">
                   <label>Minimum Rating</label>
                   <!--<i class="fa fa-inr rupee-icon"></i>-->
