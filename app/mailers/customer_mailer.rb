@@ -181,4 +181,12 @@ class CustomerMailer < ApplicationMailer
     )
   end
 
+  def contact_us(subscriber)
+    @subscriber = subscriber
+    mail(
+        to: @subscriber.email,
+        subject: "Contact us"
+    )
+  end
+
 end
