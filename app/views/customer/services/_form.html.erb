@@ -1,44 +1,44 @@
 <%= simple_form_for [:customer, @service] do |f| %>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category', label: 'Service Category ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Service Category'}, input_html: {class: 'full-select-field'} %>
+        <%= f.input :category_id, collection: service_category_collertion, prompt: 'Select category', label: 'Service Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
       </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Service Subcategory ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Service Subcategory'}, input_html: {class: 'full-select-field'} %>
+        <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select subcategory', label: 'Service Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
       </div>
     </div>
     <div class="col-xs-12 for_other">
       <div class="field-con">
-        <%= f.input :nature_of_service, label: 'Nature of Services ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Nature of Services'}, input_html: {class: 'text-field'} %>
+        <%= f.input :nature_of_service, label: 'Nature of Services' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
       </div>
     </div>
     <div class="col-xs-12 membership_blog">
       <div class="field-con">
-        <%= f.input :club_name, label: 'Service Club Name ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Service Club Name'}, input_html: {class: 'text-field'} %>
+        <%= f.input :club_name, label: 'Service Club Name ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Name of club/entity for which membership has been taken.'}, input_html: {class: 'text-field'} %>
       </div>
       <div class="field-con">
-        <%= f.input :membership_plan, label: 'Service Membership Plan ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Service Membership Plan'}, input_html: {class: 'text-field'} %>
+        <%= f.input :membership_plan, label: '' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
       </div>
       <div class="field-con">
-        <%= f.input :start_at, label: 'Start at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start at'}, input_html: {class: 'select-field'} %>
+        <%= f.input :start_at, label: 'Start at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Select the period for which the remaining membership will be available.'}, input_html: {class: 'select-field'} %>
       </div>
       <div class="field-con">
-        <%= f.input :end_at, label: 'End at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'End at'}, input_html: {class: 'select-field'} %>
+        <%= f.input :end_at, label: 'End at ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Select the period for which the remaining membership will be available.'}, input_html: {class: 'select-field'} %>
       </div>
     </div>
     <div class="col-xs-12 commercial_space_blog">
       <div class="field-con">
-        <%= f.input :area_in_meters, label: 'Area in Meters ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Area in Meters'}, input_html: {class: 'text-field'} %>
+        <%= f.input :area_in_meters, label: 'Area in Meters' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
       </div>
       <div class="field-con">
-        <%= f.input :amenities_available, label: 'Amenities Available ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Amenities Available'}, input_html: {class: 'text-discription'} %>
+        <%= f.input :amenities_available, label: 'Amenities Available ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Like water/electricity/chairs/tables/parking etc.'}, input_html: {class: 'text-discription'} %>
       </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :service_description, label: 'Service Description ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Service Description'}, input_html: {class: 'text-discription'} %>
+        <%= f.input :service_description, label: 'Service Description ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Short description of services provided by you.'}, input_html: {class: 'text-discription'} %>
       </div>
     </div>
     <div class="col-xs-12">
@@ -53,17 +53,17 @@
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state', label: 'State ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'State'}, input_html: {class: 'full-select-field'} %>
+        <%= f.input :state_id, collection: state_for_collection, prompt: 'Select state', label: 'State' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
       </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city', label: 'City  ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'City'}, input_html: {class: 'full-select-field'} %>
+        <%= f.input :city_id, collection: city_for_collection, prompt: 'Select city', label: 'City  ⓘ' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
       </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :location, label: 'Location ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Location'}, input_html: {class: 'text-discription'} %>
+        <%= f.input :location, label: 'Location ⓘ' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
       </div>
     </div>
     <!--<div class="col-xs-12">-->
@@ -78,22 +78,22 @@
     <!--</div>-->
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :per_hour_price, label: 'Rent Per Hour ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Hour'}, input_html: {class: 'text-field'} %>
+        <%= f.input :per_hour_price, label: 'Rent Per Hour' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
       </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :per_day_price, label: 'Rent Per Day ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Day'}, input_html: {class: 'text-field'} %>
+        <%= f.input :per_day_price, label: 'Rent Per Day' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
       </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :per_week_price, label: 'Rent Per Week ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Week'}, input_html: {class: 'text-field'} %>
+        <%= f.input :per_week_price, label: 'Rent Per Week' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
       </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :per_month_price, label: 'Rent Per Month ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Rent Per Month'}, input_html: {class: 'text-field'} %>
+        <%= f.input :per_month_price, label: 'Rent Per Month' ,label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :other, label: 'Other ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Other'}, input_html: {class: 'text-discription'} %>
+        <%= f.input :other, label: 'Other', label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
       </div>
     </div>
     <div class="clearfix"></div>
