@@ -84,6 +84,7 @@ Rails.application.routes.draw do
 
     get '/' => 'welcome#index'
     get 'user_detail' => 'welcome#user_detail'
+    get 'user_detail' => 'welcome#user_detail'
     post 'sign_in' => 'welcome#log_in', as:'sign_in'
     get 'step_one' => 'welcome#mobile_number'
     post 'step_two' => 'welcome#otp'
