@@ -643,6 +643,17 @@ p.lead{
   width: 100%;
   margin: 15px 0;
 }
+.add-wishlist-con{
+  width: 100%;
+  position: relative;
+  min-height: 32px;
+  .gray-color-btn{
+    width: 100%;
+    cursor: inherit;
+    position: absolute;
+    bottom: 0;
+  }
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;

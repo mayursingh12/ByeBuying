@@ -73,6 +73,7 @@
         </li>
       </ul>
     </div>
+
     <!--Login Form End-->
 
     <!--Registration Form Start-->
@@ -82,18 +83,18 @@
       <span style="color:red" class=" registration-error hidden"></span>
       <hr />
       <div class="form-group">
-        Name: <input type="text" class="form-control rgr-frm-name">
+        Name: <input type="text" class="form-control rgr-frm-name register-key-press">
       </div>
       <div class="form-group">
-        Email: <input type="email" class="form-control rgr-frm-email">
+        Email: <input type="email" class="form-control rgr-frm-email register-key-press">
       </div>
       <div class="form-group">
-        Password: <input type="password" class="form-control rgr-frm-password">
+        Password: <input type="password" class="form-control rgr-frm-password register-key-press">
       </div>
       <div class="form-group">
-        Password confirmation: <input type="password" class="form-control rgr-frm-password-confirm">
+        Password confirmation: <input type="password" class="form-control rgr-frm-password-confirm register-key-press">
       </div>
-      <a href="javascript:void(0)" class="btn btn-primary hdr-registration-form-submit">Submit</a>
+      <a href="javascript:void(0)" class="btn btn-primary hdr-registration-form-submit register-key-btn">Submit</a>
       <div class="gap gap-small"></div>
     </div>
     <!--Registration Form End-->
@@ -119,13 +120,12 @@
       <p>Enter your Mobile Number</p>
       <hr />
       <span class="msg-number-validation text-danger"></span>
-      <input type="number"id='register-mobile' class="form-control" min="10" max="10"  />
-      <a href="#nav-otp-dialog" class="hidden popup-text mobile-submit2">Proceed</a>
+      <input type="number"id='register-mobile' class="form-control register-mobile-key-press" min="10" max="10"  />
+      <a href="#nav-otp-dialog" class="hidden popup-text mobile-submit2 register-mobile-key-btn">Proceed</a>
       <a href="javascript:void(0)" class="mobile-submit evt-resend-otp">Proceed</a>
       <div class="gap gap-small"></div>
     </div>
     <!--Mobile Form End-->
-
 
     <!--Forgot Password Form Start-->
     <div class="mfp-with-anim mfp-hide mfp-dialog clearfix" id="nav-forgot-password-dialog">
@@ -133,9 +133,9 @@
       <p>Enter your Mobile Number</p>
       <hr />
       <span class="msg-forgot-password-validation text-danger"></span>
-      <input type="number" id='forgot-password' class="form-control" min="10" max="10"  />
-      <a href="#nav-forgot-password-dialog" class="hidden popup-text forgot-password-submit2">Proceed</a>
-      <a href="javascript:void(0)" class="btn btn-primary forgot-password evt-forgot-password" style="margin-top: 10px;">Proceed</a>
+      <input type="number" id='forgot-password' class="form-control forgot-key-press" min="10" max="10"  />
+      <a href="#nav-forgot-password-dialog" class="hidden popup-text forgot-password-submit2 forgot-key-btn">Proceed</a>
+      <a href="javascript:void(0)" class="btn btn-primary forgot-password evt-forgot-password forgot-key-btn" style="margin-top: 10px;">Proceed</a>
       <div class="gap gap-small"></div>
     </div>
     <!--Forgot Password Form End-->
@@ -269,7 +269,6 @@
 <div class="header-space"></div>
 
 <script type="text/javascript" charset="utf-8">
-
     $( document ).ready(function() {
         $('.msg-already-registred').hide();
         $('.msg-number-validation').hide();
@@ -308,7 +307,6 @@
 
 
         });
-
         $(".sending-otp").click(function(){
             $(".evt-resend-otp").trigger("click");
         });
@@ -425,9 +423,19 @@
                 $(".btn-sign-in").trigger("click");
             }
         });
-
+        $('.register-key-press').keypress(function(e){
+            var code = e.keyCode || e.which;
+            if(code == 13) {
+                $(".register-key-btn").trigger("click");
+            }
+        });
+        $('.forgot-key-press').keypress(function(e){
+            var code = e.keyCode || e.which;
+            if(code == 13) {
+                $(".forgot-key-btn").trigger("click");
+            }
+        });
 
     });
-
 
 </script>
