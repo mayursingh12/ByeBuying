@@ -12,58 +12,64 @@
         <aside class="category-filters">
           <div class="category-filters-section">
             <h3 class="widget-title-sm">Filter</h3>
-          </div>
-          <div class="category-filters-section">
-            <h3 class="widget-title-sm">Price</h3>
             <!--<input type="text" id="price-slider" />-->
             <!--<br>-->
             <!--<br>-->
             <div class="filter_main_form">
-                <form action="<%= subcategory_path(@subcategory)%>">
-                  <div class="form-group">
-                    <label>Minimum</label>
-                    <i class="fa fa-inr rupee-icon"></i>
-                    <input type="text" name="min_price" class="form-control set-min-price">
-                  </div>
-                  <div class="form-group">
-                    <label>Maximum</label>
-                    <i class="fa fa-inr rupee-icon"></i>
-                    <input type="text" name="max_price" class="form-control set-max-price">
-                  </div>
-                  <div class="form-group">
-                    <label>Minimum Rating</label>
-                    <!--<i class="fa fa-inr rupee-icon"></i>-->
-                    <input type="text" name="rating" class="form-control set-rating">
-                  </div>
-                  <div class="form-group">
-                    <label>Minimum Product Quantity</label>
-                    <!--<i class="fa fa-inr rupee-icon"></i>-->
-                    <input type="number" name="quantity" class="form-control set-quantity">
-                    <%#= check_box("tag", true, {checked: true}) %>
-                    <!--<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable-->
-                    <%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>
-                  </div>
-                  <div class="form-group">
-                    <label>Category</label>
-                    <%= select_tag "category_id", options_for_select(category_for_collection, params[:category_id]), prompt: "choose category", class: 'form-control set-category filter_category' %>
-                  </div>
-                  <div class="form-group">
-                    <label>Subcategory</label>
-                    <%= select_tag "subcategory_id", options_for_select(subcategory_for_collection, params[:subcategory_id]), prompt: "choose subcategory", class: 'form-control set-subcategory filter_subcategory' %>
-                  </div>
+              <form action="/searches/<%=params[:id]%>">
+                <div class="form-group">
+                  <label>Category</label>
+                  <%= select_tag "category_id", options_for_select(category_for_collection, params[:category_id]), prompt: "choose category", class: 'form-control set-category filter_category' %>
+                </div>
+                <div class="form-group">
+                  <label>Subcategory</label>
+                  <%= select_tag "subcategory_id", options_for_select(subcategory_for_collection, params[:subcategory_id]), prompt: "choose subcategory", class: 'form-control set-subcategory filter_subcategory' %>
+                </div>
 
-                  <div class="form-group">
-                    <label>State</label>
-                    <%= select_tag "state_id", options_for_select(state_for_collection, params[:state_id]), prompt: "choose state", class: 'form-control set-state filter_state' %>
-                  </div>
+                <div class="form-group">
+                  <label>State</label>
+                  <%= select_tag "state_id", options_for_select(state_for_collection, params[:state_id]), prompt: "choose state", class: 'form-control set-state filter_state' %>
+                </div>
 
-                  <div class="form-group">
-                    <label>City</label>
-                    <%= select_tag "city_id", options_for_select(city_for_collection, params[:city_id]), prompt: "choose city", class: 'form-control set-city filter_city' %>
-                  </div>
-                  <span class="reset-filter btn btn-primary save-full-btn" style="cursor: pointer; margin-bottom: 10px">Reset</span>
-                  <input type="submit" class="btn btn-primary save-full-btn">
-                </form>
+                <div class="form-group">
+                  <label>City</label>
+                  <%= select_tag "city_id", options_for_select(city_for_collection, params[:city_id]), prompt: "choose city", class: 'form-control set-city filter_city' %>
+                </div>
+                <div class="form-group">
+                  <!--<label>Minimum</label>-->
+                  <label>Price</label>
+                  <div class="clearfix"></div>
+                  <i class="fa fa-inr rupee-icon"></i>
+                  <input type="number" name="min_price" class="form-control set-min-price" style="width: 45%; float: left">
+                  <span style="font-size: 14px; margin-left: 5px; margin-top: 6px; display: inline-block;">to</span>
+                  <i class="fa fa-inr rupee-icon-scnd"></i>
+                  <input type="number" name="max_price" class="form-control set-max-price" style="width: 45%; float: right">
+                  <div class="clearfix"></div>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label>Maximum</label>-->
+                <!--<i class="fa fa-inr rupee-icon"></i>-->
+                <!--<input type="number" name="max_price" class="form-control set-max-price">-->
+                <!--</div>-->
+                <div class="form-group">
+                  <label>Minimum Rating</label>
+                  <!--<i class="fa fa-inr rupee-icon"></i>-->
+                  <input type="number" name="rating" class="form-control set-rating">
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label>Minimum Product Quantity</label>-->
+                <!--<i class="fa fa-inr rupee-icon"></i>-->
+                <!--<input type="number" name="quantity" class="form-control set-quantity">-->
+                <%#= check_box("tag", true, {checked: true}) %>
+                <!--<input type="checkbox" name="negotiable" class="set-negotiable" > Negotiable-->
+                <%#= select_tag 'state', options_for_select(state_for_collection), prompt: 'select state', class: 'form-control set-state'%>
+                <!--</div>-->
+
+
+
+                <span class="reset-filter btn btn-primary save-full-btn" style="cursor: pointer; margin-bottom: 10px">Reset</span>
+                <input type="submit" class="btn btn-primary save-full-btn" value="Apply Changes">
+              </form>
             </div>
             <!--<span class="btn btn-primary filter-evnt"> filter </span>-->
           </div>
@@ -199,6 +205,10 @@
           $('.filter_city').val(selected_city_id);
       });
 
+      if($('.filter_state option').val() == ''){
+          $('.filter_city').prop("disabled", true)
+      }
+
       $(".custome-filter-block .set-state").change(function() {
           var selected_state_id = this.value;
           $.get("/cities/collection_by_state/"+selected_state_id+".json", function(data, status){
@@ -208,6 +218,14 @@
               }
               $('.filter_city').html(appendString);
           });
+          if(selected_state_id >0)
+          {
+              $('.filter_city').prop("disabled", false);
+          }
+          else
+          {
+              $('.filter_city').prop("disabled", true)
+          }
       });
 
       $('.custome-filter-block .set-category').change(function(){

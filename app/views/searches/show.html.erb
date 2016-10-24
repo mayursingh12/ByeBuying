@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-xs-12">
       <div class="page-header-banner-inner">
-        <h1>Total Searches#<%= @results[:products].count + @results[:services].count %></h1>
+        <h1>Total Searches (<%= @results[:products].count + @results[:services].count %>)</h1>
       </div>
     </div>
     <div class="col-md-3">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                   <!--<label>Minimum</label>-->
-                  <h3 class="widget-title-sm">Price</h3>
+                  <label>Price</label>
                   <div class="clearfix"></div>
                   <i class="fa fa-inr rupee-icon"></i>
                   <input type="number" name="min_price" class="form-control set-min-price" style="width: 45%; float: left">
@@ -78,7 +78,7 @@
       <% if @results[:products].count + @results[:services].count > 0 %>
           <% if @results[:products].any? %>
               <!--<h3 style="margin-top: 0">Product:</h3>-->
-              <% @results[:products].each do |product| %>
+              <% @results[:products].each_with_index do |product, index| %>
                   <div class="search_items">
                     <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                       <% if product.product_images.any? %>
@@ -89,20 +89,29 @@
 
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-12">
-                      <div class="row">
-                        <div class="col-sm-8 col-xs-12">
-                          <h5 class="product-name"><%= product.name %></h5>
-                          <p class="location"><%= product.state.name %></p>
+                      <a class="read-more-link" href="<%= product_path(product) %>">
+                        <div class="row">
+                          <div class="col-sm-9 col-xs-12">
+                            <h5 class="product-name"><%= product.name %></h5>
+                            <p class="location"><%= product.state.name %></p>
+                          </div>
+                          <div class="col-sm-3 col-xs-12 text-right">
+                            <ul class="product-caption-rating pull-right">
+                              <% for i in 1..5 %>
+                                  <% if i <= product.rating %>
+                                      <li class="rated"><i class="fa fa-star"></i></li>
+                                  <% else %>
+                                      <li class=""><i class="fa fa-star"></i></li>
+                                  <% end %>
+                              <% end %>
+                            </ul>
+                          </div>
+                          <div class="col-xs-12">
+                            <p class="description"><%= product.description %></p>
+                            <p>₹ <%= product.per_hour_price > 0 ?  "#{product.per_hour_price}/Hour " : ( product.per_day_price > 0 ?  "#{product.per_day_price}/Day" : ( product.per_week_price > 0 ? "#{product.per_week_price}/Week" : ( product.per_month_price > 0 ?  "#{product.per_month_price}/Month" : 0 ))) %></p>
+                          </div>
                         </div>
-                        <div class="col-sm-4 col-xs-12 text-right">
-                          <p class="category-name"><a href="<%=category_path(product.subcategory.category)%>"><%= product.subcategory.category.name %></a> >
-                            <a href="<%=subcategory_path(product.subcategory)%>"><%=product.subcategory.name%></a> </p>
-                        </div>
-                        <div class="col-xs-12">
-                          <p class="description"><%= product.description %></p>
-                          <a class="read-more-link" href="<%= product_path(product) %>">Detail</a>
-                        </div>
-                      </div>
+                      </a>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -121,23 +130,29 @@
                       <% end %>
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-12">
-                      <div class="row">
-                        <div class="col-sm-8 col-xs-12">
-                          <h5 class="product-name"><%= service.service_description %></h5>
-                          <p class="location"><%= service.state.name %></p>
+                      <a class="read-more-link" href="<%= service_path(service)%>">
+                        <div class="row">
+                          <div class="col-sm-9 col-xs-12">
+                            <h5 class="product-name"><%= service.service_description %></h5>
+                            <p class="location"><%= service.state.name %></p>
+                          </div>
+                          <div class="col-sm-3 col-xs-12 text-right">
+                            <ul class="product-caption-rating pull-right">
+                              <% for i in 1..5 %>
+                                  <% if i <= service.rating %>
+                                      <li class="rated"><i class="fa fa-star"></i></li>
+                                  <% else %>
+                                      <li class=""><i class="fa fa-star"></i></li>
+                                  <% end %>
+                              <% end %>
+                            </ul>
+                          </div>
+                          <div class="col-xs-12">
+                            <p class="description"><%= service.service_description %></p>
+                            <p>₹ <%= service.per_hour_price > 0 ?  "#{service.per_hour_price}/Hour " : ( service.per_day_price > 0 ?  "#{service.per_day_price}/Day" : ( service.per_week_price > 0 ? "#{service.per_week_price}/Week" : ( service.per_month_price > 0 ?  "#{service.per_month_price}/Month" : 0 ))) %></p>
+                          </div>
                         </div>
-                        <div class="col-sm-4 col-xs-12 text-right">
-
-                          <p class="category-name">
-                            <a href="<%=category_path(service.subcategory.category)%>"><%=service.subcategory.category.name%></a> >
-                            <a href="<%=subcategory_path(service.subcategory)%>"><%=service.subcategory.name%></a>
-                          </p>
-                        </div>
-                        <div class="col-xs-12">
-                          <p class="description"><%= service.service_description %></p>
-                          <a class="read-more-link" href="<%= service_path(service)%>">Detail</a>
-                        </div>
-                      </div>
+                      </a>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -259,6 +274,12 @@
             window.location.href = location.pathname
         });
 
+//        var get_text_length = this.getAttribute('dyn_text');
+//        var description_txt = $('.description_' + get_text_length).text();
+//        debugger
+//        if (description_txt.length > 5){
+//            $('.description_' + get_text_length).text(description_txt.substring(0,2) + '...');
+//        }
     });
 
 </script>
