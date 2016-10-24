@@ -2,20 +2,17 @@
   <div class="container">
     <div class="col-xs-12">
       <div class="page-header-banner-inner">
-        <h1>Total Searches#<%= @results[:products].count + @results[:services].count + @results[:advertisements].count %></h1>
+        <h1>Total Searches#<%= @results[:products].count + @results[:services].count %></h1>
       </div>
     </div>
     <div class="col-md-3">
       <div class="custome-filter-block">
         <aside class="category-filters">
           <div class="category-filters-section">
-            <h3 class="widget-title-sm">Filter</h3>
-          </div>
-          <div class="category-filters-section">
-            <h3 class="widget-title-sm">Price</h3>
             <!--<input type="text" id="price-slider" />-->
             <!--<br>-->
             <!--<br>-->
+            <h3 class="widget-title-sm">Filter</h3>
             <div class="filter_main_form">
               <form action="/searches/<%=params[:id]%>">
                 <div class="form-group">
@@ -38,6 +35,7 @@
                 </div>
                 <div class="form-group">
                   <!--<label>Minimum</label>-->
+                  <h3 class="widget-title-sm">Price</h3>
                   <div class="clearfix"></div>
                   <i class="fa fa-inr rupee-icon"></i>
                   <input type="number" name="min_price" class="form-control set-min-price" style="width: 45%; float: left">
@@ -77,72 +75,77 @@
       </div>
     </div>
     <div class="col-md-9">
-      <% if @results[:products].any? %>
-          <h3 style="margin-top: 0">Product:</h3>
-          <% @results[:products].each do |product| %>
-              <div class="search_items">
-                <div class="col-md-2 col-sm-3 col-xs-12 text-center">
-                  <% if product.product_images.any? %>
-                      <%= image_tag product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
-                  <% else %>
-                      <%= image_tag 'theme_img/500x500.png', class: 'img-responsive', alt: '' %>
-                  <% end %>
+      <% if @results[:products].count + @results[:services].count > 0 %>
+          <% if @results[:products].any? %>
+              <!--<h3 style="margin-top: 0">Product:</h3>-->
+              <% @results[:products].each do |product| %>
+                  <div class="search_items">
+                    <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                      <% if product.product_images.any? %>
+                          <%= image_tag product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
+                      <% else %>
+                          <%= image_tag 'theme_img/500x500.png', class: 'img-responsive', alt: '' %>
+                      <% end %>
 
-                </div>
-                <div class="col-md-10 col-sm-9 col-xs-12">
-                  <div class="row">
-                    <div class="col-sm-8 col-xs-12">
-                      <h5 class="product-name"><%= product.name %></h5>
-                      <p class="location"><%= product.state.name %></p>
                     </div>
-                    <div class="col-sm-4 col-xs-12 text-right">
-                      <p class="category-name"><a href="<%=category_path(product.subcategory.category)%>"><%= product.subcategory.category.name %></a> >
-                        <a href="<%=subcategory_path(product.subcategory)%>"><%=product.subcategory.name%></a> </p>
+                    <div class="col-md-10 col-sm-9 col-xs-12">
+                      <div class="row">
+                        <div class="col-sm-8 col-xs-12">
+                          <h5 class="product-name"><%= product.name %></h5>
+                          <p class="location"><%= product.state.name %></p>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 text-right">
+                          <p class="category-name"><a href="<%=category_path(product.subcategory.category)%>"><%= product.subcategory.category.name %></a> >
+                            <a href="<%=subcategory_path(product.subcategory)%>"><%=product.subcategory.name%></a> </p>
+                        </div>
+                        <div class="col-xs-12">
+                          <p class="description"><%= product.description %></p>
+                          <a class="read-more-link" href="<%= product_path(product) %>">Detail</a>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-xs-12">
-                      <p class="description"><%= product.description %></p>
-                      <a class="read-more-link" href="<%= product_path(product) %>">Detail</a>
-                    </div>
+                    <div class="clearfix"></div>
                   </div>
-                </div>
-                <div class="clearfix"></div>
-              </div>
+              <% end %>
           <% end %>
-      <% end %>
 
-      <% if @results[:services].any? %>
-          <h3>Service:</h3>
-          <% @results[:services].each do |service| %>
-              <div class="search_items">
-                <div class="col-md-2 col-sm-3 col-xs-12 text-center">
-                  <% if service.service_images.any? %>
-                      <%= image_tag service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
-                  <% else %>
-                      <%= image_tag 'theme_img/100x100.png', class: 'img-responsive', alt: '' %>
-                  <% end %>
-                </div>
-                <div class="col-md-10 col-sm-9 col-xs-12">
-                  <div class="row">
-                    <div class="col-sm-8 col-xs-12">
-                      <h5 class="product-name"><%= service.service_description %></h5>
-                      <p class="location"><%= service.state.name %></p>
+          <% if @results[:services].any? %>
+              <!--<h3>Service:</h3>-->
+              <% @results[:services].each do |service| %>
+                  <div class="search_items">
+                    <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                      <% if service.service_images.any? %>
+                          <%= image_tag service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive product-img-primary' %>
+                      <% else %>
+                          <%= image_tag 'theme_img/500x500.png', class: 'img-responsive', alt: '' %>
+                      <% end %>
                     </div>
-                    <div class="col-sm-4 col-xs-12 text-right">
+                    <div class="col-md-10 col-sm-9 col-xs-12">
+                      <div class="row">
+                        <div class="col-sm-8 col-xs-12">
+                          <h5 class="product-name"><%= service.service_description %></h5>
+                          <p class="location"><%= service.state.name %></p>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 text-right">
 
-                      <p class="category-name">
-                        <a href="<%=category_path(service.subcategory.category)%>"><%=service.subcategory.category.name%></a> >
-                        <a href="<%=subcategory_path(service.subcategory)%>"><%=service.subcategory.name%></a>
-                      </p>
+                          <p class="category-name">
+                            <a href="<%=category_path(service.subcategory.category)%>"><%=service.subcategory.category.name%></a> >
+                            <a href="<%=subcategory_path(service.subcategory)%>"><%=service.subcategory.name%></a>
+                          </p>
+                        </div>
+                        <div class="col-xs-12">
+                          <p class="description"><%= service.service_description %></p>
+                          <a class="read-more-link" href="<%= service_path(service)%>">Detail</a>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-xs-12">
-                      <p class="description"><%= service.service_description %></p>
-                      <a class="read-more-link" href="<%= service_path(service)%>">Detail</a>
-                    </div>
+                    <div class="clearfix"></div>
                   </div>
-                </div>
-                <div class="clearfix"></div>
-              </div>
+              <% end %>
           <% end %>
+      <% else %>
+          <div class="gap"></div>
+          <h2 class="text-center">No Result Found</h2>
       <% end %>
 
       <%# if @results[:advertisements].any? %>
@@ -228,6 +231,9 @@
 
         });
 
+        if($('.filter_state option').val() == ''){
+            $('.filter_city').prop("disabled", true)
+        }
         $(".custome-filter-block .set-state").change(function() {
             var selected_state_id = this.value;
             $.get("/cities/collection_by_state/"+selected_state_id+".json", function(data, status){
@@ -236,7 +242,17 @@
                     appendString +="<option value="+data[i].id+">" + data[i].name + "</option>";
                 }
                 $('.filter_city').html(appendString);
+
+
             });
+            if(selected_state_id >0)
+            {
+                $('.filter_city').prop("disabled", false);
+            }
+            else
+            {
+                $('.filter_city').prop("disabled", true)
+            }
         });
 
         $('.reset-filter').click(function(){
