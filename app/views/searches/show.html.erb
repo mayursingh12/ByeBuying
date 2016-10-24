@@ -77,7 +77,7 @@
     <div class="col-md-9">
       <% if @results[:products].count + @results[:services].count > 0 %>
           <% if @results[:products].any? %>
-              <h3 style="margin-top: 0">Product:</h3>
+              <!--<h3 style="margin-top: 0">Product:</h3>-->
               <% @results[:products].each do |product| %>
                   <div class="search_items">
                     <div class="col-md-2 col-sm-3 col-xs-12 text-center">
@@ -110,7 +110,7 @@
           <% end %>
 
           <% if @results[:services].any? %>
-              <h3>Service:</h3>
+              <!--<h3>Service:</h3>-->
               <% @results[:services].each do |service| %>
                   <div class="search_items">
                     <div class="col-md-2 col-sm-3 col-xs-12 text-center">
