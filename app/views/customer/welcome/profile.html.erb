@@ -93,12 +93,12 @@
   <hr />
   <span class="msg-change-password-validation text-danger"></span>
   <div class="form-group">
-    New Password: <input type="password" class="form-control rgr-frm-pwd1">
+    New Password: <input type="password" class="form-control rgr-frm-pwd1 update-key-press">
   </div>
   <div class="form-group">
-    Confirm Password: <input type="password" class="form-control rgr-frm-pwd2">
+    Confirm Password: <input type="password" class="form-control rgr-frm-pwd2 update-key-press">
   </div>
-  <span class="btn btn-primary btn-submit-chg-pwd">Submit</span>
+  <span class="btn btn-primary btn-submit-chg-pwd update-key-btn">Submit</span>
 
   <div class="gap gap-small"></div>
 </div>
@@ -158,6 +158,11 @@
             $('.edit-user-profile').toggle();
             $('.user-profile').toggle();
         });
-
+        $('.update-key-press').keypress(function(e){
+            var code = e.keyCode || e.which;
+            if(code == 13) {
+                $(".update-key-btn").trigger("click");
+            }
+        });
     });
 </script>
