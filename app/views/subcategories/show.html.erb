@@ -1,7 +1,7 @@
 <header class="page-header page-header-banner" style=<%="background-image:url(#{@subcategory.interior_image(:original)}) !important"%>>
   <div class="container">
     <div class="page-header-banner-inner">
-      <h1 class="page-title"><%= @subcategory.name %></h1>
+      <h1 class="page-title"><%= @subcategory.name %>(<%= @subcategory.subcategory_type == 'Product' ? @products.count : @services.count %>)</h1>
     </div>
   </div>
 </header>
