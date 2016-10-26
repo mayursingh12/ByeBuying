@@ -74,4 +74,30 @@ json.advertisements{
     json.images advertisement.advertisement_images.map{ |i| i.image.url(:original) }
   end
 }
-
+json.top_advertisements{
+  json.array! @top_advertisements do |top_advertisement|
+    json.id top_advertisement.id
+    json.name top_advertisement.title
+    json.description top_advertisement.description
+    json.redirect_link top_advertisement.redirect_link
+    json.images top_advertisement.advertisement_images.map{ |i| i.image.url(:original) }
+  end
+}
+json.mid_advertisements{
+  json.array! @mid_advertisements do |mid_advertisements|
+    json.id mid_advertisements.id
+    json.name mid_advertisements.title
+    json.description mid_advertisements.description
+    json.redirect_link mid_advertisements.redirect_link
+    json.images mid_advertisements.advertisement_images.map{ |i| i.image.url(:original) }
+  end
+}
+json.bottom_advertisements{
+  json.array! @bottom_advertisements do |bottom_advertisements|
+    json.id bottom_advertisements.id
+    json.name bottom_advertisements.title
+    json.description bottom_advertisements.description
+    json.redirect_link bottom_advertisements.redirect_link
+    json.images bottom_advertisements.advertisement_images.map{ |i| i.image.url(:original) }
+  end
+}
