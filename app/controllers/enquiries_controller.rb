@@ -34,7 +34,20 @@ class EnquiriesController < ApplicationController
           @enquiry.product.update_attributes(is_enquired: true)
           flash[:success] = 'Enquired successfully'
           CustomerMailer.product_enquiry(@enquiry).deliver_later
+          phone = '+91'+@enquiry.product.user.contact
+
+          if phone.present?
+
+                   HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: phone, text: "Your have recieved an enquiry for your product. Please login to www.byebuying.com for more information", priority: 'ndnd', style: 'normal'})
+                    # do nothing
+                    # render status: :ok, json: {}
+
+            else
+              # render status: :unprocessable_entity, json: { }
+            end
+
           redirect_to product_path(@product)
+
         else
           flash[:success] = 'Something went wrong'
           render action: :new
@@ -45,6 +58,8 @@ class EnquiriesController < ApplicationController
           @enquiry.service.update_attributes(is_enquired: true)
           flash[:success] = 'Enquired successfully'
           CustomerMailer.service_enquiry(@enquiry).deliver_later
+          phone = '+91'+@enquiry.service.user.contact
+          HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: phone, text: "Your have recieved an enquiry for your service. Please login to www.byebuying.com for more information", priority: 'ndnd', style: 'normal'})
           redirect_to service_path(@service)
         else
           flash[:success] = 'Something went wrong'
