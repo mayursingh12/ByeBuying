@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="list-inline">
+      <li>
+        <%= link_to 'Add New Blog', new_admin_blog_path, class: 'btn btn-primary' %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr class="info">
+        <th>Heading</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @blogs.each do |blog| %>
+          <tr>
+            <td><%= blog.heading %></td>
+            <td><%= blog.description %></td>
+            <td>
+              <%= link_to edit_admin_blog_path(blog) do %>
+                  <i class="fa fa-edit"></i>
+              <%- end %>
+              <%= link_to admin_blog_path(blog) do %>
+                <i class="fa fa-eye"></i>
+              <% end %>
+              <%= link_to admin_blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

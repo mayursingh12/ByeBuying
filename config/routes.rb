@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :blogs
+
     resources :subcategories do
       member do
         put :admin_approve

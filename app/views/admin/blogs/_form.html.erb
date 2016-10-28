@@ -1,0 +1,5 @@
+<%= simple_form_for [:admin, @blog] do |f| %>
+    <%= f.input :heading %>
+    <%= f.input :description %>
+    <%= f.submit 'Save', class: 'btn btn-primary ' %>
+<% end %>
