@@ -1,6 +1,6 @@
 <%= simple_form_for [:admin, @advertisement] do |f| %>
     <%= f.input :title %>
-    <%= f.input :position, collection: { 'Top(1400×700)' => 1, 'Middle(563x220)' => 2, 'Bottom(370x220)' => 3 } , prompt: 'Select Position'%>
+    <%= f.input :position, collection: { 'Top(1349×500)' => 1, 'Middle(585x200)' => 2, 'Bottom(380x200)' => 3 } , prompt: 'Select Position'%>
     <%= f.input :redirect_link %>
     <%= f.input :category_id, collection: category_for_collection, prompt: 'Select Category'  %>
     <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select Subcategory' %>
