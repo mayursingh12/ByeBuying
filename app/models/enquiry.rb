@@ -32,26 +32,26 @@ class Enquiry < ActiveRecord::Base
   end
 
   validate def product_start_date
-    if self.is_product? and (self.start_at < self.product.start_at or self.start_at >= self.end_at)
-      self.errors.add(:start_at, "must be between start & end time ")
+    if self.is_product? and (self.start_at <DateTime.now  or self.start_at >= self.end_at) #self.product.start_at
+      self.errors.add(:start_at, "must be between current time & end time ")
     end
   end
 
   validate def service_start_date
-    if !self.is_product? and (self.start_at < self.service.start_at or self.start_at >= self.end_at) and self.service.subcategory.category.name == 'Membership'
-      self.errors.add(:start_at, "must be between start & end time ")
+    if !self.is_product? and (self.start_at < DateTime.now or self.start_at >= self.end_at) and self.service.subcategory.category.name == 'Membership' #self.service.start_at
+      self.errors.add(:start_at, "must be between current time & end time ")
     end
   end
 
   validate def product_end_date
-    if self.is_product? and (self.end_at > self.product.end_at or self.end_at < self.start_at )
-      self.errors.add(:end_at, "must be between start & end time ")
+    if self.is_product? and (self.end_at > self.product.end_at or self.end_at <DateTime.now  ) #self.start_at
+      self.errors.add(:end_at, "must be between current time & end time ")
     end
   end
 
   validate def service_end_date
-    if !self.is_product? and (self.end_at > self.service.end_at or self.end_at < self.start_at ) and self.service.subcategory.category.name == 'Membership'
-      self.errors.add(:end_at, "must be between start & end time ")
+    if !self.is_product? and (self.end_at > self.service.end_at or self.end_at <DateTime.now  ) and self.service.subcategory.category.name == 'Membership' #self.start_at
+      self.errors.add(:end_at, "must be between current time & end time ")
     end
   end
 
