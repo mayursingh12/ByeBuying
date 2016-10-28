@@ -655,6 +655,9 @@ p.lead{
     bottom: 0;
   }
 }
+.side-small-box{
+  min-height: 431px;
+}
 @media(max-width: 767px){
   .otp-min-height{
     min-height: inherit;
