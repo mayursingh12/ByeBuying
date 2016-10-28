@@ -13,7 +13,7 @@
                 <%= simple_form_for [:product, @enquiry] do |f| %>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: @product.start_at, input_html: {class: 'select-field'}  %>
+                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default:DateTime.now, input_html: {class: 'select-field'}  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
@@ -87,7 +87,7 @@
                 <%= simple_form_for [:service, @enquiry] do |f| %>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: @service.start_at, input_html: {class: 'select-field'}  %>
+                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: DateTime.now, input_html: {class: 'select-field'}  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
