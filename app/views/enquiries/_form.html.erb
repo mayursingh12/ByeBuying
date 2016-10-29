@@ -2,6 +2,7 @@
   <div class="container">
     <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10 col-xs-12">
       <h2 class="text-center">
+
       Enquiry for 
         <%= @product.name unless @service.present? %>
         <%= @service.service_description unless @product.present? %>
@@ -13,7 +14,7 @@
                 <%= simple_form_for [:product, @enquiry] do |f| %>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default:DateTime.now, input_html: {class: 'select-field'}  %>
+                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: @product.start_at, input_html: {class: 'select-field'} %>
                       </div>
                     </div>
                     <div class="col-xs-12">
@@ -59,22 +60,23 @@
                     <!--</div>-->
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per hour price'}, input_html: {class: 'text-field', value: @product.per_hour_price}  %>
+                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per hour price'}, input_html: {class: 'text-field', value: @product.per_hour_price}, readonly: !@product.negotiable %>
+                        <%= @product.negotiable = 'false' %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per day price'}, input_html: {class: 'text-field', value: @product.per_day_price}  %>
+                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per day price'}, input_html: {class: 'text-field', value: @product.per_day_price}, readonly: !@product.negotiable%>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @product.per_week_price}  %>
+                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @product.per_week_price}, readonly: !@product.negotiable %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per month price'}, input_html: {class: 'text-field', value: @product.per_month_price}  %>
+                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per month price'}, input_html: {class: 'text-field', value: @product.per_month_price}, readonly: !@product.negotiable %>
                       </div>
                     </div>
 
@@ -87,7 +89,7 @@
                 <%= simple_form_for [:service, @enquiry] do |f| %>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: DateTime.now, input_html: {class: 'select-field'}  %>
+                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: @service.start_at, input_html: {class: 'select-field'}  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
@@ -133,22 +135,22 @@
                     <!--</div>-->
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per hour price'}, input_html: {class: 'text-field', value: @service.per_hour_price}  %>
+                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per hour price'}, input_html: {class: 'text-field', value: @service.per_hour_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per day price'}, input_html: {class: 'text-field', value: @service.per_day_price}  %>
+                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per day price'}, input_html: {class: 'text-field', value: @service.per_day_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @service.per_week_price}  %>
+                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @service.per_week_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @service.per_month_price}  %>
+                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @service.per_month_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
 
