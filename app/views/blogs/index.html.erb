@@ -1,4 +1,5 @@
 <% @blogs.each do |blog| %>
     <%= blog.heading %>
     <%= blog.description %>
+    <%= link_to 'Detail', blogs_path(blog) %>
 <% end %>
