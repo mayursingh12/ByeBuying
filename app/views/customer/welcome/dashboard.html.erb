@@ -8,11 +8,12 @@
   <div class="col-sm-2">
     <div class="color-code-con">
       <h4>Defined Color</h4>
-      <div class="color-code"><span class="defined_color green-color"></span> Product</div>
-      <div class="color-code"><span class="defined_color blue-color"></span> Service</div>
-      <div class="color-code"><span class="defined_color black-color"></span> Confirmed Product/Service</div>
-      <div class="color-code"><span class="defined_color yellow-color"></span> Quoted Product/Service</div>
-      <div class="color-code"><span class="defined_color pink-color"></span> Enquired Product/Service</div>
+      <div class="color-code"><span class="defined_color red-color"></span> Product</div>
+      <div class="color-code"><span class="defined_color skyblue-color"></span> Service</div>
+      <div class="color-code"><span class="defined_color purpul-color"></span> Enquired Product/Service</div>
+      <div class="color-code"><span class="defined_color orienge-color"></span> Quoted Product/Service</div>
+      <div class="color-code"><span class="defined_color green-color"></span> Confirmed Product/Service</div>
+      <!--<div class="color-code"><span class="defined_color blue-color"></span> Cancelled</div>-->
     </div>
   </div>
 </div>
@@ -57,7 +58,7 @@
                     start: "<%= product.start_at %>",
                     end: "<%= product.end_at %>",
                     description: "<%= product.subcategory.name %>",
-                    color: "green",
+                    color: "rgba(149, 55, 53, 1)",
                     url: "<%= customer_product_path(product) %>"
                 },
                 <% end %>
@@ -67,7 +68,7 @@
                     start: "<%= service.start_at %>",
                     end: "<%= service.end_at %>",
                     description: "<%= service.subcategory.name %>",
-                    color: "blue",
+                    color: "rgba(75, 172, 198, 1)",
                     url: "<%= customer_service_path(service) %>"
                 },
                 <% end %>
@@ -80,11 +81,11 @@
                     description: "<%= product_enquiry.expected_price %>",
                     color: "<%= case product_enquiry.status
                     when 'Confirmed'
-                      'black'
+                      'rgba(155, 187, 89, 1)'
                     when 'Quoted'
-                      'yellow'
+                      'rgba(247, 150, 70, 1)'
                     else
-                      'pink'
+                      'rgba(128, 100, 162, 1)'
                     end
                      # "#0fa688"
                     %>",
@@ -102,11 +103,11 @@
                     description: "<%= service_enquiry.expected_price %>",
                     color: "<%= case service_enquiry.status
                     when 'Confirmed'
-                      'black'
+                      'rgba(155, 187, 89, 1)'
                     when 'Quoted'
-                      'yellow'
+                      'rgba(247, 150, 70, 1)'
                     else
-                      'pink'
+                      'rgba(128, 100, 162, 1)'
                     end
                      # "#0fa688"
                     %>",
