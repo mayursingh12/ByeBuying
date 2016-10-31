@@ -1,6 +1,6 @@
 class Admin::BlogsController < Admin::BaseController
 
-  before_action :set_blog, only: [:edit, :destroy, :show]
+  before_action :set_blog, only: [:edit, :update, :destroy, :show]
 
   def index
     @blogs = Blog.all.order(:heading)

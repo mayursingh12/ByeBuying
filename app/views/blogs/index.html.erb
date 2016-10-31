@@ -1,5 +1,33 @@
-<% @blogs.each do |blog| %>
-    <%= blog.heading %>
-    <%= blog.description %>
-    <%= link_to 'Detail', blogs_path(blog) %>
-<% end %>
+<div class="container">
+  <div class="customer-main-con">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="page-title">
+          Blogs
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="customer-main-show">
+          <% @blogs.each do |blog| %>
+              <a href="<%= blog_path(blog) %>">
+                <div class="white-bg">
+                  <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                    <div class="add-image-con">
+                      <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+                    </div>
+                  </div>
+                  <div class="col-md-10 col-sm-9 col-xs-12">
+                    <h2 class="heading"><%= blog.heading %></h2>
+                    <p class="description limited_content"><%= blog.description %></p>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
