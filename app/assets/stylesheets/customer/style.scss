@@ -264,6 +264,13 @@
       font-size: 13px;
       color: #222222;
     }
+    p.limited_content{
+      display:inline-block;
+      width:100%;
+      white-space: nowrap;
+      overflow:hidden !important;
+      text-overflow: ellipsis;
+    }
     h5.time-option{
       font-size: 12px;
       color: #989898;
