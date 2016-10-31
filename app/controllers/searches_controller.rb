@@ -6,8 +6,10 @@ class SearchesController < ApplicationController
 
   before_action :set_categories
   before_action :set_min_max_price, only: [:show]
+  before_action :set_search, only: [:show]
 
   def create
+
     @search = Search.create(search_params)
 
     if request.format == 'application/json'
@@ -87,6 +89,10 @@ class SearchesController < ApplicationController
 
     @min_price = price_list.min
     @max_price = price_list.max
+  end
+
+  def set_search
+    @search = Search.find params[:id]
   end
 
 end
