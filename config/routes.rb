@@ -135,7 +135,7 @@ Rails.application.routes.draw do
   get 'terms_condition' => 'welcome#terms_condition'
   get 'privacy_policy' => 'welcome#privacy_policy'
   get 'faq' => 'welcome#faq'
-  get 'blog' => 'welcome#blog'
+  # get 'blog' => 'welcome#blog'
   get 'how_its_work' => 'welcome#how_its_work'
   # Rahul
 
