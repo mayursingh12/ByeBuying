@@ -46,6 +46,10 @@ class Customer::EnquiriesController < Customer::BaseController
   end
 
   def deal
+    if (@enquiry && @enquiry.end_at < DateTime.current)
+      flash[:error] = "The enquiry date has been expired, you can't do any offer now."
+      render action: :show
+    else
     if params[:deal].present?
       if params[:deal] == 'true'
         if @enquiry.update_attributes(status: 'Confirmed')
@@ -113,7 +117,7 @@ class Customer::EnquiriesController < Customer::BaseController
       # do nothing
       render action: :index
     end
-
+  end
   end
 
   #   if @enquiry.update_attribute(:deal, params[:deal])
