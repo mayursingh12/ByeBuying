@@ -8,7 +8,11 @@
         <h5 class="blog-post-title"><%= @blog.heading %></h5>
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <%= image_tag 'theme_img/500x500.png', class: 'img-responsive' %>
+            <% if @blog.blog_images.any? %>
+                <%= image_tag @blog.blog_images.first.image(:size_500x500), class: 'img-responsive' %>
+            <% else %>
+                <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
+            <% end %>
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12">
             <p class="blog-post-caption">

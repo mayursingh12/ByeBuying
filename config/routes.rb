@@ -30,7 +30,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :blogs
+    resources :blogs do
+
+      resources :blog_images
+
+    end
 
     resources :subcategories do
       member do
