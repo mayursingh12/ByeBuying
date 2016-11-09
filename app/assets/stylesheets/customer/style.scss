@@ -267,9 +267,9 @@
     p.limited_content{
       display:inline-block;
       width:100%;
-      white-space: nowrap;
+      height: 90px;
       overflow:hidden !important;
-      text-overflow: ellipsis;
+      margin-top: 10px;
     }
     h5.time-option{
       font-size: 12px;
@@ -386,6 +386,17 @@
         font-size: 20px;
         padding-top: 20px;
       }
+    }
+    .read_more_text{
+      position: absolute;
+      font-size: 13px;
+      right: 10px;
+      bottom: 10px;
+    }
+    .time_blog{
+      position: absolute;
+      right: 10px;
+      top: 10px;
     }
   }
 }
@@ -726,5 +737,8 @@ p.lead{
   }
   .min-box-height{
     min-height: inherit;
+  }
+  .read_more_text{
+    position: inherit;
   }
 }
