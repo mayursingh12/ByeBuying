@@ -176,7 +176,7 @@
                 <td>Refundable security: <%= @product.refundable_security.present? ? @product.refundable_security : 'NA' %></td>
               </tr>
               <tr>
-                <td>Cost of replacement: <%= @product.cost_of_replacement.present? ? @product.cost_of_replacement : 'NA' %></td>
+                <td><span data-toggle="popover" data-placement="right" title="Balance security deposit after adjusting rent will be refunded at the time of return of product.">Cost of replacement ⓘ: </span><%= @product.cost_of_replacement.present? ? @product.cost_of_replacement : 'NA' %></td>
               </tr>
               <tr>
                 <td>Youtube:
@@ -202,6 +202,12 @@
   </div>
 </div>
 <div class="gap"></div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').tooltip();
+    });
+</script>
 <!--<div class="container">-->
   <!--<div class="tabbable product-tabs">-->
     <!--<ul class="nav nav-tabs" id="myTab">-->

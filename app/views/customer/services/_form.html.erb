@@ -46,17 +46,20 @@
       </div>
     </div>
     <div class="col-xs-12">
-      <% unless params[:action] == 'edit' %>
-          <div id="nested-service-images">
-            <%#= f.fields_for :service_images do |builder| %>
-                <%#= render partial: 'application/service_image_fields', locals: { f: builder } %>
-            <%#- end %>
-            <!--<p id="nested-click"><%#= link_to_add_fields "Add Service Image", f, :service_images %></p>-->
+      <div class="field-con">
+        <label class="label" data-toggle="popover" data-placement="right" title="Please upload images of 500*500 with white background for better demonstration of your products/services">Add Images ⓘ</label>
+        <div class="clearfix" style="height: 15px;"></div>
+        <% unless params[:action] == 'edit' %>
+            <div id="nested-service-images">
+              <%#= f.fields_for :service_images do |builder| %>
+              <%#= render partial: 'application/service_image_fields', locals: { f: builder } %>
+              <%#- end %>
+              <!--<p id="nested-click"><%#= link_to_add_fields "Add Service Image", f, :service_images %></p>-->
             <span class="preview_img_con">
               <%= f.file_field :image, accept:'image/*', class: 'preview_img_1', name: 'service[service_images_attributes][1478337999258][image]' %>
-                          <div class="img_add">
-                            <%= image_tag 'theme_img/img-preview.png', class: 'img-responsive' %>
-                          </div>
+              <div class="img_add">
+                <%= image_tag 'theme_img/img-preview.png', class: 'img-responsive' %>
+              </div>
               <div id="target_1" class="target"></div>
             </span>
             <span class="preview_img_con">
@@ -87,8 +90,9 @@
               </div>
               <div id="target_5" class="target"></div>
             </span>
-          </div>
-      <% end %>
+            </div>
+        <% end %>
+      </div>
     </div>
     <div class="col-xs-12">
       <div class="field-con">

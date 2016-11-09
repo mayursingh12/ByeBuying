@@ -19,7 +19,9 @@
                               <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                                 <div class="add-image-con">
                                   <% if (customer_enquiry.product && customer_enquiry.product.product_images.any?) %>
-                                  <%= image_tag customer_enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive' %>
+                                    <%= image_tag customer_enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive' %>
+                                  <% elsif (customer_enquiry.service && customer_enquiry.service.service_images.any?)%>
+                                    <%= image_tag customer_enquiry.service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive' %>
                                   <% else %>
                                    <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
                                   <% end %>
@@ -50,7 +52,9 @@
                               <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                                 <div class="add-image-con">
                                   <% if (customer_enquiry.product && customer_enquiry.product.product_images.any?) %>
-                                  <%= image_tag customer_enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive' %>
+                                    <%= image_tag customer_enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive' %>
+                                  <% elsif (customer_enquiry.service && customer_enquiry.service.service_images.any?)%>
+                                    <%= image_tag customer_enquiry.service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive' %>
                                   <% else %>
                                    <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
                                   <% end %>
@@ -80,7 +84,9 @@
                               <div class="col-md-2 col-sm-3 col-xs-12 text-center">
                                 <div class="add-image-con">
                                   <% if (customer_enquiry.product && customer_enquiry.product.product_images.any?) %>
-                                  <%= image_tag customer_enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive' %>
+                                    <%= image_tag customer_enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'img-responsive' %>
+                                  <% elsif (customer_enquiry.service && customer_enquiry.service.service_images.any?)%>
+                                    <%= image_tag customer_enquiry.service.service_images.first.image.url(ServiceImage::DEFAULT_SIZE), class: 'img-responsive' %>
                                   <% else %>
                                    <%= image_tag "theme_img/500x500.png", class: 'img-responsive' %>
                                   <% end %>

@@ -1,6 +1,6 @@
 <div class="container">
   <header class="page-header">
-    <h1 class="page-title"><%#= @service.name.capitalize %></h1>
+    <h1 class="page-title"><%#= @service.name %></h1>
     <ol class="breadcrumb page-breadcrumb">
       <li><a href="<%= category_path(@service.subcategory.category)%>"><%= @service.subcategory.category.name %></a></li>
       <li><a href="<%= subcategory_path(@service.subcategory)%>"><%= @service.subcategory.name %></a></li>
@@ -39,7 +39,6 @@
       <div class="row" data-gutter="10">
         <div class="col-md-8">
           <div class="box min-box-height">
-            <p class="product-page-desc"><%= @service.service_description.present? ? @service.service_description : 'NA' %></p>
             <ul class="product-page-product-rating">
               <% for i in 1..5 %>
                   <% if i <= @service.rating %>
@@ -49,6 +48,7 @@
                   <% end %>
               <% end %>
             </ul>
+            <p class="product-page-desc"><%= @service.service_description.present? ? @service.service_description : 'NA' %></p>
             <table
             class="table table-striped product-page-features-table">
               <tbody>
