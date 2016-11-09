@@ -14,12 +14,12 @@
                 <%= simple_form_for [:product, @enquiry] do |f| %>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: @product.start_at, input_html: {class: 'select-field'} %>
+                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Select the period for which the you require the product/service. We suggest to choose the dates for which you have fair visibility.'}, default: @product.start_at, input_html: {class: 'select-field'} %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :end_at, label: 'End Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'End Time of Product'}, default: @product.end_at, input_html: {class: 'select-field'}  %>
+                        <%= f.input :end_at, label: 'End Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Select the period for which the you require the product/service. We suggest to choose the dates for which you have fair visibility.'}, default: @product.end_at, input_html: {class: 'select-field'}  %>
                       </div>
                     </div>
                     <!--<div class="col-xs-12">-->
@@ -60,22 +60,22 @@
                     <!--</div>-->
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per hour price'}, input_html: {class: 'text-field', value: @product.per_hour_price}, readonly: !@product.negotiable %>
+                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @product.per_hour_price}, readonly: !@product.negotiable %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per day price'}, input_html: {class: 'text-field', value: @product.per_day_price}, readonly: !@product.negotiable%>
+                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @product.per_day_price}, readonly: !@product.negotiable%>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @product.per_week_price}, readonly: !@product.negotiable %>
+                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @product.per_week_price}, readonly: !@product.negotiable %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per month price'}, input_html: {class: 'text-field', value: @product.per_month_price}, readonly: !@product.negotiable %>
+                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @product.per_month_price}, readonly: !@product.negotiable %>
                       </div>
                     </div>
 
@@ -88,12 +88,12 @@
                 <%= simple_form_for [:service, @enquiry] do |f| %>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :start_at, label: 'Start Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Start Time of Product'}, default: @service.start_at, input_html: {class: 'select-field'}  %>
+                        <%= f.input :start_at, label: 'Start Time of Service ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Select the period for which the you require the product/service. We suggest to choose the dates for which you have fair visibility.'}, default: @service.start_at, input_html: {class: 'select-field'}  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :end_at, label: 'End Time of Product ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'End Time of Product'}, default: @service.end_at, input_html: {class: 'select-field'}  %>
+                        <%= f.input :end_at, label: 'End Time of Service ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Select the period for which the you require the product/service. We suggest to choose the dates for which you have fair visibility.'}, default: @service.end_at, input_html: {class: 'select-field'}  %>
                       </div>
                     </div>
                     <!--<div class="col-xs-12">-->
@@ -134,22 +134,22 @@
                     <!--</div>-->
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per hour price'}, input_html: {class: 'text-field', value: @service.per_hour_price}, readonly: !@service.negotiable  %>
+                        <%= f.input :expected_per_hour_price, label: 'Expected per hour price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @service.per_hour_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per day price'}, input_html: {class: 'text-field', value: @service.per_day_price}, readonly: !@service.negotiable  %>
+                        <%= f.input :expected_per_day_price, label: 'Expected per day price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @service.per_day_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @service.per_week_price}, readonly: !@service.negotiable  %>
+                        <%= f.input :expected_per_week_price, label: 'Expected per week price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @service.per_week_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
                     <div class="col-xs-12">
                       <div class="field-con">
-                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'Expected per week price'}, input_html: {class: 'text-field', value: @service.per_month_price}, readonly: !@service.negotiable  %>
+                        <%= f.input :expected_per_month_price, label: 'Expected per month price ⓘ', label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'In case rent is negotiable by the owner, please mention the reasonable rent you wish to pay for the product/service. Please note this will be shared with the owner and he may have the right to reject if he/she thinks rates are not reasonable.'}, input_html: {class: 'text-field', value: @service.per_month_price}, readonly: !@service.negotiable  %>
                       </div>
                     </div>
 

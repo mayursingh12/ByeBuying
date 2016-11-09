@@ -155,6 +155,13 @@
         <%= f.input :other, label: 'Other', label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
       </div>
     </div>
+    <% unless params[:action] == 'new' %>
+        <div class="col-xs-12">
+          <div class="field-con">
+            <span style="color: #f20000;"><b>Note:</b> <span style="font-style: italic;font-size: 13px;">For editing the images of the ad, please go to "Show" section of the particular ad in Products/Services.</span></span>
+          </div>
+        </div>
+    <% end %>
     <div class="clearfix"></div>
     <div class="submit-main">
       <%= f.submit 'Save', class: 'pushbutton-wide s-button btn btn-primary' %>
