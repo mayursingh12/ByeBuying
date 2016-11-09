@@ -13,6 +13,7 @@
             <h3 class="widget-title">Sub Categories(<%= @category.subcategories.length %>)</h3>
             <div class="row">
               <% @category.subcategories.each do |subcategory| %>
+                <% if subcategory.is_verified == true %>
                   <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="owl-item">
                       <div class="product owl-item-slide top-bottom-space">
@@ -20,6 +21,7 @@
                       </div>
                     </div>
                   </div>
+              <% end %>    
               <% end %>
             </div>
             <div class="gap"></div>

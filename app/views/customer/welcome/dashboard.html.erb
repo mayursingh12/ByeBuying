@@ -74,6 +74,7 @@
                 <% end %>
                 <% if @enquiries[:product_enquiries].any? %>
                 <% @enquiries[:product_enquiries].each do |product_enquiry| %>
+                <% if product_enquiry.status != 'Cancelled' %>
                 {
                     title: "<%= product_enquiry.product.name %>",
                     start: "<%= product_enquiry.start_at %>",
@@ -94,8 +95,10 @@
                 },
                 <% end %>
                 <% end %>
+                <% end %>
                 <% if @enquiries[:service_enquiries].any? %>
                 <% @enquiries[:service_enquiries].each do |service_enquiry| %>
+                <% if service_enquiry.status != 'Cancelled' %>
                 {
                     title: "<%= service_enquiry.service.service_description %>",
                     start: "<%= service_enquiry.start_at %>",
@@ -114,6 +117,7 @@
 //                    color: "#ff8e18",
                     url: "<%= customer_enquiry_path(service_enquiry) %>"
                 },
+                <% end %>
                 <% end %>
                 <% end %>
             ]

@@ -123,6 +123,7 @@ class CustomerMailer < ApplicationMailer
   def product_deal_confirmed(confirmed_enquiry)
     @confirmed_enquiry = confirmed_enquiry
     @product = @confirmed_enquiry.product
+    attachments['Rent-Agreement.pdf'] = File.read(Rails.root.join('public/agreement/Rent-Agreement.pdf'))    
     mail(
         to: @product.user.email,
         subject: "DEAL Confirmation: Enquiry Made– Ad Product##{@product.id}"
@@ -132,6 +133,7 @@ class CustomerMailer < ApplicationMailer
   def service_deal_confirmed(confirmed_enquiry)
     @confirmed_enquiry = confirmed_enquiry
     @service = @confirmed_enquiry.service
+    attachments['Rent-Agreement.pdf'] = File.read(Rails.root.join('public/agreement/Rent-Agreement.pdf'))
     mail(
         to: @service.user.email,
         subject: "DEAL Confirmation: Enquiry Made– Ad Service##{@service.id}"
