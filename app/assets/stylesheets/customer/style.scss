@@ -255,6 +255,7 @@
       font-weight: bold;
       width: 100%;
       padding-top: 30px;
+      margin-bottom: 0;
     }
     h2.heading{
       margin: 0;
@@ -263,6 +264,11 @@
     p.description{
       font-size: 13px;
       color: #222222;
+    }
+    p.overflow-hidden{
+      overflow: hidden;
+      width: 100%;
+      height: 35px;
     }
     p.limited_content{
       display:inline-block;

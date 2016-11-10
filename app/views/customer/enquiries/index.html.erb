@@ -28,11 +28,12 @@
                                 </div>
                               </div>
                               <div class="col-md-10 col-sm-9 col-xs-12">
-                                <h2 class="description"><%= customer_enquiry.is_product ?  customer_enquiry.product.name.capitalize : customer_enquiry.service.service_description.capitalize %></h2>
+                                <h2 class="description"><%= customer_enquiry.is_product ?  customer_enquiry.product.name.capitalize : '' %></h2>
                                 <h2 class="heading" style="padding-top: 0;"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
                                 <!--<span style="color: #000"><%#= customer_enquiry.status %></span>-->
                                 <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
                                 <p class="description"><%= customer_enquiry.description %></p>
+                                <p class="description overflow-hidden"><%= customer_enquiry.is_product ? customer_enquiry.product.description : customer_enquiry.service.service_description %></p>
                               </div>
                               <div class="clearfix"></div>
                             </div>
@@ -66,6 +67,7 @@
                                 <!--<span style="color: #000"><%#= customer_enquiry.status %></span>-->
                                 <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
                                 <p class="description"><%= customer_enquiry.description %></p>
+                                <p class="description"><%= customer_enquiry.is_product ? customer_enquiry.product.description : customer_enquiry.service.service_description %></p>
                               </div>
                               <div class="clearfix"></div>
                             </div>
@@ -97,7 +99,7 @@
                                 <h2 class="heading" style="padding-top: 0;"><%= customer_enquiry.is_product ? 'Product' : 'Service' %></h2>
                                 <!--<span style="color: #000"><%#= customer_enquiry.status %></span>-->
                                 <h5 class="time-option"><%= customer_enquiry.start_at.strftime(time_format) %> - <%= customer_enquiry.end_at.strftime(time_format) %></h5>
-                                <p class="description"><%= customer_enquiry.description %></p>
+                                <p class="description"><%= customer_enquiry.is_product ? customer_enquiry.product.description : customer_enquiry.service.service_description %></p>
                               </div>
                               <div class="clearfix"></div>
                             </div>
