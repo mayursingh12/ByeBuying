@@ -1,7 +1,20 @@
-<%= form_for @rating do |f| %>
-    <%= f.hidden_field :rateable_id %>
-    <%= f.hidden_field :rateable_type %>
-    <%= f.hidden_field :user_id %>
-    <%= f.text_field :number, placeholder: 'Rate - 1 to 5' %>
-    <%= f.submit %>
-<%- end %>
+<div class="customer-main-con">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+        <div class="mfp-with-anim mfp-dialog rating_box clearfix">
+          <h3 class="widget-title">Rating</h3>
+          <p>Give rating to us</p>
+          <hr />
+          <%= form_for @rating, class: 'rating_form' do |f| %>
+              <%= f.hidden_field :rateable_id %>
+              <%= f.hidden_field :rateable_type %>
+              <%= f.hidden_field :user_id %>
+              <%= f.text_field :number, class: 'text-area', placeholder: 'Rate - 1 to 5' %>
+              <%= f.submit class: 'btn btn-primary submit-btn' %>
+          <%- end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
