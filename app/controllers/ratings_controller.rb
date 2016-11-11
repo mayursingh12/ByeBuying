@@ -15,6 +15,7 @@ class RatingsController < ApplicationController
 
   def create
     is_product = params[:rating][:is_product] == "Product" ? true : false
+    Product.find()
     @rating = Rating.new(rating_params)
     @rating.is_product = is_product
     if @rating.save

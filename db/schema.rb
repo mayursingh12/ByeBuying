@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111050731) do
+ActiveRecord::Schema.define(version: 20161111092807) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -171,6 +171,8 @@ ActiveRecord::Schema.define(version: 20161111050731) do
     t.float    "per_week_price",          limit: 24,    default: 0.0
     t.float    "per_month_price",         limit: 24,    default: 0.0
     t.boolean  "is_enquired",                           default: false
+    t.float    "average_rating",          limit: 24
+    t.integer  "customer_review",         limit: 4
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -183,6 +185,7 @@ ActiveRecord::Schema.define(version: 20161111050731) do
     t.text     "feedback",      limit: 65535
     t.boolean  "recommand"
     t.boolean  "is_product"
+    t.string   "title",         limit: 255
   end
 
   create_table "searches", force: :cascade do |t|
