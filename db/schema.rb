@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110121731) do
+ActiveRecord::Schema.define(version: 20161111050731) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -181,6 +181,8 @@ ActiveRecord::Schema.define(version: 20161110121731) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.text     "feedback",      limit: 65535
+    t.boolean  "recommand"
+    t.boolean  "is_product"
   end
 
   create_table "searches", force: :cascade do |t|

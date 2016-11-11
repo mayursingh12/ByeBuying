@@ -5,6 +5,7 @@ class RatingsController < ApplicationController
   before_action :set_categories
 
   def new
+    @product_type =  params[:product_type]
     @rating = Rating.new(
         rateable_id: params[:product_id],
         rateable_type: params[:product_id],
@@ -13,7 +14,9 @@ class RatingsController < ApplicationController
   end
 
   def create
+    is_product = params[:rating][:is_product] == "Product" ? true : false
     @rating = Rating.new(rating_params)
+    @rating.is_product = is_product
     if @rating.save
       redirect_to root_path
     else
@@ -32,7 +35,9 @@ class RatingsController < ApplicationController
                                :rateable_id,
                                :rateable_type,
                                :user_id,
-                               :feedback
+                               :feedback,
+                               :recommand,
+                               :is_product
     )
   end
 

@@ -203,11 +203,6 @@
 </div>
 <div class="gap"></div>
 
-<script type="text/javascript" charset="utf-8">
-    $(document).ready(function(){
-        $('[data-toggle="popover"]').tooltip();
-    });
-</script>
 <div class="container">
   <div class="tabbable product-tabs">
     <ul class="nav nav-tabs" id="myTab">
@@ -220,28 +215,32 @@
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade in active" id="tab-1">
-        <p>Imperdiet fusce viverra mollis taciti lectus scelerisque augue quisque felis posuere nulla facilisis scelerisque pharetra quisque dignissim elit diam nisi penatibus magnis dapibus pretium lacinia torquent convallis egestas posuere
-          etiam</p>
-        <p>Aliquam posuere duis a fringilla enim dictum tortor accumsan litora</p>
+        <p>
+          <%= @product.description.present? ? @product.description : 'NA' %>
+        </p>
       </div>
       <div class="tab-pane fade" id="tab-2">
         <table class="table">
           <tbody>
           <tr>
-            <td>Weight:</td>
-            <td>0.3 kg</td>
+            <td>Technical Specification:</td>
+            <td><%= @product.technical_specification.present? ? @product.technical_specification : 'NA' %></td>
           </tr>
           <tr>
-            <td>Dimensions:</td>
-            <td>20 ½" W x 12" H x 10 ¾" D with 9" strap drop and 52" removable, adjustable strap</td>
+            <td>Youtube Link:</td>
+            <td>
+              <%if @product.youtube_link.present? %>
+                  <a href="<%= @product.youtube_link %>" target="_blank">
+                    <%= @product.youtube_link %>
+                  </a>
+              <% else %>
+                  NA
+              <% end %>
+            </td>
           </tr>
           <tr>
-            <td>Materials :</td>
-            <td>100% Cotton</td>
-          </tr>
-          <tr>
-            <td>Care Tips:</td>
-            <td>Machine wash cold, gentle cycle, only non-chlorine bleach when needed; line dry</td>
+            <td>Other:</td>
+            <td><%= @product.other.present? ? @product.other : 'NA' %></td>
           </tr>
           </tbody>
         </table>
@@ -386,3 +385,9 @@
   </div>
 </div>
 <div class="gap"></div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').tooltip();
+    });
+</script>

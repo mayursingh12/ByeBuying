@@ -773,6 +773,20 @@ p.lead{
       margin-top: 20px;
     }
   }
+  .recommand_con{
+    width: 100%;
+    position: relative;
+    .recommand-text{
+      float: left;
+    }
+    .recommand-field{
+      position: relative;
+      top: -2px;
+      height: 20px;
+      width: 20px;
+      left: 4px;
+    }
+  }
 }
 @media(max-width: 767px){
   .otp-min-height{
