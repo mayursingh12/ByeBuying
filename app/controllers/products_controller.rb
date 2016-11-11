@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.where(admin_verified: true).find params[:id]
+    @ratings = @product.ratings
   end
-
 
 end
