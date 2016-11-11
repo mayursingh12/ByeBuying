@@ -14,7 +14,7 @@
               <%= f.text_area :feedback, class: 'text-area', placeholder: 'Feedback' %>
               <label for="">Rating</label>
               <%= f.text_field :number, class: 'text-field', placeholder: 'Rate - 1 to 5', input_html:{ max: 5 , min: 0 }, within:"1" , maxlength: "1", size: "1", max: "5", min: "1", type: 'number'  %>
-              <%= f.submit class: 'btn btn-primary submit-btn' %>
+              <%= f.submit "Submit", class: 'btn btn-primary submit-btn' %>
           <%- end %>
         </div>
       </div>

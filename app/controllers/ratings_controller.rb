@@ -31,7 +31,8 @@ class RatingsController < ApplicationController
                                :number,
                                :rateable_id,
                                :rateable_type,
-                               :user_id
+                               :user_id,
+                               :feedback
     )
   end
 
