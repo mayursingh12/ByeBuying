@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111092807) do
+ActiveRecord::Schema.define(version: 20161114102511) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 20161111092807) do
     t.boolean  "is_enquired",                           default: false
     t.float    "average_rating",          limit: 24
     t.integer  "customer_review",         limit: 4
+    t.integer  "recommand_count",         limit: 4
   end
 
   create_table "ratings", force: :cascade do |t|

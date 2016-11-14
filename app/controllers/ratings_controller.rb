@@ -30,12 +30,22 @@ class RatingsController < ApplicationController
         total_reviews = 0
       end
 
-      current_average = ((product_Average * total_reviews)+ params[:rating][:number].to_i   ) / (total_reviews+1)
+      current_average = ((product_Average * total_reviews)+ params[:rating][:number].to_i) / (total_reviews+1)
       total_reviews +=1
       product_Average =  current_average
 
       params[:total_reviews] = total_reviews
       params[:average_rating] = product_Average
+
+
+      recommend_count =  @product.recommand_count
+      if params[:rating][:recommand] == "1"
+        if recommend_count ==  nil
+          recommend_count = 0.0
+        end
+        params[:recommand_count] = recommend_count+1
+        update_recommend_count()
+      end
 
        update_rating_average()
        update_review_count()
@@ -97,4 +107,12 @@ class RatingsController < ApplicationController
     end
   end
 
+  def update_recommend_count
+    if @product.update_attributes(recommand_count: params[:recommand_count].to_f)
+      # flash[:success] = 'Rating successfully updated.'
+      # redirect_to action: :show
+      # else
+      #   render action: :show
+    end
+  end
 end
