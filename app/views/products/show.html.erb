@@ -248,96 +248,32 @@
       <div class="tab-pane fade" id="tab-3">
         <div class="row">
           <div class="col-md-8">
-            <article class="product-review">
-              <div class="product-review-author">
-                <%#= image_tag 'theme_img/70x70.png', alt: '' %>
-              </div>
-              <div class="product-review-content-full">
-                <h5 class="product-review-title">Terrific Buy!</h5>
-                <ul class="product-page-product-rating">
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                </ul>
-                <p class="product-review-meta">by Alison Mackenzie on 08/14/2015</p>
-                <p class="product-review-body">Aliquam nam gravida hendrerit primis class egestas primis porta egestas non eleifend risus turpis commodo nisi felis nullam risus aliquam curae fusce elit est ornare</p>
-                <p class="text-success"><strong><i class="fa fa-check"></i> I would recommend this to a friend!</strong>
-                </p>
-                <ul class="list-inline product-review-actions">
-                  <li><a href="#"><i class="fa fa-flag"></i> Flag this review</a>
-                  </li>
-                  <li><a href="#"><i class="fa fa-comment"></i> Comment review</a>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <article class="product-review">
-              <div class="product-review-author">
-                <%#= image_tag 'theme_img/70x70.png', alt: '' %>
-              </div>
-              <div class="product-review-content-full">
-                <h5 class="product-review-title">Too Big. Unusable.</h5>
-                <ul class="product-page-product-rating">
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                  <li><i class="fa fa-star"></i>
-                  </li>
-                </ul>
-                <p class="product-review-meta">by Keith Churchill on 08/14/2015</p>
-                <p class="product-review-body">Lacus molestie aptent elementum nascetur a blandit aenean fusce eleifend hendrerit ac fringilla vehicula eget odio orci hac mauris tincidunt tellus</p>
-                <p class="text-danger"><strong><i class="fa fa-close"></i> No, I would not recommend this to a friend.</strong>
-                </p>
-                <ul class="list-inline product-review-actions">
-                  <li><a href="#"><i class="fa fa-flag"></i> Flag this review</a>
-                  </li>
-                  <li><a href="#"><i class="fa fa-comment"></i> Comment review</a>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <article class="product-review">
-              <div class="product-review-author">
-                <%#= image_tag 'theme_img/70x70.png', alt: '' %>
-              </div>
-              <div class="product-review-content-full">
-                <h5 class="product-review-title">Worth it</h5>
-                <ul class="product-page-product-rating">
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                  <li class="rated"><i class="fa fa-star"></i>
-                  </li>
-                </ul>
-                <p class="product-review-meta">by Alison Mackenzie on 08/14/2015</p>
-                <p class="product-review-body">Imperdiet maecenas suspendisse diam lorem nisi quis elit augue mus interdum porttitor ante</p>
-                <p class="text-success"><strong><i class="fa fa-check"></i> I would recommend this to a friend!</strong>
-                </p>
-                <ul class="list-inline product-review-actions">
-                  <li><a href="#"><i class="fa fa-flag"></i> Flag this review</a>
-                  </li>
-                  <li><a href="#"><i class="fa fa-comment"></i> Comment review</a>
-                  </li>
-                </ul>
-              </div>
-            </article>
+            <% @ratings.each do |rating| %>
+                <article class="product-review">
+                  <div class="product-review-content-full">
+                    <h5 class="product-review-title">
+                      <%= rating.title %>
+                    </h5>
+                    <ul class="product-page-product-rating">
+                      <% for i in 1..5 %>
+                          <% if i <= rating.number %>
+                              <li class="rated"><i class="fa fa-star"></i></li>
+                          <% else %>
+                              <li class=""><i class="fa fa-star"></i></li>
+                          <% end %>
+                      <% end %>
+                    </ul>
+                    <p class="product-review-meta">by <%= rating.user_id %> on <%= rating.created_at.strftime("%d/%m/%Y %I:%M %p") %></p>
+                    <p class="product-review-body"><%= rating.feedback %></p>
+                    <% if rating.recommand == true %>
+                        <p class="text-success"><strong><i class="fa fa-check"></i> I would recommend this to a friend!</strong>
+                    <% else %>
+                        <p class="text-danger"><strong><i class="fa fa-close"></i> No, I would not recommend this to a friend.</strong>
+                    <% end %>
+                    </p>
+                  </div>
+                </article>
+            <% end %>
           </div>
           <div class="col-md-4">
             <h3 class="product-tab-rating-title">Overall Customer Rating:</h3>

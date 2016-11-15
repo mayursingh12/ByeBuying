@@ -27,6 +27,7 @@ class ServicesController < ApplicationController
 
   def set_service
     @service = Service.find params[:id]
+    @ratings = @service.ratings
   end
 
 end

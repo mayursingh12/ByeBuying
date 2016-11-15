@@ -9,7 +9,7 @@ class RatingsController < ApplicationController
     @product_type =  params[:product_type]
     @rating = Rating.new(
         rateable_id: params[:product_id],
-        rateable_type: params[:product_id],
+        rateable_type: params[:product_type],
         user_id: params[:user_id]
     )
   end
