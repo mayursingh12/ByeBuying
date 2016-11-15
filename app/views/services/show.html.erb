@@ -273,7 +273,7 @@
                           <% end %>
                       <% end %>
                     </ul>
-                    <p class="product-review-meta">by <%= rating.user_id %> on <%= rating.created_at.strftime("%d/%m/%Y %I:%M %p") %></p>
+                    <p class="product-review-meta">by <%= rating.user_name %> on <%= rating.created_at.strftime("%d/%m/%Y %I:%M %p") %></p>
                     <p class="product-review-body"><%= rating.feedback %></p>
                     <% if rating.recommand == true %>
                         <p class="text-success"><strong><i class="fa fa-check"></i> I would recommend this to a friend!</strong>
