@@ -9,9 +9,9 @@ class ServicesController < ApplicationController
 
   def index
     if request.format == 'application/json'
-      @services = Service.where(admin_verified: true)
+      @services = Service.where(admin_verified: true).all
     else
-      @services = Service.where(admin_verified: true).paginate(:page => params[:page], :per_page => 20)
+      @services = Service.where(admin_verified: true).all.paginate(:page => params[:page], :per_page => 20)
     end
   end
 
