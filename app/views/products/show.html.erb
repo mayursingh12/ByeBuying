@@ -288,32 +288,13 @@
               </li>
               <li class="rated"><i class="fa fa-star"></i>
               </li>
-              <li class="count">4.9</li>
-            </ul><small>238 customer reviews</small>
-            <p><strong>98%</strong> of reviewers would recommend this product</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <p class="category-pagination-sign">238 customer reviews found. Showing 1 - 5</p>
-          </div>
-          <div class="col-md-6">
-            <nav>
-              <ul class="pagination category-pagination pull-right">
-                <li class="active"><a href="#">1</a>
-                </li>
-                <li><a href="#">2</a>
-                </li>
-                <li><a href="#">3</a>
-                </li>
-                <li><a href="#">4</a>
-                </li>
-                <li><a href="#">5</a>
-                </li>
-                <li class="last"><a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                </li>
-              </ul>
-            </nav>
+              <li class="count">
+                <%= @product.average_rating %>
+              </li>
+            </ul><small><%= @product.customer_review %> customer reviews</small>
+            <p>
+              <strong><%= (@product.recommand_count * 100) / @product.customer_review %>%</strong>
+              of reviewers would recommend this product</p>
           </div>
         </div>
       </div>
