@@ -289,7 +289,7 @@
               <li class="rated"><i class="fa fa-star"></i>
               </li>
               <li class="count">
-                <%= @product.average_rating %>
+                <%= @product.average_rating.round(1) %>
               </li>
             </ul><small><%= @product.customer_review %> customer reviews</small>
             <p>
