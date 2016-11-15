@@ -8,6 +8,7 @@
           <hr />
           <%= form_for @rating, class: 'rating_form' do |f| %>
               <%= f.hidden_field :rateable_id %>
+              <%= f.hidden_field :user_name %>
               <%= f.hidden_field :rateable_type %>
               <%= f.hidden_field :user_id %>
               <label for="">Title</label>

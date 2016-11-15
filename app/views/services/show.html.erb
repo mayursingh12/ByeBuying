@@ -298,9 +298,11 @@
               </li>
               <li class="rated"><i class="fa fa-star"></i>
               </li>
-              <li class="count">4.9</li>
-            </ul><small>238 customer reviews</small>
-            <p><strong>98%</strong> of reviewers would recommend this product</p>
+              <li class="count">
+                <%= @service.average_rating.round(1) %>
+              </li>
+            </ul><small><%= @service.customer_review %> customer reviews</small>
+            <p><strong><%= (@service.recommand_count * 100) / @service.customer_review %>%</strong> of reviewers would recommend this product</p>
           </div>
         </div>
         <div class="row">
