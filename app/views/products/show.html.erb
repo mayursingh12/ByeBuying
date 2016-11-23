@@ -285,11 +285,11 @@
                   <% end %>
               <% end %>
               <li class="count">
-                <%#= @product.average_rating.round(1) %>
+                <%= @product.average_rating.round(1) %>
               </li>
-            </ul><small><%#= @product.customer_review %> customer reviews</small>
+            </ul><small><%= @product.customer_review %> customer reviews</small>
             <p>
-              <strong><%#= (@product.recommand_count * 100) / @product.customer_review %>%</strong>
+              <strong><%= (@product.recommand_count * 100) / @product.customer_review %>%</strong>
               of reviewers would recommend this product</p>
           </div>
         </div>
