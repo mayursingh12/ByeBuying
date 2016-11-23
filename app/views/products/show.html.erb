@@ -275,7 +275,8 @@
                     </article>
                 <% end %>
             <% else %>
-                NA
+                <div class="gap"></div>
+                <p class="text-center">No Review has been given till now.</p>
             <% end %>
           </div>
           <div class="col-md-4">
@@ -293,7 +294,7 @@
               </li>
             </ul><small><%= @product.customer_review.present? ? @product.customer_review : '0' %> customer reviews</small>
             <p>
-              <strong><%= (@product.recommand_count * 100) / @product.customer_review %>%</strong>
+              <strong><%= @product.recommand_count > 0 ?((@product.recommand_count  * 100) / @product.customer_review): '0' %>%</strong>
               of reviewers would recommend this product</p>
           </div>
         </div>
