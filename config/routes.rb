@@ -64,6 +64,20 @@ Rails.application.routes.draw do
 
     end
 
+    resources :headers do
+
+      collection do
+        get 'pending_headers'
+      end
+
+      member do
+        put :admin_approve
+      end
+
+      # resources :advertisement_images
+
+    end
+
     resources :customers
 
     resources :products do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115061537) do
+ActiveRecord::Schema.define(version: 20161123060359) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20161115061537) do
   end
 
   add_index "advertisements", ["deleted_at"], name: "index_advertisements_on_deleted_at", using: :btree
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "avg",           limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blog_images", force: :cascade do |t|
     t.integer  "blog_id",            limit: 4
@@ -123,11 +132,39 @@ ActiveRecord::Schema.define(version: 20161115061537) do
     t.float    "expected_per_month_price", limit: 24,    default: 0.0
   end
 
+  create_table "headers", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.text     "description",    limit: 65535
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.float    "per_hour_cost",  limit: 24
+    t.integer  "category_id",    limit: 4
+    t.integer  "subcategory_id", limit: 4
+    t.boolean  "ready_for_post"
+    t.boolean  "admin_verified"
+    t.integer  "user_id",        limit: 4
+    t.text     "redirect_link",  limit: 65535
+    t.integer  "position",       limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.datetime "delete_at"
+  end
+
+  add_index "headers", ["delete_at"], name: "index_headers_on_delete_at", using: :btree
+
   create_table "new_users", force: :cascade do |t|
     t.string   "phone",      limit: 255
     t.string   "otp",        limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "overall_avg",   limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "product_images", force: :cascade do |t|
@@ -175,6 +212,31 @@ ActiveRecord::Schema.define(version: 20161115061537) do
     t.integer  "customer_review",         limit: 4
     t.integer  "recommand_count",         limit: 4
   end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "stars",         limit: 24,  null: false
+    t.string   "dimension",     limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.integer  "cacheable_id",   limit: 4
+    t.string   "cacheable_type", limit: 255
+    t.float    "avg",            limit: 24,  null: false
+    t.integer  "qty",            limit: 4,   null: false
+    t.string   "dimension",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "number",        limit: 4
