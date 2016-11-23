@@ -290,11 +290,11 @@
                   <%# end %>
               <%# end %>
               <li class="count">
-                <%#= @product.average_rating.present? ? @product.average_rating.round(1) : '0' %>
+                <%= @product.average_rating.present? ? @product.average_rating.round(1) : '0' %>
               </li>
-            </ul><small><%#= @product.customer_review.present? ? @product.customer_review : '0' %> customer reviews</small>
+            </ul><small><%= @product.customer_review.present? ? @product.customer_review : '0' %> customer reviews</small>
             <p>
-              <strong><%#= @product.recommand_count > 0 ?((@product.recommand_count  * 100) / @product.customer_review): '0' %>%</strong>
+              <strong><%= @product.recommand_count > 0 ?((@product.recommand_count  * 100) / @product.customer_review): '0' %>%</strong>
               of reviewers would recommend this product</p>
           </div>
         </div>
