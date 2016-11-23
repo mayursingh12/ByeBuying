@@ -45,4 +45,10 @@ class Product < ActiveRecord::Base
     end
   end
 
+  # validate def product_end_date
+  #   if self.end_at > self.product.end_at or self.end_at <DateTime.now  #self.start_at
+  #     self.errors.add(:end_at, "must be between current time & end time ")
+  #   end
+  # end
+
 end
