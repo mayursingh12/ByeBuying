@@ -290,7 +290,7 @@
                   <%# end %>
               <%# end %>
               <li class="count">
-                <%#= @product.average_rating.present? ? @product.average_rating.round(1) : '0' %>
+                <%= @product.average_rating.present? ? @product.average_rating.round(1) : '0' %>
               </li>
             </ul><small><%= @product.customer_review.present? ? @product.customer_review : '0' %> customer reviews</small>
             <p>
