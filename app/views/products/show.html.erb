@@ -248,30 +248,34 @@
       <div class="tab-pane fade" id="tab-3">
         <div class="row">
           <div class="col-md-8">
-            <% @ratings.each do |rating| %>
-                <article class="product-review">
-                  <div class="product-review-content-full">
-                    <h5 class="product-review-title">
-                      <%= rating.title %>
-                    </h5>
-                    <ul class="product-page-product-rating">
-                      <% for i in 1..5 %>
-                          <% if i <= rating.number %>
-                              <li class="rated"><i class="fa fa-star"></i></li>
-                          <% else %>
-                              <li class=""><i class="fa fa-star"></i></li>
+            <% if @ratings.present? %>
+                <% @ratings.each do |rating| %>
+                    <article class="product-review">
+                      <div class="product-review-content-full">
+                        <h5 class="product-review-title">
+                          <%= rating.title %>
+                        </h5>
+                        <ul class="product-page-product-rating">
+                          <% for i in 1..5 %>
+                              <% if i <= rating.number %>
+                                  <li class="rated"><i class="fa fa-star"></i></li>
+                              <% else %>
+                                  <li class=""><i class="fa fa-star"></i></li>
+                              <% end %>
                           <% end %>
-                      <% end %>
-                    </ul>
-                    <p class="product-review-meta">by <%= rating.user_name %> on <%= rating.created_at.strftime("%d/%m/%Y %I:%M %p") %></p>
-                    <p class="product-review-body"><%= rating.feedback %></p>
-                    <% if rating.recommand == true %>
-                        <p class="text-success"><strong><i class="fa fa-check"></i> I would recommend this to a friend!</strong></p>
-                    <% else %>
-                        <p class="text-danger"><strong><i class="fa fa-close"></i> No, I would not recommend this to a friend.</strong></p>
-                    <% end %>
-                  </div>
-                </article>
+                        </ul>
+                        <p class="product-review-meta">by <%= rating.user_name %> on <%= rating.created_at.strftime("%d/%m/%Y %I:%M %p") %></p>
+                        <p class="product-review-body"><%= rating.feedback %></p>
+                        <% if rating.recommand == true %>
+                            <p class="text-success"><strong><i class="fa fa-check"></i> I would recommend this to a friend!</strong></p>
+                        <% else %>
+                            <p class="text-danger"><strong><i class="fa fa-close"></i> No, I would not recommend this to a friend.</strong></p>
+                        <% end %>
+                      </div>
+                    </article>
+                <% end %>
+            <% else %>
+                NA
             <% end %>
           </div>
           <div class="col-md-4">
@@ -285,9 +289,9 @@
                   <% end %>
               <% end %>
               <li class="count">
-                <%= @product.average_rating.round(1) %>
+                <%= @product.average_rating.present? ? @product.average_rating.round(1) : '0' %>
               </li>
-            </ul><small><%= @product.customer_review %> customer reviews</small>
+            </ul><small><%= @product.customer_review.present? ? @product.customer_review : '0' %> customer reviews</small>
             <p>
               <strong><%= (@product.recommand_count * 100) / @product.customer_review %>%</strong>
               of reviewers would recommend this product</p>
