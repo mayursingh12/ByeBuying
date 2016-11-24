@@ -303,9 +303,10 @@
                 <%= @product.average_rating.present? ? @product.average_rating.round(1) : '0.0' %>
               </li>
             </ul><small><%= @product.customer_review.present? ? @product.customer_review : '0' %> customer reviews</small>
-            <!--<p>-->
-              <!--<strong><%#= @product.recommand_count>0 ? ((@product.recommand_count  * 100) / (@product.customer_review>0 ? @product.customer_review : 1)): '0' %>%</strong>-->
-              <!--of reviewers would recommend this product</p>-->
+            <p>
+              <strong><%= @product.recommand_count > 0 ? ((@product.recommand_count  * 100) / (@product.customer_review > 0 ? @product.customer_review : 1)): '0' %>%</strong>
+              of reviewers would recommend this product
+            </p>
           </div>
         </div>
       </div>

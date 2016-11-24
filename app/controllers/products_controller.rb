@@ -28,6 +28,12 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.where(admin_verified: true).find params[:id]
+    if(!@product.recommand_count)
+      @product.recommand_count = 0;
+    end
+    if(!@product.customer_review)
+      @product.customer_review = 0;
+    end
     @ratings = @product.ratings
   end
 
