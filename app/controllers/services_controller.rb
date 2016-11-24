@@ -27,6 +27,12 @@ class ServicesController < ApplicationController
 
   def set_service
     @service = Service.find params[:id]
+    if (!@service.recommand_count)
+      @service.recommand_count = 0;
+    end
+    if (!@service.customer_review)
+      @service.customer_review = 0;
+    end
     @ratings = @service.ratings
   end
 
