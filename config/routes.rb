@@ -128,6 +128,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :enquiry_recieves
+
   end
 
   # Rahul
