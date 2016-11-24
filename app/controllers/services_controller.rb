@@ -33,6 +33,9 @@ class ServicesController < ApplicationController
     if (!@service.customer_review)
       @service.customer_review = 0;
     end
+    if (!@service.average_rating)
+      @service.average_rating = 0;
+    end
     @ratings = @service.ratings
   end
 

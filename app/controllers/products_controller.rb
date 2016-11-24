@@ -34,6 +34,9 @@ class ProductsController < ApplicationController
     if(!@product.customer_review)
       @product.customer_review = 0;
     end
+    if(!@product.average_rating)
+      @product.average_rating = 0;
+    end
     @ratings = @product.ratings
   end
 

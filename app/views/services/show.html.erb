@@ -292,16 +292,24 @@
           <div class="col-md-4">
             <h3 class="product-tab-rating-title">Overall Customer Rating:</h3>
             <ul class="product-page-product-rating product-rating-big">
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
-              <li class="rated"><i class="fa fa-star"></i>
-              </li>
+              <% if @service.average_rating > 0 %>
+                <% for i in 1..5 %>
+                  <% if i <= @service.average_rating.round %>
+                    <li class="rated"><i class="fa fa-star"></i></li>
+                  <% end %>
+                <% end %>
+              <%else%>
+                  <li class=""><i class="fa fa-star"></i>
+                  </li>
+                  <li class=""><i class="fa fa-star"></i>
+                  </li>
+                  <li class=""><i class="fa fa-star"></i>
+                  </li>
+                  <li class=""><i class="fa fa-star"></i>
+                  </li>
+                  <li class=""><i class="fa fa-star"></i>
+                  </li>
+              <%end%>
               <li class="count">
                 <%= @service.average_rating.present? ? @service.average_rating.round(1) : '0.0' %>
               </li>
