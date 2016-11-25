@@ -892,16 +892,6 @@ p.lead{
   background-color: transparent;
 }
 @media(max-width: 767px){
-  //.navbar-before{
-  //  ul.custom-upper-nav{
-  //    li{
-  //      float: left !important;
-  //      a{
-  //        float: left !important;
-  //      }
-  //    }
-  //  }
-  //}
   .navbar-before .custom-upper-nav > li {
     float: left !important;
   }
