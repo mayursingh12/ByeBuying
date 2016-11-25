@@ -31,7 +31,7 @@ class Customer::EnquiriesController < Customer::BaseController
           CustomerMailer.service_quoted(@enquiry).deliver_later
         end
 
-         phone = '+91'+@enquiry.user.contact
+        phone = '+91'+@enquiry.user.contact
         HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: phone, text: "Your have recieved the quote for your enquiry. To accept the deal, Please login to www.byebuying.com for more information", priority: 'ndnd', style: 'normal'})
         # do nothing
         # render status: :ok, json: {}

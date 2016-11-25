@@ -9,7 +9,7 @@
                   <div class="img-overflow overflow-servic-img">
                       <% if @enquiry.product.product_images.any? %>
                         <span class="img-con">
-                          <%= image_tag @enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img' %>
+                          <%= image_tag @enquiry.product.product_images.first.image.url(ProductImage::DEFAULT_SIZE), class: 'upload-img img-responsive' %>
                         </span>
                       <% else %>
                         <span class="img-con">

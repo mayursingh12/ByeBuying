@@ -892,6 +892,19 @@ p.lead{
   background-color: transparent;
 }
 @media(max-width: 767px){
+  //.navbar-before{
+  //  ul.custom-upper-nav{
+  //    li{
+  //      float: left !important;
+  //      a{
+  //        float: left !important;
+  //      }
+  //    }
+  //  }
+  //}
+  .navbar-before .custom-upper-nav > li {
+    float: left !important;
+  }
   .otp-min-height{
     min-height: inherit;
   }
@@ -900,5 +913,19 @@ p.lead{
   }
   .read_more_text{
     position: inherit;
+  }
+  .customer-main-show {
+    .white-bg {
+      .add-image-con {
+        .overflow-servic-img{
+          height: inherit;
+        }
+      }
+    }
+  }
+  .advertisement_image{
+    img{
+      margin: 5px 0;
+    }
   }
 }
