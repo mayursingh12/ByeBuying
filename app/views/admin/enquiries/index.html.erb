@@ -13,6 +13,7 @@
       <tbody>
       <% @enquiries.each do |enquiry| %>
           <tr>
+            <%= enquiry.user %>
             <td><%= enquiry.is_product ? 'Product' : 'Service' %></td>
             <td><%#= enquiry.user.email %></td>
             <td><%#= enquiry.user.contact %></td>
