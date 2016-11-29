@@ -4,8 +4,8 @@
       <thead>
       <tr class="info">
         <th>Enquiry for</th>
-        <th>Email</th>
-        <th>Phone</th>
+        <!--<th>Email</th>-->
+        <!--<th>Phone</th>-->
         <th>Enquiry time</th>
         <th>Action</th>
       </tr>
@@ -13,10 +13,9 @@
       <tbody>
       <% @enquiries.each do |enquiry| %>
           <tr>
-            <%= enquiry.user.id %>
             <td><%= enquiry.is_product ? 'Product' : 'Service' %></td>
-            <td><%#= enquiry.user.email.present? ? enquiry.user.email : '' %></td>
-            <td><%#= enquiry.user.contact %></td>
+            <!--<td><%#= enquiry.user.email.present? ? enquiry.user.email : '' %></td>-->
+            <!--<td><%#= enquiry.user.contact %></td>-->
             <td><%= enquiry.created_at.strftime(time_format) %></td>
             <td>
               <%= link_to admin_enquiry_path(enquiry) do %>
