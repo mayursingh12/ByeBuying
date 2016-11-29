@@ -51,7 +51,10 @@
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="footer_widget">
           <h3>ByeBuying Subscription</h3>
-
+          <%= simple_form_for @mail_needer, class: 'footer_form' do |f| %>
+            <%= f.input :email, class: 'footer_textfield', placeholder: 'enter your email address' %>
+            <%= f.submit 'SUBSCRIBE', class: 'footer_submit'  %>
+          <% end %>
           <form action="" class="footer_form">
             <input type="text" class="footer_textfield" placeholder="enter your email address" />
             <input type="submit" class="footer_submit" value="SUBSCRIBE" />

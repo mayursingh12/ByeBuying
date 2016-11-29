@@ -84,6 +84,8 @@ Rails.application.routes.draw do
       resources :service_images
     end
 
+    resources :mail_needers
+
   end
 
   namespace :customer do

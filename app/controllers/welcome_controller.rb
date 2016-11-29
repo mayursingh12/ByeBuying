@@ -34,6 +34,20 @@ class WelcomeController < ApplicationController
   #
   # end
 
+  def new
+    @mail_needer = MailNeeder.new
+  end
+
+  def create
+    @mail_needer = MailNeeder.new(mail_needer_params)
+    if @mail_needer.save
+      flash[:success] = "You are Subscribed Successfuly"
+      redirect_to welcome/index_path
+    else
+      render welcome/index_path
+    end
+  end
+
   def contact_us
 
   end
@@ -138,5 +152,8 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def mail_needer_params
+    params.require(:mail_needer).permit(:email)
+  end
 
 end
