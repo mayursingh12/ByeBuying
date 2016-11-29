@@ -168,12 +168,12 @@
                                 </div>
                                 <div class="clearfix"></div>
                               </div>
-                          <%# end %>
-                      <%# end %>
-                  <%#else%>
+                          <% end %>
+                      <% end %>
+                  <%else%>
                       <div class="gap"></div>
                       <h2 class="text-center">No Enquiry Available</h2>
-                  <%#end%>
+                  <%end%>
                 </div>
                 <div id="service_confirmed" class="tab-pane fade">
                   <%if @enquiries[:service_enquiries].where(status: 'Confirmed').any? %>
