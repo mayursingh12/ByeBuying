@@ -11,11 +11,11 @@
       </tr>
       </thead>
       <tbody>
-      <%# @enquiries.each do |enquiry| %>
+      <% @enquiries.each do |enquiry| %>
           <tr>
-            <td><%#= enquiry.is_product ? 'Product' : 'Service' %></td>
-            <td><%#= enquiry.user.email %></td>
-            <td><%#= enquiry.user.contact %></td>
+            <td><%= enquiry.is_product ? 'Product' : 'Service' %></td>
+            <td><%= enquiry.user.email %></td>
+            <td><%= enquiry.user.contact %></td>
             <td><%#= enquiry.created_at.strftime(time_format) %></td>
             <td>
               <%#= link_to admin_enquiry_path(enquiry) do %>
@@ -23,7 +23,7 @@
               <%#- end %>
             </td>
           </tr>
-      <%#- end %>
+      <%- end %>
       </tbody>
     </table>
   </div>
