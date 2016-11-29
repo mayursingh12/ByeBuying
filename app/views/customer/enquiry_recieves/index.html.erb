@@ -111,7 +111,7 @@
             <div id="service" class="tab-pane fade">
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#service_enquiry">Enquiry(<%= @enquiries[:service_enquiries].where(status: 'Enquiry').count%>)</a></li>
-                <!--<li><a data-toggle="tab" href="#service_quoted">Quoted(<%#= @enquiries[:service_enquiries].where(status: 'Quoted').count%>)</a></li>-->
+                <li><a data-toggle="tab" href="#service_quoted">Quoted(<%= @enquiries[:service_enquiries].where(status: 'Quoted').count%>)</a></li>
                 <li><a data-toggle="tab" href="#service_confirmed">Confirmed(<%= @enquiries[:service_enquiries].where(status: 'Confirmed').count%>)</a></li>
               </ul>
               <div class="tab-content">
@@ -130,7 +130,7 @@
                                   </div>
                                 </div>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                  <h2 class="description"><%#= service_enquiry.service.name.capitalize %></h2>
+                                  <h2 class="description"><%= service_enquiry.service.name %></h2>
                                   <h2 class="heading" style="padding-top: 0;">Service</h2>
                                   <!--<span style="color: #000"><%#= customer_enquiry.status %></span>-->
                                   <h5 class="time-option"><%= service_enquiry.start_at.strftime(time_format) %> - <%= service_enquiry.end_at.strftime(time_format) %></h5>
@@ -160,8 +160,8 @@
                                   </div>
                                 </div>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                  <h2 class="description"><%= service_enquiry.service.name.capitalize %></h2>
-                                  <h2 class="heading" style="padding-top: 0;">Service</h2>
+                                  <h2 class="heading"><%= service_enquiry.service.service_description %></h2>
+                                  <!--<h2 class="heading" style="padding-top: 0;">Service</h2>-->
                                   <!--<span style="color: #000"><%#= customer_enquiry.status %></span>-->
                                   <h5 class="time-option"><%= service_enquiry.start_at.strftime(time_format) %> - <%= service_enquiry.end_at.strftime(time_format) %></h5>
                                   <p class="description"><%= service_enquiry.description %></p>
@@ -190,7 +190,7 @@
                                   </div>
                                 </div>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                  <h2 class="description"><%= service_enquiry.service.name.capitalize %></h2>
+                                  <h2 class="heading"><%= service_enquiry.service.service_description %></h2>
                                   <h2 class="heading" style="padding-top: 0;">Service</h2>
                                   <!--<span style="color: #000"><%#= customer_enquiry.status %></span>-->
                                   <h5 class="time-option"><%= service_enquiry.start_at.strftime(time_format) %> - <%= service_enquiry.end_at.strftime(time_format) %></h5>
