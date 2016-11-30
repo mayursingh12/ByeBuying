@@ -1,5 +1,6 @@
 <%= simple_form_for [:admin, @blog] do |f| %>
     <%= f.input :heading %>
     <%= f.input :description %>
+    <p style="color: #cc0000;">Type ## for starting new paragraph</p>
     <%= f.submit 'Save', class: 'btn btn-primary ' %>
 <% end %>

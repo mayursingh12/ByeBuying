@@ -157,6 +157,7 @@
                 <% if current_user.id == @service.user.id %>
                     <a class="btn btn-block btn-success" style="margin-top: 10px" href="javascript:void(0);" %>Your Service</a>
                 <% else %>
+                    <p class="text-right" style="font-size: 12px; font-weight: bold; color: #888888"><%= @service.negotiable.present? ? 'Price negotiable : YES' : 'Price negotiable : NO' %></p>
                     <a class="btn btn-block btn-primary" style="margin-top: 10px" href="<%= new_service_enquiry_path(@service) %>">Enquire</a>
                 <% end %>
                 <%= link_to 'Add to wishlist', wish_list_user_path(current_user, is_product: false, wish_id: @service.id), method: :put , class: 'btn btn-block btn-primary', style: 'margin-top: 10px;' unless current_user.wish_list.detect{|i| i == "0-#{@service.id}"}.present?%>

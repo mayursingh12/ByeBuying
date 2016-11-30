@@ -16,7 +16,9 @@
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12">
             <p class="blog-post-caption">
-              <%= @blog.description %>
+              <% @blog.description.split('##').each do |paragraph| %>
+                  <%= paragraph %> <br/><br/>
+              <% end %>
             </p>
           </div>
           <div class="clearfix"></div>
