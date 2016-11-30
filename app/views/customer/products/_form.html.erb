@@ -160,7 +160,8 @@
     </div>
     <div class="col-xs-12">
       <div class="field-con">
-        <%= f.input :cost_of_replacement, label: 'Cost of Replacement ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'If the product is considerably damaged, lost, stolen, this is the amount the renter has to pay to the owner. Cost of replacement should not be more than market value of the product.'}, input_html: {class: 'text-field'} %>
+        <!--Cost of replacement should not be more than market value of the product.-->
+        <%= f.input :cost_of_replacement, label: 'Cost of Replacement ⓘ' ,label_html: {class: 'label', 'data-toggle': 'popover', 'data-placement': 'right' , title: 'If the product is considerably damaged, lost, stolen, this is the amount the renter has to pay to the owner.'}, input_html: {class: 'text-field'} %>
       </div>
     </div>
     <% if @product.admin_verified == false %>
