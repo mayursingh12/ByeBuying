@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-9">
+    <%= link_to 'Edit', edit_admin_header_path(@header), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', admin_header_path(@header), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'  %>
+    <br>
+    <br>
+    <% if @header.admin_verified? %>
+        <span class="text-success">Verified by admin</span>
+        <%= link_to( 'Un-verify' , admin_approve_admin_header_path(@header, admin_verified: false), method: :put, class: 'btn btn-danger') %>
+    <%elsif !@header.header_images.any? %>
+        <span style="color:red">Minimum one image needed</span>
+    <%- else %>
+        <span class="text-danger">Not verified</span>
+        <%= link_to( 'Verify' , admin_approve_admin_header_path(@header, admin_verified: true), method: :put, class: 'btn btn-success') %>
+    <%- end %>
+
+    <dl>
+      <dt>Title</dt><dd><%= @header.title %></dd>
+      <dt>Description</dt><dd><%= @header.description %></dd>
+      <dt>Start at</dt><dd><%= @header.start_at.strftime(time_format) %></dd>
+      <dt>End at</dt><dd><%= @header.end_at.strftime(time_format) %></dd>
+      <dt>Per hour cost</dt><dd><%= @header.per_hour_cost %></dd>
+      <dt>Category</dt><dd><%= @header.subcategory.category.name  if @header.subcategory.present?%></dd>
+      <dt>Subcategory</dt><dd><%= @header.subcategory.name if @header.subcategory.present?%></dd>
+    </dl>
+  </div>
+  <div class="col-sm-3">
+    <div class="row">
+      <span style="color:red">Note: *Image size must be 1400×700</span>
+      <% @header.header_images.each do |header_image| %>
+          <div class="col-sm-12">
+            <%= image_tag header_image.image.url(HeaderImage::DEFAULT_SIZE), class: 'img-responsive' %>
+            <% if header_image.id.present? %>
+                <%= link_to admin_header_header_image_path(@header, header_image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                    <i class="fa fa-trash fa-3"></i>
+                <%- end %>
+            <%- end %>
+          </div>
+      <%- end %>
+    </div>
+    <% unless @header.header_images.count > 2 %>
+        <fieldset>
+          <legend><small>Add new images</small></legend>
+          <%= render partial: 'admin/header_images/form', locals: { header: @header, header_image: @header.header_images.new } %>
+        </fieldset>
+    <% end %>
+  </div>
+</div>

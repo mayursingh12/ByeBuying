@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123060359) do
+ActiveRecord::Schema.define(version: 20161130112524) do
 
   create_table "advertisement_images", force: :cascade do |t|
     t.integer  "advertisement_id",   limit: 4
@@ -132,6 +132,19 @@ ActiveRecord::Schema.define(version: 20161123060359) do
     t.float    "expected_per_month_price", limit: 24,    default: 0.0
   end
 
+  create_table "header_images", force: :cascade do |t|
+    t.integer  "header_id",          limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "header_images", ["deleted_at"], name: "index_header_images_on_deleted_at", using: :btree
+
   create_table "headers", force: :cascade do |t|
     t.string   "title",          limit: 255
     t.text     "description",    limit: 65535
@@ -148,9 +161,17 @@ ActiveRecord::Schema.define(version: 20161123060359) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.datetime "delete_at"
+    t.datetime "deleted_at"
   end
 
   add_index "headers", ["delete_at"], name: "index_headers_on_delete_at", using: :btree
+  add_index "headers", ["deleted_at"], name: "index_headers_on_deleted_at", using: :btree
+
+  create_table "mail_needers", force: :cascade do |t|
+    t.string   "email",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "new_users", force: :cascade do |t|
     t.string   "phone",      limit: 255

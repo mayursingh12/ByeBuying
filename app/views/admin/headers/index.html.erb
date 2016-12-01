@@ -37,8 +37,8 @@
               <% if header.admin_verified? %>
                   <span class="text-success">Verified by admin</span>
                   <%= link_to( 'Un-verify' , admin_approve_admin_header_path(header, admin_verified: false), method: :put, class: 'btn btn-danger btn-xs') %>
-              <%#elsif !header.header_images.any? %>
-                  <!--<span style="color:red">minimum one image need</span>-->
+              <%elsif !header.header_images.any? %>
+                  <span style="color:red">minimum one image need</span>
               <%- else %>
                   <span class="text-danger">Not verified</span>
                   <%= link_to( 'Verify' , admin_approve_admin_header_path(header, admin_verified: true), method: :put, class: 'btn btn-success btn-xs') %>
