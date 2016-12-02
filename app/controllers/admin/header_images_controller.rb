@@ -4,6 +4,8 @@ class Admin::HeaderImagesController < Admin::BaseController
 
   before_action :set_header
 
+  before_action :set_header_image, only: [:destroy]
+
   def new
 
   end
@@ -18,7 +20,20 @@ class Admin::HeaderImagesController < Admin::BaseController
     end
   end
 
+  def destroy
+    @header_image.destroy!
+    redirect_to admin_header_path(@header)
+  end
+
   private
+
+  def set_header
+    @header = Header.find params[:header_id]
+  end
+
+  def set_header_image
+    @header_image = HeaderImage.find params[:id]
+  end
 
   def header_image_params
     params.require(:header_image).permit(

@@ -1,0 +1,6 @@
+
+<%= simple_form_for [:admin, header,header_image] do |foo| %>
+<%#= simple_form_for @header, url: [:admin, header,header_image] do |foo| %>
+    <%= foo.input :image_path %>
+    <%= foo.submit 'Save', class: 'btn btn-primary' %>
+<% end %>
