@@ -14,7 +14,6 @@
               <a href="<%= @product.product_images.first.image(:original) %>" id="jqzoom" data-rel="gal-1">
                 <%= image_tag @product.product_images.first.image(:size_500x500), class: 'img-responsive' %>
               </a>
-
               <!--<%# @product.product_images.each_with_index do |product_image, index| %>-->
 
                     <!--<a href="<%#= product_image.image(:size_500x500) %>" id="jqzoom" data-rel="gal-1">-->
@@ -92,7 +91,7 @@
             <div class="product-page-side-section">
               <h5 class="product-page-side-title">Share This Item</h5>
               <% if @product.product_images.any? %>
-                  <%= social_share_button_tag("Check out " + @product.name + " on http://www.byebuying.com  " + @product.product_images.first.image(:size_500x500), image: "") %>
+                  <%= social_share_button_tag("Check out " + @product.name + " on http://www.byebuying.com  ", image: "#{@product.product_images.first.image}") %>
               <% else %>
                   <%= social_share_button_tag("Check out " + @product.name + " on http://www.byebuying.com  ", image: 'theme_img/500x500.png') %>
               <% end %>
