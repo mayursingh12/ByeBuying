@@ -91,7 +91,7 @@
             <div class="product-page-side-section">
               <h5 class="product-page-side-title">Share This Item</h5>
               <% if @product.product_images.any? %>
-                  <%= social_share_button_tag("Check out " + @product.name + " on http://www.byebuying.com  ", image: "#{@product.product_images.first.image}") %>
+                  <%= social_share_button_tag("Check out " + @product.name + " on http://www.byebuying.com  ", image: "#{@product.product_images.last.image}") %>
               <% else %>
                   <%= social_share_button_tag("Check out " + @product.name + " on http://www.byebuying.com  ", image: 'theme_img/500x500.png') %>
               <% end %>
