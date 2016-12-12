@@ -55,4 +55,15 @@ class Enquiry < ActiveRecord::Base
     end
   end
 
+
+  validate def product_quanity
+    if self.is_product?
+
+      quantity = product.quantity
+
+
+      self.errors.add(:start_at, "must be between current time & end time ")
+    end
+  end
+
 end

@@ -8,9 +8,11 @@ class EnquiriesController < ApplicationController
 
   def new
     @enquiry = Enquiry.new
+
   end
 
   def create
+
     if request.format == 'application/json'
       if @product.present?
         @enquiry = Enquiry.new(enquiry_params)
@@ -74,6 +76,9 @@ class EnquiriesController < ApplicationController
   def set_variable
     if params[:product_id].present?
       @product = Product.where(admin_verified: true).find params[:product_id]
+
+      @enquiries = EnquiriesAlgorithm.new(current_user).result.first.find params[:product_id]
+
     else
       @service = Service.where(admin_verified: true).find params[:service_id]
     end
@@ -85,6 +90,7 @@ class EnquiriesController < ApplicationController
                                      :expected_per_day_price,
                                      :expected_per_week_price,
                                      :expected_per_month_price,
+                                     :quantity,
                                      :end_at).merge(product_id: @product.id,
                                                     is_product: true,
                                                     status: 'Enquiry',

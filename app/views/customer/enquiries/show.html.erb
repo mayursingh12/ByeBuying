@@ -101,6 +101,18 @@
                 </div>
               </div>
               <div class="col-xs-12">
+                <div class="product-detail">
+                  <div class="row">
+                    <div class="col-xs-5">
+                      <h4>Quantity:</h4>
+                    </div>
+                    <div class="col-xs-7">
+                      <p><%= @enquiry.quantity.present? ? @enquiry.quantity : @enquiry.product.quantity %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
                 <h2>COST</h2>
               </div>
               <div class="col-xs-12">
