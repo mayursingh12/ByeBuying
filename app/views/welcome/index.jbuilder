@@ -101,3 +101,22 @@ json.bottom_advertisements{
     json.images bottom_advertisements.advertisement_images.map{ |i| i.image.url(:original) }
   end
 }
+
+json.categories{
+  json.array! @categories do |category|
+
+    json.id category.id
+    json.name category.name
+    json.detail_image category.detail_image
+    json.created_at category.created_at
+    json.icon_image category.icon_image
+    json.interior_image category.interior_image
+
+  end
+}
+json.subcategories{
+  json.array! @subcategories do |subcategory|
+    json.id subcategory.id
+    json.name subcategory.name
+  end
+}
