@@ -22,5 +22,6 @@ json.array! @products do |product|
   json.average_rating product.average_rating
   json.customer_review product.customer_review
   json.recommand_count product.recommand_count
+  json.user_id product.user_id
 
 end

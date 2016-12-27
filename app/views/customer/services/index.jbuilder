@@ -28,5 +28,6 @@ json.array! @services do |service|
   json.average_rating service.average_rating
   json.customer_review service.customer_review
   json.recommand_count service.recommand_count
+  json.user_id service.user_id
 
 end
