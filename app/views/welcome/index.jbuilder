@@ -118,5 +118,8 @@ json.subcategories{
   json.array! @subcategories do |subcategory|
     json.id subcategory.id
     json.name subcategory.name
+    json.category_id subcategory.category_id
+    json.interior_image subcategory.interior_image
+    json.subcategory_type subcategory.subcategory_type
   end
 }
