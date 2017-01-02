@@ -83,16 +83,16 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
       :storage => :s3,
-      :s3_credentials => {
-          :bucket => 'byebuyingproduction',
-          :access_key_id => 'AKIAJ2Z63SAWWU7TOE7Q',
-          :secret_access_key => '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'
-      }
       # :s3_credentials => {
-      #     :bucket => 'byebuyingproductionnew',
-      #     :access_key_id => 'AKIAJCXTGG6EHUFFLAIQ',
-      #     :secret_access_key => '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'
+      #     :bucket => 'byebuyingproduction',
+      #     :access_key_id => 'AKIAJ2Z63SAWWU7TOE7Q',
+      #     :secret_access_key => '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'
       # }
+      :s3_credentials => {
+          :bucket => 'byebuyingproductionnew',
+          :access_key_id => 'AKIAJCXTGG6EHUFFLAIQ',
+          :secret_access_key => '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'
+      }
   }
 
   # config.action_mailer.delivery_method = :smtp
