@@ -90,8 +90,8 @@ Rails.application.configure do
       # }
       :s3_credentials => {
           :bucket => 'byebuyingproductionnew',
-          :access_key_id => 'AKIAJCXTGG6EHUFFLAIQ',
-          :secret_access_key => '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'
+          :access_key_id => 'AKIAIOMVRQJCQ3G6WYVQ',
+          :secret_access_key => '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'
       }
   }
 
