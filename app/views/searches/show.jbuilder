@@ -63,11 +63,11 @@ json.services{
   end
 }
 
-# json.advertisements{
-#   json.array! @results[:advertisements] do |advertisement|
-#     json.id advertisement.id
-#     json.name advertisement.title
-#     json.name advertisement.description
+# json.headers{
+#   json.array! @results[:headers] do |header|
+#     json.id header.id
+#     json.name header.title
+#     json.name header.description
 #   end
 # }
 

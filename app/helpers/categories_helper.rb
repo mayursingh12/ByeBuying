@@ -5,7 +5,7 @@ module CategoriesHelper
     x = []
     tmp_array = []
     other_object = Category.where(is_verified: true,name: 'Others' ).last
-    tmp_array = Category.where(is_verified: true).where.not(name: ['Others']).collect{ |a| [a.name, a.id] }
+    tmp_array = Category.where(is_verified: true).where("name NOT LIKE ?", "%others%").collect{ |a| [a.name, a.id] }
     if other_object.present?
       x = [[other_object.name, other_object.id]]
     end

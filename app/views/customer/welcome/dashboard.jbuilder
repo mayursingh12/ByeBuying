@@ -1,9 +1,9 @@
-# json.advertisements{
-#   json.array! @advertisements do |advertisement|
-#     json.id advertisement.id
-#     json.name advertisement.title
-#     json.name advertisement.description
-#     json.admin_verified advertisement.admin_verified?
+# json.headers{
+#   json.array! @headers do |header|
+#     json.id header.id
+#     json.name header.title
+#     json.name header.description
+#     json.admin_verified header.admin_verified?
 #   end
 # }
 

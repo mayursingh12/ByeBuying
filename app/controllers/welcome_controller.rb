@@ -10,23 +10,23 @@ class WelcomeController < ApplicationController
 
   def index
     # if params[:title].present? and params[:category].present?
-    #   @advertisements = AdvertisementFilterAlgo.new.filter_by_all(params[:title], params[:category])
+    #   @headers = HeaderFilterAlgo.new.filter_by_all(params[:title], params[:category])
     # elsif params[:title].present?
-    #   @advertisements = AdvertisementFilterAlgo.new.filter_by_title(params[:title])
+    #   @headers = HeaderFilterAlgo.new.filter_by_title(params[:title])
     # elsif params[:category].present?
-    #   @advertisements = AdvertisementFilterAlgo.new.filter_by_category(params[:category])
+    #   @headers = HeaderFilterAlgo.new.filter_by_category(params[:category])
     # else
-    #   @advertisements = Advertisement.all.where(admin_verified: true)
+    #   @headers = Header.all.where(admin_verified: true)
     # end
 
-    # @advertisements = Advertisement.where(admin_verified: true).includes(:advertisement_images).last(5)
-    @top_advertisements = Advertisement.where(admin_verified: true, position: 1).includes(:advertisement_images).last(5)
-    @mid_advertisements = Advertisement.where(admin_verified: true, position: 2).includes(:advertisement_images).last(4)
-    @bottom_advertisements = Advertisement.where(admin_verified: true, position: 3).includes(:advertisement_images).last(3)
+    # @headers = Header.where(admin_verified: true).includes(:header_images).last(5)
+    @top_headers = Header.where(admin_verified: true, position: 1).includes(:header_images).last(5)
+    @mid_headers = Header.where(admin_verified: true, position: 2).includes(:header_images).last(4)
+    @bottom_headers = Header.where(admin_verified: true, position: 3).includes(:header_images).last(3)
   end
 
   def categories
-    # @advertisements = Advertisement.where(admin_verified: true).last(15)
+    # @headers = Header.where(admin_verified: true).last(15)
     @categories = Category.all
   end
 
@@ -122,18 +122,18 @@ class WelcomeController < ApplicationController
     if params[:min_price].present? and params[:max_price].present? and params[:quantity].present? and params[:rating].present?
       @products = Product.where(admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?)', params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:quantity], params[:rating], params[:rating]).includes(:product_images).order('id DESC')
       @services = Service.where(admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?)', params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:rating], params[:rating]).includes(:service_images).order('id DESC')
-      # @advertisements = Advertisement.where(admin_verified: true).where('per_hour_cost > ? AND per_hour_cost < ? OR per_hour_cost = ? OR per_hour_cost = ?', params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
+      # @headers = Header.where(admin_verified: true).where('per_hour_cost > ? AND per_hour_cost < ? OR per_hour_cost = ? OR per_hour_cost = ?', params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
     elsif params[:min_price].present? and params[:max_price].present? and params[:quantity].present?
       @products = Product.where(admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?)', params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:quantity]).includes(:product_images).order('id DESC')
       @services = Service.where(admin_verified: true).where('end_at > ?', DateTime.now).where('(per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)', params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price]).includes(:service_images).order('id DESC')
-      # @advertisements = Advertisement.where(admin_verified: true).where('per_hour_cost > ? AND per_hour_cost < ? OR per_hour_cost = ? OR per_hour_cost = ?', params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
+      # @headers = Header.where(admin_verified: true).where('per_hour_cost > ? AND per_hour_cost < ? OR per_hour_cost = ? OR per_hour_cost = ?', params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
     elsif params[:min_price].present? && params[:max_price].present?
       @products = Product.where(admin_verified: true).where('end_at > ?', DateTime.now).where('(per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ? )', params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC').includes(:product_images)
       @services = Service.where(admin_verified: true).where('end_at > ?', DateTime.now).where('(per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ? )', params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price], params[:min_price], params[:max_price]).includes(:service_images).order('id DESC')
-      # @advertisements = Advertisement.where(admin_verified: true).where('per_hour_cost > ? AND per_hour_cost < ? OR per_hour_cost = ? OR per_hour_cost = ?', params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
+      # @headers = Header.where(admin_verified: true).where('per_hour_cost > ? AND per_hour_cost < ? OR per_hour_cost = ? OR per_hour_cost = ?', params[:min_price], params[:max_price], params[:min_price], params[:max_price]).order('id DESC')
     else
       @products = Product.where(admin_verified: true).where('end_at > ?', DateTime.now).limit(10).order('id DESC').includes(:product_images)
-      # @advertisements = Advertisement.where(admin_verified: true).order('id DESC')
+      # @headers = Header.where(admin_verified: true).order('id DESC')
       @services = Service.where(admin_verified: true).limit(10).order('id DESC').includes(:service_images)
     end
   end

@@ -23,74 +23,74 @@ class SearchAlgorithm
     category_ids =  make_categories_results(search_arr)
     product_ids = (get_product_id_by_category(category_ids) + get_product_ids_by_search(search_arr)).uniq
     service_ids = (get_service_id_by_category(category_ids) + get_service_ids_by_search(search_arr)).uniq
-    advertisement_ids = (get_advertisement_id_by_category(category_ids) +  get_advertisement_ids_by_search(search_arr)).uniq
-    find_and_load_models(product_ids, service_ids, advertisement_ids)
+    header_ids = (get_header_id_by_category(category_ids) +  get_header_ids_by_search(search_arr)).uniq
+    find_and_load_models(product_ids, service_ids, header_ids)
   end
 
   private
 
-  # def find_and_load_models(product_ids, service_ids, advertisement_ids)
+  # def find_and_load_models(product_ids, service_ids, header_ids)
   #   @results << {
   #       products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now),
   #       services: Service.where(id: service_ids, admin_verified: true).where('end_at > ?', DateTime.now),
-  #       advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids)
+  #       headers: Header.where(admin_verified: true, id: header_ids)
   #   }
   # end
 
-  def find_and_load_models(product_ids, service_ids, advertisement_ids)
+  def find_and_load_models(product_ids, service_ids, header_ids)
     if  @category_id.present? and @subcategory_id.present? and @state_id.present? and @city_id.present?
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND category_id = ? AND state_id = ? AND city_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @category_id, @state_id, @city_id).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND category_id = ? AND state_id = ? AND city_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @category_id, @state_id, @city_id).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('category_id = ?', @category_id)
+          headers: Header.where(admin_verified: true, id: header_ids).where('category_id = ?', @category_id)
       }
     elsif  @category_id.present? and @subcategory_id.present? and @state_id.present?
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND category_id = ? AND state_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @category_id, @state_id).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND category_id = ? AND state_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @category_id, @state_id).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('category_id = ?', @category_id)
+          headers: Header.where(admin_verified: true, id: header_ids).where('category_id = ?', @category_id)
       }
     elsif  @category_id.present? and @subcategory_id.present? and @city_id.present?
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND category_id = ? AND city_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @category_id, @city_id).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND category_id = ? AND city_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @category_id, @city_id).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('category_id = ?', @category_id)
+          headers: Header.where(admin_verified: true, id: header_ids).where('category_id = ?', @category_id)
       }
     elsif @category_id.present? and @subcategory_id.present?
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND category_id = ? AND subcategory_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @category_id, @subcategory_id).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND category_id = ? AND subcategory_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @category_id, @subcategory_id).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('category_id = ? AND subcategory_id = ?', @category_id, @subcategory_id)
+          headers: Header.where(admin_verified: true, id: header_ids).where('category_id = ? AND subcategory_id = ?', @category_id, @subcategory_id)
       }
     elsif @category_id.present?
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND category_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @category_id).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND category_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @category_id).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('category_id = ?', @category_id)
+          headers: Header.where(admin_verified: true, id: header_ids).where('category_id = ?', @category_id)
       }
     elsif @subcategory_id.present?
     @results << {
         products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND subcategory_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @subcategory_id).order('id DESC'),
         services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND subcategory_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @subcategory_id).order('id DESC'),
-        advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('subcategory_id = ?', @subcategory_id)
+        headers: Header.where(admin_verified: true, id: header_ids).where('subcategory_id = ?', @subcategory_id)
     }
     elsif @state_id.present?
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND state_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @state_id).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND state_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @state_id).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('category_id = ?', @category_id)
+          headers: Header.where(admin_verified: true, id: header_ids).where('category_id = ?', @category_id)
       }
     elsif @city_id.present?
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?) AND city_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating, @city_id).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?) AND city_id = ?', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating, @city_id).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids).where('subcategory_id = ?', @subcategory_id)
+          headers: Header.where(admin_verified: true, id: header_ids).where('subcategory_id = ?', @subcategory_id)
       }
     else
       @results << {
           products: Product.where(id: product_ids, admin_verified: true).where('end_at > ?', DateTime.now).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (quantity > ?) AND (rating > ?  or rating = ?)', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @quantity, @rating, @rating).order('id DESC'),
           services: Service.where(id: service_ids, admin_verified: true).where('((per_hour_price > ? AND per_hour_price < ? OR per_hour_price = ? OR per_hour_price = ? ) OR (per_day_price > ? AND per_day_price < ? OR per_day_price = ? OR per_day_price = ? ) OR (per_week_price > ? AND per_week_price < ? OR per_week_price = ? OR per_week_price = ? ) OR (per_month_price > ? AND per_month_price < ? OR per_month_price = ? OR per_month_price = ?)) AND (rating > ? or rating = ?)', @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @min_price, @max_price, @rating, @rating).order('id DESC'),
-          advertisements: Advertisement.where(admin_verified: true, id: advertisement_ids)
+          headers: Header.where(admin_verified: true, id: header_ids)
       }
     end
   end
@@ -125,10 +125,10 @@ class SearchAlgorithm
     single_arr(ids).uniq
   end
 
-  def get_advertisement_ids_by_search(search_arr)
+  def get_header_ids_by_search(search_arr)
     ids = []
     search_arr.each do |search|
-      ids << Advertisement.where(admin_verified: true).where('lower(title) LIKE ?', "%#{search.downcase}%").map(&:id)
+      ids << Header.where(admin_verified: true).where('lower(title) LIKE ?', "%#{search.downcase}%").map(&:id)
     end
     single_arr(ids).uniq
   end
@@ -151,8 +151,8 @@ class SearchAlgorithm
     service_ids = Service.where(category_id: category_ids, admin_verified: true).map(&:id)
   end
 
-  def get_advertisement_id_by_category(category_ids)
-    advertisement_ids = Advertisement.where(admin_verified: true).where(category_id: category_ids).map(&:id)
+  def get_header_id_by_category(category_ids)
+    header_ids = Header.where(admin_verified: true).where(category_id: category_ids).map(&:id)
   end
 
 end

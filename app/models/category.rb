@@ -15,4 +15,10 @@ class Category < ActiveRecord::Base
   has_attached_file :interior_image
   validates_attachment_content_type :interior_image, content_type: /\Aimage\/.*\Z/
 
+  def ordered_subcategories
+    subcategories = self.subcategories.where("name NOT LIKE ?", "%others%")
+    other_object  = self.subcategories.where("name LIKE ?", "%others%")
+    subcategories += other_object
+  end
+
 end

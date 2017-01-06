@@ -1,0 +1,4 @@
+<%= simple_form_for [:customer, header, header_image] do |f| %>
+    <%= f.file_field :image, accept:'image/*' %>
+    <%= f.submit 'Save', class: 'btn btn-primary header-image-save' %>
+<% end %>

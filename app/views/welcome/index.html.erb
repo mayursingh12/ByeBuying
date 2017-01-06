@@ -6,25 +6,25 @@
 <!--<input type="submit" value="Filter">-->
 <!--</form>-->
 
-<%# @advertisements.each do |advertisement| %>
-<%#= advertisement.title %>
-<%#= advertisement.per_hour_cost %>
-<%#= advertisement.subcategory.category.name %>
+<%# @headers.each do |header| %>
+<%#= header.title %>
+<%#= header.per_hour_cost %>
+<%#= header.subcategory.category.name %>
 <%# end %>
 
 <!--slider start-->
 
 <div class="owl-carousel owl-loaded owl-nav-dots-inner" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
-  <% @top_advertisements.each do |advertisement|%>
-      <% next unless advertisement.advertisement_images.any? %>
-      <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#'%>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+  <% @top_headers.each do |header|%>
+      <% next unless header.header_images.any? %>
+      <a href="<%= header.redirect_link.present? ? "#{header.redirect_link}" : header.subcategory.present? ? subcategory_path(header.subcategory) : '#'%>" <%= header.redirect_link.present? ? " target=_blank" : ''%> >
         <div class="owl-item">
-          <div class="slider-item" style="background-image: url(<%= "#{advertisement.advertisement_images.first.image.url(:original)}" %>)">
+          <div class="slider-item" style="background-image: url(<%= "#{header.header_images.first.image.url(:original)}" %>)">
             <div class="container">
               <div class="slider-item-inner">
                 <div class="slider-item-caption-left">
-                  <!--<h4 class="slider-item-caption-title" style="color:white"><%#= advertisement.title %></h4>-->
-                  <!--<p class="slider-item-caption-desc" style="color:white"><%#= advertisement.description %></p>-->
+                  <!--<h4 class="slider-item-caption-title" style="color:white"><%#= header.title %></h4>-->
+                  <!--<p class="slider-item-caption-desc" style="color:white"><%#= header.description %></p>-->
                   <!--<a class="btn btn-lg btn-ghost btn-black" href="#">Shop Now</a>-->
                 </div>
                 <%#= image_tag 'slider_img/slider-img1.png', class: 'slider-item-img-right', style:'top: 60%; width: 56%;' %>
@@ -185,17 +185,17 @@
           <div class="gap"></div>
       <% end %>
 
-      <%# if @advertisements.any? %>
-          <!--Advertisements Start-->
-          <!--<h3 class="widget-title">Advertisements</h3>-->
+      <%# if @headers.any? %>
+          <!--Headers Start-->
+          <!--<h3 class="widget-title">Headers</h3>-->
           <!--<div class="owl-carousel owl-loaded owl-nav-out" data-options='{"items":5,"loop":true,"nav":true}'>-->
-            <!--<%# @advertisements.each do |advertisement| %>-->
+            <!--<%# @headers.each do |header| %>-->
                 <!--<div class="owl-item">-->
                   <!--<div class="product  owl-item-slide">-->
                     <!--<ul class="product-labels"></ul>-->
                     <!--<div class="product-img-wrap">-->
-                      <!--<%# if advertisement.advertisement_images.any? %>-->
-                          <!--<%#= image_tag advertisement.advertisement_images.first.image(:size_500x500), class: 'img-responsive' %>-->
+                      <!--<%# if header.header_images.any? %>-->
+                          <!--<%#= image_tag header.header_images.first.image(:size_500x500), class: 'img-responsive' %>-->
                       <!--<%# else %>-->
                           <!--<%#= image_tag "theme_img/500x500.png", class: 'product-img' %>-->
                       <!--<%# end %>-->
@@ -203,12 +203,12 @@
                     <!--<a class="product-link" href="#"></a>-->
                     <!--<div class="product-caption">-->
                       <!--<h5 class="product-caption-title">-->
-                        <!--<%#= advertisement.title %>-->
+                        <!--<%#= header.title %>-->
                       <!--</h5>-->
                       <!--<div class="product-caption-price">-->
                        <!--<span class="product-caption-price-new">-->
                         <!--₹ -->
-                        <%#= advertisement.per_hour_cost %>
+                        <%#= header.per_hour_cost %>
                        <!--</span>-->
 
                       <!--</div>-->
@@ -218,39 +218,39 @@
             <%# end %>
           <!--</div>-->
           <!--<div class="gap"></div>-->
-          <!--Advertisements finish-->
+          <!--Headers finish-->
       <%# end %>
-      <h3 class="widget-title">Advertisement</h3>
+      <h3 class="widget-title">Header</h3>
       <div class="row" data-gutter="15">
-        <div class="advertisement_image">
-          <% @mid_advertisements.each_with_index do |advertisement, index| %>
+        <div class="header_image">
+          <% @mid_headers.each_with_index do |header, index| %>
               <% next if index > 1 %>
-              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#' %>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+              <a href="<%= header.redirect_link.present? ? "#{header.redirect_link}" : header.subcategory.present? ? subcategory_path(header.subcategory) : '#' %>" <%= header.redirect_link.present? ? " target=_blank" : ''%> >
                 <div class="col-sm-6 col-xs-12">
-                  <%#= advertisement.advertisement_images %>
-                  <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
+                  <%#= header.header_images %>
+                  <%= image_tag header.header_images.first.image(:original), class: 'img-responsive' %>
                 </div>
               </a>
           <% end %>
           <div class="clearfix"></div>
         </div>
-        <div class="advertisement_image">
-          <% @bottom_advertisements.each do |advertisement| %>
-              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#' %>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+        <div class="header_image">
+          <% @bottom_headers.each do |header| %>
+              <a href="<%= header.redirect_link.present? ? "#{header.redirect_link}" : header.subcategory.present? ? subcategory_path(header.subcategory) : '#' %>" <%= header.redirect_link.present? ? " target=_blank" : ''%> >
                 <div class="col-sm-4 col-xs-12">
-                  <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
+                  <%= image_tag header.header_images.first.image(:original), class: 'img-responsive' %>
                 </div>
               </a>
           <% end %>
           <div class="clearfix"></div>
         </div>
-        <div class="advertisement_image">
-          <% @mid_advertisements.each_with_index do |advertisement, index| %>
+        <div class="header_image">
+          <% @mid_headers.each_with_index do |header, index| %>
               <% next if index < 2 %>
-              <a href="<%= advertisement.redirect_link.present? ? "#{advertisement.redirect_link}" : advertisement.subcategory.present? ? subcategory_path(advertisement.subcategory) : '#' %>" <%= advertisement.redirect_link.present? ? " target=_blank" : ''%> >
+              <a href="<%= header.redirect_link.present? ? "#{header.redirect_link}" : header.subcategory.present? ? subcategory_path(header.subcategory) : '#' %>" <%= header.redirect_link.present? ? " target=_blank" : ''%> >
                 <div class="col-sm-6 col-xs-12">
-                  <%#= advertisement.advertisement_images %>
-                  <%= image_tag advertisement.advertisement_images.first.image(:original), class: 'img-responsive' %>
+                  <%#= header.header_images %>
+                  <%= image_tag header.header_images.first.image(:original), class: 'img-responsive' %>
                 </div>
               </a>
           <% end %>

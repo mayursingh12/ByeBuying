@@ -12,5 +12,5 @@
 
 
 $(document).on('ready page:load', function(){
-    $('#advertisement_category_id, #advertisement_subcategory_id').select2();
+    $('#header_category_id, #header_subcategory_id').select2();
 });

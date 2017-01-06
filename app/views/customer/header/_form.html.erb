@@ -1,0 +1,72 @@
+<%#= simple_form_for [:customer, @header] do |f| %>
+    <%#= f.input :title %>
+    <%#= f.input :start_at %>
+    <%#= f.input :end_at %>
+    <%#= f.input :per_hour_cost %>
+    <%#= f.input :category_id, collection: category_for_collection, prompt: 'Select Category' %>
+    <%#= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select Subcategory' %>
+    <%#= f.input :description%>
+    <%#= f.submit 'Save', class: 'btn btn-primary' %>
+<%# end %>
+
+<div class="content-main-section">
+  <div class="container">
+    <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10 col-xs-12">
+      <h2 class="text-center">Add New Header</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="contact-main-form">
+            <%= simple_form_for [:customer, @header] do |f| %>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :title, label: 'Title ⓘ', label_html: {class: 'label pull-left', 'data-toggle': 'tooltip', 'data-placement': 'right' , title: 'Title'}, input_html: {class: 'text-field' } %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :start_at, label: 'Start at' ,label_html: {class: 'label'}, input_html: {class: 'select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :end_at, label: 'End at' ,label_html: {class: 'label'}, input_html: {class: 'select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :per_hour_cost, label_html: {class: 'label'}, input_html: {class: 'text-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :category_id, collection: category_for_collection, prompt: 'Select Category', label: 'Category' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :subcategory_id, collection: subcategory_for_collection, prompt: 'Select Subcategory', label: 'Subcategory' ,label_html: {class: 'label'}, input_html: {class: 'full-select-field'} %>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="field-con">
+                    <%= f.input :description, label: 'Description' ,label_html: {class: 'label'}, input_html: {class: 'text-discription'} %>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="submit-main">
+                  <%= f.submit 'Save', class: 'pushbutton-wide s-button btn btn-primary' %>
+                </div>
+            <% end %>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

@@ -65,40 +65,40 @@ json.services{
   end
 }
 
-json.advertisements{
-  json.array! @advertisements do |advertisement|
-    json.id advertisement.id
-    json.name advertisement.title
-    json.description advertisement.description
-    json.redirect_link advertisement.redirect_link
-    json.images advertisement.advertisement_images.map{ |i| i.image.url(:original) }
+json.headers{
+  json.array! @headers do |header|
+    json.id header.id
+    json.name header.title
+    json.description header.description
+    json.redirect_link header.redirect_link
+    json.images header.header_images.map{ |i| i.image.url(:original) }
   end
 }
-json.top_advertisements{
-  json.array! @top_advertisements do |top_advertisement|
-    json.id top_advertisement.id
-    json.name top_advertisement.title
-    json.description top_advertisement.description
-    json.redirect_link top_advertisement.redirect_link
-    json.images top_advertisement.advertisement_images.map{ |i| i.image.url(:original) }
+json.top_headers{
+  json.array! @top_headers do |top_header|
+    json.id top_header.id
+    json.name top_header.title
+    json.description top_header.description
+    json.redirect_link top_header.redirect_link
+    json.images top_header.header_images.map{ |i| i.image.url(:original) }
   end
 }
-json.mid_advertisements{
-  json.array! @mid_advertisements do |mid_advertisements|
-    json.id mid_advertisements.id
-    json.name mid_advertisements.title
-    json.description mid_advertisements.description
-    json.redirect_link mid_advertisements.redirect_link
-    json.images mid_advertisements.advertisement_images.map{ |i| i.image.url(:original) }
+json.mid_headers{
+  json.array! @mid_headers do |mid_headers|
+    json.id mid_headers.id
+    json.name mid_headers.title
+    json.description mid_headers.description
+    json.redirect_link mid_headers.redirect_link
+    json.images mid_headers.header_images.map{ |i| i.image.url(:original) }
   end
 }
-json.bottom_advertisements{
-  json.array! @bottom_advertisements do |bottom_advertisements|
-    json.id bottom_advertisements.id
-    json.name bottom_advertisements.title
-    json.description bottom_advertisements.description
-    json.redirect_link bottom_advertisements.redirect_link
-    json.images bottom_advertisements.advertisement_images.map{ |i| i.image.url(:original) }
+json.bottom_headers{
+  json.array! @bottom_headers do |bottom_headers|
+    json.id bottom_headers.id
+    json.name bottom_headers.title
+    json.description bottom_headers.description
+    json.redirect_link bottom_headers.redirect_link
+    json.images bottom_headers.header_images.map{ |i| i.image.url(:original) }
   end
 }
 

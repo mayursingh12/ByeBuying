@@ -1,0 +1,107 @@
+<script type="application/javascript">
+  $(document).ready(function(){
+    $('.sort-arrow').click(function(){
+        var click_id = this.getAttribute('dyn_click');
+        $('ul.product_'+ click_id).slideToggle();
+    });
+  });
+</script>
+<div class="customer-main-con">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="page-title">
+        Headers
+        <%= link_to 'Post an Ad', new_customer_header_path, class: 'btn btn-primary add-btn pull-right'  %>
+      </h1>
+      <div class="clearfix"></div>
+    </div>
+    <div class="col-xs-12">
+      <!--<table class="table table-striped">-->
+        <!--<tr class="info">-->
+          <!--<th>Title</th>-->
+          <!--<th>Email</th>-->
+          <!--&lt;!&ndash;<th>Contact</th>&ndash;&gt;-->
+          <!--<th>Category</th>-->
+          <!--<th>SubCategory</th>-->
+          <!--<th>Start At</th>-->
+          <!--<th>End At</th>-->
+          <!--<th>Per Hour Cost</th>-->
+          <!--&lt;!&ndash;<th>Discription</th>&ndash;&gt;-->
+          <!--<th>Action</th>-->
+        <!--</tr>-->
+        <!--<%# @headers.each do |header| %>-->
+            <!--<tr class="data">-->
+              <!--<td><%#= header.title %></td>-->
+              <!--<td><%#= header.user.email if header.user.present? %></td>-->
+              <!--&lt;!&ndash;<td><%#= header.user.contact if header.user.present? %></td>&ndash;&gt;-->
+              <!--<td><%#= header.subcategory.category.name if header.subcategory.category.present? %></td>-->
+              <!--<td><%#= header.subcategory.name if header.subcategory.present? %></td>-->
+              <!--<td><%#= header.start_at.strftime(time_format) %></td>-->
+              <!--<td><%#= header.end_at.strftime(time_format) %></td>-->
+              <!--<td><%#= header.per_hour_cost %></td>-->
+              <!--&lt;!&ndash;<td><%#= header.description %></td>&ndash;&gt;-->
+              <!--<td>-->
+                <!--<%#= link_to customer_header_path(header) do %>-->
+                    <!--<i class="fa fa-eye"></i>-->
+                <!--<%#- end %>-->
+                <!--<%#= link_to edit_customer_header_path(header) do %>-->
+                    <!--<i class="fa fa-edit"></i>-->
+                <!--<%#- end %>-->
+                <!--<%#= link_to customer_header_path(header), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>-->
+                    <!--<i class="fa fa-trash fa-3"></i>-->
+                <!--<%#- end %>-->
+              <!--</td>-->
+            <!--</tr>-->
+        <!--<%#- end %>-->
+      <!--</table>-->
+      <div class="customer-main-show">
+        <% if @headers.present? %>
+            <% @headers.each_with_index do |header, index| %>
+                <div class="white-bg">
+                  <div class="col-md-2 col-sm-3 col-xs-12 text-center">
+                    <div class="add-image-con">
+                      <% if header.header_images.any? %>
+                        <%= image_tag header.header_images.first.image(:size_500x500), class: 'img-responsive img-header' %>
+                      <% else %>
+                        <%= image_tag 'theme_img/500x500.png', class: 'product-img', alt: '' %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-md-10 col-sm-9 col-xs-12">
+                    <h2 class="heading"><%= header.title %></h2>
+                    <span>Status: <%= header.admin_verified ? 'Approved' : 'Pending' %></span>
+                    <h5 class="time-option"><%= header.start_at.strftime(time_format) %> - <%= header.end_at.strftime(time_format) %></h5>
+                    <p class="description"><%= header.description %></p>
+                    <div class="dropdown-main">
+                      <span dyn_click="<%= index + 1 %>" class="sort-arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                      <div class="clearfix"></div>
+                      <ul class="dropdown-option product_<%= index + 1 %>">
+                        <span class="arrow-top"></span>
+                        <li>
+                          <%= link_to customer_header_path(header) do %>
+                              <i class="fa fa-eye"></i> Show
+                          <%- end %>
+                        </li>
+                        <li>
+                          <%= link_to edit_customer_header_path(header) do %>
+                              <i class="fa fa-edit"></i> Edit
+                          <%- end %>
+                        </li>
+                        <li class="no_border">
+                          <%= link_to customer_header_path(header), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' do %>
+                              <i class="fa fa-trash fa-3"></i> Delete
+                          <%- end %>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+            <%- end %>
+        <% else %>
+            <h2 class="text-center">No Header Available</h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

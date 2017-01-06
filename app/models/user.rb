@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
 
-  has_many :advertisements
+  has_many :headers
 
   has_many :products
 

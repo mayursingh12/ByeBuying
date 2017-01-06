@@ -14,7 +14,7 @@ class Customer::WelcomeController < Customer::BaseController
   end
 
   def dashboard
-    # @advertisements = current_user.advertisements
+    # @headers = current_user.headers
     @products = current_user.products
     @services = current_user.services
 

@@ -50,10 +50,10 @@ Rails.application.routes.draw do
 
     get 'subcategories/get_subcategories_for_category/:id' => 'subcategories#get_subcategories_for_category', as:'get_subcategories_for_category'
 
-    resources :advertisements do
+    resources :headers do
 
       collection do
-        get 'pending_advertisements'
+        get 'pending_headers'
       end
 
       member do
@@ -110,7 +110,7 @@ Rails.application.routes.draw do
     get 'remove_wishlist' => 'welcome#remove_wishlist'
 
 
-    # resources :advertisements do
+    # resources :headers do
     #   resources :advertisement_images
     # end
 

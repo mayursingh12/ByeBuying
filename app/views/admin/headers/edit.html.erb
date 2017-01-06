@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-4">
+    <%= render partial: 'form' %>
+  </div>
+  <div class="col-sm-8"></div>
+</div>
+
+<script> 
+    $(document).ready(function(){  
+        if($('#header_category_id').val() == ""){ 
+            $('#header_subcategory_id').prop('disabled', 'disabled'); 
+        }
+        else{ 
+            $('#header_subcategory_id').prop('disable', true); 
+            var category_val = $('#header_category_id').val(); 
+            $.get("/get_subcategories/"+ category_val +".json", function(data, status){ 
+                var appendString = '<option value="">Select Subcategory</option>'; 
+                for(var i=0; i < data.length;i++){ 
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>"; 
+                } 
+                $('#header_subcategory_id').html(appendString); 
+            }); 
+        }  
+        $("#header_category_id").change(function() { 
+            var category_val = this.value; 
+            $.get("/get_subcategories/"+ category_val +".json", function(data, status){ 
+                var appendString = '<option value="">Select Subcategory</option>'; 
+                for(var i=0; i < data.length;i++){ 
+                    appendString +="<option value="+data[i].id+">" + data[i].name + "</option>"; 
+                } 
+                $('#header_subcategory_id').html(appendString); 
+            }); 
+            len = $("#header_category_id option:selected").length 
+            if (len > 0 ) { 
+                $('#header_subcategory_id').prop('disabled', false); 
+            } 
+        }); 
+    }); 
+</script>
