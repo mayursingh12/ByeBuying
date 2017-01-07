@@ -11,40 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115061537) do
-
-  create_table "header_images", force: :cascade do |t|
-    t.integer  "header_id",   limit: 4
-    t.string   "image_file_name",    limit: 255
-    t.string   "image_content_type", limit: 255
-    t.integer  "image_file_size",    limit: 4
-    t.datetime "image_updated_at"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.datetime "deleted_at"
-  end
-
-  add_index "header_images", ["deleted_at"], name: "index_header_images_on_deleted_at", using: :btree
-
-  create_table "headers", force: :cascade do |t|
-    t.string   "title",          limit: 255
-    t.text     "description",    limit: 65535
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.float    "per_hour_cost",  limit: 24
-    t.integer  "category_id",    limit: 4
-    t.integer  "subcategory_id", limit: 4
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.boolean  "ready_for_post",               default: false
-    t.boolean  "admin_verified",               default: false
-    t.datetime "deleted_at"
-    t.integer  "user_id",        limit: 4
-    t.text     "redirect_link",  limit: 65535
-    t.integer  "position",       limit: 4,     default: 1
-  end
-
-  add_index "headers", ["deleted_at"], name: "index_headers_on_deleted_at", using: :btree
+ActiveRecord::Schema.define(version: 20170107105859) do
 
   create_table "blog_images", force: :cascade do |t|
     t.integer  "blog_id",            limit: 4
@@ -121,7 +88,41 @@ ActiveRecord::Schema.define(version: 20161115061537) do
     t.float    "expected_per_day_price",   limit: 24,    default: 0.0
     t.float    "expected_per_week_price",  limit: 24,    default: 0.0
     t.float    "expected_per_month_price", limit: 24,    default: 0.0
+    t.integer  "quantity",                 limit: 4
   end
+
+  create_table "header_images", force: :cascade do |t|
+    t.integer  "header_id",          limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "header_images", ["deleted_at"], name: "index_advertisement_images_on_deleted_at", using: :btree
+
+  create_table "headers", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.text     "description",    limit: 65535
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.float    "per_hour_cost",  limit: 24
+    t.integer  "category_id",    limit: 4
+    t.integer  "subcategory_id", limit: 4
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "ready_for_post",               default: false
+    t.boolean  "admin_verified",               default: false
+    t.datetime "deleted_at"
+    t.integer  "user_id",        limit: 4
+    t.text     "redirect_link",  limit: 65535
+    t.integer  "position",       limit: 4,     default: 1
+  end
+
+  add_index "headers", ["deleted_at"], name: "index_advertisements_on_deleted_at", using: :btree
 
   create_table "new_users", force: :cascade do |t|
     t.string   "phone",      limit: 255

@@ -29,28 +29,33 @@ class EnquiriesController < ApplicationController
       end
     else
       if @product.present?
-        @enquiry = Enquiry.new(enquiry_params)
-        if @enquiry.save
-          @enquiry.product.update_attributes(is_enquired: true)
-          flash[:success] = 'Enquired successfully'
-          CustomerMailer.product_enquiry(@enquiry).deliver_later
-          phone = '+91'+@enquiry.product.user.contact
+        valid = validate_enquiry_params(enquiry_params)
+        if valid
+          @enquiry = Enquiry.new(enquiry_params)
+          if @enquiry.save
+            @enquiry.product.update_attributes(is_enquired: true)
+            flash[:success] = 'Enquired successfully'
+            CustomerMailer.product_enquiry(@enquiry).deliver_later
+            phone = '+91'+@enquiry.product.user.contact
 
-          if phone.present?
+            if phone.present?
 
-                   HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: phone, text: "Your have recieved an enquiry for your product. Please login to www.byebuying.com for more information", priority: 'ndnd', style: 'normal'})
-                    # do nothing
-                    # render status: :ok, json: {}
+                     HTTP.get('http://bhashsms.com/api/sendmsg.php', params: {user: 'ravikataria', pass: '123', sender: 'BYEBUY', phone: phone, text: "Your have recieved an enquiry for your product. Please login to www.byebuying.com for more information", priority: 'ndnd', style: 'normal'})
+                      # do nothing
+                      # render status: :ok, json: {}
 
-            else
-              # render status: :unprocessable_entity, json: { }
-            end
+              else
+                # render status: :unprocessable_entity, json: { }
+              end
 
-          redirect_to product_path(@product)
+            redirect_to product_path(@product)
 
+          else
+            flash[:success] = 'Something went wrong'
+            render action: :new
+          end
         else
-          flash[:success] = 'Something went wrong'
-          render action: :new
+          flash[:error] = "You can only enquire #{available_quantity} for this product."
         end
       else
         @enquiry = Enquiry.new(service_enquiry_params)
@@ -85,6 +90,7 @@ class EnquiriesController < ApplicationController
                                      :expected_per_day_price,
                                      :expected_per_week_price,
                                      :expected_per_month_price,
+                                     :quantity,
                                      :end_at).merge(product_id: @product.id,
                                                     is_product: true,
                                                     status: 'Enquiry',
@@ -97,10 +103,28 @@ class EnquiriesController < ApplicationController
                                      :expected_per_day_price,
                                      :expected_per_week_price,
                                      :expected_per_month_price,
+                                     :quantity,
                                      :end_at).merge(service_id: @service.id,
                                                     is_product: false,
                                                     status: 'Enquiry',
                                                     user_id: current_user.id)
+  end
+
+  def validate_enquiry_params(enquiry_params)
+    @product = Product.find(enquiry_params[:product_id])
+    enquiries = Enquiry.where(status: STATUS_CONFIRMED, product_id: @product.id])
+    confirmed_quantity = enquiries.sum(:quantity)
+    enquiries.each do |enquiry|
+      if enquiry_params[:start_at].between?(enquiry.start_at, enquiry.end_at)) ||
+         enquiry_params[:end_at].between?(enquiry.start_at, enquiry.end_at))
+         available_quantity = @product.quantity - enquiry.quantity
+         if available_quantity < enquiry_params[:quantity]
+           return false
+         else
+           return true
+         end
+       end
+     end
   end
 
 end

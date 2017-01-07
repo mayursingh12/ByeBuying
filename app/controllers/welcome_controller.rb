@@ -75,6 +75,7 @@ class WelcomeController < ApplicationController
      if @user_.present?
        @token = SecureRandom.urlsafe_base64(8)
        @user_.update_attributes(password: @token)
+       @user_.update_attributes(reset_password_token: @token)
        # SmsDelivery.new(@phone, SmsTemplates.change_password(@token.to_s)).delay.deliver
        SmsDelivery.new(@phone, SmsTemplates.change_password(@token.to_s)).deliver
        CustomerMailer.forgot_password(@user_, @token).deliver_later
