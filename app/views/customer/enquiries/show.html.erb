@@ -1,3 +1,12 @@
+<script type="text/javascript">
+  function isText(inputtxt) {
+    var letters = /^[A-Za-z]+$/;
+    if (inputtxt.value.length > 0 && !inputtxt.value.match(letters)) {
+      alert('Please input alphabets only');
+      return false;
+    }
+  }
+</script>
 <% if @enquiry.is_product? %>
     <div class="customer-main-show">
       <div class="row">
@@ -169,7 +178,7 @@
                               <%= f.input :expected_per_month_price, label: 'Expected Per Month Price:', label_html: {class: 'heading'} %>
                             </div>
                             <div class="col-xs-12">
-                              <%= f.input :description, label: 'Description:', label_html: {class: 'heading'}, input_html: {maxlength: '100'} %>
+                              <%= f.input :description, label: 'Description:', label_html: {class: 'heading'}, input_html: {maxlength: '100', onkeypress: "isText(this);"} %>
                             </div>
                             <div class="col-xs-12">
                               <%= f.submit 'Send quote', class: 'btn btn-primary'%>
@@ -467,7 +476,7 @@
                               <%= f.input :expected_per_month_price, label: 'Expected Per Month Price:', label_html: {class: 'heading'} %>
                             </div>
                             <div class="col-xs-12">
-                              <%= f.input :description, label: 'Description:', label_html: {class: 'heading'}, input_html: {maxlength: '100'} %>
+                              <%= f.input :description, label: 'Description:', label_html: {class: 'heading'}, input_html: {maxlength: '100', onkeypress: "isText(this);"} %>
                             </div>
                             <div class="col-xs-12">
                               <%= f.submit 'Send quote', class: 'btn btn-primary'%>

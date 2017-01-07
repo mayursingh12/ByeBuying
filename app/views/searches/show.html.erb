@@ -52,7 +52,14 @@
                 <div class="form-group">
                   <label>Minimum Rating</label>
                   <!--<i class="fa fa-inr rupee-icon"></i>-->
-                  <input type="number" name="rating" class="form-control set-rating">
+                  <!--<input type="number" name="rating" class="form-control set-rating">-->
+                  <div name="rating" id="star"></div>
+                  <script>
+                    $('#star').raty({
+                      score: 0,
+                      path: '/assets'
+                    });
+                  </script>
                 </div>
                 <!--<div class="form-group">-->
                   <!--<label>Minimum Product Quantity</label>-->

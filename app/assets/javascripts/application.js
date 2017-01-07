@@ -17,3 +17,4 @@
 //= require ./vendors/angular_bootstrap
 //= require ./vendors/bootstrap
 //= require ./vendors/social-share-button
+//= require ./vendors/jquery.raty
