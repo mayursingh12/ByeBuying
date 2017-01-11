@@ -52,6 +52,8 @@ Rails.application.routes.draw do
 
     resources :headers do
 
+      resources :header_images
+
       collection do
         get 'pending_headers'
       end

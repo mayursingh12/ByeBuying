@@ -13,7 +13,6 @@
 <%# end %>
 
 <!--slider start-->
-
 <div class="owl-carousel owl-loaded owl-nav-dots-inner" data-options='{"items":1,"loop":true,"autoplay":true,"autoplayTimeout":5000}'>
   <% @top_headers.each do |header|%>
       <% next unless header.header_images.any? %>
@@ -220,7 +219,6 @@
           <!--<div class="gap"></div>-->
           <!--Headers finish-->
       <%# end %>
-      <h3 class="widget-title">Header</h3>
       <div class="row" data-gutter="15">
         <div class="header_image">
           <% @mid_headers.each_with_index do |header, index| %>
