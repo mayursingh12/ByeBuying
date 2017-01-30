@@ -112,7 +112,7 @@ class EnquiriesController < ApplicationController
 
   def validate_enquiry_params(enquiry_params)
     @product = Product.find(enquiry_params[:product_id])
-    enquiries = Enquiry.where(status: STATUS_CONFIRMED, product_id: @product.id])
+    enquiries = Enquiry.where(status: STATUS_CONFIRMED, product_id: @product.id)
     confirmed_quantity = enquiries.sum(:quantity)
     enquiries.each do |enquiry|
       if enquiry_params[:start_at].between?(enquiry.start_at, enquiry.end_at)) ||
