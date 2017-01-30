@@ -90,11 +90,10 @@ Rails.application.configure do
       # }
       :s3_credentials => {
           :bucket => 'byebuyingproductionnew',
-          :access_key_id => 'AKIAIOMVRQJCQ3G6WYVQ',
-          :secret_access_key => '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'
+          :access_key_id => 'AKIAJ5H66EWRZZHKC2TQ',
+          :secret_access_key => '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'
       }
   }
-
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
   #     :user_name => 'AKIAJGXMXDHVJXCYEJHA',
@@ -109,8 +108,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :user_name => 'AKIAJCW6NWZGWC4VAAUQ',
-      :password => 'Ajzcm+NmX4+ZLMVSuJcYfg5lVfZI81f6PbT/Nv6AaPo0',
+      :user_name => 'AKIAJTBYBCVAMGMIZO7Q',
+      :password => 'AmPkvauC032lpEBRY4gJSYJI29vUTn6zNI1QPQyi2U/4',
       :domain => 'byebuying.com',
       :address => 'email-smtp.us-east-1.amazonaws.com',
       :port => 587,
@@ -123,8 +122,8 @@ Rails.application.configure do
   Rails.application.config.middleware.use ExceptionNotification::Rack,
                                           :email => {
                                               :email_prefix => 'ByeBuying new ERROR OCCURRED',
-                                              :sender_address => %{'notifier' <mayursingh1220@gmail.com>},
-                                              :exception_recipients => %w{mayursingh1220@gmail.com}
+                                              :sender_address => %{'notifier' <info@mysolutions4u.in>},
+                                              :exception_recipients => %w{ecevasu90@gmail.com}
                                           }
 
 
