@@ -115,8 +115,8 @@ class EnquiriesController < ApplicationController
     enquiries = Enquiry.where(status: STATUS_CONFIRMED, product_id: @product.id)
     confirmed_quantity = enquiries.sum(:quantity)
     enquiries.each do |enquiry|
-      if enquiry_params[:start_at].between?(enquiry.start_at, enquiry.end_at)) ||
-         enquiry_params[:end_at].between?(enquiry.start_at, enquiry.end_at))
+      if enquiry_params[:start_at].between?(enquiry.start_at, enquiry.end_at) ||
+         enquiry_params[:end_at].between?(enquiry.start_at, enquiry.end_at)
          available_quantity = @product.quantity - enquiry.quantity
          if available_quantity < enquiry_params[:quantity]
            return false
